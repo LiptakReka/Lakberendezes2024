@@ -137,11 +137,14 @@ namespace Lakberendezes.Controllers
         [HttpPost("login")]
         public async Task<ActionResult> Login(UserLoginDTO loginDTO)
         {
-            var user = await _context.users.SingleOrDefaultAsync(u => u.email==loginDTO.Email);
+            var user = await _userManager.FindByEmailAsync(loginDTO.Email);
             if (user == null)
             {
                 return Unauthorized("Hibás email vagy jelszó.");
             }
+
+            //Szerepkörök lekérdezése
+            var roles=await _userManager.GetRolesAsync(user);
 
 
             //jelszó ellenőr
@@ -151,8 +154,8 @@ namespace Lakberendezes.Controllers
                 return Unauthorized("Érvénytelen email vagy jelszó");
             }
             //Jwt token
-            var token = _jwtService.GenerateToken(user);
-            return Ok(new {Token=token});
+            var token = _jwtService.GenerateToken(user, roles);
+            return Ok(new { token });
         }
 
         [Authorize(Roles ="Admin")]
@@ -160,6 +163,46 @@ namespace Lakberendezes.Controllers
         public IActionResult AdminEnd()
         {
             return Ok("Ez a felület admin jogosultságot követel meg.");
+        }
+
+        [Authorize(Roles ="User")]
+        [HttpGet("user-only")]
+        public IActionResult Useronly()
+        {
+            return Ok("Felhasználók férhetnek hozzá");
+        }
+
+        [HttpPost("AddRoles")]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> AddRoles (string email, string role)
+        {
+            var user = await _userManager.FindByEmailAsync (email);
+            if (user == null)
+            {
+                return NotFound("Nem létezik ilyen felhasználó");
+            }
+            var result = await _userManager.AddToRoleAsync(user, role); 
+            if (!result.Succeeded)
+            {
+                return BadRequest("Szerepkör hozzáadása sikertelen.");
+            }
+            return Ok("Szerepkör hozzáadva");
+        }
+        [HttpPost("RemoveRoles")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> RemoveRoles(string email, string role)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                return NotFound("Nem létezik ilyen felhasználó");
+            }
+            var result = await _userManager.RemoveFromRoleAsync(user, role);
+            if (!result.Succeeded)
+            {
+                return BadRequest("Szerepkör hozzáadása sikertelen.");
+            }
+            return Ok("Szerepkör eltávolítva");
         }
 
         // DELETE: api/Users/5

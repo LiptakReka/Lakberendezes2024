@@ -10,6 +10,7 @@ using Lakberendezes.Models;
 using Microsoft.AspNetCore.Identity;
 using NuGet.Common;
 using Microsoft.AspNetCore.Authorization;
+using BCrypt.Net;
 
 
 namespace Lakberendezes.Controllers
@@ -20,10 +21,15 @@ namespace Lakberendezes.Controllers
     {
         private readonly AppDbContext _context;
         private readonly JwtService _jwtService;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<User> _userManager;
 
-        public UsersController(AppDbContext context)
+        public UsersController(AppDbContext context , UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
+            _roleManager = roleManager;
+            _userManager=userManager;
+
         }
 
         // GET: api/Users
@@ -110,15 +116,21 @@ namespace Lakberendezes.Controllers
             {
                 email=registerDTO.Email,
                 fullname=registerDTO.FullName,
-               
+               //jelszó hash
+                PasswordHash= BCrypt.Net.BCrypt.HashPassword(registerDTO.Password),
                 datet=DateTime.UtcNow
+                
 
             };
-            user.PASSWORD_hash = passwordHasher.HashPassword(user, registerDTO.Password);
-
-            _context.users.Add(user);
-            await _context.SaveChangesAsync();
-            return Ok("Regisztráció sikeres!");
+            
+            var result = await _userManager.CreateAsync(user , registerDTO.Password);
+            if (result.Succeeded)
+            {
+                //ha sikeres a regisztráció szerepkört kap a felhasználó
+                await _userManager.AddToRoleAsync(user, "User");
+                return Ok("Felhasználó regisztrálva ");
+            }
+            return BadRequest(result.Errors);
         }
 
         //bejelentkezés
@@ -132,17 +144,22 @@ namespace Lakberendezes.Controllers
             }
 
 
-            var passwordHasher = new PasswordHasher<User>();
-            var result=passwordHasher.VerifyHashedPassword(user,user.PASSWORD_hash, loginDTO.Password);
-
-            if (result== PasswordVerificationResult.Failed)
+            //jelszó ellenőr
+            var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, loginDTO.Password);
+            if (result==PasswordVerificationResult.Failed)
             {
-                return Unauthorized("Hibás jelszó és vagy email.");
+                return Unauthorized("Érvénytelen email vagy jelszó");
             }
-
             //Jwt token
             var token = _jwtService.GenerateToken(user);
             return Ok(new {Token=token});
+        }
+
+        [Authorize(Roles ="Admin")]
+        [HttpGet("admin")]
+        public IActionResult AdminEnd()
+        {
+            return Ok("Ez a felület admin jogosultságot követel meg.");
         }
 
         // DELETE: api/Users/5

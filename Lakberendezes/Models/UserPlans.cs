@@ -3,7 +3,7 @@
     public class UserPlans
     {
         public int id { get; set; }
-        public int userid { get; set; }
+        public string userid { get; set; }
         public required User User { get; set; }
         public  required string plandata { get; set; }
         public DateTime createdat { get; set; }

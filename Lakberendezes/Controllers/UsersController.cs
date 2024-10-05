@@ -59,7 +59,7 @@ namespace Lakberendezes.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
-            if (id != user.id)
+            if (id.ToString() != user.id)
             {
                 return BadRequest();
             }
@@ -116,6 +116,7 @@ namespace Lakberendezes.Controllers
             {
                 email=registerDTO.Email,
                 fullname=registerDTO.FullName,
+                UserName=registerDTO.Username,
                //jelszó hash
                 PasswordHash= BCrypt.Net.BCrypt.HashPassword(registerDTO.Password),
                 datet=DateTime.UtcNow
@@ -146,15 +147,14 @@ namespace Lakberendezes.Controllers
             //Szerepkörök lekérdezése
             var roles=await _userManager.GetRolesAsync(user);
 
-
             //jelszó ellenőr
-            var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, loginDTO.Password);
+            var result = _userManager.PasswordHasher.VerifyHashedPassword(user,user.PasswordHash, loginDTO.Password);
             if (result==PasswordVerificationResult.Failed)
             {
                 return Unauthorized("Érvénytelen email vagy jelszó");
             }
             //Jwt token
-            var token = _jwtService.GenerateToken(user, roles);
+            var token = _jwtService.GenerateToken(user,  roles);
             return Ok(new { token });
         }
 
@@ -224,7 +224,7 @@ namespace Lakberendezes.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.users.Any(e => e.id == id);
+            return _context.users.Any(e => e.id.ToString() == id.ToString());
         }
     }
 }

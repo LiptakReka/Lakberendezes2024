@@ -1,6 +1,7 @@
-﻿namespace Lakberendezes.Models
+﻿using Microsoft.AspNetCore.Identity;
+namespace Lakberendezes.Models
 {
-    public class User
+    public class User : IdentityUser
     {
         public  int id { get; set; }
         public required string email     { get; set; }

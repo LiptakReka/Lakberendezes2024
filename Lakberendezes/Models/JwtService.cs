@@ -17,15 +17,15 @@ namespace Lakberendezes.Models
             _audience = config["Jwt:Audience"];
 
         }
-        public string GenerateToken(User user,IList<string> roles)
+        public string GenerateToken(User user, IList<string> roles)
         {
-            
+
             //1.felhasználói adatok (claims) hozzáadása
             var claims = new List<Claim>();
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.email);
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email);
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString());
-                new Claim(ClaimTypes.NameIdentifier, user.id.ToString());
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString());
 
 
 
@@ -41,10 +41,10 @@ namespace Lakberendezes.Models
             //2.Titkosítás
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
-            var creds= new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             //token létrehozás
-            var tokens= new JwtSecurityToken(
+            var tokens = new JwtSecurityToken(
                 issuer: _issuer,
                 audience: _audience,
                 claims: claims,

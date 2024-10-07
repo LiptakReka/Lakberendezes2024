@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lakberendezes.Data;
 using Lakberendezes.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lakberendezes.Controllers
 {
@@ -25,6 +26,7 @@ namespace Lakberendezes.Controllers
         }
 
         // GET: api/Categories
+        //[Authorize (Roles ="USER")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categories>>> Getkategories()
         {
@@ -32,10 +34,11 @@ namespace Lakberendezes.Controllers
         }
 
         // GET: api/Categories/5
+        //[Authorize(Roles = "ADMIN")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Categories>> GetCategories(int id)
         {
-           
+
             var categories = await _context.kategories.FindAsync(id);
 
 
@@ -49,6 +52,7 @@ namespace Lakberendezes.Controllers
 
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[Authorize (Roles = "ADMIN")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategories(int id, Categories categories)
         {
@@ -80,6 +84,7 @@ namespace Lakberendezes.Controllers
 
         // POST: api/Categories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[Authorize(Roles ="ADMIN")]
         [HttpPost]
         public async Task<ActionResult<Categories>> PostCategories(Categories categories)
         {
@@ -90,6 +95,7 @@ namespace Lakberendezes.Controllers
         }
 
         // DELETE: api/Categories/5
+        //[Authorize (Roles ="ADMIN")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategories(int id)
         {

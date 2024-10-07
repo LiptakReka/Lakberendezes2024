@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lakberendezes.Data;
 using Lakberendezes.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lakberendezes.Controllers
 {
@@ -22,6 +23,7 @@ namespace Lakberendezes.Controllers
         }
 
         // GET: api/ProductTypes
+        //[Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductType>>> Getproducttype()
         {

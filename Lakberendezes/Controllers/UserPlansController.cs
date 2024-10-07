@@ -76,7 +76,7 @@ namespace Lakberendezes.Controllers
         // POST: api/UserPlans
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserPlans>> PostUserPlans( UserPlans userPlans)
+        public async Task<ActionResult<UserPlans>> PostUserPlans(UserPlans userPlans)
         {
             _context.userplan.Add(userPlans);
             await _context.SaveChangesAsync();

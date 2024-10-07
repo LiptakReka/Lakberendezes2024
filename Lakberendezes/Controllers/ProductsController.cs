@@ -24,16 +24,17 @@ namespace Lakberendezes.Controllers
         }
 
         // GET: api/Products
-        [Authorize]
+        //[Authorize(Roles ="USER")]
         [HttpGet]
-        
+
         public async Task<ActionResult<IEnumerable<Product>>> Getproducts()
         {
             return await _context.products.ToListAsync();
         }
 
+        //[Authorize(Roles ="USER")]
         [HttpGet("search")]
-        
+
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts
         (
             decimal? minimum,
@@ -43,7 +44,7 @@ namespace Lakberendezes.Controllers
 
         )
         {
-            var lekerdezes=_context.products.AsQueryable();
+            var lekerdezes = _context.products.AsQueryable();
 
             if (minimum.HasValue)
             {
@@ -53,24 +54,25 @@ namespace Lakberendezes.Controllers
 
             if (maximum.HasValue)
             {
-                lekerdezes=lekerdezes.Where(p=>p.price>=maximum.Value);
+                lekerdezes = lekerdezes.Where(p => p.price >= maximum.Value);
             }
 
             if (roomId.HasValue)
             {
-                lekerdezes=lekerdezes.Where(p=>p.roomid >= roomId.Value);
+                lekerdezes = lekerdezes.Where(p => p.roomid >= roomId.Value);
             }
 
             if (!string.IsNullOrEmpty(Név))
             {
-                lekerdezes=lekerdezes.Where(_ => _.name.Contains(Név));
+                lekerdezes = lekerdezes.Where(_ => _.name.Contains(Név));
             }
-            return await 
+            return await
                 lekerdezes.ToListAsync();
 
         }
 
         // GET: api/Products/5
+        //[Authorize(Roles ="ADMIN")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -86,6 +88,7 @@ namespace Lakberendezes.Controllers
 
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[Authorize(Roles ="ADMIN")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
@@ -117,7 +120,7 @@ namespace Lakberendezes.Controllers
 
         // POST: api/Products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize(Roles ="Admin")]
+        //[Authorize(Roles ="Admin")]
         [HttpPost]
 
         public async Task<ActionResult<Product>> PostProduct(Product product)
@@ -134,6 +137,7 @@ namespace Lakberendezes.Controllers
         }
 
         // DELETE: api/Products/5
+        //[Authorize (Roles ="ADMIN")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {

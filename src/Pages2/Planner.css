@@ -87,29 +87,62 @@
     background-color: #8e654a;
 }
 .tervezoterulet{
-    margin-top: 2rem;
-    width: 80%;
-    height: 400px;
-    border: 2px dashed #b08463;
-    background-color: #f4f4f4;
+    margin-top: 20px;
+    width: 800px;
+    height: 600px;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
     position: relative;
     overflow: hidden;
 }
+.placed-product{
+    cursor: grab;
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 5px;
+    position: absolute;
+    transform-origin: center;
+}
 
+.placed-product img{
+    width: 100px;
+    height: auto;
+    pointer-events: none;
+}
+.zoom-controls{
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+.img{
+    transition: transform 0.2s ease-in-out;
+}
+.zoom-controls button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 5px;
+}
 .design-item{
     position: absolute;
     cursor: move;
 }
+.placed-area{
+    position: absolute;
+    display: inline-block;
+}
 
 .remove-btn{
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
+background-color: red;
+color: white;
+border: none;
+border-radius: 3px;
+cursor: pointer;
+font-size: 12px;
+margin-top: 5px;
+top: -10px;
+left: -10px;
 }

@@ -5,6 +5,8 @@ const Planner = () => {
   const [selectedRoom, setSelectedRoom] = useState(null); // Kiválasztott szoba azonosítója
   const [products, setProducts] = useState([]); // Termékek listája
   const [designareaItems, setDesignAreaitems] = useState([]);
+  const [draggedProduct, setDraggedProduct] = useState(null)
+  const [placedProducts, setPlacedProducts] = useState([])
 
   // Termékek lekérdezése adott szobához
   const fetchProductsByRoom = async (roomId) => {
@@ -28,22 +30,50 @@ const Planner = () => {
   };
 
   //termékek a tervezőn
-  const handleProductClick =(product)=>{
-    setDesignAreaitems((prevItems)=>[
-      ...prevItems,
-      {...product, id: Math.random().toString() },
-    ]);
-  };
+const addToPlanner=(product)=>{
+  setPlacedProducts([
+    ...placedProducts,
+    {...product, x:50 , y:50 , scale:1 ,id: Date.now() },
+  ]);
+};
 
-  //eltávolítás
-  const handleRemoveItem= (itemId)=>{
-    setDesignAreaitems((prevItems)=>
-      prevItems.filter((item)=>item.id !== itemId)
-    );
-  };
+const handleMouseMove=(e)=>{
+  if(draggedProduct) {
+    const updatedProducts= placedProducts.map((p)=>
+    p.id===draggedProduct.id
+  ? {...p, x:e.clientX - draggedProduct.offsetX, y: e.clientY - draggedProduct.offsetY,}
+  :p
+);
+setPlacedProducts(updatedProducts);
+  }
+};
+
+const handleMouseDown =(product,e)=>{
+  setDraggedProduct({
+    id:product.id,
+    offsetX: e.clientX - product.x,
+    offsetY: e.clientY - product.y,
+  });
+};
+
+const handleMouseUp=()=>{
+  setDraggedProduct(null)
+};
+
+const handleZoom=(id, direction)=>{
+  setPlacedProducts((prevProducts)=>
+  prevProducts.map((p)=>
+  p.id===id
+    ? {...p, scale:Math.max(0.5, p.scale + direction)}
+    :p
+)
+);
+};
 
   return (
-    <div className="planner-container">
+    <div className="planner-container"
+    onMouseMove={handleMouseMove}
+    onMouseUp={handleMouseUp}>
       <h1>Tervező</h1>
 
       {/*Room categories */}
@@ -58,10 +88,14 @@ const Planner = () => {
       <div className="products">
         {products.length > 0 ? (
           products.map((product) => (
-            <div className="product-card" key={product.id} onClick={()=>handleProductClick(product)}>
+            <div className="product-card" key={product.id}>
+              
               <img src={product.imageurl} alt={product.name} className="product-image" />
               <h3>{product.name}</h3>
               <p>{product.price} Ft</p>
+              <button className='buy-btn' onClick={()=>addToPlanner(product)}>
+                Hozzáadás a tervezőhöz
+              </button>
               <a href={product.shoplink} target="_blank" rel="noopener noreferrer" className="buy-btn">
                 Vásárlás
               </a>
@@ -74,34 +108,35 @@ const Planner = () => {
       {/*design*/}
       <h2>Tervező terület</h2>
       <div className='tervezoterulet'>
-        {designareaItems.map((item)=>(
+        {placedProducts.map((product)=>(
           <div 
-          className='design-item'
-          key={item.id}
+          className='placed-area'
+          key={product.id}
           style={{
             position: "absolute",
-            left:item.left || "50px",
-            top:item.top || "50px",
+            left:`${product.x}px`,
+            top:`${product.y}px`,
           }}
-          draggable
-          onDragEnd={(e)=>{
-            //elemek pozi
-            const left =e.clientX - e.target.offsetWidth /2;
-            const top =e.clientX - e.target.offsetHeight /2;
-            setDesignAreaitems((prevItems)=>prevItems.map((i)=>i.id===item.id ? {...i,left,top}: i));
-          }}
+         onMouseDown={(e)=> handleMouseDown(product,e)}
           >
-            <img 
-            src={item.imageurl}
-            alt={item.name}
-            style={{width: "100px", cursor: "move"}}
-            />
-            <button
+              <button
             className='remove-btn'
-            onClick={()=>handleRemoveItem(item.id)}
-            >
+            onClick={()=>setPlacedProducts(placedProducts.filter((p)=> p.id !==product.id))}>
+            
               ❌
             </button>
+            <img 
+            src={product.imageurl}
+            alt={product.name}
+            style={{
+              transform:`scale(${product.scale})`,
+              transition:"transform 0.2s ease-in-out",
+            }}
+            />
+            <div className='zoom-controls'>
+              <button onClick={()=>handleZoom(product.id, 0.1)} > + </button>
+              <button onClick={()=>handleZoom(product.id, -0.1)}> - </button>
+              </div>
             </div>
         ))}
       </div>

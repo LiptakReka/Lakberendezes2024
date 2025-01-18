@@ -4,6 +4,7 @@ import './Planner.css';
 const Planner = () => {
   const [selectedRoom, setSelectedRoom] = useState(null); // Kiválasztott szoba azonosítója
   const [products, setProducts] = useState([]); // Termékek listája
+  const [designareaItems, setDesignAreaitems] = useState([]);
 
   // Termékek lekérdezése adott szobához
   const fetchProductsByRoom = async (roomId) => {
@@ -26,6 +27,21 @@ const Planner = () => {
     fetchProductsByRoom(roomId); // Termékek lekérdezése a szobához
   };
 
+  //termékek a tervezőn
+  const handleProductClick =(product)=>{
+    setDesignAreaitems((prevItems)=>[
+      ...prevItems,
+      {...product, id: Math.random().toString() },
+    ]);
+  };
+
+  //eltávolítás
+  const handleRemoveItem= (itemId)=>{
+    setDesignAreaitems((prevItems)=>
+      prevItems.filter((item)=>item.id !== itemId)
+    );
+  };
+
   return (
     <div className="planner-container">
       <h1>Tervező</h1>
@@ -42,11 +58,11 @@ const Planner = () => {
       <div className="products">
         {products.length > 0 ? (
           products.map((product) => (
-            <div className="product-card" key={product.id}>
+            <div className="product-card" key={product.id} onClick={()=>handleProductClick(product)}>
               <img src={product.imageurl} alt={product.name} className="product-image" />
               <h3>{product.name}</h3>
               <p>{product.price} Ft</p>
-              <a href={product.url} target="_blank" rel="noopener noreferrer" className="buy-btn">
+              <a href={product.shoplink} target="_blank" rel="noopener noreferrer" className="buy-btn">
                 Vásárlás
               </a>
             </div>
@@ -56,7 +72,39 @@ const Planner = () => {
         )}
       </div>
       {/*design*/}
-      <div className='tervezoterulet'>Húzd ide a bútorokat</div>
+      <h2>Tervező terület</h2>
+      <div className='tervezoterulet'>
+        {designareaItems.map((item)=>(
+          <div 
+          className='design-item'
+          key={item.id}
+          style={{
+            position: "absolute",
+            left:item.left || "50px",
+            top:item.top || "50px",
+          }}
+          draggable
+          onDragEnd={(e)=>{
+            //elemek pozi
+            const left =e.clientX - e.target.offsetWidth /2;
+            const top =e.clientX - e.target.offsetHeight /2;
+            setDesignAreaitems((prevItems)=>prevItems.map((i)=>i.id===item.id ? {...i,left,top}: i));
+          }}
+          >
+            <img 
+            src={item.imageurl}
+            alt={item.name}
+            style={{width: "100px", cursor: "move"}}
+            />
+            <button
+            className='remove-btn'
+            onClick={()=>handleRemoveItem(item.id)}
+            >
+              ❌
+            </button>
+            </div>
+        ))}
+      </div>
     </div>
   );
 };

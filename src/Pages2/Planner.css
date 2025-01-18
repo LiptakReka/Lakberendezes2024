@@ -1,50 +1,115 @@
 .planner-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Arial" , sans-serif;
+  color: #444;
 }
 
-.categories-container, .products-container, .selected-products-container {
-    margin-bottom: 20px;
-}
-
-.categories-list, .products-list, .selected-products-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.categories-list li, .products-list li, .selected-products-list li {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
+.rooms{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-.categories-list li.active {
-    background-color: #0ebb5c;
+.category-button{
+    padding: 10px 20px;
+    background-color: #d1a884;
+    border: none;
+    border-radius: 5px;
     color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.category-button:hover{
+    background-color: #b08463;
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    overflow-y: auto;
+    margin-top: 1rem;
+    max-height: 300px;
 }
 
-.products-list li img, .selected-products-list li img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    object-fit: cover;
+.product-image{
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
 }
 
-button {
-    background-color: #0ebb5c;
+.product-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    height: 350px;
+    font-size: 0.9rem;
+    justify-content: space-between;
+    text-align: center;
+}
+.product-card img{
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+}
+.product-card h3{
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.product-card p{
+    font-size: 14px;
+    color: #666;
+}
+.buy-btn {
+   margin-top: auto;
+   background-color: #b08463;
+   color: white;
+   padding: 10px 20px;
+   border-radius: 4px;
+   text-decoration: none;
+   border: none;
+   font-size: 14px;
+   transition: 0.3s;
+   cursor: pointer;
+}
+
+.buy-btn:hover {
+    background-color: #8e654a;
+}
+.tervezoterulet{
+    margin-top: 2rem;
+    width: 80%;
+    height: 400px;
+    border: 2px dashed #b08463;
+    background-color: #f4f4f4;
+    position: relative;
+    overflow: hidden;
+}
+
+.design-item{
+    position: absolute;
+    cursor: move;
+}
+
+.remove-btn{
+    position: absolute;
+    top: -10px;
+    right: -10px;
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
+    border-radius: 50%;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #08733b;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
 }

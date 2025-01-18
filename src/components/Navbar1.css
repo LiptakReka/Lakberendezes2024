@@ -1,0 +1,523 @@
+.navbar{
+    display: flex;
+    color: var(--text-color);
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--navbar-bg);
+    font-family: Arial,sans-serif;
+    position: sticky;
+    top:0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.darkmodeis{
+    background-color: #0ebb5c;
+    background-color: var(--navbar-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    
+}
+.navbar-logo{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+}
+.navbar-links{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.dark-mode .navbar-logo{
+    color: white;
+}
+
+.navbar-links li a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.navbar-links li a:hover{
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+    color: #0d0e0d;
+}
+
+.dark-mode .navbar-links li a {
+    color: white;
+}
+.dark-mode .navbar-links li a:hover{
+    color: #0d0e0d;
+}
+.dark-mode .navbar{
+    background-color: #0d0e0d;
+}
+
+.dark-mode .dark-mode-toggle{
+    color: white;
+}
+
+.dark-mode .menu-button{
+    color: white;
+}
+.dark-mode .dark-mode-toggle:hover{
+    color: black;
+}
+
+.dark-mode .menu-button:hover{
+    color: #0d0e0d;
+}
+ :root{
+    --bg-color:#0d0e0d;
+    --text-color:#333;
+    --navbar-bg:#0ee693;
+    --navbar-link-hover:#62f7a5;
+ }
+
+ .dark-mode{
+    --bg-color:#121212;
+    --text-color:#E0E0E0;
+    --navbar-bg:#1E1E1E;
+    --navbar-link-hover:#62f7a5;
+ }
+
+.navbar-links a{
+    text-decoration: none;
+    color: rgb(30, 138, 3);
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+
+
+}
+.navbar-links a:hover{
+    background-color: #71ee6d;
+    color: rgb(9, 94, 47);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.navbar-right{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-container{
+    position: relative;
+    color: #0d0e0d;
+}
+
+.menu-button{
+    background:none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    gap: 10px;
+    display: flex;
+}
+.menu-button:hover{
+    color: rgb(37, 80, 26);
+}
+body{
+    background-image: url('./hatter.jpg');
+    background-position:center ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color:var(--text-color);
+    margin: 0;
+    font-family: Arial, sans-serif;
+    
+}
+.dropdown-menu{
+    position: absolute;
+    top: 40%;
+    right: 0;
+    background-color: black;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    display:contents;
+    color: #0d0e0d;
+}
+.dropdown-menu.show{
+    display: flex;
+    color: #0d0e0d;
+} 
+
+
+.dropdown-menu li{
+    padding: 10px ;
+}
+
+.dropdown-menu li a{
+    text-decoration: none;
+    color: black;
+}:root {
+    /* Színpaletta */
+    --light-green: #A8D5BA;
+    --dark-green: #4C8A6A;
+    --light-gray: #F4F4F4;
+    --medium-gray: #C2C2C2;
+    --dark-gray: #707070;
+    --terracotta: #D8A47F;
+    --cream-white: #FDF7F2;
+
+    /* Általános */
+    --bg-color: var(--cream-white);
+    --text-color: var(--dark-gray);
+    --accent-color: var(--dark-green);
+    --hover-color: var(--light-green);
+    --button-primary: var(--terracotta);
+    --button-secondary: var(--medium-gray);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: black;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigációs sáv */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--accent-color);
+    color: black;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-logo:hover{
+    color: black;
+}
+.dark-mode .navbar-logo:hover{
+    color: white
+}
+
+
+.navbar-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #0d0e0d;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: black;
+}
+
+/* Kosár és Dark Mode */
+.navbar-cart {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-count {
+    background-color: var(--light-gray);
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-weight: bold;
+    color: var(--accent-color);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.dark-mode-toggle {
+    background-color: var(--light-gray);
+    border: none;
+    color: var(--accent-color);
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background-color: var(--hover-color);
+    color: var(--light-gray);
+}
+
+/* Gombok */
+button {
+    background-color: var(--button-primary);
+    border: none;
+    color: var(--light-gray);
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+button.secondary {
+    background-color: var(--button-secondary);
+    color: black;
+}
+
+/* Login Modal */
+.login-modal {
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.login-modal label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: black;
+}
+.dark-mode .login-modal label{
+    color: #0d0e0d;
+}
+.login-modal input {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+}
+
+.login-modal button {
+    width: 100%;
+    margin-top: 10px;
+    color: #0d0e0d;
+}
+
+.login-modal button.close {
+    background-color: var(--button-secondary);
+    color: black;
+}
+
+/* Dropdown Menü */
+.dropdown-menu {
+    display:contents;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: black;
+    border: 1px solid var(--medium-gray);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.dropdown-menu li:hover {
+    background-color: var(--hover-color);
+    color: var(--light-gray);
+}
+
+
+.dropdown-menu li a:hover{
+    background-color: var(--navbar-link-hover);
+    color: rgb(0, 0, 0);
+}
+.navbar-cart{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cart-count{
+    background-color: var(--navbar-link-hover);
+    border-radius: 50%;
+    color: black;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.dark-mode-toggle{
+    background:none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #0d0e0d;
+}
+
+.login-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: black;
+}
+
+.login-content{
+    background-image: url('hatter.jpg');
+    background-position:center ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #0d0e0d;
+}
+
+.login-content form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #0d0e0d;
+
+}
+
+.login-content button{
+    margin-top: 10px;
+    color: #0d0e0d;
+}
+
+.dark-mode .login-modal{
+    color: black;
+}
+
+.register-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+   
+}
+
+.register-content{
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+    background-image: url("./hatter.jpg");
+    background-position:center ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.register-content h2{
+    margin-bottom: 15px;
+    color: black;
+
+}
+
+.register-content form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #0d0e0d;
+
+}
+
+.register-content label{
+    font-size: 14px;
+    color: black;
+}
+
+.register-content input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+}
+
+.register-content button{
+    background-color:  var(--button-primary);
+    color: #0d0e0d;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-content button:hover{
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+
+}
+
+.close-button{
+    background-color: var(--button-secondary);
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+body.dark-mode{
+    background-image: url("./173360062129159154.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--light-gray);
+    color: #0d0e0d;
+}
+.dark-mode .navbar-cart{
+    color: white;
+}

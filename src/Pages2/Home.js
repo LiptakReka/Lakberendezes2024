@@ -1,11 +1,9 @@
 import React from 'react'
 
-const  Home= () => {
+export default function Home() {
   return (
     <div>
-      <h1> Üdv a kezdőlapon!</h1>
-      <p>Ez a tartalom.</p>
+      <h1>Home</h1>
     </div>
-  );
-};
-export default Home;
+  )
+}

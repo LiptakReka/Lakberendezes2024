@@ -1,0 +1,123 @@
+
+.hero{
+   position: relative;
+   padding: 60px 15px;
+   background: linear-gradient(135deg, #f7e8d6, #e2c2a4);
+   color: #4a4a4a;
+   text-align: center;
+}
+
+.hero h1{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #623d2d;
+}
+
+.hero p{
+    font-size: 1rem;
+    margin-bottom: 40px;
+}
+
+
+.hero-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hero-btn{
+    background: #6a9368;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease , box-shadow 0.3s ease;
+}
+
+.start-btn , .learn-btn{
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease , background-color 0.3s ease;
+}
+
+.start-btn{
+    background-color: #a67648;
+}
+.start-btn:hover{
+    background-color: #875b36;
+    transform: scale(1.1);
+}
+.learn-btn{
+    background-color: transparent;
+    border: 2px solid #a67648;
+    color: #a67648;
+}
+
+.learn-btn:hover{
+    background-color: #a67648;
+    color: white;
+    transform: scale(1.1);
+}
+
+
+.features{
+ padding: 30px 15px ;
+ background: #f9f9f9;
+}
+
+.feature-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+.feature-left{
+    flex-direction: row;
+}
+
+.feature-right{
+    flex-direction: row-reverse;
+}
+
+.feature-card img{
+    width: 35%;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.feature-card img:hover{
+    transform: scale(1.05);
+}
+
+.feature-text{
+    width: 55%;
+    padding: 20px;
+    text-align: left;
+}
+
+.feature-text h3{
+    font-size: 1.8rem;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+}
+
+.feature-text p{
+    font-size: 0.95rem;
+    color: #7a7a7a;
+    line-height: 1.5;
+}
+
+.footer{
+    background: #2e4d30;
+    color: white;
+    padding: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+}

@@ -21,21 +21,21 @@ export default function Home() {
       
       <section className='features'>
       <div className='feature-card feature-left'>
-          <img src='/room.jpg' alt='Szoba tervezés' />
+          <img src='img/room.jpg' alt='Szoba tervezés' />
           <div className='feature-text'>
           <h3>Szoba tervezés</h3>
           <p>Hozd létre a tökéletes otthont a digitális lakberendezési eszközeinkkel.</p>
           </div>
         </div>
         <div className='feature-card feature-right'>
-          <img src='/furniture.jpg' alt='Bútor választás'/>
+          <img src='img/furniture.jpg' alt='Bútor választás'/>
           <div className='feature-text'>
           <h3>Bútor választás</h3>
           <p>Böngéssz stílusos bútorok között, amelyek passzolnak a terveidhez.</p>
         </div>
           </div>
         <div className='feature-card feature-left'>
-          <img src='/shopping.jpg' alt='Vásárlás' />
+          <img src='img/shopping.jpg' alt='Vásárlás' />
           <div className='feature-text'>
           <h3>Vásárlás</h3>
           <p>Kapcsold össze terveidet a vásárlással - egyszerűen és gyorsan.</p>

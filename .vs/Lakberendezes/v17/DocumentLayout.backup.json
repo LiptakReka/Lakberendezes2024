@@ -1,0 +1,353 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\models\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:models\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\lakberendezes.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:lakberendezes.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\controllers\\producttypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:controllers\\producttypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\models\\identityroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:models\\identityroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\migrations\\20240921155034_loginregistervalidatation.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:migrations\\20240921155034_loginregistervalidatation.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007064053_User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\migrations\\20240921115025_idcorrection.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:migrations\\20240921115025_idcorrection.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\migrations\\20240921114429_correction.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:migrations\\20240921114429_correction.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\migrations\\20240921111141_modifycategoriestable.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:migrations\\20240921111141_modifycategoriestable.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\migrations\\20240921111141_modifycategoriestable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:migrations\\20240921111141_modifycategoriestable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\migrations\\20240921114429_correction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:migrations\\20240921114429_correction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\migrations\\20240921115025_idcorrection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:migrations\\20240921115025_idcorrection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007055446_userMANAGER.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|c:\\users\\pc\\downloads\\20250123\\usermanagement\u0026facebookloginstarted\\lakberendezes\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EAA5E5B4-96F7-408D-AEE1-F7968AF80830}|Lakberendezes.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T08:40:45.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-07T05:52:32.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T05:59:11.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Models\\JwtService.cs",
+              "RelativeDocumentMoniker": "Models\\JwtService.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Models\\JwtService.cs",
+              "RelativeToolTip": "Models\\JwtService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:52:41.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:20:17.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T07:44:39.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T08:40:11.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Lakberendezes.http",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Lakberendezes.http",
+              "RelativeDocumentMoniker": "Lakberendezes.http",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Lakberendezes.http",
+              "RelativeToolTip": "Lakberendezes.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-10-07T09:01:10.487Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductTypesController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Controllers\\ProductTypesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductTypesController.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Controllers\\ProductTypesController.cs",
+              "RelativeToolTip": "Controllers\\ProductTypesController.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAowBkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:58:05.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-07T09:16:23.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "20240921111141_ModifyCategoriesTable.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921111141_ModifyCategoriesTable.Designer.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240921111141_ModifyCategoriesTable.Designer.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921111141_ModifyCategoriesTable.Designer.cs",
+              "RelativeToolTip": "Migrations\\20240921111141_ModifyCategoriesTable.Designer.cs",
+              "ViewState": "AgIAACYBAAAAAAAAAAAuwDsBAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:31:18.158Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20240921114429_Correction.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921114429_Correction.Designer.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240921114429_Correction.Designer.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921114429_Correction.Designer.cs",
+              "RelativeToolTip": "Migrations\\20240921114429_Correction.Designer.cs",
+              "ViewState": "AgIAACYBAAAAAAAAAAAuwDsBAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:31:30.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IdentityRoles.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Models\\IdentityRoles.cs",
+              "RelativeDocumentMoniker": "Models\\IdentityRoles.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Models\\IdentityRoles.cs",
+              "RelativeToolTip": "Models\\IdentityRoles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T07:17:09.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20240921155034_LoginRegisterValidatation.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921155034_LoginRegisterValidatation.Designer.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240921155034_LoginRegisterValidatation.Designer.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921155034_LoginRegisterValidatation.Designer.cs",
+              "RelativeToolTip": "Migrations\\20240921155034_LoginRegisterValidatation.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T07:44:50.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "20240921115025_Idcorrection.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921115025_Idcorrection.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240921115025_Idcorrection.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921115025_Idcorrection.cs",
+              "RelativeToolTip": "Migrations\\20240921115025_Idcorrection.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAADwvzAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:25:39.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20240921115025_Idcorrection.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921115025_Idcorrection.Designer.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240921115025_Idcorrection.Designer.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921115025_Idcorrection.Designer.cs",
+              "RelativeToolTip": "Migrations\\20240921115025_Idcorrection.Designer.cs",
+              "ViewState": "AgIAACMBAAAAAAAAAAAuwDgBAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:31:44.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20241007064053_User.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007064053_User.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007064053_User.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007064053_User.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007064053_User.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:40:53.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "20240921111141_ModifyCategoriesTable.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921111141_ModifyCategoriesTable.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240921111141_ModifyCategoriesTable.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921111141_ModifyCategoriesTable.cs",
+              "RelativeToolTip": "Migrations\\20240921111141_ModifyCategoriesTable.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAwwJkAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:25:34.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20240921114429_Correction.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921114429_Correction.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240921114429_Correction.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Migrations\\20240921114429_Correction.cs",
+              "RelativeToolTip": "Migrations\\20240921114429_Correction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T06:25:29.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "20241007055446_userMANAGER.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007055446_userMANAGER.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007055446_userMANAGER.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007055446_userMANAGER.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Tanulo\\Desktop\\Lakberendezes\\Migrations\\20241007055446_userMANAGER.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T05:54:46.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement\u0026facebookloginstarted\\Lakberendezes\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T05:51:31.008Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

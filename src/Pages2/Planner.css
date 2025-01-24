@@ -23,6 +23,7 @@ body{
     margin-bottom: 20px;
 }
 
+/*#region categ*/
 .category-button{
     background-color: #d9dfaa;
     color: black;
@@ -37,7 +38,9 @@ body{
 .category-button:hover{
     background-color: #adc48f;
 }
+/*#endregion*/
 
+/*#region products*/
 .products-and-planner{
     display: flex;
     gap: 20px;
@@ -70,7 +73,9 @@ body{
     border-radius: 5px;
     margin-bottom: 10px;
 }
+/*#endregion*/
 
+/*#region buybtn*/
 .buy-btn{
     display: inline-block;
     background-color: #a5e9a5;
@@ -87,7 +92,10 @@ body{
 .buy-btn:hover{
     background-color: #4cae4c;
 }
+/*#endregion*/
 
+
+/*#region tervezo*/
 .tervezoterulet{
     flex: 2;
     position: relative;
@@ -98,6 +106,10 @@ body{
     overflow: hidden;
    
 }
+/*#endregion*/
+
+
+/*#region placedarea*/
 .placed-area{
     position: absolute;
     cursor: move;
@@ -117,6 +129,9 @@ body{
     gap: 5px;
     z-index: 10;
 }
+/*#endregion*/
+
+/*#region removebtn*/
 .remove-btn , .zoom-controls button{
     background-color: #3498db;
     color: white;
@@ -129,7 +144,9 @@ body{
 .remove-btn:hover{
     background-color: #c0392b;
 }
+/*#endregion*/
 
+/*#region zoomcontr*/
 .zoom-controls{
     display: flex;
     gap: 5px;
@@ -139,9 +156,9 @@ body{
     background-color: #2980b9;
   }
   
-
+/*#endregion*/
   
-  /* Görgetősávok */
+  /*#region Görgetősávok*/
   .products::-webkit-scrollbar {
     width: 8px;
   }
@@ -154,3 +171,4 @@ body{
   .products::-webkit-scrollbar-thumb:hover {
     background-color: #999;
   }
+  /*#endregion*/

@@ -1,17 +1,57 @@
-.login-container{
-   max-width: 400px;
-   margin: 50px auto;
-   padding: 20px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   background-color: #f9f9f9;
-}
 
-.form-group{
-    margin-bottom: 15px;
-}
+body {
+    background-image: url("./img/hatter.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 0.5s ease-in-out;
+  }
+  
+  body.login-background {
+    background-image: url("./img/login.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 0.5s ease-in-out;
+  }
+  
+ 
+  .animate-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
 
-label{
-    display: block;
-    margin-bottom: 5px;
-}
+  .login-btn,
+  .register-btn {
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  
+
+  .login-btn:hover {
+    background-color: #ff8c00;
+    transform: scale(1.05);
+  }
+  
+  .register-btn:hover {
+    background-color: #3b8c74;
+    color: white;
+    transform: scale(1.05);
+  }
+  
+ 
+  .form-control {
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+  }
+  
+ 
+  .form-control:focus {
+    border-color: #ff8c00;
+    box-shadow: 0px 0px 8px rgba(255, 140, 0, 0.6);
+  }
+  

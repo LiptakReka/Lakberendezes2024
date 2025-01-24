@@ -7,6 +7,8 @@ import About from "./Pages2/About";
 import Contact from "./Pages2/Contact";
 import Login from './components/Login';
 import Register from './components/Register'
+import './output.css';
+
 
 
 const App = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 const Register=({setToken , onLoginClick})=>{
@@ -8,6 +8,8 @@ const Register=({setToken , onLoginClick})=>{
     const [fullname, setFullname] = useState("");
     const [error, setError] = useState('');
     const [username, setUsername] = useState("")
+    const [success, setSuccess] = useState("");
+
 
 
     const handleregister=async (e)=>{
@@ -30,7 +32,7 @@ const Register=({setToken , onLoginClick})=>{
 
             if (response.ok){
                 
-                alert("Sikeres regisztráció!");
+                setSuccess("Sikeres regisztráció!");
                 setFullname('');
                 setEmail('');
                 setPassword('');
@@ -38,7 +40,7 @@ const Register=({setToken , onLoginClick})=>{
             }else{
                 const errorData=await response.json();
                 console.error("Szerver hiba" + errorData)
-                alert("Hiba " + errorData.message || "Ismeretlen hiba")
+                setError("Hibás adatok "  || "Ismeretlen hiba")
             }
         }catch(error){
             console.error('Hálózati hiba:', error);
@@ -47,35 +49,61 @@ const Register=({setToken , onLoginClick})=>{
         }
     };
   return (
-    <div className='register-container'>
-        <h2>Regisztráció</h2>
-    <form onSubmit={handleregister}>
-        <div className='form-group'>
-            <label>Teljes neved: </label>
-            <input type='text' value={fullname} onChange={(e)=>setFullname(e.target.value)} required/>
+    <div className="register-container d-flex justify-content-center align-items-center vh-100">
+    <div className="register-box p-4 rounded shadow-lg bg-white">
+      <h2 className="text-center mb-4">Regisztráció</h2>
+      {error && <div className="alert alert-danger">{error}</div>}
+      {success && <div className="alert alert-success">{success}</div>}
+      <form onSubmit={handleregister}>
+        <div className="mb-3">
+          <label className="form-label">Teljes név:</label>
+          <input
+            type="text"
+            className="form-control"
+            value={fullname}
+            onChange={(e) => setFullname(e.target.value)}
+            required
+          />
         </div>
-        <div className='form-group'>
-            <label>Felhasználó név: </label>
-            <input type='text' value={username} onChange={(e)=>setUsername(e.target.value)} required/>
+        <div className="mb-3">
+          <label className="form-label">Felhasználónév: </label>
+          <input
+            type="text"
+            className="form-control"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
         </div>
-        <div className='form-group'>
-            <label > E-mail: </label>
-            <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)}
-            required/>
+        <div className="mb-3">
+          <label className="form-label">E-mail: </label>
+          <input
+            type="email"
+            className="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-        <div className='form-group'>
-            <label> Jelszó: </label>
-            <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} required/>
-
+        <div className="mb-3">
+          <label className="form-label">Jelszó: </label>
+          <input
+            type="password"
+            className="form-control"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
-
-
-        {error && <p className='error-messages'>{error}</p>}
-        <button type='submit'>Regisztráció</button>
-        <button onClick={onLoginClick}>Bejelentkezés</button>
-    </form>
+        <button type="submit" className="btn btn-primary w-100">Regisztráció</button>
+        <button type="button" className="btn btn-secondary w-100 mt-2" onClick={onLoginClick}>
+          Már van fiókod? Bejelentkezés
+        </button>
+      </form>
     </div>
-  )
-}
+  </div>
+);
+};
+
 
 export default Register;

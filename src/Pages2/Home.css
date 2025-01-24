@@ -1,4 +1,4 @@
-
+/*#region hero*/
 .hero{
    position: relative;
    padding: 60px 15px;
@@ -36,7 +36,10 @@
     border-radius: 5px;
     transition: transform 0.3s ease , box-shadow 0.3s ease;
 }
+/*#endregion*/
 
+
+/*#region buttons/*/
 .start-btn , .learn-btn{
     padding: 15px 35px;
     font-size: 1.2rem;
@@ -65,8 +68,9 @@
     color: white;
     transform: scale(1.1);
 }
+/*#endregion*/
 
-
+/*#region feature*/
 .features{
  padding: 30px 15px ;
  background: #f9f9f9;
@@ -113,7 +117,9 @@
     color: #7a7a7a;
     line-height: 1.5;
 }
+/*#endregion*/
 
+/*#region footer*/
 .footer{
     background: #2e4d30;
     color: white;
@@ -121,3 +127,4 @@
     font-size: 0.9rem;
     text-align: center;
 }
+/*#endregion*/

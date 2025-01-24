@@ -101,10 +101,10 @@
 }
 
 .dark-mode .menu-button:hover{
-    color: #0d0e0d;
+    color: var(--bgcolor);
 }
  :root{
-    --bg-color:#0d0e0d;
+    --bgcolor:black;
     --text-color:#333;
     --navbar-bg:#0ee693;
     --navbar-link-hover:#62f7a5;
@@ -112,12 +112,12 @@
 
  .dark-mode{
     --bg-color:#121212;
-    --text-color:#E0E0E0;
+    --textcolor:white;
     --navbar-bg:#1E1E1E;
     --navbar-link-hover:#62f7a5;
  }
  .dark-mode .navbar-logo:hover{
-    color: white
+    color: var(--textcolor)
 }
 
 .dark-mode-toggle {
@@ -136,7 +136,7 @@
     color: var(--light-gray);
 }
 body.dark-mode{
-    background-image: url("./173360062129159154.jpg");
+    background-image: url("./img/173360062129159154.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -259,7 +259,7 @@ body.dark-mode{
 
 /*#region body*/
 body{
-    background-image: url('./hatter.jpg');
+    background-image: url('./img/hatter.jpg');
     background-position:center ;
     background-size: cover;
     background-repeat: no-repeat;

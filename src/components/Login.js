@@ -9,15 +9,7 @@ const Login = ({ setToken, onRegisterClick }) => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    // Beállítja a bejelentkezési háttér osztályát
-    document.body.classList.add("login-background");
 
-    // Ha elhagyja az oldalt, visszaállítja az eredeti hátteret
-    return () => {
-      document.body.classList.remove("login-background");
-    };
-  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -46,7 +38,7 @@ const Login = ({ setToken, onRegisterClick }) => {
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <Form.Label>E-mail cím</Form.Label>
+              <Form.Label>📧E-mail cím</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="pl: pelda@gmail.com"
@@ -56,7 +48,7 @@ const Login = ({ setToken, onRegisterClick }) => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Jelszó</Form.Label>
+              <Form.Label>🔑Jelszó</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="********"

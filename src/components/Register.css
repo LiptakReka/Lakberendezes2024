@@ -7,13 +7,14 @@
     align-items: center;
     height: 100vh;
   }
-  
+
   .register-box {
     width: 400px;
     padding: 20px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.95);
+    background-color: var(--bg-medium);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    color: var(--text-light);
   }
   
   .register-box h2 {
@@ -22,20 +23,35 @@
   }
   
   .btn-primary {
-    background-color: #007bff;
+    background-color: var(--hoverlog);
+    color: var(--text-light);
     border: none;
   }
   
   .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: var(--regist-btn);
+    color: var(--text-dark);
   }
   
   .btn-secondary {
-    background-color: #6c757d;
+    background-color: var(--hover);
+    color: var(--text-dark);
     border: none;
   }
   
   .btn-secondary:hover {
-    background-color: #5a6268;
+    background-color: var(--bg-light);
   }
-  
+  :root{
+    --bg-dark: #1A1423;
+    --bg-medium: #3D314A;
+    --bg-light: #684756;
+    --primary-color: #96705B;
+    --secondary-color: #AB8476;
+    --text-light: #F5F5F5;
+    --text-dark: #222;
+    --regist-btn: #C1AAC0;
+    --registm-btn:#DADFF7;
+    --hover:#B5B2C2;
+    --hoverlog:#7B6D8D;
+  }

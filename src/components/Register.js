@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import "./Register.css"
 
 
 const Register=({setToken , onLoginClick})=>{
@@ -50,13 +51,13 @@ const Register=({setToken , onLoginClick})=>{
     };
   return (
     <div className="register-container d-flex justify-content-center align-items-center vh-100">
-    <div className="register-box p-4 rounded shadow-lg bg-white">
+    <div className="register-box p-4 rounded shadow-lg ">
       <h2 className="text-center mb-4">Regisztráció</h2>
       {error && <div className="alert alert-danger">{error}</div>}
       {success && <div className="alert alert-success">{success}</div>}
       <form onSubmit={handleregister}>
         <div className="mb-3">
-          <label className="form-label">Teljes név:</label>
+          <label className="form-label"> 🙍‍♂️Teljes név:</label>
           <input
             type="text"
             className="form-control"
@@ -66,7 +67,7 @@ const Register=({setToken , onLoginClick})=>{
           />
         </div>
         <div className="mb-3">
-          <label className="form-label">Felhasználónév: </label>
+          <label className="form-label"> 🙍‍♂️Felhasználónév: </label>
           <input
             type="text"
             className="form-control"
@@ -76,7 +77,7 @@ const Register=({setToken , onLoginClick})=>{
           />
         </div>
         <div className="mb-3">
-          <label className="form-label">E-mail: </label>
+          <label className="form-label">📧E-mail: </label>
           <input
             type="email"
             className="form-control"
@@ -86,7 +87,7 @@ const Register=({setToken , onLoginClick})=>{
           />
         </div>
         <div className="mb-3">
-          <label className="form-label">Jelszó: </label>
+          <label className="form-label">🔑Jelszó: </label>
           <input
             type="password"
             className="form-control"

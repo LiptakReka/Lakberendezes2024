@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar1.css";
+
 
 const Navbar1 = ({ token, onLogout }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -10,6 +11,8 @@ const Navbar1 = ({ token, onLogout }) => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);

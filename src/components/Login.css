@@ -1,24 +1,19 @@
-
-body {
-    background-image: url("./img/hatter.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: background 0.5s ease-in-out;
-  }
-  
-  body.login-background {
-    background-image: url("./img/login.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: background 0.5s ease-in-out;
-  }
-  
- 
+.animate-card{
+  background-color: var(--bg-medium);
+}
+ body{
+  background-image: url(./img/cool-background.png);
+  height: 100vh;
+ }
   .animate-card:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    
+  }
+
+  .card-body{
+    background: var(--bg-dark);
+    color: var(--text-light);
   }
   
 
@@ -30,15 +25,22 @@ body {
     border-radius: 8px;
   }
   
-
+.login-btn{
+  background-color: var(--regist-btn);
+  color: var(--text-dark);
+}
   .login-btn:hover {
-    background-color: #ff8c00;
+    background-color: var(--hoverlog);
     transform: scale(1.05);
   }
   
+  .register-btn{
+    background-color: var(--registm-btn);
+    color: var(--text-dark);
+  }
   .register-btn:hover {
-    background-color: #3b8c74;
-    color: white;
+    background-color: var(--hover);
+    color: var(--bg-dark);
     transform: scale(1.05);
   }
   
@@ -47,11 +49,24 @@ body {
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease-in-out;
+    background-color: var(--text-light);
   }
   
  
   .form-control:focus {
-    border-color: #ff8c00;
-    box-shadow: 0px 0px 8px rgba(255, 140, 0, 0.6);
+    border-color: var(--secondary-color);
+    box-shadow: 0px 0px 8px var(--secondary-color);
   }
-  
+  :root{
+    --bg-dark: #1A1423;
+    --bg-medium: #3D314A;
+    --bg-light: #684756;
+    --primary-color: #96705B;
+    --secondary-color: #AB8476;
+    --text-light: #F5F5F5;
+    --text-dark: #222;
+    --regist-btn: #C1AAC0;
+    --registm-btn:#DADFF7;
+    --hover:#B5B2C2;
+    --hoverlog:#7B6D8D;
+  }

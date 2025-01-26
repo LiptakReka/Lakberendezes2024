@@ -1,21 +1,22 @@
 /*#region hero*/
 .hero{
    position: relative;
-   padding: 60px 15px;
+   padding: 50px 20px;
    background: linear-gradient(135deg, #f7e8d6, #e2c2a4);
-   color: #4a4a4a;
+   color: var(--bg-dark);
    text-align: center;
 }
 
 .hero h1{
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #623d2d;
+    color: var(--bg-dark);
 }
 
 .hero p{
     font-size: 1rem;
     margin-bottom: 40px;
+    color: var(--bg-dark);
 }
 
 
@@ -26,7 +27,7 @@
 }
 
 .hero-btn{
-    background: #6a9368;
+    background: var(--bg-medium);
     border: none;
     color: white;
     padding: 10px 25px;
@@ -51,20 +52,20 @@
 }
 
 .start-btn{
-    background-color: #a67648;
+    background-color: var(--bg-medium);
 }
 .start-btn:hover{
-    background-color: #875b36;
+    background-color: var(--bg-light);
     transform: scale(1.1);
 }
 .learn-btn{
     background-color: transparent;
-    border: 2px solid #a67648;
-    color: #a67648;
+    border: 2px solid var(--bg-medium);
+    color: var(--text-dark);
 }
 
 .learn-btn:hover{
-    background-color: #a67648;
+    background-color: var(--bg-light);
     color: white;
     transform: scale(1.1);
 }
@@ -128,3 +129,13 @@
     text-align: center;
 }
 /*#endregion*/
+
+:root{
+    --bg-dark: #1A1423;
+    --bg-medium: #3D314A;
+    --bg-light: #684756;
+    --primary-color: #96705B;
+    --secondary-color: #AB8476;
+    --text-light: #F5F5F5;
+    --text-dark: #222;
+  }

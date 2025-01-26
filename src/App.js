@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Navbar1 from './components/Navbar1';
 import Home from "./Pages2/Home";
 import Planner from "./Pages2/Planner";
@@ -8,6 +8,7 @@ import Contact from "./Pages2/Contact";
 import Login from './components/Login';
 import Register from './components/Register'
 import './output.css';
+
 
 
 
@@ -37,8 +38,11 @@ const App = () => {
     }
 
     return (
-        <Router>
+      
+        
+            <Router>
             <Navbar1 token={token} onLogout={handleLogout} />
+           
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
@@ -46,7 +50,10 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
             </Routes>
         </Router>
+      
+        
     );
 };
+
 
 export default App;

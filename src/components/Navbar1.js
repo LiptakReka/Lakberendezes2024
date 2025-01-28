@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar1.css";
-import axios from "axios" ;
+
 
 const Navbar1 = ({ token, username, onLogout }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const [username1 , setUserName]=useState("");
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);

@@ -13,7 +13,7 @@ const ForgotPassword = ({ onBackToLogin }) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://localhost:7247/api/Users/forgotpass",
         { email }
       );

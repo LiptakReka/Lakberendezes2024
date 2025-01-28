@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Planner.css"; // Külső CSS fájl, a stílusok miatt
+import axios from "axios";
 
 const Planner = () => {
   const [products, setProducts] = useState([]);
@@ -13,16 +14,34 @@ const Planner = () => {
   }, []);
 
   const fetchProductsByRoom = async (roomId) => {
-    // Termékek lekérése az adott szobához az adatbázisból
-    const response = await fetch(`https://localhost:7247/api/Products/szobák?roomId=${roomId}`);
-    const data = await response.json();
-    setProducts(data);
-  };
+    try {
+        const token = localStorage.getItem("token"); // 🔹 Token lekérése helyesen
+        if (!token) {
+            console.error("Nincs bejelentkezve! Token nem található.");
+            return;
+        }
 
-  const handleRoomSelect = (roomId) => {
-    fetchProductsByRoom(roomId);
-    setPlacedProducts([]); // Töröljük a tervezőfelületről az előző szoba bútorait
-  };
+        const response = await axios.get(`https://localhost:7247/api/Products/szobak?roomId=${roomId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+        });
+
+        setProducts(response.data);
+
+    } catch (error) {
+        console.error("Hiba történt a termékek lekérésekor:", error);
+    }
+};
+
+  
+
+const handleRoomSelect = async (roomId) => { // 🔹 async hozzáadása
+  await fetchProductsByRoom(roomId);
+  setPlacedProducts([]); // Töröljük a tervezőfelületről az előző szoba bútorait
+};
+
 
   const addToPlanner = (product) => {
     setPlacedProducts([

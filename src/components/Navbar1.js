@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar1.css";
+import axios from "axios" ;
 
-
-const Navbar1 = ({ token, onLogout }) => {
+const Navbar1 = ({ token, username, onLogout }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [username1 , setUserName]=useState("");
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
 
-
+  
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     document.body.classList.toggle("dark-mode");
@@ -64,30 +65,15 @@ const Navbar1 = ({ token, onLogout }) => {
               </NavLink>
             </li>
 
-            {/* Ha be van jelentkezve, megjelenik a kijelentkezés gomb */}
-            {token && (
-              <li className="nav-item">
-                <button className="btn btn-danger nav-link" onClick={onLogout}>
-                  Kijelentkezés
-                </button>
-              </li>
-            )}
-
             {/* Beállítások menü legördülő */}
             <li className="nav-item dropdown">
-              <button
-                className="btn btn-outline-light dropdown-toggle"
-                onClick={toggleDropdown}
-              >
+              <button className="btn btn-outline-light dropdown-toggle" onClick={toggleDropdown}>
                 Menü
               </button>
               {isDropdownOpen && (
                 <ul className="dropdown-menu show">
                   <li>
-                    <button
-                      className="dropdown-item"
-                      onClick={toggleDarkMode}
-                    >
+                    <button className="dropdown-item" onClick={toggleDarkMode}>
                       {darkMode ? "🌙 Sötét mód" : "☀️ Világos mód"}
                     </button>
                   </li>
@@ -95,18 +81,46 @@ const Navbar1 = ({ token, onLogout }) => {
               )}
             </li>
 
-           
-            <li className="nav-item">
-              <div className="navbar-cart">
-                <i className="fas fa-shopping-cart text-white"></i>
-                <span className="cart-count bg-danger text-white">0</span>
-              </div>
-            </li>
+            {/* 🔹 **Felhasználói menü (csak ha be van jelentkezve)** */}
+            {token && <UserButton username={username} onLogout={onLogout} />}
           </ul>
         </div>
       </div>
     </nav>
   );
 };
+
+/* 🔹 **Felhasználói menü komponens** */
+const UserButton = ({ username, onLogout }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="user-menu">
+      <div
+        tabIndex={0}
+        className="popup button"
+        onClick={() => setIsOpen(!isOpen)}
+      
+      >
+        <p style={{ color: "white", fontWeight: "bold", margin: 0 }}>
+          <p>{username ? username.charAt(0).toUpperCase() : "?"}</p>
+
+        </p>
+      </div>
+      {isOpen && (
+        <div className="popup-main">
+          <ul className="list-box">
+            <li className="button item">Profilom</li>
+            <li className="button item">Mentett tervek</li>
+            <li className="button item" onClick={onLogout}>
+              Kijelentkezés
+            </li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
 
 export default Navbar1;

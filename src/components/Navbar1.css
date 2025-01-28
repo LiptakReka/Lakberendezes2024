@@ -148,6 +148,71 @@
 }
 /*#endregion*/
 
+p{
+letter-spacing: 1;
+font-weight: 600;
+padding: "0.625rem 0rem 0.625rem 0.825rem";
+}
+
+.popup.button{
+    padding: "0 0.225rem 0";
+    border-radius: "1.2rem";
+}
+
+.template{
+    --fill: rgba(255,255,255,0.1);
+    --fill-hover: rgba(255,255,255,0.2);
+    --fill-active:rgba(255,255,255,0.3);
+    --txt: #eee;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    font-size: 0.975;
+    color: var(--txt);
+}
+.button.item{
+    color: var(--text-light);
+}
+.button{
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: inherit;
+    color: white;
+    padding: 10px 15px;
+    text-align: left;
+    background-color: var(--fill);
+    border-radius: 10px;
+
+}
+
+.button:hover{
+    background-color: var(--fill-hover);
+}
+/* A felhasználói menü dropdown elemeinek stílusa */
+.popup-main {
+    background-color: var(--bg-medium); /* Használhatod a sötétebb lilás színt */
+    color: var(--text-light); /* Fehér szöveg */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* A menüelemek láthatósága */
+  .list-box .button.item {
+    color: var(--text-light); /* Fehér szöveg */
+    font-weight: bold;
+    padding: 8px 12px;
+    display: block;
+    transition: background 0.3s ease;
+  }
+  
+  /* Hover effekt */
+  .list-box .button.item:hover {
+    background-color: var(--hover); /* Lila árnyalat */
+    color: #fff;
+  }
+  
 
 
 :root{

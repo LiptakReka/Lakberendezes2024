@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button, Container, Card, Alert } from "react-bootstrap";
 import "./Login.css";
+import {useNavigate } from "react-router-dom";
 
 const ForgotPassword = ({ onBackToLogin }) => {
+    const navigate=useNavigate=();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -55,7 +57,7 @@ const ForgotPassword = ({ onBackToLogin }) => {
             <Button
               variant="outline-secondary"
               className="w-100 mt-2 register-btn"
-              onClick={onBackToLogin}
+              onClick={()=>navigate("/login")}
             >
               Vissza a bejelentkezéshez
             </Button>

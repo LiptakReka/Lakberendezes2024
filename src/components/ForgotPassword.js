@@ -5,7 +5,7 @@ import "./Login.css";
 import {useNavigate } from "react-router-dom";
 
 const ForgotPassword = ({ onBackToLogin }) => {
-    const navigate=useNavigate=();
+    const navigate=useNavigate();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");

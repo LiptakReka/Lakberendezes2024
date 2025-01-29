@@ -21,7 +21,7 @@ const Planner = () => {
             return;
         }
 
-        const response = await axios.get(`https://localhost:7247/api/Products/szobak?roomId=${roomId}`, {
+        const response = await axios.get(`https://localhost:7247/api/Products/szobák?roomId=${roomId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"

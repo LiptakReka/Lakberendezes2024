@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lakberendezes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f203ab74aa309159e992e69667ac09852907f3c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lakberendezes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lakberendezes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

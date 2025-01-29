@@ -1,11 +1,38 @@
-using Lakberendezes.Data;
+ï»¿using Lakberendezes.Data;
 using Lakberendezes.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var settingsSection = builder.Configuration.GetSection("AuthSettings:JwtOptions");
+
+var secret = settingsSection.GetValue<string>("Secret");
+var issuer = settingsSection.GetValue<string>("Issuer");
+var auidience = settingsSection.GetValue<string>("Audience");
+
+var key=Encoding.UTF8.GetBytes(secret);
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidIssuer = issuer,
+        ValidAudience = auidience,
+        ValidateAudience = true,
+    };
+});
 
 // Configuration from appsettings.json
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
@@ -22,7 +49,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
-
+builder.Services.AddTransient<Lakberendezes.Models.IEmailSender, Lakberendezes.Models.EmailSender>();
 // Add Swagger for API documentation
 builder.Services.AddSwaggerGen(options =>
 {
@@ -30,7 +57,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "Lakberendezes API",
         Version = "v1",
-        Description = "Lakberendezes platform API dokumentációja"
+        Description = "Lakberendezes platform API dokumentÃ¡ciÃ³ja"
     });
 });
 
@@ -45,10 +72,11 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// CORS engedélyezése
+// CORS engedÃ©lyezÃ©se
 app.UseCors("AllowAll");
 
 
@@ -62,8 +90,11 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseHttpsRedirection();
+
 
 // Map controllers for the endpoints
 app.MapControllers();

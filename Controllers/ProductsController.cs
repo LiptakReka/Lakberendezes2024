@@ -24,7 +24,7 @@ namespace Lakberendezes.Controllers
         }
 
         // GET: api/Products
-        //[Authorize(Roles = "ADMIN")]
+        [Authorize]
         [HttpGet]
         
         public async Task<ActionResult<IEnumerable<Product>>> Getproducts()

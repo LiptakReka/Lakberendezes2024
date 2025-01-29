@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement&facebookloginstarted\\Lakberendezes\\Lakberendezes.csproj": {}
+    "C:\\Users\\pc\\Downloads\\PRoject\\Lakberendezes\\Lakberendezes\\Lakberendezes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement&facebookloginstarted\\Lakberendezes\\Lakberendezes.csproj": {
+    "C:\\Users\\pc\\Downloads\\PRoject\\Lakberendezes\\Lakberendezes\\Lakberendezes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement&facebookloginstarted\\Lakberendezes\\Lakberendezes.csproj",
+        "projectUniqueName": "C:\\Users\\pc\\Downloads\\PRoject\\Lakberendezes\\Lakberendezes\\Lakberendezes.csproj",
         "projectName": "Lakberendezes",
-        "projectPath": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement&facebookloginstarted\\Lakberendezes\\Lakberendezes.csproj",
+        "projectPath": "C:\\Users\\pc\\Downloads\\PRoject\\Lakberendezes\\Lakberendezes\\Lakberendezes.csproj",
         "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Downloads\\20250123\\Usermanagement&facebookloginstarted\\Lakberendezes\\obj\\",
+        "outputPath": "C:\\Users\\pc\\Downloads\\PRoject\\Lakberendezes\\Lakberendezes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -55,6 +55,10 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.10, )"
@@ -88,6 +92,14 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.6, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.11, )"
             },
             "Pomelo.EntityFrameworkCore.mysql": {
               "target": "Package",

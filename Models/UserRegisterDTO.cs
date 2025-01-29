@@ -1,11 +1,4 @@
 ﻿namespace Lakberendezes.Models
 {
-    public class UserRegisterDTO
-    {
-        public  required string FullName { get; set; }
-        public string Username { get; set; }
-        public required string Password { get; set; }
-        public required string Email { get; set; }
-
-    }
+  public record RegisterRequestDto(string UserName, string Password, string Email, string fullname, DateTime datet);
 }

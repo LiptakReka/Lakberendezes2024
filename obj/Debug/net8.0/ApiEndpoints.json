@@ -712,7 +712,7 @@
   },
   {
     "ContainingType": "Lakberendezes.Controllers.UsersController",
-    "Method": "Getusers",
+    "Method": "GetUsers",
     "RelativePath": "api/Users",
     "HttpMethod": "GET",
     "IsController": true,
@@ -740,7 +740,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -758,27 +758,6 @@
   },
   {
     "ContainingType": "Lakberendezes.Controllers.UsersController",
-    "Method": "PutUser",
-    "RelativePath": "api/Users/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "user",
-        "Type": "Lakberendezes.Models.User",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Lakberendezes.Controllers.UsersController",
     "Method": "DeleteUser",
     "RelativePath": "api/Users/{id}",
     "HttpMethod": "DELETE",
@@ -787,7 +766,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -795,33 +774,18 @@
   },
   {
     "ContainingType": "Lakberendezes.Controllers.UsersController",
-    "Method": "AddRoles",
-    "RelativePath": "api/Users/AddRoles",
+    "Method": "Forgotpass",
+    "RelativePath": "api/Users/forgotpass",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "role",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "model",
+        "Type": "Lakberendezes.Models.ForgotPasswordDTO",
+        "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Lakberendezes.Controllers.UsersController",
-    "Method": "AdminEnd",
-    "RelativePath": "api/Users/admin",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -850,7 +814,7 @@
     "Parameters": [
       {
         "Name": "registerDTO",
-        "Type": "Lakberendezes.Models.UserRegisterDTO",
+        "Type": "Lakberendezes.Models.RegisterRequestDto",
         "IsRequired": true
       }
     ],
@@ -858,33 +822,18 @@
   },
   {
     "ContainingType": "Lakberendezes.Controllers.UsersController",
-    "Method": "RemoveRoles",
-    "RelativePath": "api/Users/RemoveRoles",
+    "Method": "ResetPassword",
+    "RelativePath": "api/Users/reset-password",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "role",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "model",
+        "Type": "Lakberendezes.Models.ResetPasswordDTO",
+        "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Lakberendezes.Controllers.UsersController",
-    "Method": "Useronly",
-    "RelativePath": "api/Users/user-only",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   }
 ]

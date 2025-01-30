@@ -11,7 +11,7 @@ Szerveroldali logika és funkcionalitások.
 Frontend: A felhasználói felület és interakciók fejlesztése.
 Felhasználás:
 Weboldal dizájnjának és funkcióinak implementálása.
-HTML, CSS, JavaScript kódok és komponensek.
+HTML, CSS, JavaScript kódok és komponensek React keretrendszerben.
 UI elemek fejlesztése, mint gombok, űrlapok, navigáció.
 
 Designok: Grafikai tervek és vizuális anyagok találhatók itt.

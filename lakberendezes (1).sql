@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Jan 28. 15:04
+-- Létrehozás ideje: 2025. Feb 16. 19:33
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `lakberendezes`
 --
-CREATE DATABASE IF NOT EXISTS `lakberendezes` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `lakberendezes`;
 
 DELIMITER $$
 --
@@ -143,7 +141,8 @@ CREATE TABLE `aspnetuserroles` (
 --
 
 INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
-('41e0e913-9e98-435f-8f92-af7b751ecf2d', 'da3f5225-f1dd-4f84-bbe0-be88737050a6');
+('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'da3f5225-f1dd-4f84-bbe0-be88737050a6'),
+('bc6f0ee3-c821-4bc9-939f-13af624db253', 'da3f5225-f1dd-4f84-bbe0-be88737050a6');
 
 -- --------------------------------------------------------
 
@@ -169,15 +168,17 @@ CREATE TABLE `aspnetusers` (
   `PhoneNumberConfirmed` tinyint(1) NOT NULL DEFAULT 0,
   `SecurityStamp` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `TwoFactorEnabled` tinyint(1) NOT NULL DEFAULT 0,
-  `UserName` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+  `UserName` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ProfilePictureUrl` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `aspnetusers`
 --
 
-INSERT INTO `aspnetusers` (`Id`, `Email`, `PASSWORD_hash`, `fullname`, `datet`, `AccessFailedCount`, `ConcurrencyStamp`, `EmailConfirmed`, `LockoutEnabled`, `LockoutEnd`, `NormalizedEmail`, `NormalizedUserName`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `SecurityStamp`, `TwoFactorEnabled`, `UserName`) VALUES
-('41e0e913-9e98-435f-8f92-af7b751ecf2d', 'liptakr@kkszki.hu', '', 'LiptakReka', '2025-01-27 21:17:03', 0, '9f609239-4951-4992-83f0-3197e5c618ba', 0, 1, NULL, 'LIPTAKR@KKSZKI.HU', 'LIPTAKR@KKSZKI.HU', 'AQAAAAIAAYagAAAAEKIaIAvVWV9GosTeoW117pSThHBZXqKVF/7lnbZuAhSH6I1OWxhj784OuRy86m2C8g==', NULL, 0, 'UTYLOD45ILZVZPLKFV5JI5S2MMPMMXVB', 0, 'liptakr@kkszki.hu');
+INSERT INTO `aspnetusers` (`Id`, `Email`, `PASSWORD_hash`, `fullname`, `datet`, `AccessFailedCount`, `ConcurrencyStamp`, `EmailConfirmed`, `LockoutEnabled`, `LockoutEnd`, `NormalizedEmail`, `NormalizedUserName`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `SecurityStamp`, `TwoFactorEnabled`, `UserName`, `ProfilePictureUrl`) VALUES
+('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'liptakr@kkszki.hu', '', 'Liptakreka', '2025-02-13 18:01:14', 0, '629bdd4a-c2b1-468b-9ccd-6f5b8eea8bdb', 0, 1, NULL, 'LIPTAKR@KKSZKI.HU', 'ADMIN', 'AQAAAAIAAYagAAAAEGFkRpjvsif8z63NVX0gXn85VV4HEZvaL1hAJUGM//u+Gm2QE/A9yKLc4ibDlaWHDA==', NULL, 0, 'NJJMDITFHJGVTWN23MIIIEDFE5ZCM7XI', 0, 'Admin', '/profile_pictures/83445db8-6157-4125-9339-d05155380777_aaa.jpg'),
+('bc6f0ee3-c821-4bc9-939f-13af624db253', 'liptakreka4@gmail.com', '', 'Liptakr', '2025-02-02 10:57:33', 0, '78f30ea7-f6f1-4f27-a05b-b5c8734375fc', 0, 1, NULL, 'LIPTAKREKA4@GMAIL.COM', 'LIPTAKREKA4@GMAIL.COM', 'AQAAAAIAAYagAAAAECUODUkcc2eD8ABInNUtThSROitFTjsr/HD+Wg3qv7mabscFC0GZr4P16Pg09Wdevw==', NULL, 0, '4DOXM6GZ2U7VB5OQ3EEREKCXM7TF45XD', 0, 'liptakreka4@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -191,6 +192,14 @@ CREATE TABLE `aspnetusertokens` (
   `Name` varchar(255) NOT NULL,
   `Value` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `aspnetusertokens`
+--
+
+INSERT INTO `aspnetusertokens` (`UserId`, `LoginProvider`, `Name`, `Value`) VALUES
+('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'ResetPassword', 'PasswordResetToken', 'CfDJ8CoTY2mQXxVKp2okMJV9kUW2ddXlYqyF/u8MIsHlKxXuXb9uhFEg15Kl+SK4oJoNARrJuX+i6Ef+r/FJvvaF9eILS6qwYbJ035aKmKo64KwD8zQAs4cQ1tVCAI7rewM0mb3yg00rrnNjMGA5vhYBHYWJ2OJGFdacSzKFn68emBjVwsIJ4K6fFrrAuqZ8s9GMacDOVqYFwDpnMZO3HJJz8cX6rEHg9Cw9+rtUtbP938R2'),
+('bc6f0ee3-c821-4bc9-939f-13af624db253', 'ResetPassword', 'PasswordResetToken', 'CfDJ8CoTY2mQXxVKp2okMJV9kUUAJYRDuIAEjdfUtIDQsQ53DDdFsB6PYTLOQ8HvGA/2xVqWo55ebc5sjPljh28+sP+5cPyUHfvL7Rr6gYrh9W+oQJmNTfn+dGKI4aTEHraP+qK9ewH8gLEubzv6hsm14ibmfoip3VpqWaxNbNOiECuz0sToZbGRlYjaRQR93eGUk9VifXC5SaEQSk4cVzoasyEUx0ytSRWyhwo1QyN9X4rn');
 
 -- --------------------------------------------------------
 
@@ -225,6 +234,28 @@ CREATE TABLE `planproducts` (
   `position` varchar(255) NOT NULL,
   `userplanid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `planproducts`
+--
+
+INSERT INTO `planproducts` (`id`, `productid`, `position`, `userplanid`) VALUES
+(6, 52, '100, 100', 15),
+(7, 53, '-164, -77', 15),
+(8, 132, '100, 100', 16),
+(9, 133, '-152, -73', 16),
+(10, 52, '100, 100', 17),
+(11, 53, '-139, -62', 17),
+(14, 132, '100, 100', 19),
+(15, 133, '804, 125', 19),
+(16, 53, '-169, 558', 20),
+(17, 53, '-169, 558', 20),
+(18, 57, '14, 321', 20),
+(19, 53, '-96, 465', 21),
+(20, 53, '-96, 465', 21),
+(21, 57, '-11, 14', 21),
+(22, 59, '-83, 505', 22),
+(23, 72, '113, 546', 22);
 
 -- --------------------------------------------------------
 
@@ -504,11 +535,21 @@ INSERT INTO `shops` (`id`, `name`, `websiteurl`) VALUES
 --
 
 CREATE TABLE `userplan` (
-  `id` int(11) NOT NULL COMMENT 'Egyedi azonosító bútoroknak',
+  `id` int(11) NOT NULL,
   `userid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `plandata` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'Termék ára' CHECK (json_valid(`plandata`)),
   `createdat` timestamp NULL DEFAULT current_timestamp() COMMENT 'Bolt linkje  '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `userplan`
+--
+
+INSERT INTO `userplan` (`id`, `userid`, `plandata`, `createdat`) VALUES
+(19, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":132,\"x\":100,\"y\":100},{\"productId\":133,\"x\":804,\"y\":125}]', '2025-02-16 14:46:46'),
+(20, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":53,\"x\":-169,\"y\":558},{\"productId\":53,\"x\":-169,\"y\":558},{\"productId\":57,\"x\":14,\"y\":321}]', '2025-02-16 15:03:38'),
+(21, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":53,\"x\":-96,\"y\":465},{\"productId\":53,\"x\":-96,\"y\":465},{\"productId\":57,\"x\":-11,\"y\":14}]', '2025-02-16 15:04:08'),
+(22, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":59,\"x\":-83,\"y\":505},{\"productId\":72,\"x\":113,\"y\":546}]', '2025-02-16 16:19:39');
 
 -- --------------------------------------------------------
 
@@ -654,6 +695,18 @@ ALTER TABLE `aspnetuserclaims`
 --
 ALTER TABLE `kategories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT a táblához `planproducts`
+--
+ALTER TABLE `planproducts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT a táblához `userplan`
+--
+ALTER TABLE `userplan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Megkötések a kiírt táblákhoz

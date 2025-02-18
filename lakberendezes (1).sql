@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 16. 19:33
+-- Létrehozás ideje: 2025. Feb 18. 21:52
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -153,7 +153,6 @@ INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
 CREATE TABLE `aspnetusers` (
   `Id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Email` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `PASSWORD_hash` varchar(255) NOT NULL COMMENT 'Titkosított jelszó ',
   `fullname` varchar(255) DEFAULT NULL COMMENT 'teljes neve ',
   `datet` timestamp NULL DEFAULT current_timestamp() COMMENT 'Mikor regisztrált',
   `AccessFailedCount` int(11) NOT NULL DEFAULT 0,
@@ -176,9 +175,9 @@ CREATE TABLE `aspnetusers` (
 -- A tábla adatainak kiíratása `aspnetusers`
 --
 
-INSERT INTO `aspnetusers` (`Id`, `Email`, `PASSWORD_hash`, `fullname`, `datet`, `AccessFailedCount`, `ConcurrencyStamp`, `EmailConfirmed`, `LockoutEnabled`, `LockoutEnd`, `NormalizedEmail`, `NormalizedUserName`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `SecurityStamp`, `TwoFactorEnabled`, `UserName`, `ProfilePictureUrl`) VALUES
-('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'liptakr@kkszki.hu', '', 'Liptakreka', '2025-02-13 18:01:14', 0, '629bdd4a-c2b1-468b-9ccd-6f5b8eea8bdb', 0, 1, NULL, 'LIPTAKR@KKSZKI.HU', 'ADMIN', 'AQAAAAIAAYagAAAAEGFkRpjvsif8z63NVX0gXn85VV4HEZvaL1hAJUGM//u+Gm2QE/A9yKLc4ibDlaWHDA==', NULL, 0, 'NJJMDITFHJGVTWN23MIIIEDFE5ZCM7XI', 0, 'Admin', '/profile_pictures/83445db8-6157-4125-9339-d05155380777_aaa.jpg'),
-('bc6f0ee3-c821-4bc9-939f-13af624db253', 'liptakreka4@gmail.com', '', 'Liptakr', '2025-02-02 10:57:33', 0, '78f30ea7-f6f1-4f27-a05b-b5c8734375fc', 0, 1, NULL, 'LIPTAKREKA4@GMAIL.COM', 'LIPTAKREKA4@GMAIL.COM', 'AQAAAAIAAYagAAAAECUODUkcc2eD8ABInNUtThSROitFTjsr/HD+Wg3qv7mabscFC0GZr4P16Pg09Wdevw==', NULL, 0, '4DOXM6GZ2U7VB5OQ3EEREKCXM7TF45XD', 0, 'liptakreka4@gmail.com', '');
+INSERT INTO `aspnetusers` (`Id`, `Email`, `fullname`, `datet`, `AccessFailedCount`, `ConcurrencyStamp`, `EmailConfirmed`, `LockoutEnabled`, `LockoutEnd`, `NormalizedEmail`, `NormalizedUserName`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `SecurityStamp`, `TwoFactorEnabled`, `UserName`, `ProfilePictureUrl`) VALUES
+('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'liptakr@kkszki.hu', 'Liptakreka', '2025-02-13 18:01:14', 0, '44c12497-28b2-464b-9b1f-efafc06fdd90', 0, 1, NULL, 'LIPTAKR@KKSZKI.HU', 'ADMIN', 'AQAAAAIAAYagAAAAEGFkRpjvsif8z63NVX0gXn85VV4HEZvaL1hAJUGM//u+Gm2QE/A9yKLc4ibDlaWHDA==', NULL, 0, 'NJJMDITFHJGVTWN23MIIIEDFE5ZCM7XI', 0, 'Admin', '/profile_pictures/b2a885cc-9d31-4115-984d-894667f90ac9_OIP.jpg'),
+('bc6f0ee3-c821-4bc9-939f-13af624db253', 'liptakreka4@gmail.com', 'Liptakr', '2025-02-02 10:57:33', 0, '78f30ea7-f6f1-4f27-a05b-b5c8734375fc', 0, 1, NULL, 'LIPTAKREKA4@GMAIL.COM', 'LIPTAKREKA4@GMAIL.COM', 'AQAAAAIAAYagAAAAECUODUkcc2eD8ABInNUtThSROitFTjsr/HD+Wg3qv7mabscFC0GZr4P16Pg09Wdevw==', NULL, 0, '4DOXM6GZ2U7VB5OQ3EEREKCXM7TF45XD', 0, 'liptakreka4@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -240,22 +239,11 @@ CREATE TABLE `planproducts` (
 --
 
 INSERT INTO `planproducts` (`id`, `productid`, `position`, `userplanid`) VALUES
-(6, 52, '100, 100', 15),
-(7, 53, '-164, -77', 15),
-(8, 132, '100, 100', 16),
-(9, 133, '-152, -73', 16),
-(10, 52, '100, 100', 17),
-(11, 53, '-139, -62', 17),
-(14, 132, '100, 100', 19),
-(15, 133, '804, 125', 19),
-(16, 53, '-169, 558', 20),
-(17, 53, '-169, 558', 20),
-(18, 57, '14, 321', 20),
-(19, 53, '-96, 465', 21),
-(20, 53, '-96, 465', 21),
-(21, 57, '-11, 14', 21),
-(22, 59, '-83, 505', 22),
-(23, 72, '113, 546', 22);
+(41, 52, '100, 100', 41),
+(42, 52, '100, 100', 42),
+(43, 53, '100, 100', 43),
+(44, 54, '100, 100', 44),
+(45, 52, '100, 100', 45);
 
 -- --------------------------------------------------------
 
@@ -309,7 +297,7 @@ INSERT INTO `products` (`id`, `name`, `price`, `shoplink`, `imageurl`, `shopid`,
 (49, 'Falipolc Alassio', 18990.00, 'https://www.moebelix.hu/p/luca-bessoni-falipolc-alassio-001803056907', 'https://i.postimg.cc/VN7ZrsSf/lucabessoni-removebg-preview.png', 2, 22, 5),
 (50, 'Falipolc Auris', 19990.00, 'https://www.moebelix.hu/p/luca-bessoni-falipolc-auris-001803063113', 'https://i.postimg.cc/tTxdq9Wm/lucabessoniauris-removebg-preview.png', 2, 22, 5),
 (51, 'Falipolc Szett Nizza', 14990.00, 'https://www.moebelix.hu/p/falipolc-szett-nizza-007326059701', 'https://i.postimg.cc/5ymCyy0p/nizza-removebg-preview.png', 2, 22, 5),
-(52, 'Kétüléses Kanapé Monaco', 159900.00, 'https://www.moebelix.hu/p/luca-bessoni-ketueleses-kanape-monaco-002694000902', 'https://i.postimg.cc/ZYfgL7vq/monaco-removebg-preview.png', 2, 1, 1),
+(52, 'Kétüléses Kanapé Monaco', 179900.00, 'https://www.moebelix.hu/p/luca-bessoni-ketueleses-kanape-monaco-002694000902', 'https://i.postimg.cc/ZYfgL7vq/monaco-removebg-preview.png', 2, 1, 1),
 (53, 'Kanapé Monaco', 189900.00, 'https://www.moebelix.hu/p/luca-bessoni-kanape-monaco-002694000903', 'https://i.postimg.cc/9QHBPZbM/monaco2-removebg-preview.png', 2, 1, 1),
 (54, 'Kanapéágy Cadiz New', 289900.00, 'https://www.moebelix.hu/p/kanapeagy-cadiz-new-001204002406', 'https://i.postimg.cc/kXKHdnh2/cadiz-removebg-preview.png', 2, 1, 1),
 (55, 'KANAPÉÁGY Levi B: Ca. 208 Cm', 179900.00, 'https://www.moebelix.hu/p/ondega-kanapeagy-levi-b-ca-208-cm-000317001701', 'https://i.postimg.cc/KzC0dVP7/levi-removebg-preview.png', 2, 1, 1),
@@ -546,10 +534,11 @@ CREATE TABLE `userplan` (
 --
 
 INSERT INTO `userplan` (`id`, `userid`, `plandata`, `createdat`) VALUES
-(19, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":132,\"x\":100,\"y\":100},{\"productId\":133,\"x\":804,\"y\":125}]', '2025-02-16 14:46:46'),
-(20, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":53,\"x\":-169,\"y\":558},{\"productId\":53,\"x\":-169,\"y\":558},{\"productId\":57,\"x\":14,\"y\":321}]', '2025-02-16 15:03:38'),
-(21, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":53,\"x\":-96,\"y\":465},{\"productId\":53,\"x\":-96,\"y\":465},{\"productId\":57,\"x\":-11,\"y\":14}]', '2025-02-16 15:04:08'),
-(22, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":59,\"x\":-83,\"y\":505},{\"productId\":72,\"x\":113,\"y\":546}]', '2025-02-16 16:19:39');
+(41, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":52,\"x\":100,\"y\":100}]', '2025-02-18 17:38:01'),
+(42, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":52,\"x\":100,\"y\":100}]', '2025-02-18 17:53:58'),
+(43, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":53,\"x\":100,\"y\":100}]', '2025-02-18 17:56:45'),
+(44, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":54,\"x\":100,\"y\":100}]', '2025-02-18 18:10:58'),
+(45, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":52,\"x\":100,\"y\":100}]', '2025-02-18 18:22:25');
 
 -- --------------------------------------------------------
 
@@ -700,13 +689,13 @@ ALTER TABLE `kategories`
 -- AUTO_INCREMENT a táblához `planproducts`
 --
 ALTER TABLE `planproducts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT a táblához `userplan`
 --
 ALTER TABLE `userplan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Megkötések a kiírt táblákhoz

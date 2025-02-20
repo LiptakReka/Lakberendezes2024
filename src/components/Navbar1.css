@@ -1,0 +1,224 @@
+/* Navbar stílusok */
+.navbar {
+    background: linear-gradient(to right, rgba(210, 180, 140, 0.95), rgba(139, 69, 19, 0.95));
+    box-shadow: 
+        0 8px 32px rgba(139, 69, 19, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 0 32px rgba(210, 180, 140, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+  
+.dark-mode {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+  
+.dark-mode .navbar {
+    background: linear-gradient(to right, rgba(62, 39, 35, 0.95), rgba(32, 22, 14, 0.95));
+}
+  
+.dark-mode .navbar-brand,
+.dark-mode .navbar-nav .nav-link,
+.dark-mode .btn-outline-secondary,
+.dark-mode .btn-outline-primary {
+    color: #ffffff !important;
+}
+  
+.dark-mode .navbar-nav .nav-link:hover,
+.dark-mode .navbar-nav .nav-link.active,
+.dark-mode .dropdown-menu .dropdown-item:hover,
+.dark-mode .btn-outline-secondary:hover,
+.dark-mode .btn-outline-primary:hover {
+    color: #c084f5 !important;
+}
+  
+.navbar-brand {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s;
+}
+  
+.navbar-brand:hover {
+    color: #c084f5;
+}
+.dark-mode .dropdown-menu .dropdown-item{
+    color: #222;
+}
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+  
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d2b48c;
+    transition: width 0.3s ease;
+}
+  
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+  
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+  
+.navbar-nav .nav-link:not(.active) {
+    color: #bbbbbb;
+}
+  
+.navbar-nav .nav-link:not(.active):hover {
+    color: #d1a9f8;
+}
+  
+.navbar-toggler {
+    border: none;
+    background: transparent;
+    outline: none;
+}
+  
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+  
+/* Dropdown menü */
+.dropdown-menu {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(210, 180, 140, 0.3);
+    box-shadow: 0 8px 32px rgba(139, 69, 19, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 10px 15px;
+    position: absolute;
+    right: 0;
+    transform: translateX(0);
+}
+  
+.dropdown-menu .dropdown-item {
+    color: #8b4513;
+    transition: all 0.3s ease;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+  
+.dropdown-menu .dropdown-item:hover {
+    background: rgba(210, 180, 140, 0.2);
+    color: #a0522d;
+    transform: translateX(5px);
+}
+  
+/* Sötét mód ikon */
+.btn-outline-secondary {
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+  
+.btn-outline-secondary:hover {
+    color: #c084f5;
+}
+  
+/* Profil ikon */
+.btn-outline-primary {
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+  
+.btn-outline-primary:hover {
+    color: #c084f5;
+}
+  
+.profile-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    object-fit: cover;
+}
+  
+.profile-img:hover {
+    transform: scale(1.1);
+    border-color: #d2b48c;
+}
+  
+.profile-btn {
+    padding: 5px;
+    border: none;
+    background: transparent;
+}
+  
+.nav-cart {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: bold;
+}
+  
+.nav-cart:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    color: #ffcc00; /* Sárga kiemelés hover állapotban */
+}
+  
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #dc3545;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+  
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}

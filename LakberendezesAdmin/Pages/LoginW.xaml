@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LakberendezesAdmin.Pages"
         mc:Ignorable="d"
-         Title="Bejelentkezés" Height="350" Width="400"
+         Title="Bejelentkezés" Height="400" Width="450"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="#f0f0f0">
     <Window.Resources>
         <Style TargetType="Button" x:Key="LoginButtonStyle">
-            <Setter Property="Background" Value="#2196F3"/>
+            <Setter Property="Background" Value="#754F5B"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="Width" Value="150"/>
@@ -33,7 +33,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#1976D2"/>
+                                <Setter Property="Background" Value="#5D4954"/>
 
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
@@ -47,21 +47,21 @@
     </Window.Resources>
 
     <Grid>
-        <Border Background="White" CornerRadius="10" Padding="30" Margin="20,0,10,20" BorderBrush="#D0D0D0" BorderThickness="1">
-            <StackPanel VerticalAlignment="Center">
+        <Border Background="#F9E0D9" CornerRadius="10" Padding="30" Margin="20,0,10,20" BorderBrush="#E6DBD0" BorderThickness="1">
+            <StackPanel VerticalAlignment="Center" Height="277">
 
                 <TextBlock Text="Bejelentkezés" 
                            FontSize="26" 
                            FontWeight="Bold" 
                            Foreground="#333"
                            HorizontalAlignment="Center" 
-                           Margin="0,0,0,20"/>
+                           Margin="0,20,0,20"/>
 
            
             <TextBlock Text="Email:"
                            FontSize="14"
-                           Foreground="#555"
-                           Margin="0,5"/>
+                           Foreground="#222"
+                           Margin="0,5" HorizontalAlignment="Center"/>
             <TextBox x:Name="EmailTextBox"
                          Height="30"
                          Width="250"
@@ -73,8 +73,9 @@
             
             <TextBlock Text="Jelszó:"
                            FontSize="14"
-                           Foreground="#555"
-                           Margin="0,5"/>
+                           Foreground="#222"
+                           Margin="0,5"
+                           HorizontalAlignment="Center"/>
             <PasswordBox x:Name="PasswordBox"
                              Height="30"
                              Width="250"

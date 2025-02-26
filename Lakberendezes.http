@@ -1,0 +1,6 @@
+@Lakberendezes_HostAddress = http://localhost:7247
+
+GET {{Lakberendezes_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

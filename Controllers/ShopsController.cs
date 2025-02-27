@@ -42,8 +42,12 @@ namespace Lakberendezes.Controllers
             return shops;
         }
 
+<<<<<<< HEAD
         // PUT: api/Shops/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+=======
+    
+>>>>>>> 55d865c (Exportálás excelbe)
         [HttpPut("{id}")]
         public async Task<IActionResult> PutShops(int id, Shops shops)
         {
@@ -73,8 +77,12 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
+<<<<<<< HEAD
         // POST: api/Shops
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+=======
+     
+>>>>>>> 55d865c (Exportálás excelbe)
         [HttpPost]
         public async Task<ActionResult<Shops>> PostShops(Shops shops)
         {
@@ -84,7 +92,11 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("GetShops", new { id = shops.id }, shops);
         }
 
+<<<<<<< HEAD
         // DELETE: api/Shops/5
+=======
+      
+>>>>>>> 55d865c (Exportálás excelbe)
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteShops(int id)
         {

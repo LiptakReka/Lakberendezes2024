@@ -22,7 +22,11 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
+<<<<<<< HEAD
         // GET: api/ProductTypes
+=======
+       
+>>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductType>>> Getproducttype()
@@ -30,7 +34,11 @@ namespace Lakberendezes.Controllers
             return await _context.producttype.ToListAsync();
         }
 
+<<<<<<< HEAD
         // GET: api/ProductTypes/5
+=======
+       
+>>>>>>> 55d865c (Exportálás excelbe)
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductType>> GetProductType(int id)
         {
@@ -44,8 +52,12 @@ namespace Lakberendezes.Controllers
             return productType;
         }
 
+<<<<<<< HEAD
         // PUT: api/ProductTypes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+=======
+      
+>>>>>>> 55d865c (Exportálás excelbe)
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductType(int id, ProductType productType)
         {
@@ -75,8 +87,12 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
+<<<<<<< HEAD
         // POST: api/ProductTypes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+=======
+     
+>>>>>>> 55d865c (Exportálás excelbe)
         [HttpPost]
         public async Task<ActionResult<ProductType>> PostProductType(ProductType productType)
         {
@@ -86,7 +102,11 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("GetProductType", new { id = productType.id }, productType);
         }
 
+<<<<<<< HEAD
         // DELETE: api/ProductTypes/5
+=======
+    
+>>>>>>> 55d865c (Exportálás excelbe)
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductType(int id)
         {

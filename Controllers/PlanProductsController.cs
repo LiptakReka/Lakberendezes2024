@@ -62,8 +62,12 @@ namespace Lakberendezes.Controllers
             return planProduct;
         }
 
+<<<<<<< HEAD
         // PUT: api/PlanProducts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+=======
+        
+>>>>>>> 55d865c (Exportálás excelbe)
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPlanProduct(int id, PlanProduct planProduct)
         {
@@ -93,8 +97,12 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
+<<<<<<< HEAD
         // POST: api/PlanProducts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+=======
+     
+>>>>>>> 55d865c (Exportálás excelbe)
         [HttpPost]
         public async Task<ActionResult<PlanProduct>> PostPlanProduct(PlanProduct planProduct)
         {
@@ -113,7 +121,11 @@ namespace Lakberendezes.Controllers
                 return NotFound("A terv nem található");
             }
 
+<<<<<<< HEAD
             // 🔹 JSON adat deszerializálása
+=======
+           
+>>>>>>> 55d865c (Exportálás excelbe)
             var planproducts = JsonConvert.DeserializeObject<List<PlanProductItemDTO>>(plan.PlanData);
 
             if (planproducts == null || !planproducts.Any())
@@ -128,7 +140,11 @@ namespace Lakberendezes.Controllers
                     userplanid = userplan.id,
                     productid = product.ProductId,
                     position = $"{product.X}, {product.Y}",
+<<<<<<< HEAD
                     scale=product.scale// 🔹 Az egyes termékek X és Y pozíciója
+=======
+                    scale=product.scale
+>>>>>>> 55d865c (Exportálás excelbe)
                 };
 
                 _context.planproducts.Add(planProduct);

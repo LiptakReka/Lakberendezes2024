@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 27. 11:53
+-- Létrehozás ideje: 2025. Feb 27. 11:56
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -686,7 +686,8 @@ ALTER TABLE `kategories`
 --
 ALTER TABLE `planproducts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `Products` (`userplanid`);
+  ADD KEY `Products` (`userplanid`),
+  ADD KEY `product` (`productid`);
 
 --
 -- A tábla indexei `products`
@@ -797,6 +798,12 @@ ALTER TABLE `aspnetuserroles`
 --
 ALTER TABLE `aspnetusertokens`
   ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+
+--
+-- Megkötések a táblához `planproducts`
+--
+ALTER TABLE `planproducts`
+  ADD CONSTRAINT `product` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 --
 -- Megkötések a táblához `products`

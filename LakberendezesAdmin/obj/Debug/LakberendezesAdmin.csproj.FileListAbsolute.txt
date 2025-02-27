@@ -181,3 +181,5 @@ C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\Lakb
 C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\LakberendezesAdmin.exe
 C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\LakberendezesAdmin.pdb
 >>>>>>> 3dd1804 (Export)
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\SavedPlans.g.cs
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\SavedPlans.baml

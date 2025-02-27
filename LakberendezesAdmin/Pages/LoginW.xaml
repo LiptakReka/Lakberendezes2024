@@ -32,11 +32,8 @@
                                               VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                        
+
                             <Trigger Property="IsPressed" Value="True">
-
-
-
                                 <Setter Property="Background" Value="#D3D5D7" />
                                 <Setter Property="Foreground" Value="Black"/>
 

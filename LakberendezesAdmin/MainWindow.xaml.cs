@@ -41,7 +41,7 @@ namespace LakberendezesAdmin
 
         private void Plans_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.NavigationService.Navigate(new Pages.SavedPlans());
         }
     }
 }

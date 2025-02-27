@@ -18,13 +18,7 @@ using System.Windows.Shapes;
 
 namespace LakberendezesAdmin
 {
-<<<<<<< HEAD
-    /// <summary>
-    /// Interaction logic for AddProductWindow.xaml
-    /// </summary>
-=======
 
->>>>>>> 3dd1804 (Export)
     public partial class AddProductWindow : Window
     {
         private readonly HttpClient httpClient;
@@ -71,11 +65,7 @@ namespace LakberendezesAdmin
                     MessageBox.Show("Érvénytelen shoplink URL!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-<<<<<<< HEAD
-
-=======
                 //Termék hozzáadása
->>>>>>> 3dd1804 (Export)
                 var newProduct = new
                 {
                     name = ProductNameTextBox.Text,
@@ -86,21 +76,13 @@ namespace LakberendezesAdmin
                     product_type_id = productTypeId,
                     roomid = roomId
                 };
-<<<<<<< HEAD
-
-=======
                 //Json adatok előállítása
->>>>>>> 3dd1804 (Export)
                 var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
                 string json = JsonSerializer.Serialize(newProduct, options);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await httpClient.PostAsync("https://localhost:7247/api/Products", content);
-<<<<<<< HEAD
-
-=======
                 //Státuszkódok kezelése
->>>>>>> 3dd1804 (Export)
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Termék sikeresen hozzáadva!", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);

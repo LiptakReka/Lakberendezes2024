@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace LakberendezesAdmin.Pages
 {
-    /// <summary>
-    /// Interaction logic for LoginW.xaml
-    /// </summary>
+    
     public partial class LoginW : Window
     {
         private static readonly HttpClient _httpClient = new HttpClient();

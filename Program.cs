@@ -27,19 +27,11 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
-<<<<<<< HEAD
-// Configuration from appsettings.json
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-
-// Add services to the container
-=======
 // appsettings config
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 
 // Szükséges meghívások
->>>>>>> 55d865c (Exportálás excelbe)
 builder.Services.AddScoped<JwtService>();
 
 
@@ -48,21 +40,13 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
-<<<<<<< HEAD
-// Setup MySQL DbContext
-=======
 //MYSQL 
->>>>>>> 55d865c (Exportálás excelbe)
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
-<<<<<<< HEAD
-// Add Swagger for API documentation
-=======
 // Swagger
->>>>>>> 55d865c (Exportálás excelbe)
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
@@ -73,11 +57,7 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-<<<<<<< HEAD
-// Add controllers
-=======
 // controllerek
->>>>>>> 55d865c (Exportálás excelbe)
 builder.Services.AddControllers();
 builder.Services.AddCors(options =>
 {
@@ -91,19 +71,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-<<<<<<< HEAD
-// CORS enged lyez se
-app.UseCors("AllowAll");
-
-
-// Configure the HTTP request pipeline
-=======
 // CORS engedélyezése
 app.UseCors("AllowAll");
 
 
 // HTTP config
->>>>>>> 55d865c (Exportálás excelbe)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -117,31 +89,19 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-<<<<<<< HEAD
-// Map controllers for the endpoints
-=======
 //végpontok beállítása
->>>>>>> 55d865c (Exportálás excelbe)
 app.MapControllers();
 app.UseStaticFiles();
 
 
-<<<<<<< HEAD
-// Ensure roles exist (USER, ADMIN)
-=======
 
->>>>>>> 55d865c (Exportálás excelbe)
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     await EnsureRolesCreated(roleManager);
 }
 
-<<<<<<< HEAD
-// Method to ensure roles exist
-=======
 //Szerepkörök
->>>>>>> 55d865c (Exportálás excelbe)
 async Task EnsureRolesCreated(RoleManager<IdentityRole> roleManager)
 {
     string[] roleNames = { "USER", "ADMIN" };

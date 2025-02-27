@@ -125,34 +125,20 @@ namespace Lakberendezes.Controllers
                 return Unauthorized("Hibás email vagy jelszó.");
             }
 
-<<<<<<< HEAD
-            // Szerepkörök lekérése
-            var roles = await _userManager.GetRolesAsync(user);
-
-            // Jelszó ellenőrzése
-=======
            
             var roles = await _userManager.GetRolesAsync(user);
 
            
->>>>>>> 55d865c (Exportálás excelbe)
             var result = await _signInManager.PasswordSignInAsync(user.UserName, loginDTO.Password, false, lockoutOnFailure: false);
             if (!result.Succeeded)
             {
                 return Unauthorized("Érvénytelen email vagy jelszó");
             }
 
-<<<<<<< HEAD
-            // Jwt token generálás
-            var token = _jwtService.GenerateToken(user, roles);
-
-            // 🔹 Visszaküldjük a felhasználói adatokat is!
-=======
           
             var token = _jwtService.GenerateToken(user, roles);
 
             
->>>>>>> 55d865c (Exportálás excelbe)
             var userData = new
             {
                 Id = user.Id,

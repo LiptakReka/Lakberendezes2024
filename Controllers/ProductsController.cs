@@ -11,10 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Composition;
 using System.Text;
 using Org.BouncyCastle.Asn1.Cms;
-<<<<<<< HEAD
-=======
 using ClosedXML.Excel;
->>>>>>> 55d865c (Exportálás excelbe)
 
 
 namespace Lakberendezes.Controllers
@@ -30,11 +27,7 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
-<<<<<<< HEAD
-        // GET: api/Products
-=======
         
->>>>>>> 55d865c (Exportálás excelbe)
        
         [HttpGet]
         
@@ -79,23 +72,6 @@ namespace Lakberendezes.Controllers
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
-<<<<<<< HEAD
-            var products= _context.products.ToList();
-            if(products==null || !products.Any())
-            {
-                return NotFound("Nincsenek termékek");
-            }
-            var csv = new StringBuilder();
-            csv.AppendLine("ID,Név,Ár,Webshop,Kép URL");
-            foreach(var product in products)
-            {
-                csv.AppendLine($"{product.id},\"{product.name},\"{product.price},\"{product.shoplink},\"{product.imageurl}");
-            }
-            var bytes=Encoding.UTF8.GetBytes(csv.ToString());
-            return File(bytes, "text/csv", "termekek.csv");
-        }
-        // GET: api/Products/5
-=======
             var products = _context.products.ToList();
 
             if (products == null || !products.Any())
@@ -134,7 +110,6 @@ namespace Lakberendezes.Controllers
         }
 
 
->>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize(Roles ="ADMIN")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
@@ -149,13 +124,8 @@ namespace Lakberendezes.Controllers
             return product;
         }
 
-<<<<<<< HEAD
-        // PUT: api/Products/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-=======
         
         
->>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize(Roles ="ADMIN")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
@@ -186,12 +156,7 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
-<<<<<<< HEAD
-        // POST: api/Products
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-=======
        
->>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize(Roles ="Admin")]
         [HttpPost]
         
@@ -221,11 +186,7 @@ namespace Lakberendezes.Controllers
 
 
 
-<<<<<<< HEAD
-        // DELETE: api/Products/5
-=======
        
->>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize (Roles ="ADMIN")]
         [HttpDelete("deleteByName{name}")]
         public async Task<IActionResult> DeleteProduct(string name)

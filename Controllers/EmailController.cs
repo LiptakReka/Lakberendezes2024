@@ -12,10 +12,7 @@ namespace Lakberendezes.Controllers
     [ApiController]
     public class EmailController : Controller
     {
-<<<<<<< HEAD
-=======
         //Kosár tartalom elküldése
->>>>>>> 55d865c (Exportálás excelbe)
         [HttpPost("send-cart")]
         public async Task<IActionResult> SendCartEmail([FromBody] CartEmailRequestDTO request)
         {

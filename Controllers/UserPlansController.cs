@@ -21,21 +21,13 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
-<<<<<<< HEAD
-        // GET: api/UserPlans
-=======
        
->>>>>>> 55d865c (Exportálás excelbe)
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserPlans>>> Getuserplan()
         {
             return await _context.userplan.ToListAsync();
         }
 
-<<<<<<< HEAD
-        // GET: api/UserPlans/5
-=======
->>>>>>> 55d865c (Exportálás excelbe)
         [HttpGet("{id}")]
         public async Task<ActionResult<UserPlans>> GetUserPlans(int id)
         {
@@ -49,11 +41,6 @@ namespace Lakberendezes.Controllers
             return userPlans;
         }
 
-<<<<<<< HEAD
-        // PUT: api/UserPlans/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-=======
->>>>>>> 55d865c (Exportálás excelbe)
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUserPlans(int id, UserPlans userPlans)
         {
@@ -83,12 +70,7 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
-<<<<<<< HEAD
-        // POST: api/UserPlans
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-=======
   
->>>>>>> 55d865c (Exportálás excelbe)
         [HttpPost]
         public async Task<ActionResult<UserPlans>> PostUserPlans( UserPlans userPlans)
         {
@@ -98,10 +80,6 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("GetUserPlans", new { id = userPlans.id }, userPlans);
         }
 
-<<<<<<< HEAD
-        // DELETE: api/UserPlans/5
-=======
->>>>>>> 55d865c (Exportálás excelbe)
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserPlans(int id)
         {

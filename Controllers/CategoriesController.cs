@@ -25,11 +25,8 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
-<<<<<<< HEAD
         // GET: api/Categories
-=======
         
->>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize (Roles ="USER")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categories>>> Getkategories()
@@ -37,11 +34,8 @@ namespace Lakberendezes.Controllers
             return await _context.kategories.ToListAsync();
         }
 
-<<<<<<< HEAD
         // GET: api/Categories/5
-=======
        
->>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize(Roles = "ADMIN")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Categories>> GetCategories(int id)
@@ -58,13 +52,10 @@ namespace Lakberendezes.Controllers
             return categories;
         }
 
-<<<<<<< HEAD
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-=======
         
         
->>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize (Roles = "ADMIN")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategories(int id, Categories categories)
@@ -95,13 +86,10 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
-<<<<<<< HEAD
         // POST: api/Categories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-=======
        
        
->>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize(Roles ="ADMIN")]
         [HttpPost]
         public async Task<ActionResult<Categories>> PostCategories(Categories categories)
@@ -112,11 +100,8 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("GetCategories", new { id = categories.id }, categories);
         }
 
-<<<<<<< HEAD
         // DELETE: api/Categories/5
-=======
         
->>>>>>> 55d865c (Exportálás excelbe)
         //[Authorize (Roles ="ADMIN")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategories(int id)

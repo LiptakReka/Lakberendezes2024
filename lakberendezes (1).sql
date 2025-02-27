@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 27. 11:56
+-- Létrehozás ideje: 2025. Feb 27. 12:05
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -812,6 +812,12 @@ ALTER TABLE `products`
   ADD CONSTRAINT `room` FOREIGN KEY (`roomid`) REFERENCES `kategories` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `shop` FOREIGN KEY (`shopid`) REFERENCES `shops` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `tipus` FOREIGN KEY (`product_type_id`) REFERENCES `producttype` (`id`);
+
+--
+-- Megkötések a táblához `producttype`
+--
+ALTER TABLE `producttype`
+  ADD CONSTRAINT `tip` FOREIGN KEY (`categoryid`) REFERENCES `kategories` (`id`) ON DELETE CASCADE;
 
 --
 -- Megkötések a táblához `userplan`

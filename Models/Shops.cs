@@ -10,11 +10,6 @@
 
         //navigációs tulajdonság
 
-        
-        
-        
-       
-
       
 
         public required ICollection<Product> products_ibfk_1 { get; set; }

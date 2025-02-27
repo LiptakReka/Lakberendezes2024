@@ -63,24 +63,38 @@ namespace LakberendezesAdmin.Pages
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            string searchText = SearchTextBox.Text.Trim().ToLower();
-
-
-            if (string.IsNullOrEmpty(searchText))
+            try
             {
-                dataGrid.ItemsSource = null;
-                dataGrid.ItemsSource = _planList;
+                string searchText = SearchTextBox.Text.Trim();
+                if (string.IsNullOrWhiteSpace(searchText))
+                {
+                    MessageBox.Show("Kérlek, add meg a keresett terv azonosítóját");
+                    return;
+                }
+
+                HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:7247/api/UserPlans/search/{searchText}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    var plans = JsonSerializer.Deserialize<List<Plan>>(jsonResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                    PlansListBox.ItemsSource = plans;
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    MessageBox.Show("Nem található ilyen azonosítójú terv.");
+                    PlansListBox.ItemsSource = null;
+                }
+                else
+                {
+                    MessageBox.Show($"Hiba: {response.StatusCode}");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                List<Plan> filteredPlans = _planList.Where(plan =>
-                    plan.id.ToString().Contains(searchText) == true ||
-                    plan.createdat.ToString().Contains(searchText) == true
-                ).ToList();
-                dataGrid.ItemsSource = null;
-                dataGrid.ItemsSource = filteredPlans;
+                MessageBox.Show($"Hiba történt: {ex.Message}");
             }
         }
 

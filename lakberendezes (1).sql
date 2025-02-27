@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 19. 21:49
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- Létrehozás ideje: 2025. Feb 27. 11:53
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -87,10 +87,9 @@ CREATE TABLE `achievements` (
 --
 
 INSERT INTO `achievements` (`id`, `user_Id`, `title`, `description`, `icon`, `created_at`) VALUES
-('1915832b-aa6c-4f69-9f95-c36b3e8419d7', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Szépségszalon', 'Profilképed megváltozott', '💄', '2025-02-18 18:24:46'),
-('3ce9a3da-e31e-42b7-9175-2009884e6c5c', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Első vásárlás?', 'Kosárba raktad az első terméket!', '🛍️', '2025-02-18 18:21:53'),
-('632d37d0-bf1c-4cf9-93ff-165e5a7ba0ee', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Kosár elküldve!', 'Összegzés elküldve', '🛒', '2025-02-18 18:12:54'),
-('d8a3e565-4b8e-4f23-9ef3-04b99fe86153', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Első terv!', 'Elmentetted az első terved!', '🏠', '2025-02-18 18:22:26');
+('082a68e8-caba-45e1-a967-451e983c0c8e', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Első terv!', 'Elmentetted az első terved!', '🏠', '2025-02-20 05:53:01'),
+('0f5ce5c0-6ffd-4169-b1ab-d2661c3efe6d', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Szépségszalon', 'Profilképed megváltozott', '💄', '2025-02-20 05:39:48'),
+('9b585a74-0c12-4c27-8513-12f79f93db18', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Kosár elküldve!', 'Összegzés elküldve', '🛒', '2025-02-20 05:46:54');
 
 -- --------------------------------------------------------
 
@@ -203,7 +202,7 @@ CREATE TABLE `aspnetusers` (
 --
 
 INSERT INTO `aspnetusers` (`Id`, `Email`, `fullname`, `datet`, `AccessFailedCount`, `ConcurrencyStamp`, `EmailConfirmed`, `LockoutEnabled`, `LockoutEnd`, `NormalizedEmail`, `NormalizedUserName`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `SecurityStamp`, `TwoFactorEnabled`, `UserName`, `ProfilePictureUrl`) VALUES
-('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'liptakr@kkszki.hu', 'Liptakreka', '2025-02-13 18:01:14', 0, '808f299b-e80c-48f4-907e-d5959edd949c', 0, 1, NULL, 'LIPTAKR@KKSZKI.HU', 'ADMIN', 'AQAAAAIAAYagAAAAEF1/pWZecGAGJobGegXVkOehrW7wBFGETuiv/05sQWHiZmK+61U3ZqD+LDPfvAGQJg==', NULL, 0, 'ST3MQFBDTQUERGATIJKQYOZ4MODBU6X6', 0, 'Admin', '/profile_pictures/b2a885cc-9d31-4115-984d-894667f90ac9_OIP.jpg'),
+('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'liptakr@kkszki.hu', 'Liptakreka', '2025-02-13 18:01:14', 0, '348b2f1c-42da-41d1-8e6e-fcd65b563845', 0, 1, NULL, 'LIPTAKR@KKSZKI.HU', 'ADMIN', 'AQAAAAIAAYagAAAAEF1/pWZecGAGJobGegXVkOehrW7wBFGETuiv/05sQWHiZmK+61U3ZqD+LDPfvAGQJg==', NULL, 0, 'ST3MQFBDTQUERGATIJKQYOZ4MODBU6X6', 0, 'Admin', '/profile_pictures/c8fc324b-d721-4601-a0e8-744eeaef629c_hatter.jpg'),
 ('bc6f0ee3-c821-4bc9-939f-13af624db253', 'liptakreka4@gmail.com', 'Liptakr', '2025-02-02 10:57:33', 0, '78f30ea7-f6f1-4f27-a05b-b5c8734375fc', 0, 1, NULL, 'LIPTAKREKA4@GMAIL.COM', 'LIPTAKREKA4@GMAIL.COM', 'AQAAAAIAAYagAAAAECUODUkcc2eD8ABInNUtThSROitFTjsr/HD+Wg3qv7mabscFC0GZr4P16Pg09Wdevw==', NULL, 0, '4DOXM6GZ2U7VB5OQ3EEREKCXM7TF45XD', 0, 'liptakreka4@gmail.com', '');
 
 -- --------------------------------------------------------
@@ -289,7 +288,15 @@ INSERT INTO `planproducts` (`id`, `productid`, `position`, `scale`, `userplanid`
 (112, 157, '-138, 294', 0.9, 60),
 (113, 145, '821, 297', 0.5, 60),
 (114, 144, '157, 516', 0.5, 60),
-(115, 138, '386, 512', 0.9, 60);
+(115, 138, '386, 512', 0.9, 60),
+(116, 157, '-154, 112', 0.9, 61),
+(117, 145, '794, 95', 0.5, 61),
+(118, 144, '157, 516', 0.5, 61),
+(119, 138, '255, 264', 0.9, 61),
+(120, 157, '-154, 112', 0.9, 62),
+(121, 145, '794, 95', 0.5, 62),
+(122, 144, '157, 516', 0.5, 62),
+(123, 138, '255, 264', 0.9, 62);
 
 -- --------------------------------------------------------
 
@@ -582,7 +589,9 @@ CREATE TABLE `userplan` (
 INSERT INTO `userplan` (`id`, `userid`, `plandata`, `createdat`) VALUES
 (57, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":52,\"x\":-170,\"y\":577,\"scale\":0.6000000000000001},{\"productId\":98,\"x\":1051,\"y\":431,\"scale\":0.8},{\"productId\":173,\"x\":268,\"y\":582,\"scale\":0.7999999999999999},{\"productId\":72,\"x\":53,\"y\":604,\"scale\":0.5},{\"productId\":209,\"x\":719,\"y\":573,\"scale\":0.5}]', '2025-02-19 19:31:56'),
 (59, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":23,\"x\":-46,\"y\":425,\"scale\":0.5},{\"productId\":26,\"x\":450,\"y\":395,\"scale\":0.5},{\"productId\":43,\"x\":841,\"y\":21,\"scale\":0.5},{\"productId\":49,\"x\":-306,\"y\":115,\"scale\":0.5},{\"productId\":177,\"x\":1196,\"y\":374,\"scale\":1.0999999999999999},{\"productId\":186,\"x\":184,\"y\":392,\"scale\":0.5},{\"productId\":188,\"x\":148,\"y\":616,\"scale\":0.8999999999999999}]', '2025-02-19 20:37:04'),
-(60, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-138,\"y\":294,\"scale\":0.8999999999999999},{\"productId\":145,\"x\":821,\"y\":297,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":386,\"y\":512,\"scale\":0.8999999999999999}]', '2025-02-19 20:40:54');
+(60, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-138,\"y\":294,\"scale\":0.8999999999999999},{\"productId\":145,\"x\":821,\"y\":297,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":386,\"y\":512,\"scale\":0.8999999999999999}]', '2025-02-19 20:40:54'),
+(61, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-154,\"y\":112,\"scale\":0.9},{\"productId\":145,\"x\":794,\"y\":95,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":255,\"y\":264,\"scale\":0.9}]', '2025-02-20 06:39:02'),
+(62, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-154,\"y\":112,\"scale\":0.9},{\"productId\":145,\"x\":794,\"y\":95,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":255,\"y\":264,\"scale\":0.9}]', '2025-02-20 06:52:59');
 
 -- --------------------------------------------------------
 
@@ -740,13 +749,13 @@ ALTER TABLE `kategories`
 -- AUTO_INCREMENT a táblához `planproducts`
 --
 ALTER TABLE `planproducts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT a táblához `userplan`
 --
 ALTER TABLE `userplan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -788,6 +797,14 @@ ALTER TABLE `aspnetuserroles`
 --
 ALTER TABLE `aspnetusertokens`
   ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+
+--
+-- Megkötések a táblához `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `room` FOREIGN KEY (`roomid`) REFERENCES `kategories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `shop` FOREIGN KEY (`shopid`) REFERENCES `shops` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tipus` FOREIGN KEY (`product_type_id`) REFERENCES `producttype` (`id`);
 
 --
 -- Megkötések a táblához `userplan`

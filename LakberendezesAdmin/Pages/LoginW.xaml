@@ -32,12 +32,14 @@
                                               VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#5D4954"/>
-
-                            </Trigger>
+                        
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#0D47A1"/>
+
+
+
+                                <Setter Property="Background" Value="#D3D5D7" />
+                                <Setter Property="Foreground" Value="Black"/>
+
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

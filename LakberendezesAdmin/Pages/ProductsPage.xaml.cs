@@ -21,9 +21,13 @@ using System.Windows.Shapes;
 
 namespace LakberendezesAdmin.Pages
 {
+<<<<<<< HEAD
     /// <summary>
     /// Interaction logic for ProductsPage.xaml
     /// </summary>
+=======
+  
+>>>>>>> 3dd1804 (Export)
     public partial class ProductsPage : Page
     {
         private static readonly HttpClient _httpClient = new HttpClient();
@@ -134,6 +138,7 @@ namespace LakberendezesAdmin.Pages
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             using(HttpClient client=new HttpClient())
             {
                 try
@@ -163,7 +168,36 @@ namespace LakberendezesAdmin.Pages
                 {
                     MessageBox.Show(ex.Message);
                 }
+=======
+            string apiUrl = "https://localhost:7247/api/Products/Export";
+
+            try
+            {
+                // Excel fájl letöltése
+                byte[] excelData = await _httpClient.GetByteArrayAsync(apiUrl);
+
+                //fájl mentése
+                string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "termekek.xlsx");
+                using(var fs=new FileStream(filePath,FileMode.Create, FileAccess.Write, FileShare.Read))
+                {
+                    await fs.WriteAsync(excelData,0,excelData.Length);
+                }
+
+                
+                MessageBox.Show($"Az Excel fájl sikeresen letöltve!\nElérési út: {filePath}", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Fájl megnyitása
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt a letöltés során: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+>>>>>>> 3dd1804 (Export)
             }
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3dd1804 (Export)

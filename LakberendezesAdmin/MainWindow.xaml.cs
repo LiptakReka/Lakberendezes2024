@@ -16,9 +16,13 @@ using System.Windows.Shapes;
 
 namespace LakberendezesAdmin
 {
+<<<<<<< HEAD
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+=======
+  
+>>>>>>> 3dd1804 (Export)
     public partial class MainWindow : Window
     {
         public MainWindow()

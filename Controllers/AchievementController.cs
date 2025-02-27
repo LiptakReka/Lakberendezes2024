@@ -44,8 +44,8 @@ namespace Lakberendezes.Controllers
         {
             achievement.id = Guid.NewGuid(); 
             achievement.created_at = DateTime.Now; 
-            achievement.id = Guid.NewGuid(); // Generálunk egy új GUID azonosítót
-            achievement.created_at = DateTime.UtcNow; // Beállítjuk az időbélyeget
+            achievement.id = Guid.NewGuid(); 
+            achievement.created_at = DateTime.UtcNow; 
             achievement.id = Guid.NewGuid(); 
             achievement.created_at = DateTime.UtcNow; 
 

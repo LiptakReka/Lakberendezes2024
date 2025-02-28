@@ -186,6 +186,7 @@ namespace Lakberendezes.Controllers
 
 
 
+<<<<<<< HEAD
 
         //[Authorize (Roles ="ADMIN")]
         [HttpDelete("{id}")]
@@ -201,6 +202,28 @@ namespace Lakberendezes.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Sikeresen törölve" });
+=======
+       
+        //[Authorize (Roles ="ADMIN")]
+        [HttpDelete("deleteByName{name}")]
+        public async Task<IActionResult> DeleteProduct(string name)
+        {
+            var product = await _context.products
+                .Where(x => x.name.Contains(name))
+                .ToListAsync();
+            if (!product.Any())
+            {
+                return NotFound(new {message="Nincs ilyen termék!"});
+            }
+
+            if (product.Count>1)
+            {
+                return BadRequest(new { message = "Több termék is van ilyen néven!" });
+            }
+            _context.products.Remove(product.First());
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Sikeresen törölve lett!" });
+>>>>>>> 1ca7ca1306445d0c105ec3d1717a26a7e0223325
         }
 
         private bool ProductExists(int id)

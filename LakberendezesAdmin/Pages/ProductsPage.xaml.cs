@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -56,40 +57,24 @@ namespace LakberendezesAdmin.Pages
             return products;
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        // ...
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            string searchText = SearchTextBox.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(searchText))
             {
-                string searchText = SearchTextBox.Text.Trim();
-                if (string.IsNullOrWhiteSpace(searchText))
-                {
-                    MessageBox.Show("Kérlek, add meg a keresett termék nevét!");
-                    return;
-                }
-
-                HttpResponseMessage response = await _httpClient.GetAsync($"https://localhost:7247/api/Products/search/{searchText}");
-                if (response.IsSuccessStatusCode)
-                {
-                    string jsonResponse = await response.Content.ReadAsStringAsync();
-                    var products = JsonSerializer.Deserialize<List<Product>>(jsonResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                    PorductsListBox.ItemsSource = products;
-                }
-                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    MessageBox.Show("Nem található ilyen nevű termék.");
-                    PorductsListBox.ItemsSource = null;
-                }
-                else
-                {
-                    MessageBox.Show($"Hiba: {response.StatusCode}");
-                }
+                ProductsGrid.ItemsSource = _allproducts;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Hiba történt: {ex.Message}");
+                List<Product> filteredProducts = _allproducts.Where(product =>
+                    product.id.ToString().Contains(searchText) ||
+                    product.name.ToLower().Contains(searchText)
+                ).ToList();
+                ProductsGrid.ItemsSource = filteredProducts;
             }
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -103,31 +88,7 @@ namespace LakberendezesAdmin.Pages
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PorductsListBox.SelectedItems.Count == 1)
-            {
-                var selectedProduct = PorductsListBox.SelectedItem as Product;
-                if (selectedProduct != null)
-                {
-                    var result = MessageBox.Show($"Biztosan törlöd a(z) {selectedProduct.name} terméket?", "Megerősítés", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        HttpResponseMessage response = await _httpClient.DeleteAsync($"https://localhost:7247/api/Products/deleteByName{selectedProduct.name}");
-                        if (response.IsSuccessStatusCode)
-                        {
-                            MessageBox.Show("Termék sikeresen törölve!");
-                            _allproducts.Remove(selectedProduct);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Hiba történt a törlés során.");
-                        }
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Válassz ki egy terméket a listából!");
-            }
+           
         }
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)

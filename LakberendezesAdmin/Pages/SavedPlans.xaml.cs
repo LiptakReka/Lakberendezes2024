@@ -65,45 +65,58 @@ namespace LakberendezesAdmin.Pages
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            string searchText = SearchTextBox.Text.Trim().ToString();
+
+            if (string.IsNullOrEmpty(searchText))
             {
-                string searchText = SearchTextBox.Text.Trim();
-                if (string.IsNullOrWhiteSpace(searchText))
-                {
-                    MessageBox.Show("Kérlek, add meg a keresett terv azonosítóját");
-                    return;
-                }
-
-                HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:7247/api/UserPlans/search/{searchText}");
-                if (response.IsSuccessStatusCode)
-                {
-                    string jsonResponse = await response.Content.ReadAsStringAsync();
-                    var plans = JsonSerializer.Deserialize<List<Plan>>(jsonResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-                    PlansListBox.ItemsSource = plans;
-                }
-                else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    MessageBox.Show("Nem található ilyen azonosítójú terv.");
-                    PlansListBox.ItemsSource = null;
-                }
-                else
-                {
-                    MessageBox.Show($"Hiba: {response.StatusCode}");
-                }
+                dataGrid.ItemsSource = _planList;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Hiba történt: {ex.Message}");
+                List<Plan> filteredPlans = _planList.Where(plan =>
+                    plan.id.ToString().Contains(searchText) == true
+                ).ToList();
+                dataGrid.ItemsSource = filteredPlans;
             }
         }
 
-        private void Delete_Click_1(object sender, RoutedEventArgs e)
+        private async void Delete_Click_1(object sender, RoutedEventArgs e)
         {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                // Az id kinyerése a gomb Tag tulajdonságából
+                int planId = Convert.ToInt32(button.Tag);
 
+                var result = MessageBox.Show($"Biztosan törlöd a(z) {planId} tervet?", "Megerősítés", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    HttpResponseMessage response = await httpClient.DeleteAsync($"https://localhost:7247/api/UserPlans/{planId}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Termék sikeresen törölve!");
+
+                        // Keresés az elem után
+                        var itemToRemove = _planList.FirstOrDefault(p => p.id == planId);
+                        if (itemToRemove != null)
+                        {
+                            _planList.Remove(itemToRemove);
+                        }
+
+                        // Refresh a DataGrid nézetben
+                        dataGrid.ItemsSource = null;
+                        dataGrid.ItemsSource = _planList;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hiba történt a törlés során.");
+                    }
+                }
+            }
         }
 
-        private void Modify_Click_2(object sender, RoutedEventArgs e)
+
+        private void Export_Click_2(object sender, RoutedEventArgs e)
         {
 
         }

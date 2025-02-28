@@ -101,6 +101,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\CategToName.cs" />
+    <Compile Include="Converters\ProductTypeToName.cs" />
+    <Compile Include="Converters\ShopIdToName.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

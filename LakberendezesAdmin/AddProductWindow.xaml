@@ -20,11 +20,11 @@
             <TextBlock Text="Kép Url: " FontWeight="Bold"  Width="100"/>
             <TextBox x:Name="ProductimgTextBox" Width="250" Height="30" Margin="0,5"/>
             <TextBlock Text="Shopid: " FontWeight="Bold"  Width="100"/>
-            <TextBox x:Name="ProductshIdTextBox" Width="250" Height="30" Margin="0,5"/>
+            <ComboBox x:Name="ShopComboBox" Width="250" Height="30" Margin="0,5" SelectedValuePath="Id" DisplayMemberPath="Name" />
             <TextBlock Text="Típus: " FontWeight="Bold"  Width="100"/>
-            <TextBox x:Name="ProducttypeTextBox" Width="250" Height="30" Margin="0,5"/>
+            <ComboBox x:Name="ProducttypeCombo" Width="250" Height="30" Margin="0,5" SelectedValuePath="Id" DisplayMemberPath="Name"/>
             <TextBlock Text="Kategória: " FontWeight="Bold"  Width="100"/>
-            <TextBox x:Name="ProductroomTextBox" Width="250" Height="30" Margin="0,5"/>
+            <ComboBox x:Name="ProductroomCombo" Width="250" Height="30" Margin="0,5" SelectedValuePath="Id" DisplayMemberPath="Name"/>
             <Button Content="Mentés" Width="100" Height="30"
 
                     Margin="0,10,0,0" Background="#FFDAB9" Foreground="black" Click="Button_Click"

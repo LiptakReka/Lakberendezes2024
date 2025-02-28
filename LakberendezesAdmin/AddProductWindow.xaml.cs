@@ -25,6 +25,9 @@ namespace LakberendezesAdmin
         public AddProductWindow()
         {
             InitializeComponent();
+            ShopCombo();
+            Producttypecombo();
+            ProductroomCommbo();
             httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:7247/") };
         }
 
@@ -35,11 +38,8 @@ namespace LakberendezesAdmin
                 // Ellenőrizzük, hogy minden mező ki van-e töltve
                 if (string.IsNullOrWhiteSpace(ProductNameTextBox.Text) ||
                     string.IsNullOrWhiteSpace(ProductPriceTextBox.Text) ||
-                    string.IsNullOrWhiteSpace(ProductimgTextBox.Text) ||
-                    string.IsNullOrWhiteSpace(ProductshIdTextBox.Text) ||
-                    string.IsNullOrWhiteSpace(ProductUrlTextBox.Text) ||
-                    string.IsNullOrWhiteSpace(ProducttypeTextBox.Text) ||
-                    string.IsNullOrWhiteSpace(ProductroomTextBox.Text))
+                    string.IsNullOrWhiteSpace(ProductimgTextBox.Text) || 
+                    string.IsNullOrWhiteSpace(ProductUrlTextBox.Text))
                 {
                     MessageBox.Show("Minden mezőt ki kell tölteni!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
@@ -52,19 +52,14 @@ namespace LakberendezesAdmin
                     return;
                 }
 
-                if (!int.TryParse(ProductshIdTextBox.Text, out int shopId) ||
-                    !int.TryParse(ProducttypeTextBox.Text, out int productTypeId) ||
-                    !int.TryParse(ProductroomTextBox.Text, out int roomId))
-                {
-                    MessageBox.Show("Hibás azonosító formátum! Csak számokat adj meg.", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
                 if (!Uri.IsWellFormedUriString(ProductUrlTextBox.Text, UriKind.Absolute))
                 {
-                    MessageBox.Show("Érvénytelen shoplink URL!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Érvénytelen  URL!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
+                int shopidd = (int)ShopComboBox.SelectedValue;
+                int productTypeId = (int)ProducttypeCombo.SelectedValue;
+                int roomId=(int)ProductroomCombo.SelectedValue;
                 //Termék hozzáadása
                 var newProduct = new
                 {
@@ -72,7 +67,7 @@ namespace LakberendezesAdmin
                     price = price,
                     shoplink = ProductUrlTextBox.Text,
                     imageurl = ProductimgTextBox.Text,
-                    shopid = shopId,
+                    shopid = shopidd,
                     product_type_id = productTypeId,
                     roomid = roomId
                 };
@@ -99,7 +94,51 @@ namespace LakberendezesAdmin
                 MessageBox.Show($"Hiba történt: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private void ProductroomCommbo()
+        {
+            ProductroomCombo.Items.Clear();
+            ProductroomCombo.Items.Add(new { Id = 1, Name = "Nappali" });
+            ProductroomCombo.Items.Add(new { Id = 3, Name = "Hálószoba" });
+            ProductroomCombo.Items.Add(new { Id = 5, Name = "Étkező" });
+            ProductroomCombo.Items.Add(new { Id = 4, Name = "Fürdőszoba" });
+        }
+        private void Producttypecombo()
+        {
+            ProducttypeCombo.Items.Clear();
+            ProducttypeCombo.Items.Add(new { Id = 1, Name = "Kanapé" });
+            ProducttypeCombo.Items.Add(new { Id = 3, Name = "Dohányzóasztal" });
+            ProducttypeCombo.Items.Add(new { Id = 5, Name = "TV állvány" });
+            ProducttypeCombo.Items.Add(new { Id = 11, Name = " Ágy" });
+            ProducttypeCombo.Items.Add(new { Id = 13, Name = "Éjjeli szekrény" });
+            ProducttypeCombo.Items.Add(new { Id = 14, Name = "Szekrény" });
+            ProducttypeCombo.Items.Add(new { Id = 16, Name = "Tükör" });
+            ProducttypeCombo.Items.Add(new { Id = 19, Name = "Törölköző" });           
+            ProducttypeCombo.Items.Add(new { Id = 20, Name = "Kiegészítők" });
+            ProducttypeCombo.Items.Add(new { Id = 21, Name = "Étkező asztal" });
+            ProducttypeCombo.Items.Add(new { Id = 22, Name = "Polc" });
+            ProducttypeCombo.Items.Add(new { Id = 23, Name = "Szék" });
 
+        }
+
+        private void ShopCombo()
+        {
+            ShopComboBox.Items.Clear();
+            ShopComboBox.Items.Add(new { Id = 1, Name = "Jysk" });
+            ShopComboBox.Items.Add(new { Id = 2, Name = "Möbelix" });
+            ShopComboBox.Items.Add(new { Id = 3, Name = "RS BÚTOR" });
+            ShopComboBox.Items.Add(new { Id = 5, Name = "Megfizethető bútor" });
+            ShopComboBox.Items.Add(new { Id = 6, Name = "XXXLutz" });
+            ShopComboBox.Items.Add(new { Id = 7, Name = "Butlers" });
+            ShopComboBox.Items.Add(new { Id = 8, Name = "Magyar bútorbolt" });
+            ShopComboBox.Items.Add(new { Id = 9, Name = "Alaba" });
+            ShopComboBox.Items.Add(new { Id = 10, Name = "Bogart bútor" });
+            ShopComboBox.Items.Add(new { Id = 11, Name = "Bútor7" });
+            ShopComboBox.Items.Add(new { Id = 12, Name = "Zondo.hu" });
+            ShopComboBox.Items.Add(new { Id = 13, Name = "Bútorline" });
+            ShopComboBox.Items.Add(new { Id = 14, Name = "Soma bútor" });
+        }
+
+    
     }
 
 

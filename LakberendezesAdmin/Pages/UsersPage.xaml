@@ -17,8 +17,8 @@
             <Setter Property="Foreground" Value="#333"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="BorderBrush" Value="#ccc"/>
             <Setter Property="BorderThickness" Value="0,0,0,1"/>
@@ -49,7 +49,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-       
+
         <Image Grid.RowSpan="2" Stretch="UniformToFill" Source="../assets/hatter.jpg"/>
 
         <StackPanel Grid.Row="0" Margin="20">
@@ -75,7 +75,7 @@
                      BorderBrush="#ccc"
                      ToolTip="Keresés felhasználónév alapján..."
                      >
-                
+
                 <TextBox.Effect>
                     <DropShadowEffect BlurRadius="5" ShadowDepth="2" Color="Gray" Opacity="0.3"/>
                 </TextBox.Effect>
@@ -102,22 +102,42 @@
                       Padding="5"
                       RowHeight="40"
                       ColumnHeaderHeight="45">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Azonosító" Binding="{Binding Id}"  />
+                    <DataGridTextColumn Header="Email-cím" Binding="{Binding Email}" />
+                    <DataGridTextColumn Header="Teljes neve" Binding="{Binding fullname}" />
+                    <DataGridTextColumn Header="Regisztráció dátuma" Binding="{Binding datet}" />
+                    <DataGridTextColumn Header="Hozzáférés megtagadva" Binding="{Binding AccessFailedCount}" />
+                    <DataGridTextColumn Header="Konkurencia bélyeg" Binding="{Binding ConcurrencyStamp}" />
+                    <DataGridTextColumn Header="Email megerősítése" Binding="{Binding EmailConfirmed}" />
+                    <DataGridTextColumn Header="Kizárás engedélyezve" Binding="{Binding LocoutEnabled}" />
+                    <DataGridTextColumn Header="Kizárás vége" Binding="{Binding LockoutEnd}" />
+                    <DataGridTextColumn Header="Email normalizálva" Binding="{Binding NormalizedEmail}" />
+                    <DataGridTextColumn Header="Felhasználónév normalizálva" Binding="{Binding NormalizedUserName}" />
+                    <DataGridTextColumn Header="Jelszó" Binding="{Binding PasswordHash}" />
+                    <DataGridTextColumn Header="Telefonszám" Binding="{Binding PhoneNumber}" />
+                    <DataGridTextColumn Header="Telefonszám megerősítve" Binding="{Binding PhoneNumberConfirmed}" />
+                    <DataGridTextColumn Header="Biztonsági kód" Binding="{Binding SecurityStamp}" />
+                    <DataGridTextColumn Header="Két faktoros hitelesítés" Binding="{Binding TwoFactorEnabled}" />
+                    <DataGridTextColumn Header="Felhasználónév" Binding="{Binding UserName}" />
+                    <DataGridTextColumn Header="Profilkép" Binding="{Binding ProfilePictureUrl}" />
+                </DataGrid.Columns>
                 <DataGrid.Resources>
-                    
+
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="Background" Value="#f0f0f0"/>
                         <Setter Property="Foreground" Value="#333"/>
                         <Setter Property="FontSize" Value="16"/>
                         <Setter Property="FontWeight" Value="SemiBold"/>
-                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
                         <Setter Property="Height" Value="40"/>
                         <Setter Property="BorderBrush" Value="#ccc"/>
                         <Setter Property="BorderThickness" Value="0,0,0,1"/>
                         <EventSetter Event="MouseEnter" Handler="DataGridColumnHeader_MouseEnter"/>
                         <EventSetter Event="MouseLeave" Handler="DataGridColumnHeader_MouseLeave"/>
                     </Style>
-                    
+
                     <Style TargetType="DataGridRow">
                         <Setter Property="BorderBrush" Value="#ddd"/>
                         <Setter Property="BorderThickness" Value="0,0,0,1"/>

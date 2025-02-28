@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -109,9 +110,32 @@ namespace LakberendezesAdmin.Pages
         }
 
 
-        private void Export_Click_2(object sender, RoutedEventArgs e)
+        private async void Export_Click_2(object sender, RoutedEventArgs e)
         {
+            string apiUrl = "https://localhost:7247/api/UserPlans/Export";
 
+            try
+            {
+                // Excel fájl letöltése
+                byte[] excelData = await httpClient.GetByteArrayAsync(apiUrl);
+
+                //fájl mentése
+                string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Tervek.xlsx");
+                using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.Read))
+                {
+                    await fs.WriteAsync(excelData, 0, excelData.Length);
+                }
+
+
+                MessageBox.Show($"Az Excel fájl sikeresen letöltve!\nElérési út: {filePath}", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Fájl megnyitása
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt a letöltés során: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

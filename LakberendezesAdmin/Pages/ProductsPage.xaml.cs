@@ -88,7 +88,37 @@ namespace LakberendezesAdmin.Pages
 
         private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            Button button = sender as Button;
+            if (button != null)
+            {
+                // Az id kinyerése a gomb Tag tulajdonságából
+                int PrId = Convert.ToInt32(button.Tag);
+
+                var result = MessageBox.Show($"Biztosan törlöd a(z) {PrId} tervet?", "Megerősítés", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    HttpResponseMessage response = await _httpClient.DeleteAsync($"https://localhost:7247/api/Products/{PrId}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Termék sikeresen törölve!");
+
+                        // Keresés az elem után
+                        var ToRemove = _allproducts.FirstOrDefault(p => p.id == PrId);
+                        if (ToRemove != null)
+                        {
+                            _allproducts.Remove(ToRemove);
+                        }
+
+                        // Refresh a DataGrid nézetben
+                        ProductsGrid.ItemsSource = null;
+                        ProductsGrid.ItemsSource = _allproducts;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hiba történt a törlés során.");
+                    }
+                }
+            }
         }
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)

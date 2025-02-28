@@ -55,13 +55,6 @@ namespace LakberendezesAdmin.Pages
             return plans;
         }
 
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (dataGrid.SelectedItem is User selectedUser)
-            {
-                MessageBox.Show($"Felhasználó neve: {selectedUser.UserName}", "Felhasználó információ", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {

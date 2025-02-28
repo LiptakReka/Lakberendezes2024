@@ -49,6 +49,7 @@
 					</Button>
 				</StackPanel>
 				<DataGrid x:Name="dataGrid"
+                          AutoGenerateColumns="False"
                           ColumnHeaderHeight="40"
                           RowHeight="35"
                           Background="White"
@@ -68,21 +69,25 @@
 						</Style>
 					</DataGrid.Resources>
 					<DataGrid.Columns>
-						<DataGridTemplateColumn Header="Actions">
+                        <DataGridTextColumn Header="Azonosító" Binding="{Binding id}" />
+                        <DataGridTextColumn Header="Felhasználó" Binding="{Binding userid}"/>
+                        <DataGridTextColumn Header="Terv" Binding="{Binding plandata}" />
+                        <DataGridTextColumn Header="Készült" Binding="{Binding createdat}" />
+                        <DataGridTemplateColumn Header="Műveletek">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
-									<Button Content="Export" Width="100" Margin="280,-38,0,0" Height="40" Background="#EAF7CF" Foreground="Black" Padding="5" Click="Export_Click_2">
-										<Button.Template>
-											<ControlTemplate TargetType="Button">
-												<Border Background="{TemplateBinding Background}"
-                                                        CornerRadius="20"
-                                                        Padding="5">
-													<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-												</Border>
-											</ControlTemplate>
-										</Button.Template>
-									</Button>
-								</DataTemplate>
+                                    <Button Content="Törlés" Click="Delete_Click_1" Tag="{Binding id}" Width="80" Height="30" Background="#C0E6DE" Foreground="Black">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" 
+												CornerRadius="20" 
+												Padding="5">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
 					</DataGrid.Columns>

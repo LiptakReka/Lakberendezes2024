@@ -3,7 +3,7 @@
     public class Shops
     {
 
-        public required int id { get; set; }//áruház id
+        public int id { get; set; }//áruház id
         public required string name { get; set; }
         
         public required string websiteurl { get; set; }//áruház neve
@@ -12,7 +12,7 @@
 
       
 
-        public required ICollection<Product> products_ibfk_1 { get; set; }
+        public ICollection<Product> products_ibfk_1 { get; set; }
         
 
     }

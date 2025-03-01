@@ -14,6 +14,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pag
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Lakberendezes.Data;
 using Newtonsoft.Json;
+using ClosedXML.Excel;
 
 namespace Lakberendezes.Controllers
 {
@@ -27,21 +28,21 @@ namespace Lakberendezes.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IConfiguration _config;
-        public UsersController(AppDbContext context,IConfiguration config, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager, JwtService jwtService)
+        public UsersController(AppDbContext context, IConfiguration config, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager, JwtService jwtService)
         {
             _context = context;
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _jwtService = jwtService;
-            _config= config;
+            _config = config;
         }
 
         [HttpGet("get-plan/{userId}")]
         public async Task<IActionResult> GetUserPlan(string userId)
         {
             var userPlan = await _context.userplan
-                .Include(p=> p.Products)
+                .Include(p => p.Products)
                 .Where(p => p.userid == userId)
                 .OrderByDescending(p => p.createdat)
                 .Select(p => new
@@ -71,11 +72,35 @@ namespace Lakberendezes.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<IActionResult> GetUsers()
         {
-            var users = await _userManager.Users.ToListAsync();
+            var users = await _context.Users
+                .Select(u => new GetUserDTO
+                {
+                    Id = u.Id ?? "",
+                    fullname = u.fullname ?? "",
+                    ProfilePictureUrl = u.ProfilePictureUrl ?? "",
+                    NormalizedUserName = u.NormalizedUserName ?? "",
+                    datet = u.datet,
+                    UserName = u.UserName ?? "",
+                    Email = u.Email ?? "",
+                    NormalizedEmail = u.NormalizedEmail ?? "",
+                    PhoneNumber = u.PhoneNumber ?? "",
+                    EmailConfirmed = u.EmailConfirmed,
+                    PhoneNumberConfirmed = u.PhoneNumberConfirmed,
+                    TwoFactorEnabled = u.TwoFactorEnabled,
+                    PasswordHash = u.PasswordHash ?? "",
+                    SecurityStamp = u.SecurityStamp ?? "",
+                    ConcurrencyStamp = u.ConcurrencyStamp ?? "",
+                    LockoutEnabled = u.LockoutEnabled,
+                    LockoutEnd = u.LockoutEnd,
+                    AccessFailedCount = u.AccessFailedCount
+                })
+                .ToListAsync();
+
             return Ok(users);
         }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(string id)
@@ -89,21 +114,39 @@ namespace Lakberendezes.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserRegisterDTO registerDTO)
+        public async Task<IActionResult> Register([FromForm] UserRegisterDTO registerDTO)
         {
             var existingUser = await _userManager.FindByEmailAsync(registerDTO.Email);
             if (existingUser != null)
             {
                 return BadRequest("Ez az email már használatban");
             }
+
+            string profilePicturePath = "/profile_pictures/default-profile.png"; // Alapértelmezett kép
+
+            if (registerDTO.ProfilePictureUrl != null)
+            {
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/profile_pictures");
+                Directory.CreateDirectory(uploadsFolder);  // Ha nincs, létrehozza
+
+                string uniqueFileName = $"{Guid.NewGuid()}_{registerDTO.ProfilePictureUrl.FileName}";
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await registerDTO.ProfilePictureUrl.CopyToAsync(stream);
+                }
+
+                profilePicturePath = $"/profile_pictures/{uniqueFileName}"; // Képfájl elérési útja
+            }
+
             var user = new User
             {
                 UserName = registerDTO.Username,
                 Email = registerDTO.Email,
                 fullname = registerDTO.FullName,
-                datet=DateTime.Now,
-                
-               
+                datet = DateTime.Now,
+                ProfilePictureUrl = profilePicturePath
             };
 
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
@@ -116,6 +159,7 @@ namespace Lakberendezes.Controllers
             return Ok("Regisztráció sikeres!");
         }
 
+
         [HttpPost("login")]
         public async Task<ActionResult> Login(UserLoginDTO loginDTO)
         {
@@ -125,27 +169,27 @@ namespace Lakberendezes.Controllers
                 return Unauthorized("Hibás email vagy jelszó.");
             }
 
-           
+
             var roles = await _userManager.GetRolesAsync(user);
 
-           
+
             var result = await _signInManager.PasswordSignInAsync(user.UserName, loginDTO.Password, false, lockoutOnFailure: false);
             if (!result.Succeeded)
             {
                 return Unauthorized("Érvénytelen email vagy jelszó");
             }
 
-          
+
             var token = _jwtService.GenerateToken(user, roles);
 
-            
+
             var userData = new
             {
                 Id = user.Id,
                 Email = user.Email,
                 UserName = user.UserName,
                 Roles = roles,
-                profilePictureUrl=user.ProfilePictureUrl
+                profilePictureUrl = user.ProfilePictureUrl ?? "default-profile.png",
             };
 
             return Ok(new { token, user = userData });
@@ -154,12 +198,12 @@ namespace Lakberendezes.Controllers
         [HttpPost("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] UserChangePasswordDTO model)
         {
-            if (model==null || string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.CurrentPassword) || string.IsNullOrEmpty(model.NewPassword))
+            if (model == null || string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.CurrentPassword) || string.IsNullOrEmpty(model.NewPassword))
             {
                 return BadRequest("Minden mező kitöltése kötelező");
             }
-            var user =await _userManager.FindByEmailAsync(model.Email);
-            if (user==null)
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
             {
                 return NotFound("Felhasználó nem található");
             }
@@ -172,7 +216,7 @@ namespace Lakberendezes.Controllers
         }
         [AllowAnonymous]
         [HttpPost("upload-profile-picture")]
-        public async Task<IActionResult> UploadProfilePicture(IFormFile file , [FromForm] string email)
+        public async Task<IActionResult> UploadProfilePicture(IFormFile file, [FromForm] string email)
         {
             if (file == null || file.Length == 0)
             {
@@ -421,7 +465,7 @@ namespace Lakberendezes.Controllers
 
             var dbcontext = HttpContext.RequestServices.GetService<AppDbContext>();
 
-           
+
             var existingToken = await dbcontext.UserTokens
                 .FirstOrDefaultAsync(t => t.UserId == user.Id && t.LoginProvider == "ResetPassword" && t.Name == "PasswordResetToken");
 
@@ -431,7 +475,7 @@ namespace Lakberendezes.Controllers
                 await dbcontext.SaveChangesAsync();
             }
 
-           
+
             var tokenStore = new IdentityUserToken<string>
             {
                 UserId = user.Id,
@@ -445,22 +489,89 @@ namespace Lakberendezes.Controllers
             return Ok("Jelszó visszaállítva!");
         }
 
-
-
-
-        [Authorize(Roles = "Admin")]
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
+        [HttpGet("Export")]
+        public IActionResult ExportTocsv()
         {
-            var user = await _userManager.FindByIdAsync(id);
-            if (user == null)
+            var users = _context.Users.ToList();
+
+            if (users == null || !users.Any())
             {
-                return NotFound();
+                return NotFound("Nincsenek felhasználók");
+            }
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Felhasználók");
+
+                worksheet.Cell(1, 1).Value = "Azonosító";
+                worksheet.Cell(1, 2).Value = "Email";
+                worksheet.Cell(1, 3).Value = "Teljes név";
+                worksheet.Cell(1, 4).Value = "Regisztrált";
+                worksheet.Cell(1, 5).Value = "Hozzáférés megadva";
+                worksheet.Cell(1, 6).Value = "Konkurencia bélyeg ";
+                worksheet.Cell(1, 7).Value = "Kizárás engedélyezve";
+                worksheet.Cell(1, 8).Value = "Kizárás vége";
+                worksheet.Cell(1, 9).Value = "Email normalizálva";
+                worksheet.Cell(1, 10).Value = "Felhasználónév normalizálva";
+                worksheet.Cell(1, 11).Value = "Jelszóhash";
+                worksheet.Cell(1, 12).Value = "Telefonszám";
+                worksheet.Cell(1, 13).Value = "Telefonszám megerősítve";
+                worksheet.Cell(1, 14).Value = "Biztonsági bélyeg";
+                worksheet.Cell(1, 15).Value = "Két faktoros hitelesítés";
+                worksheet.Cell(1, 16).Value = "Felhasználónév";
+                worksheet.Cell(1, 17).Value = "Profilkép URL";
+
+                int row = 2;
+                foreach (var user in users)
+                {
+                    worksheet.Cell(row, 1).Value = user.Id;
+                    worksheet.Cell(row, 2).Value = user.Email;
+                    worksheet.Cell(row, 3).Value = user.fullname;
+                    worksheet.Cell(row, 4).Value = user.datet;
+                    worksheet.Cell(row, 5).Value = user.AccessFailedCount;
+                    worksheet.Cell(row, 6).Value = user.ConcurrencyStamp;
+                    worksheet.Cell(row, 7).Value = user.LockoutEnabled;
+                    worksheet.Cell(row, 8).Value = user.LockoutEnd.ToString();
+                    worksheet.Cell(row, 9).Value = user.NormalizedEmail;
+                    worksheet.Cell(row, 10).Value = user.NormalizedUserName;
+                    worksheet.Cell(row, 11).Value = user.PasswordHash;
+                    worksheet.Cell(row, 12).Value = user.PhoneNumber;
+                    worksheet.Cell(row, 13).Value = user.PhoneNumberConfirmed;
+                    worksheet.Cell(row, 14).Value = user.SecurityStamp;
+                    worksheet.Cell(row, 15).Value = user.TwoFactorEnabled;
+                    worksheet.Cell(row, 16).Value = user.UserName;
+                    worksheet.Cell(row, 17).Value = user.ProfilePictureUrl;
+                    row++;
+
+                }
+                worksheet.Columns().AdjustToContents();
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+                    return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "felhasznalok.xlsx");
+                }
             }
 
-            await _userManager.DeleteAsync(user);
-            return NoContent();
         }
+
+        [HttpDelete("{userName}")]
+        public async Task<IActionResult> DeleteUserByName(string userName)
+        {
+            var user = await _context.Users
+                .Where(u => u.UserName != null && u.UserName == userName)
+                .FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return NotFound(new { message = "Felhasználó nem található!" });
+            }
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = $"A(z) {userName} felhasználó törölve lett." });
+        }
+
     }
 }
 

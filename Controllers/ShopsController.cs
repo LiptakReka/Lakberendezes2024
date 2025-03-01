@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lakberendezes.Data;
 using Lakberendezes.Models;
+using ClosedXML.Excel;
 
 namespace Lakberendezes.Controllers
 {
@@ -71,18 +72,65 @@ namespace Lakberendezes.Controllers
 
             return NoContent();
         }
-
-     
-        [HttpPost]
-        public async Task<ActionResult<Shops>> PostShops(Shops shops)
+        [HttpGet("Export")]
+        public IActionResult ExportTocsv()
         {
-            _context.shops.Add(shops);
-            await _context.SaveChangesAsync();
+            var shopss = _context.shops.ToList();
 
-            return CreatedAtAction("GetShops", new { id = shops.id }, shops);
+            if (shopss == null || !shopss.Any())
+            {
+                return NotFound("Nincsenek üzletek");
+            }
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Üzletek");
+
+                worksheet.Cell(1, 1).Value = "Azonosító";
+                worksheet.Cell(1, 2).Value = "Név";
+                worksheet.Cell(1, 3).Value = "Weboldal";
+
+                int row = 2;
+                foreach (var shopp in shopss)
+                {
+                    worksheet.Cell(row, 1).Value = shopp.id;
+                    worksheet.Cell(row, 2).Value = shopp.name;
+                    worksheet.Cell(row, 3).Value = shopp.websiteurl;
+                    row++;
+
+                }
+                worksheet.Columns().AdjustToContents();
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+                    return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "uzeletek.xlsx");
+                }
+            }
+
         }
 
-      
+        [HttpPost]
+
+        public async Task<ActionResult<Shops>> PostShops([FromBody] ShopDTO shopDTO)
+        {
+            if (shopDTO == null)
+            {
+                return BadRequest("Az üzlet adatok hiányoznak.");
+            }
+
+            var shopss = new Shops
+            {
+                name = shopDTO.name,
+                websiteurl = shopDTO.websiteurl,
+                
+            };
+
+            _context.shops.Add(shopss);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetShops", new { id = shopss.id }, shopss);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteShops(int id)
         {

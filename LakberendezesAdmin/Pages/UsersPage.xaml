@@ -80,7 +80,15 @@
                     <DropShadowEffect BlurRadius="5" ShadowDepth="2" Color="Gray" Opacity="0.3"/>
                 </TextBox.Effect>
             </TextBox>
-            <Button x:Name="btnKeres" Content="Keresés" Margin="380,-54,-10,20" Width="80" Height="28" Click="btnKeres_Click"  Background="#C492B1" BorderBrush="#FF040404" Foreground="#FF0E0C0C"/>
+            <Button x:Name="btnKeres" Content="Keresés" Margin="380,-54,-10,20" Width="80" Height="28" Click="btnKeres_Click"  Background="#EAF7CF" BorderBrush="#FF040404" Foreground="#FF0E0C0C">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20" Padding="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </StackPanel>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="10">
@@ -125,13 +133,14 @@
                 <DataGrid.Resources>
 
                     <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="#f0f0f0"/>
+                        <Setter Property="Background" Value="#EAF7CF"/>
                         <Setter Property="Foreground" Value="#333"/>
                         <Setter Property="FontSize" Value="16"/>
                         <Setter Property="FontWeight" Value="SemiBold"/>
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                         <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="Height" Value="60"/>
+                        <Setter Property="Padding" Value="10"/>
                         <Setter Property="BorderBrush" Value="#ccc"/>
                         <Setter Property="BorderThickness" Value="0,0,0,1"/>
                         <EventSetter Event="MouseEnter" Handler="DataGridColumnHeader_MouseEnter"/>

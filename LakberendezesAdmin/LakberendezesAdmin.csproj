@@ -116,7 +116,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Producttype.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Rooms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SavedPlans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Shops.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,12 +143,24 @@
     </Compile>
     <Compile Include="Pages\Models\Plan.cs" />
     <Compile Include="Pages\Models\Product.cs" />
+    <Compile Include="Pages\Models\ProductType.cs" />
+    <Compile Include="Pages\Models\Room.cs" />
+    <Compile Include="Pages\Models\Shop.cs" />
     <Compile Include="Pages\Models\User.cs" />
     <Compile Include="Pages\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Producttype.xaml.cs">
+      <DependentUpon>Producttype.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Rooms.xaml.cs">
+      <DependentUpon>Rooms.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SavedPlans.xaml.cs">
       <DependentUpon>SavedPlans.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Shops.xaml.cs">
+      <DependentUpon>Shops.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UsersPage.xaml.cs">
       <DependentUpon>UsersPage.xaml</DependentUpon>

@@ -43,5 +43,25 @@ namespace LakberendezesAdmin
         {
             MainFrame.NavigationService.Navigate(new Pages.SavedPlans());
         }
+
+        private void Shops_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FurnitureTypes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Rooms_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

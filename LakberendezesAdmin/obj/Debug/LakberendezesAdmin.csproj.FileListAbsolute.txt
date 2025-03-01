@@ -232,3 +232,5 @@ C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesA
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\LakberendezesAdmin.pdb
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\GeneratedInternalTypeHelper.g.cs
 >>>>>>> c0fa5f1 (Törlés funkció javítva , desginolva, Új termék lap módosítása)
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Producttype.g.cs
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Rooms.g.cs

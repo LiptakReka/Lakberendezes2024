@@ -63,6 +63,17 @@
             <Button Content="Mentett Tervek"
                     Click="Plans_Click"
                     Style="{StaticResource SideMenuButtonStyle}"/>
+            <Button Content="Boltok" Click="Shops_Click" 
+                    Style="{StaticResource SideMenuButtonStyle}"/>
+            <Button Content="Bútortípusok" 
+                    Click="FurnitureTypes_Click" 
+                    Style="{StaticResource SideMenuButtonStyle}"/>
+            <Button Content="Szobák"
+                    Click="Rooms_Click"
+                    Style="{StaticResource SideMenuButtonStyle}"/>
+            <Button Content="Kijelentkezés"
+                    Click="Logout_Click"
+                    Style="{StaticResource SideMenuButtonStyle}" Margin="10,200,10,10" BorderThickness="1" BorderBrush="Black"/>
         </StackPanel>
         <Frame x:Name="MainFrame" Grid.Column="2" NavigationUIVisibility="Hidden"/>
     </Grid>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\App.xaml
-6-561462016
+9-1967419168
 
-17-336316446
+23-1286139872
 24700426834
-AddProductWindow.xaml;MainWindow.xaml;Pages\LoginW.xaml;Pages\ProductsPage.xaml;Pages\SavedPlans.xaml;Pages\UsersPage.xaml;
+AddProductWindow.xaml;MainWindow.xaml;Pages\LoginW.xaml;Pages\ProductsPage.xaml;Pages\Producttype.xaml;Pages\Rooms.xaml;Pages\SavedPlans.xaml;Pages\Shops.xaml;Pages\UsersPage.xaml;
 
-True
+False
 

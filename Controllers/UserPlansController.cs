@@ -146,11 +146,7 @@ namespace Lakberendezes.Controllers
             _context.userplan.Remove(userPlans);
             await _context.SaveChangesAsync();
 
-<<<<<<< HEAD
-            return Ok(new { message = "Sikeresen törölve" });
-=======
             return NoContent();
->>>>>>> 1ca7ca1306445d0c105ec3d1717a26a7e0223325
         }
 
         private bool UserPlansExists(int id)

@@ -67,6 +67,19 @@
                             </Style>
                         </Button.Resources>
                     </Button>
+                    <Button Content="Export"
+                            Width="100"
+                            Height="36"
+                            Background="#C0E6DE"
+                            Foreground="#463F1A"
+                            BorderThickness="0"
+                            Click="Export_Click">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="18"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                 </StackPanel>
                 <Button Grid.Column="2"
                         Content="Új üzlet"

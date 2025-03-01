@@ -1,0 +1,24 @@
+﻿<Window x:Class="LakberendezesAdmin.AddShops"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LakberendezesAdmin"
+        mc:Ignorable="d"
+        Title="AddShops" Height="250" Width="300" Background="#FADADD">
+    
+    <Grid Margin="20" >
+            <StackPanel Background="#F9E0D9">
+                <TextBlock Text="Termék neve: " FontWeight="Bold"  Width="100"/>
+                <TextBox x:Name="ShopNameTextBox" Width="250" Height="30" Margin="0,5"/>
+                <TextBlock Text="Shop Url: " FontWeight="Bold"  Width="100"/>
+                <TextBox x:Name="ShopUrlTextBox" Width="250" Height="30" Margin="0,5"/>
+
+            <Button Content="Mentés" Width="100" Height="30"
+
+                   Margin="0,10,0,0" Background="#FFDAB9" Foreground="black" Click="Button_Click"
+
+                   />
+            </StackPanel>
+        </Grid>
+</Window>

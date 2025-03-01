@@ -46,7 +46,7 @@ namespace LakberendezesAdmin
 
         private void Shops_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.NavigationService.Navigate(new Pages.Shops());
         }
 
         private void FurnitureTypes_Click(object sender, RoutedEventArgs e)

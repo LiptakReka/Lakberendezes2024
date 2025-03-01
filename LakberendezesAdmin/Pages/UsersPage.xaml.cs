@@ -1,6 +1,7 @@
 ﻿using LakberendezesAdmin.Pages.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
@@ -78,53 +79,86 @@ namespace LakberendezesAdmin.Pages
             }
         }
 
-        private void DataGridRow_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (sender is DataGridRow row)
-            {
-                row.Background = new SolidColorBrush(Colors.White);
-            }
-        }
-
-        private void DataGridColumnHeader_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (sender is DataGridColumnHeader columnHeader)
-            {
-                columnHeader.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
-            }
-        }
-
-        private void DataGridColumnHeader_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (sender is DataGridColumnHeader columnHeader)
-            {
-                columnHeader.Background = Brushes.Transparent;
-            }
-        }
-
- 
-
         private void btnKeres_Click(object sender, RoutedEventArgs e)
         {
             string searchText = SearchTextBox.Text.Trim().ToLower();
 
-
             if (string.IsNullOrEmpty(searchText))
             {
-                UsersGrid.ItemsSource = null;
                 UsersGrid.ItemsSource = _allUsers;
             }
             else
             {
-                List<User> filteredUsers = _allUsers.Where(user =>
-                    user.UserName?.ToLower().Contains(searchText) == true ||
-                    user.Email?.ToLower().Contains(searchText) == true ||
-                    user.fullname?.ToLower().Contains(searchText) == true
+                List<User> filteredusers = _allUsers.Where(u =>
+                    u.Id.ToString().Contains(searchText) ||
+                    u.Email.ToLower().Contains(searchText)||
+                    u.UserName.ToLower().Contains(searchText)==true
                 ).ToList();
-                UsersGrid.ItemsSource = null;
-                UsersGrid.ItemsSource = filteredUsers;
+                UsersGrid.ItemsSource = filteredusers;
             }
 
+        }
+
+        private async void Export_Click(object sender, RoutedEventArgs e)
+        {
+            string apiUrl = "https://localhost:7247/api/Users/Export";
+
+            try
+            {
+                // Excel fájl letöltése
+                byte[] excelData = await _httpClient.GetByteArrayAsync(apiUrl);
+
+                //fájl mentése
+                string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "felhasznalok.xlsx");
+                using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.Read))
+                {
+                    await fs.WriteAsync(excelData, 0, excelData.Length);
+                }
+
+
+                MessageBox.Show($"Az Excel fájl sikeresen letöltve!\nElérési út: {filePath}", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Fájl megnyitása
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt a letöltés során: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private async void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                // Az id kinyerése a gomb Tag tulajdonságából
+                string usid = (string)button.Tag;
+
+                var result = MessageBox.Show($"Biztosan törlöd a(z) {usid} tervet?", "Megerősítés", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    HttpResponseMessage response = await _httpClient.DeleteAsync($"https://localhost:7247/api/Users/{usid}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Termék sikeresen törölve!");
+
+                        // Keresés az elem után
+                        var ToRemove = _allUsers.FirstOrDefault(p => p.UserName == usid);
+                        if (ToRemove != null)
+                        {
+                            _allUsers.Remove(ToRemove);
+                        }
+
+                        // Refresh a DataGrid nézetben
+                        UsersGrid.ItemsSource = null;
+                        UsersGrid.ItemsSource = _allUsers;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hiba történt a törlés során.");
+                    }
+                }
+            }
         }
     }
 }

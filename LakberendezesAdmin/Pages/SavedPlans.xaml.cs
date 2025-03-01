@@ -35,7 +35,7 @@ namespace LakberendezesAdmin.Pages
             try
             {
                 _planList = await GetProductsAsync();
-                dataGrid.ItemsSource = _planList;
+                PlansGrid.ItemsSource = _planList;
             }
             catch (Exception ex)
             {
@@ -63,14 +63,14 @@ namespace LakberendezesAdmin.Pages
 
             if (string.IsNullOrEmpty(searchText))
             {
-                dataGrid.ItemsSource = _planList;
+                PlansGrid.ItemsSource = _planList;
             }
             else
             {
                 List<Plan> filteredPlans = _planList.Where(plan =>
                     plan.id.ToString().Contains(searchText) == true
                 ).ToList();
-                dataGrid.ItemsSource = filteredPlans;
+                PlansGrid.ItemsSource = filteredPlans;
             }
         }
 
@@ -98,8 +98,8 @@ namespace LakberendezesAdmin.Pages
                         }
 
                         // Refresh a DataGrid nézetben
-                        dataGrid.ItemsSource = null;
-                        dataGrid.ItemsSource = _planList;
+                        PlansGrid.ItemsSource = null;
+                        PlansGrid.ItemsSource = _planList;
                     }
                     else
                     {

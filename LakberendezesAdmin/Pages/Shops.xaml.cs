@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,17 +15,134 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LakberendezesAdmin.Pages;
+using LakberendezesAdmin.Pages.Models;
 
 namespace LakberendezesAdmin.Pages
 {
-    /// <summary>
-    /// Interaction logic for Shops.xaml
-    /// </summary>
+
     public partial class Shops : Page
     {
+        private HttpClient client = new HttpClient();
+        private List<Shop> _shopList = new List<Shop>();
         public Shops()
         {
             InitializeComponent();
+            LoadData();
+
+        }
+        private async void LoadData()
+        {
+            try
+            {
+                _shopList = await GetShopsAsync();
+                ShopsGrid.ItemsSource = _shopList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private async Task<List<Shop>> GetShopsAsync()
+        {
+            var response = await client.GetAsync("https://localhost:7247/api/Shops");
+            response.EnsureSuccessStatusCode();
+
+            var jsonString = await response.Content.ReadAsStringAsync();
+            var shopss = JsonSerializer.Deserialize<List<Shop>>(jsonString, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+            return shopss;
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            string searchText = Searchtextbox.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                ShopsGrid.ItemsSource = _shopList;
+            }
+            else
+            {
+                List<Shop> filteredsHOPS = _shopList.Where(Shops =>
+                    Shops.id.ToString().Contains(searchText) ||
+                    Shops.name.ToLower().Contains(searchText)
+                ).ToList();
+                ShopsGrid.ItemsSource = filteredsHOPS;
+            }
+        }
+
+        private void NewShop_Click(object sender, RoutedEventArgs e)
+        {
+            var addShops = new AddShops();
+            if (addShops.ShowDialog() == true)
+            {
+                LoadData();
+            }
+        }
+        private async void DeleteShop_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                // Az id kinyerése a gomb Tag tulajdonságából
+                int shid = Convert.ToInt32(button.Tag);
+
+                var result = MessageBox.Show($"Biztosan törlöd a(z) {shid} üzletet", "Megerősítés", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    HttpResponseMessage response = await client.DeleteAsync($"https://localhost:7247/api/Shops/{shid}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Üzlet sikeresen törölve!");
+
+                        // Keresés az elem után
+                        var ToRemove = _shopList.FirstOrDefault(p => p.id == shid);
+                        if (ToRemove != null)
+                        {
+                            _shopList.Remove(ToRemove);
+                        }
+
+                        // Refresh a DataGrid nézetben
+                        ShopsGrid.ItemsSource = null;
+                        ShopsGrid.ItemsSource = _shopList;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hiba történt a törlés során.");
+                    }
+                }
+            }
+        }
+
+        private async void Export_Click(object sender, RoutedEventArgs e)
+        {
+            string apiUrl = "https://localhost:7247/api/Shops/Export";
+
+            try
+            {
+                // Excel fájl letöltése
+                byte[] excelData = await client.GetByteArrayAsync(apiUrl);
+
+                //fájl mentése
+                string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Uzletek.xlsx");
+                using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.Read))
+                {
+                    await fs.WriteAsync(excelData, 0, excelData.Length);
+                }
+
+
+                MessageBox.Show($"Az Excel fájl sikeresen letöltve!\nElérési út: {filePath}", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Fájl megnyitása
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(filePath) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt a letöltés során: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

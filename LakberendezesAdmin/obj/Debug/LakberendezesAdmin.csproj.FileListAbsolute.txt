@@ -234,3 +234,9 @@ C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesA
 >>>>>>> c0fa5f1 (Törlés funkció javítva , desginolva, Új termék lap módosítása)
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Producttype.g.cs
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Rooms.g.cs
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Shops.g.cs
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Producttype.baml
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Rooms.baml
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Shops.baml
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddShops.g.cs
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddShops.baml

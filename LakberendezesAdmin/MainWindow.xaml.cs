@@ -56,7 +56,7 @@ namespace LakberendezesAdmin
 
         private void Rooms_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.NavigationService.Navigate(new Pages.Rooms());
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)

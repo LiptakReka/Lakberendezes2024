@@ -94,7 +94,7 @@ namespace LakberendezesAdmin.Pages
                 // Az id kinyerése a gomb Tag tulajdonságából
                 int PrId = Convert.ToInt32(button.Tag);
 
-                var result = MessageBox.Show($"Biztosan törlöd a(z) {PrId} tervet?", "Megerősítés", MessageBoxButton.YesNo);
+                var result = MessageBox.Show($"Biztosan törlöd a(z) {PrId} üzletet?", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     HttpResponseMessage response = await _httpClient.DeleteAsync($"https://localhost:7247/api/Products/{PrId}");

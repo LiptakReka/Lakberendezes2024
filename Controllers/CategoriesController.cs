@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Lakberendezes.Data;
 using Lakberendezes.Models;
 using Microsoft.AspNetCore.Authorization;
+using ClosedXML.Excel;
 
 namespace Lakberendezes.Controllers
 {
@@ -25,8 +26,7 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
-        // GET: api/Categories
-        
+
         //[Authorize (Roles ="USER")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categories>>> Getkategories()
@@ -34,7 +34,7 @@ namespace Lakberendezes.Controllers
             return await _context.kategories.ToListAsync();
         }
 
-        // GET: api/Categories/5
+
        
         //[Authorize(Roles = "ADMIN")]
         [HttpGet("{id}")]
@@ -52,8 +52,7 @@ namespace Lakberendezes.Controllers
             return categories;
         }
 
-        // PUT: api/Categories/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         
         
         //[Authorize (Roles = "ADMIN")]
@@ -86,22 +85,66 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
-        // POST: api/Categories
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
        
        
         //[Authorize(Roles ="ADMIN")]
         [HttpPost]
-        public async Task<ActionResult<Categories>> PostCategories(Categories categories)
+        public async Task<ActionResult<Categories>> PostCategories([FromBody]CategDTO categories)
         {
-            _context.kategories.Add(categories);
+            if (categories == null)
+            {
+                return BadRequest("A helységek adatai hiányoznak.");
+            }
+
+            var categs = new Categories
+            {
+                name = categories.name,
+
+            };
+
+            _context.kategories.Add(categs);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategories", new { id = categories.id }, categories);
+            return CreatedAtAction("Getkategories", new { id = categs.id }, categs);
         }
 
-        // DELETE: api/Categories/5
-        
+        [HttpGet("Export")]
+        public IActionResult ExportTocsv()
+        {
+            var categs = _context.kategories.ToList();
+
+            if (categs == null || !categs.Any())
+            {
+                return NotFound("Nincsenek szobák");
+            }
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Szobák");
+
+                worksheet.Cell(1, 1).Value = "Azonosító";
+                worksheet.Cell(1, 2).Value = "Név";
+
+                int row = 2;
+                foreach (var categ in categs)
+                {
+                    worksheet.Cell(row, 1).Value = categ.id;
+                    worksheet.Cell(row, 2).Value = categ.name;
+                    row++;
+
+                }
+                worksheet.Columns().AdjustToContents();
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+                    return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "szobak.xlsx");
+                }
+            }
+
+        }
+
+
         //[Authorize (Roles ="ADMIN")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategories(int id)

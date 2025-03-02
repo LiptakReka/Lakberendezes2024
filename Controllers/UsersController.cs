@@ -122,12 +122,12 @@ namespace Lakberendezes.Controllers
                 return BadRequest("Ez az email már használatban");
             }
 
-            string profilePicturePath = "/profile_pictures/default-profile.png"; // Alapértelmezett kép
+            string profilePicturePath = "/profile_pictures/default-profile.png"; 
 
             if (registerDTO.ProfilePictureUrl != null)
             {
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/profile_pictures");
-                Directory.CreateDirectory(uploadsFolder);  // Ha nincs, létrehozza
+                Directory.CreateDirectory(uploadsFolder);  
 
                 string uniqueFileName = $"{Guid.NewGuid()}_{registerDTO.ProfilePictureUrl.FileName}";
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
@@ -137,7 +137,7 @@ namespace Lakberendezes.Controllers
                     await registerDTO.ProfilePictureUrl.CopyToAsync(stream);
                 }
 
-                profilePicturePath = $"/profile_pictures/{uniqueFileName}"; // Képfájl elérési útja
+                profilePicturePath = $"/profile_pictures/{uniqueFileName}"; 
             }
 
             var user = new User

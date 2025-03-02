@@ -13,7 +13,6 @@ import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 import UserSetts from './Pages2/UserSetts';
-import './output.css';
 import Cart from './Pages2/Cart';
 import { AchievementProvider } from './Pages2/UseAchivements';
 

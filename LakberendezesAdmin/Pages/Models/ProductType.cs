@@ -9,7 +9,7 @@ namespace LakberendezesAdmin.Pages.Models
     internal class ProductType
     {
         public int id { get; set; }
-        public string categoryid { get; set; }
+        public int categoryid { get; set; }
         public string name { get; set; }
     }
 }

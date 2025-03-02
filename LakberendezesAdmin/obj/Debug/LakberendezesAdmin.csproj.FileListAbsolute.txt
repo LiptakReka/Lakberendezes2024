@@ -242,3 +242,5 @@ C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesA
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddShops.baml
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddCateg.g.cs
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddCateg.baml
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddTypes.g.cs
+C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddTypes.baml

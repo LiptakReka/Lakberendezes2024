@@ -23,7 +23,7 @@ namespace LakberendezesAdmin.Converters
                 case "Bedroom": return "Hálószoba";
                 case "Bathroom": return "Fürdőszoba";
                 case "Lunchroom": return "Étkező";
-                default: return "Nincs megadva";
+                default: return value.ToString();
             }
         }
 

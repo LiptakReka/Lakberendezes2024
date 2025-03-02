@@ -1,0 +1,22 @@
+﻿<Window x:Class="LakberendezesAdmin.AddTypes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LakberendezesAdmin"
+        mc:Ignorable="d"
+        Title="AddTypes" Height="300" Width="350" Background="#FADADD">
+    <Grid Margin="20" >
+        <StackPanel Background="#F9E0D9">
+            <TextBlock Text="Kategória: " FontWeight="Bold"  Width="100"/>
+            <ComboBox x:Name="ProducttyperoomCombo" Width="250" Height="30" Margin="0,5" SelectedValuePath="categoryid" DisplayMemberPath="name"/>
+            <TextBlock Text="Bútortípus neve: " FontWeight="Bold"  Width="100"/>
+            <TextBox x:Name="ProducttypeNameTextBox" Width="250" Height="30" Margin="0,5"/>
+            <Button Content="Mentés" Width="100" Height="30"
+
+               Margin="0,10,0,0" Background="#FFDAB9" Foreground="black" Click="save_Click"
+
+               />
+        </StackPanel>
+    </Grid>
+</Window>

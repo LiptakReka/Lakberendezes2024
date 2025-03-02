@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:LakberendezesAdmin"
         mc:Ignorable="d"
         Title="AdminPanel" Height="600" Width="900"
+        Icon="assets/hatter.ico"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize"
         Background="#f0f0f0">

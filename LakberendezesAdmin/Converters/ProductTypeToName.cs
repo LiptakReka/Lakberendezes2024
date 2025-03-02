@@ -31,7 +31,9 @@ namespace LakberendezesAdmin.Converters
                     case 21: return "Étkező asztal";
                     case 22: return "Polc";
                     case 23: return "Szék";
-                    default: return "Nincs megadva";
+                    case 34: return "Zuhanyzó";
+                    case 35: return "Szekrény";
+                    default: return value.ToString();
                 }
             }
             return value.ToString();
@@ -57,7 +59,7 @@ namespace LakberendezesAdmin.Converters
                 case "Étkező asztal": return 21;
                 case "Polc": return 22;
                 case "Szék": return 23;
-                default: return null;
+                default: return value.ToString();
             }
         }
     }

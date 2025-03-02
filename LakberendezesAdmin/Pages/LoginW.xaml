@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:LakberendezesAdmin.Pages"
         mc:Ignorable="d"
          Title="Bejelentkezés" Height="400" Width="450"
+        Icon="../assets/hatter.ico"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="#f0f0f0">

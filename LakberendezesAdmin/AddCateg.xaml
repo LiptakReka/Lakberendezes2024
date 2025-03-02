@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LakberendezesAdmin"
         mc:Ignorable="d"
-        Title="AddCateg" Height="200" Width="300" Background="#FADADD">
+        Title="Új szoba" Height="200" Width="300" Background="#FADADD">
     <Grid Margin="20" >
         <StackPanel Background="#F9E0D9">
             <TextBlock Text="Helység neve: " FontWeight="Bold"  Width="100"/>

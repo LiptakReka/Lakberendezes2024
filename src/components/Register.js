@@ -16,7 +16,7 @@ const Register = () => {
     const handleregister = async (e) => {
         e.preventDefault();
 
-        // FormData létrehozása a fájl kezeléséhez
+
         const formData = new FormData();
         formData.append('fullname', fullname);
         formData.append('username', username);

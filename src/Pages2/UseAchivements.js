@@ -41,7 +41,7 @@ export function AchievementProvider({ children }) {
     );
 }
 
-// Hook az achievementek használatához
+
 export function useAchievements() {
     return useContext(AchievementContext);
 }

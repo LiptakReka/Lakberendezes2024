@@ -11,7 +11,7 @@ const Login = ({ setToken }) => {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    // 🔹 Token és user adatok mentése a localStorage-be
+
     const saveUserData = (token, user) => {
         localStorage.setItem("token", token);
         if (user) {

@@ -13,6 +13,7 @@ import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 import UserSetts from './Pages2/UserSetts';
+import ContactPage from './Pages2/Contact';
 import Cart from './Pages2/Cart';
 import { AchievementProvider } from './Pages2/UseAchivements';
 
@@ -63,6 +64,7 @@ const App = () => {
                         <Route path='/cart' element={<Cart/>}/>
                         <Route path="/about" element={<About />} />
                         <Route path="/planner" element={<Planner />} />
+                        <Route path="/contact" element={<ContactPage />} />
                         
                         <Route path="/settings" element={<UserSetts />} />
 

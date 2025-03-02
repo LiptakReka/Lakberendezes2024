@@ -1,6 +1,4 @@
 
-  
-  /* Hero szekció */
   .hero {
     position: relative;
     height: 80vh;
@@ -76,7 +74,7 @@
     transform: scale(1.1);
   }
   
-  /* Features szekció */
+
   .features {
     padding: 50px 20px;
     display: flex;
@@ -132,8 +130,7 @@
     color: white;
     margin-top: 50px;
   }
-  
-  /* ANIMÁCIÓK */
+
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

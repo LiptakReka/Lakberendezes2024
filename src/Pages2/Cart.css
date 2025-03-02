@@ -1,4 +1,4 @@
-/* Cart.css */
+
 .cart-sett-container {
     min-height: 100vh;
     background: linear-gradient(45deg, #d2b48c 0%, #8b4513 100%);
@@ -255,7 +255,7 @@
     border-radius: 6px;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .cart-sett-container {
         padding: 1rem;

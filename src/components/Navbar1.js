@@ -12,7 +12,7 @@ const Navbar1 = ({ token, username, onLogout }) => {
     const [profilePicture, setProfilePicture] = useState(null);
 
     useEffect(() => {
-        // 🔹 Betöltjük a felhasználó adatait a localStorage-ból
+
         const storedUser = JSON.parse(localStorage.getItem("user"));
         if (storedUser && storedUser.profilePictureUrl) {
             setProfilePicture(`https://localhost:7247${storedUser.profilePictureUrl}`);
@@ -65,14 +65,12 @@ const Navbar1 = ({ token, username, onLogout }) => {
                             <NavLink className="nav-link" to="/contact">Kapcsolat</NavLink>
                         </li>
 
-                        {/* 🔹 Sötét mód gomb */}
                         <li className="nav-item">
                             <button className="btn btn-outline-secondary" onClick={toggleDarkMode}>
                                 {darkMode ? <Sun /> : <Moon />}
                             </button>
                         </li>
 
-                        {/* 🔹 Profil ikon vagy profilkép */}
                         <li className="nav-item dropdown">
                             <button className="btn btn-outline-primary dropdown-toggle profile-btn" onClick={toggleDropdown}>
                                 {profilePicture ? (

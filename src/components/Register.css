@@ -1,4 +1,4 @@
-/* 🌟 Register Container */
+
 .register-container {
     min-height: 100vh;
     display: flex;
@@ -8,7 +8,7 @@
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-/* 🎴 Register Box */
+
 .register-box {
     width: 100%;
     max-width: 450px;
@@ -23,7 +23,7 @@
     transform: translateY(-5px);
 }
 
-/* 📝 Title */
+
 .register-title {
     font-size: 24px;
     color: #2c3e50;
@@ -32,7 +32,7 @@
     font-weight: 600;
 }
 
-/* 📋 Form */
+
 .register-form {
     display: flex;
     flex-direction: column;
@@ -67,7 +67,6 @@
     outline: none;
 }
 
-/* 🔘 Buttons */
 .register-button {
     background: #6a57d4;
     color: white;
@@ -103,7 +102,7 @@
     color: white;
 }
 
-/* ⚠️ Alerts */
+
 .alert {
     padding: 1rem;
     border-radius: 8px;
@@ -123,14 +122,14 @@
     border: 1px solid #fecaca;
 }
 
-/* 🎨 Icon Styling */
+
 .icon {
     width: 20px;
     height: 20px;
     color: #6a57d4;
 }
 
-/* 📱 Responsive Design */
+
 @media (max-width: 768px) {
     .register-container {
         padding: 1rem;
@@ -149,7 +148,7 @@
     }
 }
 
-/* 🌙 Dark Mode */
+
 @media (prefers-color-scheme: dark) {
     .register-container {
         background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);

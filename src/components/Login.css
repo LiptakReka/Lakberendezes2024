@@ -78,7 +78,7 @@
     --hoverlog:#7B6D8D;
   }
 
-/* 🎴 Login Card */
+
 .login-card {
     width: 100%;
     max-width: 400px;
@@ -93,7 +93,7 @@
     transform: translateY(-5px);
 }
 
-/* 📝 Title */
+
 .login-title {
     font-size: 24px;
     color: #2c3e50;
@@ -137,7 +137,7 @@
     outline: none;
 }
 
-/* 🔘 Buttons */
+
 .login-button {
     background: #6a57d4;
     color: white;
@@ -191,7 +191,7 @@
     color: #5438d7;
 }
 
-/* ⚠️ Alerts */
+
 .alert {
     padding: 1rem;
     border-radius: 8px;
@@ -212,7 +212,7 @@
     color: #6a57d4;
 }
 
-/* 📱 Responsive Design */
+
 @media (max-width: 768px) {
     .login-container {
         padding: 1rem;
@@ -227,7 +227,7 @@
     }
 }
 
-/* 🌙 Dark Mode */
+
 @media (prefers-color-scheme: dark) {
     .login-container {
         background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);

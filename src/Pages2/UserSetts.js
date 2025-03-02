@@ -72,14 +72,13 @@ export default function UserSetts() {
   <div className="tab-content">
     {user ? (
       <div className="user-info-container">
-        {/* Felhasználói adatok (felső rész) */}
+
         <div className="user-details">
           <p><strong><User2/> Név:</strong> {user.userName}</p>
           <p><strong><Mail/> Email:</strong> {user.email}</p>
           <p><strong><Key/> Jogosultság:</strong> {user.roles ? user.roles.join(", ") : "Nincs jogosultság"}</p>
         </div>
 
-        {/* Profilkép és achievementek egy sorban */}
         <div className="profile-achievement-section">
           <div className="profile-picture-container">
             <h3><Camera/> Profilkép módosítása</h3>

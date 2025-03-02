@@ -2,7 +2,7 @@
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #f5f5dc; /* Beige background */
+  background-color: #f5f5dc; 
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, color 0.3s;
@@ -31,7 +31,7 @@
 
 .tabs button.active,
 .tabs button:hover {
-  background-color: #d2b48c; /* Tan color */
+  background-color: #d2b48c; 
   color: white;
 }
 
@@ -43,7 +43,7 @@
 
 /*#region categ*/
 .category-button {
-  background-color: #d2b48c; /* Tan color */
+  background-color: #d2b48c; 
   color: white;
   padding: 12px 24px;
   margin: 0 10px;
@@ -59,7 +59,7 @@
 }
 
 .category-button:hover {
-  background-color: #c0a080; /* Darker tan */
+  background-color: #c0a080; 
 }
 /*#endregion*/
 
@@ -72,7 +72,7 @@
 .products {
   flex: 1;
   max-width: 300px;
-  background: #f5f5dc; /* Beige background */
+  background: #f5f5dc; 
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -86,7 +86,7 @@
 }
 
 .product-card {
-  border: 1px solid #d2b48c; /* Tan border */
+  border: 1px solid #d2b48c; 
   border-radius: 10px;
   margin-bottom: 15px;
   padding: 10px;
@@ -116,7 +116,7 @@
 /*#region buybtn*/
 .buy-btn {
   display: inline-block;
-  background-color: #c0a080; /* Darker tan */
+  background-color: #c0a080; 
   color: white;
   text-decoration: none;
   padding: 10px 16px;
@@ -132,7 +132,7 @@
 }
 
 .buy-btn:hover {
-  background-color: #a0522d; /* Sienna color */
+  background-color: #a0522d; 
 }
 
 .dark-mode .buy-btn:hover {
@@ -144,13 +144,13 @@
 .tervezoterulet {
   flex: 2;
   position: relative;
-  background: #e0d8b0; /* Slightly darker beige */
-  border: 2px solid #d2b48c; /* Tan border */
+  background: #e0d8b0;
+  border: 2px solid #d2b48c; 
   height: 80vh;
   border-radius: 10px;
   overflow: hidden;
   transition: background-color 0.3s;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .dark-mode .tervezoterulet {
@@ -228,7 +228,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px; /* Gombok közötti távolság */
+  gap: 20px;
   margin-bottom: 20px;
   background: rgba(255, 255, 255, 0.7);
   padding: 12px 20px;
@@ -250,21 +250,21 @@
 }
 
 .save-btn {
-  background-color: #8b4513; /* SaddleBrown color */
+  background-color: #8b4513; 
   color: white;
 }
 
 .save-btn:hover {
-  background-color: #a0522d; /* Sienna color */
+  background-color: #a0522d; 
 }
 
 .load-btn {
-  background-color: #d2b48c; /* Tan color */
+  background-color: #d2b48c; 
   color: black;
 }
 
 .load-btn:hover {
-  background-color: #c0a080; /* Darker tan */
+  background-color: #c0a080;
 }
 
 .plan-info {
@@ -299,7 +299,7 @@
 }
 
 .saved-plan-card button {
-  background-color: #d2b48c; /* Tan color */
+  background-color: #d2b48c; 
   color: white;
   border: none;
   padding: 10px 20px;
@@ -309,10 +309,10 @@
 }
 
 .saved-plan-card button:hover {
-  background-color: #c0a080; /* Darker tan */
+  background-color: #c0a080; 
 }
 
-/* Media Queries for Responsiveness */
+
 @media (max-width: 768px) {
   .products-and-planner {
     flex-direction: column;

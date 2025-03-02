@@ -1,4 +1,4 @@
-/* 📌 Beállítások fő konténer */
+
 .user-setts-container {
     min-height: 100vh;
     background: url('../components/img/settfile.jpg');
@@ -7,16 +7,16 @@
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-    margin-top: 80px;  /* Navbar alá kerül */
+    margin-top: 80px;  
 }
 
-/* 🌙 Sötét mód háttér */
+
 .dark-mode .user-setts-container {
     background: url('../components/img/b&w settfile.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* 🌟 Beállítások fő konténer */
+
 .settings-container {
     width: 90%;
     max-width: 900px;
@@ -28,14 +28,13 @@
     transition: all 0.3s ease-in-out;
 }
 
-/* 🌙 Sötét mód */
+
 .dark-mode .settings-container {
     background: rgba(34, 34, 34, 0.8);
     color: black;
     box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.1);
 }
 
-/* 🎨 Fülek (tabs) */
 .tabs {
     display: flex;
     justify-content: center;
@@ -66,7 +65,6 @@
     transform: scale(1.05);
 }
 
-/* 📌 Tab tartalom */
 .tab-content {
     padding: 25px;
     background: rgba(255, 255, 255, 0.9);
@@ -77,7 +75,7 @@
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 👤 Felhasználói adatok */
+
 .user-info-container {
     display: flex;
     flex-direction: column;
@@ -94,7 +92,7 @@
     color: white;
 }
 
-/* Profil és achievementek egymás mellett */
+
 .profile-achievement-section {
     display: flex;
     justify-content: space-between;
@@ -103,7 +101,7 @@
     width: 100%;
 }
 
-/* 📸 Profilkép feltöltés */
+
 .profile-picture-container {
     flex: 1;
     text-align: center;
@@ -128,7 +126,7 @@
     transform: scale(1.1);
 }
 
-/* 📤 Kép feltöltés */
+
 .upload-container {
     margin-top: 10px;
 }
@@ -151,7 +149,7 @@
     transform: scale(1.05);
 }
 
-/* 🏆 Achievement rendszer */
+
 .achievements-container {
     flex: 1;
     text-align: center;
@@ -198,7 +196,7 @@
     font-style: italic;
 }
 
-/* 🔐 Jelszó módosítás */
+
 .password-change {
     display: flex;
     flex-direction: column;
@@ -226,7 +224,7 @@
     box-shadow: 0px 0px 5px rgba(106, 87, 212, 0.5);
 }
 
-/* 📱 Reszponzivitás */
+
 @media (max-width: 768px) {
     .profile-achievement-section {
         flex-direction: column;

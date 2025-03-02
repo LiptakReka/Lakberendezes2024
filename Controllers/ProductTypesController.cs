@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Lakberendezes.Data;
 using Lakberendezes.Models;
 using Microsoft.AspNetCore.Authorization;
+using ClosedXML.Excel;
 
 namespace Lakberendezes.Controllers
 {
@@ -76,15 +77,60 @@ namespace Lakberendezes.Controllers
 
      
         [HttpPost]
-        public async Task<ActionResult<ProductType>> PostProductType(ProductType productType)
+        public async Task<ActionResult<ProductType>> PostProductType(ProductTypesDTO productType)
         {
-            _context.producttype.Add(productType);
+            if (productType == null)
+            {
+                return BadRequest("Az üzlet adatok hiányoznak.");
+            }
+
+            var types = new ProductType
+            {
+                categoryid = productType.categoryid,
+                name = productType.name,
+
+            };
+
+            _context.producttype.Add(types);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductType", new { id = productType.id }, productType);
+            return CreatedAtAction("Getproducttype", new { id = types.id }, types);
+        }
+        [HttpGet("Export")]
+        public IActionResult ExportTocsv()
+        {
+            var types = _context.producttype.ToList();
+
+            if (types == null || !types.Any())
+            {
+                return NotFound("Nincsenek bútortípusok");
+            }
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Bútortípusok");
+
+                worksheet.Cell(1, 1).Value = "Azonosító";
+                worksheet.Cell(1, 2).Value = "Név";
+
+                int row = 2;
+                foreach (var type in types)
+                {
+                    worksheet.Cell(row, 1).Value = type.id;
+                    worksheet.Cell(row, 2).Value = type.name;
+                    row++;
+
+                }
+                worksheet.Columns().AdjustToContents();
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    var content = stream.ToArray();
+                    return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "butortipusok.xlsx");
+                }
+            }
+
         }
 
-    
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductType(int id)
         {

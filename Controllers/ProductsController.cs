@@ -53,7 +53,7 @@ namespace Lakberendezes.Controllers
 
             return Ok(products);
         }
-<<<<<<< HEAD
+
 
         [HttpGet("typeandroom")]
         public async Task<ActionResult<IEnumerable<Product>>>GetProductsByRoomAndType(int roomid, int typeid)
@@ -70,8 +70,7 @@ namespace Lakberendezes.Controllers
                 return StatusCode(500, $"Belső szerver hiba : {ex.Message}");
             }
         }
-=======
->>>>>>> 5fdea6799604db3f88eb69efc119cb025c9aaeaa
+
         //[Authorize(Roles ="USER")]
         [HttpGet("search/{name}")]
         

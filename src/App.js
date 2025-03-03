@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Navbar1 from './components/Navbar1';
-import Home from "./Pages2/Home";
-import Planner from "./Pages2/Planner";
-import About from "./Pages2/About";
+import Home from "./Pages2/Home/Home";
+import Planner from "./Pages2/Planner/Planner";
+import About from "./Pages2/About/About";
 import { Toaster } from 'react-hot-toast';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,10 +12,10 @@ import Login from './components/Login';
 import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
-import UserSetts from './Pages2/UserSetts';
-import ContactPage from './Pages2/Contact';
-import Cart from './Pages2/Cart';
-import { AchievementProvider } from './Pages2/UseAchivements';
+import UserSetts from './Pages2/Usersettings/UserSetts';
+import ContactPage from '../src/Pages2/Contact/Contact';
+import Cart from './Pages2/Cart/Cart';
+import { AchievementProvider } from './Pages2/Achievement/UseAchivements';
 
 const App = () => {
     const [token, setToken] = useState(localStorage.getItem("token") || null);

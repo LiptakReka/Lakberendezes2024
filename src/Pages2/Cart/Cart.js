@@ -5,7 +5,7 @@ import {  ShoppingCart } from 'lucide-react'
 import axios from 'axios'
 import './Cart.css'
 import { PropagateLoader } from 'react-spinners'
-import { useAchievements } from './UseAchivements'
+import { useAchievements } from '../Achievement/UseAchivements'
 import { enqueueSnackbar } from 'notistack'
 
 export default function Cart() {

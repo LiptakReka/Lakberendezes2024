@@ -1,6 +1,6 @@
 import { TriangleRight, Trophy } from "lucide-react";
 import "./Achievement.css";
-import { useAchievements } from "../Pages2/UseAchivements";
+import { useAchievements } from "../Achievement/UseAchivements";
 
 export default function Achievement(){
     const {achievements}= useAchievements();

@@ -3,7 +3,7 @@ import axios from "axios";
 import "./ProfilePicture.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAchievements } from "../Pages2/UseAchivements";
+import { useAchievements } from "../../src/Pages2/Achievement/UseAchivements";
 import { enqueueSnackbar } from "notistack";
 
 const ProfilePictureUpload = () => {

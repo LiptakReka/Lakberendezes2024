@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { enqueueSnackbar } from "notistack";
-import UseCart from "./UseCart";
-import {useAchievements} from "../Pages2/UseAchivements";
+import UseCart from "../Cart/UseCart";
+import {useAchievements} from "../Achievement/UseAchivements";
 
 const Planner = () => {
   const [showDropdown, setShowDropdown]=useState(false);

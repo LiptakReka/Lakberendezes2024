@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Settings, Moon, Sun, User, Mail,  Lock, Shield, TriangleRight, List,  User2, Key, Camera, Trophy } from "lucide-react";
 import axios from 'axios';
-import "../Pages2/Usersetts.css";
-import ProfilePictureUpload from '../components/ProfilePicture';
-import { useAchievements } from './UseAchivements';
+import "./Usersetts.css";
+import ProfilePictureUpload from '../../components/ProfilePicture';
+import { useAchievements } from '../Achievement/UseAchivements';
 
 
 export default function UserSetts() {

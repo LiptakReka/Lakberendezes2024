@@ -1,7 +1,7 @@
 
 .user-setts-container {
     min-height: 100vh;
-    background: url('../components/img/settfile.jpg');
+    background: url('../../components/img/settfile.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@
 
 
 .dark-mode .user-setts-container {
-    background: url('../components/img/b&w settfile.jpg') no-repeat center center fixed;
+    background: url('../../components/img/b&w settfile.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 

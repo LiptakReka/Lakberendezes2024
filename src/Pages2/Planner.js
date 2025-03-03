@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./Planner.css"; 
 import { X, Plus, Minus, Folder, Calendar, Bookmark } from "lucide-react";
 import { toast } from "react-toastify";
@@ -22,10 +22,6 @@ const Planner = () => {
   const [selectedType, setSelectedType] = useState(null);
   const [selectedRoom, setSelectedRoom] = useState(1);
 
-  useEffect(() => {
-    fetchProductsByRoom(1);
-    fetchSavedPlans();
-  }, []);
 
   const fetchProductTypes = async (roomid) => {
     try {
@@ -47,7 +43,7 @@ const Planner = () => {
     }
   };
 
-  const fetchProductsByRoom = async (roomid) => {
+  const fetchProductsByRoom = useCallback(async (roomid) => {
     try {
       const response = await fetch(`https://localhost:7247/api/Products/szobák?roomid=${roomid}`, {
         headers: {
@@ -68,8 +64,11 @@ const Planner = () => {
       console.error('Hálózati probléma:', error);
       enqueueSnackbar('Hiba történt a termékek lekérésekor.', { variant: 'error' });
     }
-  };
-
+  },[]);
+    useEffect(() => {
+      fetchProductsByRoom(1);
+      fetchSavedPlans();
+    }, [fetchProductsByRoom]);
   const fetchFilteredProducts = async (roomid, typeid) => {
     try {
       let url = `https://localhost:7247/api/Products/szobák?roomid=${roomid}`;
@@ -95,10 +94,10 @@ const Planner = () => {
     }
   };
 
-  const handleTypeSelect = (typeId) => {
+  const handleTypeSelect = (typeId, typeName) => {
     const newTypeId = typeId === selectedType ? null : typeId;
     setSelectedType(newTypeId);
-    setdropdownlabel(newTypeId ? typeNmaes [newTypeId] : "Válassz terméktípust");
+    setdropdownlabel(newTypeId ? typeNmaes[newTypeId] : "Válassz terméktípust");
     setShowDropdown(false);
     fetchFilteredProducts(selectedRoom, newTypeId);
   };
@@ -184,8 +183,6 @@ const Planner = () => {
     13: "Éjjeliszekrény",
     14: "Szekrény",
     16: "Tükör",
-    19:"Törölköző",
-    20: "Kiegészítők",
     21:"Étkezőasztal",
     22:"Polc",
     23:"Szék"
@@ -301,7 +298,7 @@ const Planner = () => {
           {Array.isArray(types) && types.map(type => (
             <button 
               key={type.id} 
-              onClick={() => handleTypeSelect(type.id)} 
+              onClick={() => handleTypeSelect(type.id, type.name)} 
               className={`type-button ${selectedType === type.id ? 'active' : ''}`}
             >
               {typeNmaes[type.id] || type.name}

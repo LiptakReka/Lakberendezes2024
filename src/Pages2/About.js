@@ -170,14 +170,7 @@ export default function AboutPage() {
             <p>
               A jövőbeli terveink között szerepel a RoomLab felületének folyamatos modernizálása és felhasználóbarátabbá tétele, miközben megőrizzük annak szórakoztató és hasznos jellegét. Célunk egy olyan platform kialakítása, amely nemcsak praktikus, hanem élvezetes élményt is nyújt a felhasználóknak.
             </p>
-            <div className="future-items">
-              <div className="future-item">
-                <h3 className="future-title">Típus szerinti szűrés</h3>
-                <p className="future-description">
-                  A keresési és szűrési funkciók bővítése típus szerinti szűréssel, hogy a felhasználók még könnyebben megtalálhassák a számukra ideális bútorokat.
-                </p>
-              </div>
-              
+           
               <div className="future-item">
                 <h3 className="future-title">UX/UI fejlesztések</h3>
                 <p className="future-description">
@@ -192,7 +185,6 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-          </div>
         </section>
 
         <section className="cta-section">

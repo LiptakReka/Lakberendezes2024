@@ -9,7 +9,9 @@
     position: relative;
     overflow: hidden;
 }
-
+.dark-mode .cart-sett-container {
+    background: linear-gradient(45deg, #333 0%, #d2b48c 100%);
+}
 .cart-sett-container::before {
     content: '';
     position: absolute;
@@ -37,7 +39,14 @@
     position: relative;
     z-index: 1;
 }
-
+.dark-mode .cart-container {
+    background: rgba(156, 149, 149, 0.95);
+    box-shadow: 
+        0 8px 32px rgba(105, 99, 95, 0.3),
+        0 0 0 1px rgba(102, 100, 100, 0.1),
+        inset 0 0 32px rgba(139, 69, 19, 0.1);
+    border: 1px solid rgba(94, 88, 88, 0.2);
+}
 @keyframes gradientMove {
     0% {
         transform: translate(-50%, -50%) rotate(0deg);
@@ -64,8 +73,12 @@
     color: #8b4513;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #d2b48c;
+    border-bottom: 2px solid #222;
     font-weight: 600;
+}
+.dark-mode .cart-title {
+    color: #222;
+
 }
 
 .cart-title svg {
@@ -74,7 +87,7 @@
 
 .empty-cart-message {
     text-align: center;
-    color: #666;
+    color: black;
     font-size: 1.1rem;
     padding: 2rem;
 }
@@ -125,7 +138,7 @@
 }
 
 .cart-item-name {
-    color: #d2b48c;
+    color: #222;
     font-weight: 500;
     margin-top: 0.25rem;
 }
@@ -144,9 +157,12 @@
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-
+.dark-mode .buy-button a {
+    background-color: #4b4949;
+    color: #fff;
+}
 .buy-button a:hover {
-    background-color: #F2CC8F;
+    background-color: #928f8f;
 }
 
 .shops {

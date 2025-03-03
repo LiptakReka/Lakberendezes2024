@@ -41,17 +41,15 @@
   margin-bottom: 20px;
 }
 .product-types {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-  padding: 15px;
+  background-color: #f9f5eb;
+  border: 1px solid #e6d9c0;
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: slideDown 0.3s ease-out forwards;
-  overflow: hidden;
-}
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 8px;
+  }
+
 @keyframes slideDown {
   from {
     max-height: 0;
@@ -71,6 +69,7 @@
   margin: 20px auto;
   width: 250px;
 }
+
 .dropdown-button{
   background-color: #d2b48c;
   color: white;
@@ -82,24 +81,51 @@
   font-size: 1rem;
   text-align: left;
   transition: all 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.dark-mode .dropdown-button{
+  background-color: #94778b;
+}
+.dropdown-button::after{
+  content: "▼";
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+.dropdown-button:hover{
+  background-color: #c0a080;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.dark-mode .dropdown-button:hover{
+  background-color: #7d98a1;
 }
 .type-button{
   background: linear-gradient(to bottom, #d2b48c, #e9ecef);
-  border: 1px solid #ced4da;
-  border-radius: 8px;
-  padding: 10px 16px;
-  margin: 5px;
-  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #d8cdb5;
+  color: #6d5d47;
   font-weight: 500;
-  color:#495057;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
+  padding: 12px 24px;
+  transition: all 0.25s ease;
+  border-radius: 8px;
+}
+.dark-mode .type-button{
+  background: linear-gradient(to bottom, #94778b, #e9ecef);
+  border: 1px solid #d8cdb5;
+  color: #333;
 }
 
 .type-button:hover{
-  background: linear-gradient(to bottom,#e9ecef, #dee2e6);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom,#e9ecef, #d8cdb5);
+  color: black;
+  border-color: #207a50;
+}
+.dark-mode .type-button:hover{
+  background: linear-gradient(to bottom,#e9ecef, #776c53);
+  color: black;
+  border-color: #207a50;
 }
 
 .type-button.active{
@@ -128,6 +154,9 @@
 
 .category-button:hover {
   background-color: #c0a080; 
+}
+.dark-mode .category-button:hover {
+  background-color: #7d98a1;
 }
 /*#endregion*/
 
@@ -160,6 +189,7 @@
   padding: 10px;
   text-align: center;
   background-color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
   color: black;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -218,7 +248,7 @@
   border-radius: 10px;
   overflow: hidden;
   transition: background-color 0.3s;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  box-shadow:inset 0 0 20px rgba(0, 0, 0, 0.5); 
 }
 
 .dark-mode .tervezoterulet {

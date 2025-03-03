@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 27. 12:05
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.2.4
+-- Létrehozás ideje: 2025. Már 03. 16:03
+-- Kiszolgáló verziója: 10.4.32-MariaDB
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -89,6 +89,7 @@ CREATE TABLE `achievements` (
 INSERT INTO `achievements` (`id`, `user_Id`, `title`, `description`, `icon`, `created_at`) VALUES
 ('082a68e8-caba-45e1-a967-451e983c0c8e', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Első terv!', 'Elmentetted az első terved!', '🏠', '2025-02-20 05:53:01'),
 ('0f5ce5c0-6ffd-4169-b1ab-d2661c3efe6d', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Szépségszalon', 'Profilképed megváltozott', '💄', '2025-02-20 05:39:48'),
+('84413a32-0e36-48d6-8164-cccfc2916646', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Első terv!', 'Elmentetted az első terved!', '🏠', '2025-03-01 18:19:44'),
 ('9b585a74-0c12-4c27-8513-12f79f93db18', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Kosár elküldve!', 'Összegzés elküldve', '🛒', '2025-02-20 05:46:54');
 
 -- --------------------------------------------------------
@@ -181,20 +182,20 @@ CREATE TABLE `aspnetusers` (
   `Email` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `fullname` varchar(255) DEFAULT NULL COMMENT 'teljes neve ',
   `datet` timestamp NULL DEFAULT current_timestamp() COMMENT 'Mikor regisztrált',
-  `AccessFailedCount` int(11) NOT NULL DEFAULT 0,
+  `AccessFailedCount` int(11) DEFAULT 0,
   `ConcurrencyStamp` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `EmailConfirmed` tinyint(1) NOT NULL DEFAULT 0,
+  `EmailConfirmed` tinyint(1) DEFAULT 0,
   `LockoutEnabled` tinyint(1) NOT NULL DEFAULT 0,
   `LockoutEnd` datetime(6) DEFAULT NULL,
   `NormalizedEmail` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `NormalizedUserName` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `PasswordHash` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `PhoneNumber` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `PhoneNumberConfirmed` tinyint(1) NOT NULL DEFAULT 0,
+  `PhoneNumberConfirmed` tinyint(1) DEFAULT 0,
   `SecurityStamp` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `TwoFactorEnabled` tinyint(1) NOT NULL DEFAULT 0,
+  `TwoFactorEnabled` tinyint(1) DEFAULT 0,
   `UserName` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `ProfilePictureUrl` varchar(255) DEFAULT NULL
+  `ProfilePictureUrl` varchar(255) DEFAULT 'default-profile.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
@@ -203,7 +204,7 @@ CREATE TABLE `aspnetusers` (
 
 INSERT INTO `aspnetusers` (`Id`, `Email`, `fullname`, `datet`, `AccessFailedCount`, `ConcurrencyStamp`, `EmailConfirmed`, `LockoutEnabled`, `LockoutEnd`, `NormalizedEmail`, `NormalizedUserName`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `SecurityStamp`, `TwoFactorEnabled`, `UserName`, `ProfilePictureUrl`) VALUES
 ('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'liptakr@kkszki.hu', 'Liptakreka', '2025-02-13 18:01:14', 0, '348b2f1c-42da-41d1-8e6e-fcd65b563845', 0, 1, NULL, 'LIPTAKR@KKSZKI.HU', 'ADMIN', 'AQAAAAIAAYagAAAAEF1/pWZecGAGJobGegXVkOehrW7wBFGETuiv/05sQWHiZmK+61U3ZqD+LDPfvAGQJg==', NULL, 0, 'ST3MQFBDTQUERGATIJKQYOZ4MODBU6X6', 0, 'Admin', '/profile_pictures/c8fc324b-d721-4601-a0e8-744eeaef629c_hatter.jpg'),
-('bc6f0ee3-c821-4bc9-939f-13af624db253', 'liptakreka4@gmail.com', 'Liptakr', '2025-02-02 10:57:33', 0, '78f30ea7-f6f1-4f27-a05b-b5c8734375fc', 0, 1, NULL, 'LIPTAKREKA4@GMAIL.COM', 'LIPTAKREKA4@GMAIL.COM', 'AQAAAAIAAYagAAAAECUODUkcc2eD8ABInNUtThSROitFTjsr/HD+Wg3qv7mabscFC0GZr4P16Pg09Wdevw==', NULL, 0, '4DOXM6GZ2U7VB5OQ3EEREKCXM7TF45XD', 0, 'liptakreka4@gmail.com', '');
+('bc6f0ee3-c821-4bc9-939f-13af624db253', 'liptakreka4@gmail.com', 'Liptakr', '2025-02-02 10:57:33', 0, 'f5fd6b16-d6db-44b7-9c70-75cba11c7ec0', 0, 1, NULL, 'LIPTAKREKA4@GMAIL.COM', 'LIPTAKREKA4@GMAIL.COM', 'AQAAAAIAAYagAAAAECUODUkcc2eD8ABInNUtThSROitFTjsr/HD+Wg3qv7mabscFC0GZr4P16Pg09Wdevw==', NULL, 0, '4DOXM6GZ2U7VB5OQ3EEREKCXM7TF45XD', 0, 'liptakreka4@gmail.com', '/profile_pictures/adcf2f2d-e6f1-4b0f-b660-b5ec326e1047_homee.png');
 
 -- --------------------------------------------------------
 
@@ -296,7 +297,18 @@ INSERT INTO `planproducts` (`id`, `productid`, `position`, `scale`, `userplanid`
 (120, 157, '-154, 112', 0.9, 62),
 (121, 145, '794, 95', 0.5, 62),
 (122, 144, '157, 516', 0.5, 62),
-(123, 138, '255, 264', 0.9, 62);
+(123, 138, '255, 264', 0.9, 62),
+(124, 52, '100, 100', 0.5, 63),
+(125, 55, '-153, 582', 0.7, 64),
+(126, 172, '225, 586', 0.8, 64),
+(127, 80, '51, 592', 0.5, 64),
+(128, 96, '1044, 485', 0.8, 64),
+(129, 211, '673, 599', 0.5, 64),
+(130, 55, '-153, 582', 0.7, 65),
+(131, 172, '225, 586', 0.8, 65),
+(132, 80, '51, 592', 0.5, 65),
+(133, 96, '1044, 485', 0.8, 65),
+(134, 211, '673, 599', 0.5, 65);
 
 -- --------------------------------------------------------
 
@@ -390,26 +402,6 @@ INSERT INTO `products` (`id`, `name`, `price`, `shoplink`, `imageurl`, `shopid`,
 (109, 'Fali Tükör Malta', 24990.00, 'https://www.moebelix.hu/p/fali-tuekoer-malta-001803031823', 'https://i.postimg.cc/MpQqQFPw/malta-removebg-preview.png', 2, 16, 4),
 (110, 'Fali Tükör Kastor', 9990.00, 'https://www.moebelix.hu/p/ondega-fali-tuekoer-kastor-002757019401', 'https://i.postimg.cc/rm3LsG1s/kastor-removebg-preview.png', 2, 16, 4),
 (111, 'Tükör Spring\r\n', 24990.00, 'https://www.moebelix.hu/p/tuekoer-spring-001803071305', 'https://i.postimg.cc/HWyq3y00/spring-removebg-preview.png', 2, 16, 4),
-(112, 'Törölköző Katharina', 4990.00, 'https://www.moebelix.hu/p/toeroelkoezo-katharina-007659000406', 'https://i.postimg.cc/dQyy0KpB/Kathrina-removebg-preview.png', 2, 19, 4),
-(113, 'Törölköző Flora', 3990.00, 'https://www.moebelix.hu/p/james-wood-toeroelkoezo-flora-006792010806', 'https://i.postimg.cc/HkxWVwjg/jamesw-oodflora-removebg-preview.png', 2, 19, 4),
-(114, 'Törölköző Sandra', 3000.00, 'https://www.moebelix.hu/p/james-wood-toeroelkoezo-sandra-003002000204', 'https://i.postimg.cc/7Yhjzm1m/sandra-removebg-preview.png', 2, 19, 4),
-(115, 'Törölköző Rocky 70/140cm', 4990.00, 'https://www.moebelix.hu/p/james-wood-toeroelkoezo-rocky-70-140cm-003520000202', 'https://i.postimg.cc/CxVt2ST6/rocky-removebg-preview.png', 2, 19, 4),
-(116, 'Törölköző Liliane', 3490.00, 'https://www.moebelix.hu/p/ondega-toeroelkoezo-liliane-003520000802', 'https://i.postimg.cc/MHV50fTZ/liliane-removebg-preview.png', 2, 19, 4),
-(117, 'Törölköző Liliane/2', 3490.00, 'https://www.moebelix.hu/p/ondega-toeroelkoezo-liliane-003520000803', 'https://i.postimg.cc/fT5XGf6n/liliane2-removebg-preview.png', 2, 19, 4),
-(118, 'TÖRÖLKÖZŐ Flora/2', 3990.00, 'https://www.moebelix.hu/p/james-wood-toeroelkoezo-flora-006792010805', 'https://i.postimg.cc/rw3dTnjb/flora-removebg-preview.png', 2, 19, 4),
-(119, 'Törölköző Liliane/3', 3490.00, 'https://www.moebelix.hu/p/ondega-toeroelkoezo-liliane-003520000804', 'https://i.postimg.cc/9fHW1vJW/liliane3-removebg-preview.png', 2, 19, 4),
-(120, 'Törölköző Rocky 70/140cm /2', 4990.00, 'https://www.moebelix.hu/p/james-wood-toeroelkoezo-rocky-70-140cm-003520000204', 'https://i.postimg.cc/52LJHs1D/rocky2-removebg-preview.png', 2, 19, 4),
-(121, 'Törölköző Flora/3', 3990.00, 'https://www.moebelix.hu/p/james-wood-toeroelkoezo-flora-006792010804', 'https://i.postimg.cc/Wz0RD3cg/flora2-removebg-preview.png', 2, 19, 4),
-(122, 'Szappanadagoló Allstar Minas 23030100', 1690.00, 'https://www.moebelix.hu/p/szappanadagolo-allstar-minas-23030100-004332074201', 'https://i.postimg.cc/J7HXPdVG/alistar-removebg-preview.png', 2, 20, 4),
-(123, 'Szappanadagoló Basic 24759100', 7490.00, 'https://www.moebelix.hu/p/szappanadagolo-basic-24759100-004332074401', 'https://i.postimg.cc/02MFcvZh/basic-removebg-preview.png', 2, 20, 4),
-(124, 'Szappanadagoló Allstar Olinda 70192400/2', 2290.00, 'https://www.moebelix.hu/p/szappanadagolo-allstar-olinda-70192400-004332073901', 'https://i.postimg.cc/6pws3SLS/olinda-removebg-preview.png', 2, 20, 4),
-(125, 'Szappanadagoló Static Loc Plus Pavia 24896100', 6490.00, 'https://www.moebelix.hu/p/szappanadagolo-static-loc-plus-pavia-24896100-004332074501', 'https://i.postimg.cc/nLzP9tsd/pavia-removebg-preview.png', 2, 20, 4),
-(126, 'Szenzoros Szappanadagoló Kader', 4990.00, 'https://www.moebelix.hu/p/bono-szenzoros-szappanadagolo-kader-0079070148', 'https://i.postimg.cc/CMD6q71V/kader-removebg-preview.png', 2, 20, 4),
-(127, 'Szappanadagoló Delia', 3790.00, 'https://www.moebelix.hu/p/luca-bessoni-szappanadagolo-delia-0046281426', 'https://i.postimg.cc/TPptYqSF/delia-removebg-preview.png', 2, 20, 4),
-(128, 'Folyékonyszappan Adagoló Line Chilly Family', 1990.00, 'https://www.moebelix.hu/p/folyekonyszappan-adagolo-line-chilly-family-000283002001', 'https://i.postimg.cc/6pTrd60G/chillyfam-removebg-preview.png', 2, 20, 4),
-(129, 'Szappantartó Allstar Olinda 70201400/3', 1290.00, 'https://www.moebelix.hu/p/szappantarto-allstar-olinda-70201400-004332074003', 'https://i.postimg.cc/7hpBpCXd/olinda2-removebg-preview.png', 2, 20, 4),
-(130, 'Szappantartó Allstar Olinda 70193400/4', 1290.00, 'https://www.moebelix.hu/p/szappantarto-allstar-olinda-70193400-004332073903', 'https://i.postimg.cc/prTTgryf/olinda3-removebg-preview.png', 2, 20, 4),
-(131, 'Szappantartó Line Chilly Family/2', 2290.00, 'https://www.moebelix.hu/p/szappantarto-line-chilly-family-000283002003', 'https://i.postimg.cc/wvxTmMXC/chillyfam2-removebg-preview.png', 2, 20, 4),
 (132, 'Kárpitozott Ágy Padua 180/200 Cm', 179900.00, 'https://www.moebelix.hu/p/karpitozott-agy-padua-180-200-cm-002216001301', 'https://i.postimg.cc/GhTGMLV0/padua-removebg-preview.png', 2, 11, 3),
 (133, 'Kihúzható Ágy Storm', 149900.00, 'https://www.moebelix.hu/p/kihuzhato-agy-storm-002561000101', 'https://i.postimg.cc/RVtXD5bY/storm-removebg-preview.png', 2, 11, 3),
 (134, 'Tárolós Ágy Till 140/200 Cm', 229900.00, 'https://www.moebelix.hu/p/tarolos-agy-till-140-200-cm-000528021003', 'https://i.postimg.cc/v8Jv92Ht/till-removebg-preview.png', 2, 11, 3),
@@ -505,7 +497,16 @@ INSERT INTO `products` (`id`, `name`, `price`, `shoplink`, `imageurl`, `shopid`,
 (224, 'Szék BOS 10D grafit', 24800.00, 'https://butorline.hu/szek-bos-10d-grafit', 'https://i.postimg.cc/44vMyNrF/bos10d-removebg-preview.png', 13, 23, 5),
 (225, 'Szék BOS 4D fekete', 23900.00, 'https://butorline.hu/szek-bos-4d-fekete', 'https://i.postimg.cc/Xq84kKXr/bos-4d-removebg-preview.png', 13, 23, 5),
 (226, 'Szék LUNA 1 sonoma tölgy / 16B', 29500.00, 'https://butorline.hu/szek-luna-1-sonoma-toelgy-16b', 'https://i.postimg.cc/TPY7KVvk/luna-removebg-preview.png', 13, 23, 5),
-(227, 'Szék KD49D dió', 23200.00, 'https://butorline.hu/szek-kd49d-dio', 'https://i.postimg.cc/9QpV3YB1/kd49d-removebg-preview.png', 13, 22, 5);
+(227, 'Szék KD49D dió', 23200.00, 'https://butorline.hu/szek-kd49d-dio', 'https://i.postimg.cc/9QpV3YB1/kd49d-removebg-preview.png', 13, 22, 5),
+(231, 'Pt40w', 73990.00, 'https://www.moebelix.hu/p/zuhanykabin-pt40w-001955016601', 'https://files.catbox.moe/bn58f4.png', 2, 34, 4),
+(232, 'B8090', 89990.00, 'https://www.moebelix.hu/p/zuhanykabin-b8090m-001955000101', 'https://files.catbox.moe/11fnwc.png', 2, 34, 4),
+(233, 'Tc01', 199900.00, 'https://www.moebelix.hu/p/zuhanykabin-tc01-001955006801', 'https://files.catbox.moe/klvbgt.png', 2, 34, 4),
+(234, 'SLIM SL3', 20300.00, 'https://butorline.hu/alacsony-fuerdoszoba-szekreny-slim-sl3-artisan-toelgy', 'https://files.catbox.moe/k1quf6.png', 13, 35, 4),
+(235, 'SLIM SL1', 37300.00, 'https://butorline.hu/magas-fuerdoszoba-szekreny-slim-sl1-feher-laminalt', 'https://files.catbox.moe/vydabz.png', 13, 35, 4),
+(236, 'HILL 800', 164900.00, 'https://butorline.hu/fuerdoszoba-szekreny-hill-800-arany-toelgy', 'https://files.catbox.moe/y3t5m2.png', 13, 35, 4),
+(237, 'Calvi', 29990.00, 'https://www.moebelix.hu/p/mosdo-alatti-szekreny-calvi-001803056302', 'https://files.catbox.moe/c9j4mg.png', 2, 35, 4),
+(238, 'Pearl', 39990.00, 'https://www.moebelix.hu/p/pearl-new-snol-111-mosdo-alatti-szekreny-001803071701', 'https://files.catbox.moe/uyfcok.png', 2, 35, 4),
+(239, 'Mura', 239900.00, 'https://www.moebelix.hu/p/mosdo-alatti-szekreny-mura-000780000412', 'https://files.catbox.moe/ywm53w.png', 2, 35, 4);
 
 -- --------------------------------------------------------
 
@@ -531,11 +532,11 @@ INSERT INTO `producttype` (`id`, `categoryid`, `name`) VALUES
 (13, 3, 'Bedside table'),
 (14, 3, 'Wardrobe'),
 (16, 4, 'Mirror'),
-(19, 4, 'Towel'),
-(20, 4, 'Accessories'),
 (21, 5, 'Dining Table'),
 (22, 5, 'Shelf'),
-(23, 5, 'Chair');
+(23, 5, 'Chair'),
+(34, 4, 'Zuhanyzó'),
+(35, 4, 'Szekrény');
 
 -- --------------------------------------------------------
 
@@ -587,11 +588,11 @@ CREATE TABLE `userplan` (
 --
 
 INSERT INTO `userplan` (`id`, `userid`, `plandata`, `createdat`) VALUES
-(57, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":52,\"x\":-170,\"y\":577,\"scale\":0.6000000000000001},{\"productId\":98,\"x\":1051,\"y\":431,\"scale\":0.8},{\"productId\":173,\"x\":268,\"y\":582,\"scale\":0.7999999999999999},{\"productId\":72,\"x\":53,\"y\":604,\"scale\":0.5},{\"productId\":209,\"x\":719,\"y\":573,\"scale\":0.5}]', '2025-02-19 19:31:56'),
 (59, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":23,\"x\":-46,\"y\":425,\"scale\":0.5},{\"productId\":26,\"x\":450,\"y\":395,\"scale\":0.5},{\"productId\":43,\"x\":841,\"y\":21,\"scale\":0.5},{\"productId\":49,\"x\":-306,\"y\":115,\"scale\":0.5},{\"productId\":177,\"x\":1196,\"y\":374,\"scale\":1.0999999999999999},{\"productId\":186,\"x\":184,\"y\":392,\"scale\":0.5},{\"productId\":188,\"x\":148,\"y\":616,\"scale\":0.8999999999999999}]', '2025-02-19 20:37:04'),
 (60, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-138,\"y\":294,\"scale\":0.8999999999999999},{\"productId\":145,\"x\":821,\"y\":297,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":386,\"y\":512,\"scale\":0.8999999999999999}]', '2025-02-19 20:40:54'),
 (61, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-154,\"y\":112,\"scale\":0.9},{\"productId\":145,\"x\":794,\"y\":95,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":255,\"y\":264,\"scale\":0.9}]', '2025-02-20 06:39:02'),
-(62, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-154,\"y\":112,\"scale\":0.9},{\"productId\":145,\"x\":794,\"y\":95,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":255,\"y\":264,\"scale\":0.9}]', '2025-02-20 06:52:59');
+(62, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-154,\"y\":112,\"scale\":0.9},{\"productId\":145,\"x\":794,\"y\":95,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":255,\"y\":264,\"scale\":0.9}]', '2025-02-20 06:52:59'),
+(64, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":55,\"x\":-153,\"y\":582,\"scale\":0.7},{\"productId\":172,\"x\":225,\"y\":586,\"scale\":0.7999999999999999},{\"productId\":80,\"x\":51,\"y\":592,\"scale\":0.5},{\"productId\":96,\"x\":1044,\"y\":485,\"scale\":0.7999999999999999},{\"productId\":211,\"x\":673,\"y\":599,\"scale\":0.5}]', '2025-03-01 19:19:42');
 
 -- --------------------------------------------------------
 
@@ -744,19 +745,37 @@ ALTER TABLE `aspnetuserclaims`
 -- AUTO_INCREMENT a táblához `kategories`
 --
 ALTER TABLE `kategories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT a táblához `planproducts`
 --
 ALTER TABLE `planproducts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+
+--
+-- AUTO_INCREMENT a táblához `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Egyedi azonosító bútoroknak', AUTO_INCREMENT=240;
+
+--
+-- AUTO_INCREMENT a táblához `producttype`
+--
+ALTER TABLE `producttype`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT a táblához `shops`
+--
+ALTER TABLE `shops`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT a táblához `userplan`
 --
 ALTER TABLE `userplan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -803,7 +822,7 @@ ALTER TABLE `aspnetusertokens`
 -- Megkötések a táblához `planproducts`
 --
 ALTER TABLE `planproducts`
-  ADD CONSTRAINT `product` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `products` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `products`
@@ -811,7 +830,7 @@ ALTER TABLE `planproducts`
 ALTER TABLE `products`
   ADD CONSTRAINT `room` FOREIGN KEY (`roomid`) REFERENCES `kategories` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `shop` FOREIGN KEY (`shopid`) REFERENCES `shops` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `tipus` FOREIGN KEY (`product_type_id`) REFERENCES `producttype` (`id`);
+  ADD CONSTRAINT `tipus` FOREIGN KEY (`product_type_id`) REFERENCES `producttype` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `producttype`

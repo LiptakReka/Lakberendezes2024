@@ -70,7 +70,7 @@
     --bg-light: #684756;
     --primary-color: #96705B;
     --secondary-color: #AB8476;
-    --text-light: #F5F5F5;
+    --text-light: #F5F5F5;              /*szinek*/
     --text-dark: #222;
     --regist-btn: #C1AAC0;
     --registm-btn:#DADFF7;
@@ -102,7 +102,7 @@
     font-weight: 600;
 }
 
-/* 📋 Form */
+
 .login-form {
     display: flex;
     flex-direction: column;
@@ -205,7 +205,7 @@
     border: 1px solid #fecaca;
 }
 
-/* 🎨 Icon Styling */
+
 .icon {
     width: 20px;
     height: 20px;
@@ -228,6 +228,7 @@
 }
 
 
+ /*Sötétmód*/
 @media (prefers-color-scheme: dark) {
     .login-container {
         background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);

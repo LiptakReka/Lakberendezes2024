@@ -5,16 +5,19 @@ import { Key } from "lucide-react";
 import "./ResetPassword.css";
 
 const ResetPassword = () => {
+    // keresési paraméterek 
     const [searchParams] = useSearchParams();
     const token = searchParams.get("token");
     const email = searchParams.get("email");
 
+    // Állapotváltozók 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
     const navigate = useNavigate();
 
+    // Függvény az űrlap beküldésének kezelésére
     const handleResetPassword = async (e) => {
         e.preventDefault();
 

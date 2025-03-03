@@ -4,7 +4,9 @@ import { Mail, Key, Users, Image } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    // A navigate függvény importálása 
     const navigate = useNavigate();
+    // Állapotváltozók 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [fullname, setFullname] = useState("");
@@ -13,9 +15,9 @@ const Register = () => {
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
 
+    // Függvény a regisztráció beküldésének kezelésére
     const handleregister = async (e) => {
         e.preventDefault();
-
 
         const formData = new FormData();
         formData.append('fullname', fullname);

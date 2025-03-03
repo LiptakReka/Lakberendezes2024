@@ -5,13 +5,15 @@ import { Mail, Key } from "lucide-react";
 import "./Login.css";
 
 const Login = ({ setToken }) => {
+    // A navigate függvény importálása a react-router-dom-ból és változóba mentése
     const navigate = useNavigate();
+    // Állapotváltozók
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-
+    // Függvény a felhasználói adatok mentésére
     const saveUserData = (token, user) => {
         localStorage.setItem("token", token);
         if (user) {
@@ -20,6 +22,7 @@ const Login = ({ setToken }) => {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     };
 
+    // Függvény a bejelentkezés kezelésére
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
@@ -39,7 +42,6 @@ const Login = ({ setToken }) => {
                 setError("Hibás bejelentkezési adatok.");
             }
         } catch (err) {
-            console.error("Hiba történt:", err);
             setError("Hibás email vagy jelszó, vagy szerverhiba.");
         }
 

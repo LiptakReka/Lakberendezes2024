@@ -6,15 +6,19 @@ import "./Navbar1.css";
 import useCart from "../../Pages2/Cart/UseCart";
 
 const Navbar1 = ({ token, username, onLogout }) => {
+    //A kosár függvény implementációja
     const {cartCount} = useCart()
+    //Állapotok létrehozása
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);        
     const [profilePicture, setProfilePicture] = useState(null);
 
     useEffect(() => {
 
         const storedUser = JSON.parse(localStorage.getItem("user"));
         if (storedUser && storedUser.profilePictureUrl) {
+       
+            //A profilkép URL-jének beállítása
             setProfilePicture(`https://localhost:7247${storedUser.profilePictureUrl}`);
         }
         
@@ -34,12 +38,12 @@ const Navbar1 = ({ token, username, onLogout }) => {
     };
 
     return (
-        <nav className={`navbar navbar-expand-lg ${darkMode ? "navbar-dark bg-dark" : "navbar-light bg-light"}`}>
+        <nav className={`navbar navbar-expand-lg ${darkMode ? "navbar-dark bg-dark" : "navbar-light bg-light"}`}>   {/*A navbáron a sötét mód megjelenítése*/}
             <div className="container">
                 <Link className="navbar-brand" to="/">
                     <strong>RoomLab</strong>
                 </Link>
-                <Link to={"/cart"} className="nav-cart">
+                <Link to={"/cart"} className="nav-cart">       {/*A kosár megjelenítése*/}
                 <ShoppingCartIcon/> Kosár
                 {cartCount > 0 && (
             <span className="cart-count">{cartCount}</span>
@@ -56,7 +60,7 @@ const Navbar1 = ({ token, username, onLogout }) => {
                             <NavLink className="nav-link" to="/">Kezdőlap</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/about">Rólunk</NavLink>
+                            <NavLink className="nav-link" to="/about">Rólunk</NavLink>          {/*A menüpontok megjelenítése*/}
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/planner">Tervező</NavLink>

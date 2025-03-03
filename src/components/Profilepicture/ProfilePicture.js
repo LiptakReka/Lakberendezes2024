@@ -7,11 +7,12 @@ import { useAchievements } from "../../Pages2/Achievement/UseAchivements";
 import { enqueueSnackbar } from "notistack";
 
 const ProfilePictureUpload = () => {
-    const {unlockAchievement}=useAchievements();
+    const { unlockAchievement } = useAchievements();
     const [user, setUser] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [previewImage, setPreviewImage] = useState("default_profile.png"); 
+    const [previewImage, setPreviewImage] = useState("default_profile.png");
 
+    //  a felhasználói adatok betöltésére
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user"));
         if (storedUser) {
@@ -24,15 +25,15 @@ const ProfilePictureUpload = () => {
         }
     }, []);
 
-    
+    // Függvény a fájl kiválasztására
     const handleFileChange = (event) => {
         if (event.target.files.length > 0) {
             setSelectedFile(event.target.files[0]);
-            setPreviewImage(URL.createObjectURL(event.target.files[0])); // 🔥 Előnézet frissítése
+            setPreviewImage(URL.createObjectURL(event.target.files[0])); // Előnézet frissítése
         }
     };
 
-   
+    // Függvény a fájl feltöltésére
     const handleUpload = async () => {
         if (!selectedFile) {
             toast.warn("Válassz ki egy képet!", { position: "top-center" });
@@ -41,7 +42,7 @@ const ProfilePictureUpload = () => {
 
         const formData = new FormData();
         formData.append("file", selectedFile);
-        formData.append("email", user?.email); 
+        formData.append("email", user?.email);
 
         try {
             const response = await axios.post(
@@ -57,11 +58,11 @@ const ProfilePictureUpload = () => {
             const newProfileUrl = response.data.imageUrl;
             const updatedUser = { ...user, profilePictureUrl: newProfileUrl };
 
-           
+            // Felhasználói adatok frissítése 
             localStorage.setItem("user", JSON.stringify(updatedUser));
             setUser(updatedUser);
 
-           
+            // Előnézeti kép frissítése
             setPreviewImage(`https://localhost:7247${newProfileUrl}`);
 
             enqueueSnackbar("Profilkép sikeresen feltöltve!", { variant: "success" });

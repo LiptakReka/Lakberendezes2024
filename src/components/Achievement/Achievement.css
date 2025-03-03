@@ -1,3 +1,4 @@
+/*Profil konténer*/
 .profile-container {
     max-width: 600px;
   margin: 40px auto;
@@ -6,7 +7,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-
+/*cím*/
 .profile-title {
     font-size: 26px;
   font-weight: bold;
@@ -15,7 +16,7 @@
   border-bottom: 2px solid #eee;
   padding-bottom: 10px;
 }
-
+/*ha nincs mérföldkő*/
 .no-achievements {
     text-align: center;
     font-size: 18px;
@@ -23,7 +24,7 @@
     margin-top: 20px;
     font-style: italic;
   }
-
+/*mérföldkövek*/
 .achivements-list {
     list-style: none;
     padding: 0;

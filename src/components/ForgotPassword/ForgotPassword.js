@@ -5,25 +5,30 @@ import { useNavigate } from "react-router-dom";
 import "./ForgotPassword.css";
 
 const ForgotPassword = () => {
+    // Importáljuk a navigate függvényt a react-router-dom-ból és változóba mentjük a használathoz
     const navigate = useNavigate();
+    // Állapotváltozók
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
+    // Függvény az elfelejtett jelszó kezelésére
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
+        setError("");
+        setMessage("");
+
         try {
             await axios.post(
-                "https://localhost:7247/api/Users/forgotpass",
+                "https://localhost:7247/api/Users/forgotpass", // Backend kommunikáció
                 { email }
             );
 
             setMessage("Ha az e-mail cím létezik, elküldtük a visszaállítási linket.");
-            setError("");
         } catch (err) {
-            setError("Hiba történt! Próbáld újra később.");
+            setError("Hiba történt! Próbáld újra később."); // Hibakezelés
         }
         setIsLoading(false);
     };

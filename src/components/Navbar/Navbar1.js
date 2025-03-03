@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Settings, LogOut, Moon, Sun, User, ShoppingCartIcon } from "lucide-react";
 import "./Navbar1.css";
-import useCart from "../../src/Pages2/Cart/UseCart";
+import useCart from "../../Pages2/Cart/UseCart";
 
 const Navbar1 = ({ token, username, onLogout }) => {
     const {cartCount} = useCart()

@@ -2,7 +2,7 @@
   background-color: var(--bg-medium);
 }
 .login-container{
-  background-image: url(./img/cool-background.png);
+  background-image: url(../img/cool-background.png);
   max-width: 7000px;
   min-height: 100vh;
   display: flex;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Settings, Moon, Sun, User, Mail,  Lock, Shield, TriangleRight, List,  User2, Key, Camera, Trophy } from "lucide-react";
 import axios from 'axios';
 import "./Usersetts.css";
-import ProfilePictureUpload from '../../components/ProfilePicture';
+import ProfilePictureUpload from '../../components/Profilepicture/ProfilePicture';
 import { useAchievements } from '../Achievement/UseAchivements';
 
 

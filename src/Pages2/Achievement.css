@@ -1,0 +1,70 @@
+.profile-container {
+    max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-title {
+    font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.no-achievements {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+.achivements-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px;
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+
+.achievement:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.achievement:last-child {
+    margin-bottom: 0;
+}
+
+.achievement-icon {
+    font-size: 28px;
+    color: #ff9800;
+    margin-right: 12px;
+  }
+
+.achievement h4 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.achievement p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}

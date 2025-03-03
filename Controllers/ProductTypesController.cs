@@ -9,13 +9,6 @@ using Lakberendezes.Data;
 using Lakberendezes.Models;
 using Microsoft.AspNetCore.Authorization;
 using ClosedXML.Excel;
-<<<<<<< HEAD
-using Newtonsoft.Json.Linq;
-using System.Text.Json;
-using System.Security.Cryptography.Xml;
-using System.Text.Json.Serialization;
-=======
->>>>>>> 5fdea6799604db3f88eb69efc119cb025c9aaeaa
 
 namespace Lakberendezes.Controllers
 {

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 05. 12:20
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.2.4
+-- Létrehozás ideje: 2025. Már 05. 13:05
+-- Kiszolgáló verziója: 10.4.32-MariaDB
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -372,16 +372,16 @@ INSERT INTO `products` (`id`, `name`, `price`, `shoplink`, `imageurl`, `shopid`,
 (59, 'Boxpring Kanapé Emily', 299900.00, 'https://www.moebelix.hu/p/ondega-boxpring-kanape-emily-001174000701', 'https://i.postimg.cc/CLrRSgBV/emily-removebg-preview.png', 2, 1, 1),
 (60, 'Kanapé Ibiza', 189900.00, 'https://www.moebelix.hu/p/kanape-ibiza-001204003509', 'https://i.postimg.cc/3NVQfnRz/ibiza-removebg-preview.png', 2, 1, 1),
 (61, 'Kanapéágy Anna', 379900.00, 'https://www.moebelix.hu/p/kanapeagy-anna-002990004301', 'https://i.postimg.cc/bJvXzKSK/anna-removebg-preview.png', 2, 1, 1),
-(72, 'Dohányzóasztal Silvia', 39990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-silvia-001973001702', 'https://i.postimg.cc/V6GtVkbG/silvia-removebg-preview.png', 2, 21, 1),
-(73, 'Dohányzóasztal Silvia/2', 39990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-silvia-001973001701', 'https://i.postimg.cc/nrXmbf4H/silvia2-removebg-preview.png', 2, 21, 1),
-(74, 'Dohányzóasztal Cala Luna', 26990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-cala-luna-001803035301', 'https://i.postimg.cc/zv4gq27T/luna-removebg-preview.png', 2, 21, 1),
-(75, 'Dohányzóasztal Gina Sonoma Tölgy Dekorral', 17990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-gina-sonoma-toelgy-dekorral-002140003003', 'https://i.postimg.cc/59rv5jJj/sonoma-removebg-preview.png', 2, 21, 1),
-(76, 'Dohányzóasztal Cestino', 59990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-cestino-001803072308', 'https://i.postimg.cc/NfrXdYGD/cestino-removebg-preview.png', 2, 21, 1),
-(77, 'Dohányzóasztal Cala Luna/2', 26990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-cala-luna-001803035302', 'https://i.postimg.cc/XYSChhpb/luna2-removebg-preview.png', 2, 21, 1),
-(78, 'Dohányzóasztal Laura', 19990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-laura-001803023910', 'https://i.postimg.cc/W4p6WKH4/laura-removebg-preview.png', 2, 21, 1),
-(79, 'Dohányzóasztal Saba', 14990.00, 'https://www.moebelix.hu/p/moebelix-dohanyzoasztal-saba-001973000101', 'https://i.postimg.cc/3wLjPBsF/saba-removebg-preview.png', 2, 21, 1),
-(80, 'Dohányzóasztal Paolo', 11990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-paolo-001555000508', 'https://i.postimg.cc/qMfcVg5S/paolo-removebg-preview.png', 2, 21, 1),
-(81, 'Dohányzóasztal Paolo/2', 11990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-paolo-001555000509', 'https://i.postimg.cc/pXDf2RNT/paolo2-removebg-preview.png', 2, 21, 1),
+(72, 'Dohányzóasztal Silvia', 39990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-silvia-001973001702', 'https://i.postimg.cc/V6GtVkbG/silvia-removebg-preview.png', 2, 3, 1),
+(73, 'Dohányzóasztal Silvia/2', 39990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-silvia-001973001701', 'https://i.postimg.cc/nrXmbf4H/silvia2-removebg-preview.png', 2, 3, 1),
+(74, 'Dohányzóasztal Cala Luna', 26990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-cala-luna-001803035301', 'https://i.postimg.cc/zv4gq27T/luna-removebg-preview.png', 2, 3, 1),
+(75, 'Dohányzóasztal Gina Sonoma Tölgy Dekorral', 17990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-gina-sonoma-toelgy-dekorral-002140003003', 'https://i.postimg.cc/59rv5jJj/sonoma-removebg-preview.png', 2, 3, 1),
+(76, 'Dohányzóasztal Cestino', 59990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-cestino-001803072308', 'https://i.postimg.cc/NfrXdYGD/cestino-removebg-preview.png', 2, 3, 1),
+(77, 'Dohányzóasztal Cala Luna/2', 26990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-cala-luna-001803035302', 'https://i.postimg.cc/XYSChhpb/luna2-removebg-preview.png', 2, 3, 1),
+(78, 'Dohányzóasztal Laura', 19990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-laura-001803023910', 'https://i.postimg.cc/W4p6WKH4/laura-removebg-preview.png', 2, 3, 1),
+(79, 'Dohányzóasztal Saba', 14990.00, 'https://www.moebelix.hu/p/moebelix-dohanyzoasztal-saba-001973000101', 'https://i.postimg.cc/3wLjPBsF/saba-removebg-preview.png', 2, 3, 1),
+(80, 'Dohányzóasztal Paolo', 11990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-paolo-001555000508', 'https://i.postimg.cc/qMfcVg5S/paolo-removebg-preview.png', 2, 3, 1),
+(81, 'Dohányzóasztal Paolo/2', 11990.00, 'https://www.moebelix.hu/p/dohanyzoasztal-paolo-001555000509', 'https://i.postimg.cc/pXDf2RNT/paolo2-removebg-preview.png', 2, 3, 1),
 (92, 'Tv-elem Genetic', 89990.00, 'https://www.moebelix.hu/p/tv-elem-genetic-000687037402', 'https://i.postimg.cc/5yhzqKZn/genetic-removebg-preview.png', 2, 5, 1),
 (93, 'Médiaállvány Tico', 29990.00, 'https://www.moebelix.hu/p/mediaallvany-tico-001803030204', 'https://i.postimg.cc/3wFsvdkc/tico-removebg-preview.png', 2, 5, 1),
 (94, 'Tv-elem Yoris', 54990.00, 'https://www.moebelix.hu/p/tv-elem-yoris-000241005205', 'https://i.postimg.cc/GtgKw1HK/yoris-removebg-preview.png', 2, 5, 1),

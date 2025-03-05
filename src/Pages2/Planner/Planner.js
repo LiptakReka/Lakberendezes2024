@@ -177,13 +177,13 @@ const Planner = () => {
   };
   const typeNmaes={
     1:"Kanapék",
-    3:"Étkezőasztal",
+    3:"Dohányzóasztal",
     5:"Tv állvány",
     11: "Ágy",
     13: "Éjjeliszekrény",
     14: "Szekrény",
     16: "Tükör",
-    21:"Dohányzóasztal",
+    21:"Étkezőasztal",
     22:"Polc",
     23:"Szék"
 
@@ -298,7 +298,7 @@ const Planner = () => {
           {Array.isArray(types) && types.map(type => (
             <button 
               key={type.id} 
-              onClick={() => handleTypeSelect(type.id, type.name)} 
+              onClick={() => handleTypeSelect(type.id)} 
               className={`type-button ${selectedType === type.id ? 'active' : ''}`}
             >
               {typeNmaes[type.id] || type.name}

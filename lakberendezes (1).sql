@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 03. 16:03
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- Létrehozás ideje: 2025. Már 05. 12:20
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -497,7 +497,7 @@ INSERT INTO `products` (`id`, `name`, `price`, `shoplink`, `imageurl`, `shopid`,
 (224, 'Szék BOS 10D grafit', 24800.00, 'https://butorline.hu/szek-bos-10d-grafit', 'https://i.postimg.cc/44vMyNrF/bos10d-removebg-preview.png', 13, 23, 5),
 (225, 'Szék BOS 4D fekete', 23900.00, 'https://butorline.hu/szek-bos-4d-fekete', 'https://i.postimg.cc/Xq84kKXr/bos-4d-removebg-preview.png', 13, 23, 5),
 (226, 'Szék LUNA 1 sonoma tölgy / 16B', 29500.00, 'https://butorline.hu/szek-luna-1-sonoma-toelgy-16b', 'https://i.postimg.cc/TPY7KVvk/luna-removebg-preview.png', 13, 23, 5),
-(227, 'Szék KD49D dió', 23200.00, 'https://butorline.hu/szek-kd49d-dio', 'https://i.postimg.cc/9QpV3YB1/kd49d-removebg-preview.png', 13, 22, 5),
+(227, 'Szék KD49D dió', 23200.00, 'https://butorline.hu/szek-kd49d-dio', 'https://i.postimg.cc/9QpV3YB1/kd49d-removebg-preview.png', 13, 23, 5),
 (231, 'Pt40w', 73990.00, 'https://www.moebelix.hu/p/zuhanykabin-pt40w-001955016601', 'https://files.catbox.moe/bn58f4.png', 2, 34, 4),
 (232, 'B8090', 89990.00, 'https://www.moebelix.hu/p/zuhanykabin-b8090m-001955000101', 'https://files.catbox.moe/11fnwc.png', 2, 34, 4),
 (233, 'Tc01', 199900.00, 'https://www.moebelix.hu/p/zuhanykabin-tc01-001955006801', 'https://files.catbox.moe/klvbgt.png', 2, 34, 4),
@@ -506,7 +506,41 @@ INSERT INTO `products` (`id`, `name`, `price`, `shoplink`, `imageurl`, `shopid`,
 (236, 'HILL 800', 164900.00, 'https://butorline.hu/fuerdoszoba-szekreny-hill-800-arany-toelgy', 'https://files.catbox.moe/y3t5m2.png', 13, 35, 4),
 (237, 'Calvi', 29990.00, 'https://www.moebelix.hu/p/mosdo-alatti-szekreny-calvi-001803056302', 'https://files.catbox.moe/c9j4mg.png', 2, 35, 4),
 (238, 'Pearl', 39990.00, 'https://www.moebelix.hu/p/pearl-new-snol-111-mosdo-alatti-szekreny-001803071701', 'https://files.catbox.moe/uyfcok.png', 2, 35, 4),
-(239, 'Mura', 239900.00, 'https://www.moebelix.hu/p/mosdo-alatti-szekreny-mura-000780000412', 'https://files.catbox.moe/ywm53w.png', 2, 35, 4);
+(239, 'Mura', 239900.00, 'https://www.moebelix.hu/p/mosdo-alatti-szekreny-mura-000780000412', 'https://files.catbox.moe/ywm53w.png', 2, 35, 4),
+(241, 'Limpik', 297753.00, 'https://www.bogart-butor.hu/limpik-kihuzhato-kanapek---fekete-barrel-99-szovet-p-157408-1634-1634.html', 'https://files.catbox.moe/s6yxvg.png', 10, 1, 1),
+(242, 'Fabio', 333250.00, 'https://www.bogart-butor.hu/flabio-kinyithato-kanape---bezs-lincoln-03-p-151869-1634-1634.html', 'https://files.catbox.moe/4tf9qp.png', 10, 1, 1),
+(243, 'Fabio Gemma', 333250.00, 'https://www.bogart-butor.hu/flabio-kinyithato-kanape---szurke-gemma-85-fonott-p-161931-1634-1634.html', 'https://files.catbox.moe/gqsf1h.png', 10, 1, 1),
+(244, 'Magnelio', 598170.00, 'https://www.bogart-butor.hu/magnelio-prestige-iii-kanape-elektronikus-ulohellyel---bezs-leo-03-szovet-p-164031-1634-1634.html#gallery-1', 'https://files.catbox.moe/gr9603.png', 10, 1, 1),
+(245, 'Dragonis', 394210.00, 'https://www.bogart-butor.hu/kanape-kinyithato-dragonis---barna-velur-velluto-29-p-162364-1634-1634.html', 'https://files.catbox.moe/lo3lvb.png', 10, 1, 1),
+(246, 'Scalia', 98290.00, 'https://www.bogart-butor.hu/scalia-ii-120-2k-dohanyzoasztal-fiokkal---fekete-matt---fekete-labak-p-149239-1072-1072.html', 'https://files.catbox.moe/08pp88.png', 10, 3, 1),
+(247, 'Nicole', 153190.00, 'https://www.bogart-butor.hu/nicole-dohanyzoasztal-120-cm---kasmir---arany-labak-p-55574-1072-1072.html', 'https://files.catbox.moe/5v47t0.png', 10, 3, 1),
+(248, 'Baros', 45536.00, 'https://www.bogart-butor.hu/baros-99-dohanyzoasztal---artisan-tolgy---szurke-p-48505-1072-1072.html', 'https://files.catbox.moe/je3xxi.png', 10, 3, 1),
+(249, 'Armino', 33300.00, 'https://www.bogart-butor.hu/paola-dohanyzoasztal-szett---2db---marvany---arany-p-38926-1072-1072.html', 'https://files.catbox.moe/kvky6c.png', 10, 3, 1),
+(250, 'Universe', 101200.00, 'https://www.bogart-butor.hu/universe-asztal--keret---ezust--uveg---fustos-p-38941-1072-1072.html', 'https://files.catbox.moe/6x1mkf.png', 10, 3, 1),
+(251, 'Nicole', 151650.00, 'https://www.bogart-butor.hu/nicole-fali-tv-szekreny-200-cm-nyitott-polccal-es-fiokokkal---feher---feher-matt-p-55339-1061-1061.html', 'https://files.catbox.moe/wyxz2l.png', 10, 5, 1),
+(252, 'Loftia', 65550.00, 'https://www.bogart-butor.hu/loftia-mini-rtv-szekreny-160-cm-nyitott-polcokkal---fekete---fekete-matt-p-54281-1061-1061.html', 'https://files.catbox.moe/0dazee.png', 10, 5, 1),
+(253, 'Desin', 131090.00, 'https://www.bogart-butor.hu/desin-170-cm-haromajtos-tv-szekreny---olivazold---nagano-tolgy-p-149085-1061-1061.html', 'https://files.catbox.moe/qfw8ix.png', 10, 5, 1),
+(254, 'Murano', 116600.00, 'https://www.bogart-butor.hu/murano-rtv-1-tv-asztal---kezmuves-tolgyfa---fekete-p-54810-1061-1061.html', 'https://files.catbox.moe/fb72c4.png', 10, 5, 1),
+(255, 'Olin', 131711.00, 'https://www.bogart-butor.hu/olin-192-nagy-tv-szekreny---appenzeller-fichte---matt-fekete-p-56162-1061-1061.html', 'https://files.catbox.moe/hdlx2x.png', 10, 5, 1),
+(256, 'Rozalio', 573050.00, 'https://www.bogart-butor.hu/rozalio-loft-faasztal-200x100---termeszetes-tolgy-p-155188-1073-1073.html', 'https://files.catbox.moe/n03jt7.png', 10, 21, 5),
+(257, 'Bonello', 111300.00, 'https://www.bogart-butor.hu/bonello-asztal---hamvas-marvany---sarga-p-38742-1073-1073.html', 'https://files.catbox.moe/46omin.png', 10, 21, 5),
+(258, 'Allegro', 55000.00, 'https://www.bogart-butor.hu/asztal-allegro---fekete---bukk-p-29937-1073-1073.html', 'https://files.catbox.moe/xnvuhb.png', 10, 21, 5),
+(259, 'Neryt', 74927.00, 'https://www.bogart-butor.hu/asztal-kor-alaku-osszecsukhato-102-neryt---fekete-p-152793-1073-1073.html', 'https://files.catbox.moe/gv06wi.png', 10, 21, 5),
+(260, 'Cyrjo', 82600.00, 'https://www.bogart-butor.hu/cyrjo-kihuzhato-asztal-80-160x80-cm---sonoma-tolgy-p-31581-1073-1073.html', 'https://files.catbox.moe/o93cvs.png', 10, 21, 5),
+(261, 'Salvador', 35373.00, 'https://www.bogart-butor.hu/modern-5-karpitozott-szek--fa-labakon---bezs-salvador-02---bukkfa-labak-p-153522-1016-1016.html', 'https://files.catbox.moe/pji0e4.png', 10, 23, 5),
+(262, 'Rozalio', 90690.00, 'https://www.bogart-butor.hu/rozalio-karpitozott-karosszek---szurke-cloud-83---fekete-labak-p-152975-1016-1016.html', 'https://files.catbox.moe/9or2tm.png', 10, 23, 5),
+(263, 'Tucara', 35492.00, 'https://www.bogart-butor.hu/tucara-fabol-keszult-szek-karpitozott-ulessel---inari-91---feher-p-152733-1016-1016.html', 'https://files.catbox.moe/y5rrxz.png', 10, 23, 5),
+(264, 'K436', 53900.00, 'https://www.bogart-butor.hu/k436-szek---hamu-sarga-p-49843-1016-1016.html', 'https://files.catbox.moe/m9uuoe.png', 10, 23, 5),
+(265, 'Alda', 48200.00, 'https://www.bogart-butor.hu/alda-szek-hamu-p-157988-1016-1016.html', 'https://files.catbox.moe/5gkuv1.png', 10, 23, 5),
+(266, 'Asha', 90690.00, 'https://www.bogart-butor.hu/asha-polc-50-cm---artisan---rivier-stone-matt-p-149634-1064-1064.html', 'https://files.catbox.moe/zveijn.png', 10, 22, 5),
+(267, 'Provence', 118630.00, 'https://www.bogart-butor.hu/provence-k4s-komod---130-cm---andersen-fenyo-p-13800-1012-1012.html', 'https://files.catbox.moe/rkjrcd.png', 10, 22, 5),
+(268, 'Sonatia', 238490.00, 'https://www.bogart-butor.hu/sonatia-ii-negyajtos-komod--gomb-labakon---200-cm---oliva-szinu-p-157164-1012-1012.html', 'https://files.catbox.moe/hymgf3.png', 10, 22, 5),
+(269, 'Provence R2D', 57923.00, 'https://www.bogart-butor.hu/provence-r2d-fiokos-komod---130-cm---andersen-fenyofa-p-13803-1012-1012.html', 'https://files.catbox.moe/rdol8r.png', 10, 22, 5),
+(270, 'Kora', 153754.00, 'https://www.bogart-butor.hu/kora-kk7-ketajtos-komod--negy-fiokkal-es-akaszto-ruddal---158-cm---andersen-fenyo-p-15858-1012-1012.html', 'https://files.catbox.moe/14htsn.png', 10, 22, 5),
+(271, 'Loft', 424906.00, 'https://www.bogart-butor.hu/agy-do-haloszoba-loft-160x200-tarolokkal---tolgyfa-lancelot-p-158429-1023-1023.html', 'https://files.catbox.moe/zarzfh.png', 10, 11, 3),
+(272, 'Basic', 408893.00, 'https://www.bogart-butor.hu/basic-fuggoleges-osszecsukhato-agy-140x200---matt-feher-p-39594-1023-1023.html', 'https://files.catbox.moe/baygle.png', 10, 11, 3),
+(273, 'Smart', 190118.00, 'https://www.bogart-butor.hu/smart-haloszobai-agy-160x200-taroloval-es-racsos-agykerettel---sonoma-tolgy-p-158402-1023-1023.html', 'https://files.catbox.moe/ebn45t.png', 10, 11, 3),
+(274, 'Arcano', 187602.00, 'https://www.bogart-butor.hu/keszlet-do-haloszoba-arcano-agy-i-szafki-nocne---kezmuves-tolgy-grafitszurke-p-157163-1095-1095.html', 'https://files.catbox.moe/cei4s3.png', 10, 11, 3);
 
 -- --------------------------------------------------------
 
@@ -757,7 +791,7 @@ ALTER TABLE `planproducts`
 -- AUTO_INCREMENT a táblához `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Egyedi azonosító bútoroknak', AUTO_INCREMENT=240;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Egyedi azonosító bútoroknak', AUTO_INCREMENT=275;
 
 --
 -- AUTO_INCREMENT a táblához `producttype`

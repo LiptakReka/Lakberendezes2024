@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 05. 13:05
+-- Létrehozás ideje: 2025. Már 05. 13:49
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -540,7 +540,31 @@ INSERT INTO `products` (`id`, `name`, `price`, `shoplink`, `imageurl`, `shopid`,
 (271, 'Loft', 424906.00, 'https://www.bogart-butor.hu/agy-do-haloszoba-loft-160x200-tarolokkal---tolgyfa-lancelot-p-158429-1023-1023.html', 'https://files.catbox.moe/zarzfh.png', 10, 11, 3),
 (272, 'Basic', 408893.00, 'https://www.bogart-butor.hu/basic-fuggoleges-osszecsukhato-agy-140x200---matt-feher-p-39594-1023-1023.html', 'https://files.catbox.moe/baygle.png', 10, 11, 3),
 (273, 'Smart', 190118.00, 'https://www.bogart-butor.hu/smart-haloszobai-agy-160x200-taroloval-es-racsos-agykerettel---sonoma-tolgy-p-158402-1023-1023.html', 'https://files.catbox.moe/ebn45t.png', 10, 11, 3),
-(274, 'Arcano', 187602.00, 'https://www.bogart-butor.hu/keszlet-do-haloszoba-arcano-agy-i-szafki-nocne---kezmuves-tolgy-grafitszurke-p-157163-1095-1095.html', 'https://files.catbox.moe/cei4s3.png', 10, 11, 3);
+(274, 'Arcano', 187602.00, 'https://www.bogart-butor.hu/keszlet-do-haloszoba-arcano-agy-i-szafki-nocne---kezmuves-tolgy-grafitszurke-p-157163-1095-1095.html', 'https://files.catbox.moe/cei4s3.png', 10, 11, 3),
+(275, 'Bali', 32905.00, 'https://www.bogart-butor.hu/bali-ejjeliszekreny--fiokokkal---halvanykek-p-51397-1064-1064.html', 'https://files.catbox.moe/eqcql8.png', 10, 13, 3),
+(276, 'Euras', 56414.00, 'https://www.bogart-butor.hu/euras-06-ejjeliszekreny---labrador---sarga-p-152858-1064-1064.html', 'https://files.catbox.moe/pbcpwy.png', 10, 13, 3),
+(277, 'Mezo Km1', 42200.00, 'https://www.bogart-butor.hu/mezo-km1-ejjeliszekreny---tobbszinu-p-30997-1064-1064.html', 'https://files.catbox.moe/mweobx.png', 10, 13, 3),
+(278, 'Loft', 68149.00, 'https://www.bogart-butor.hu/loft-fiokos-ejjeliszekreny---50-cm---lancelot-tolgy-p-42615-1064-1064.html', 'https://files.catbox.moe/gf802w.png', 10, 13, 3),
+(279, 'Siena d4', 174435.00, 'https://www.bogart-butor.hu/siena-d4-negyajtos-szekreny--3-fiokkal-es-tukorrel---196-cm---fekete-p-156936-1085-1085.html', 'https://files.catbox.moe/vln5n5.png', 10, 14, 3),
+(280, 'Smart sr1', 182740.00, 'https://www.bogart-butor.hu/smart-sr1-negyajtos-ruhasszekreny-ket-fiokkal-p-25914-1085-1085.html', 'https://files.catbox.moe/ru02t3.png', 10, 14, 3),
+(281, 'Smart SRN4', 116085.00, 'https://www.bogart-butor.hu/smart-srn4-sarokszekreny-p-25934-1085-1085.html', 'https://files.catbox.moe/62r0bj.png', 10, 14, 3),
+(282, 'Smart SRL3', 112340.00, 'https://www.bogart-butor.hu/smart-srl3-ketajtos-ruhasszekreny-ket-fiokkal--tukorrel-p-25938-1085-1085.html', 'https://files.catbox.moe/37cpqf.png', 10, 14, 3),
+(283, 'Jamuzi', 31525.00, 'https://www.bogart-butor.hu/jamuzi-11-fuggotukor---64-cm---kasmir-p-157278-1215-1206.1215.html', 'https://files.catbox.moe/xfdkxg.png', 10, 16, 4),
+(284, 'Kora', 44729.00, 'https://www.bogart-butor.hu/kora-kc2-tukor---andersen-fenyo-p-15831-1206-1206.html', 'https://files.catbox.moe/1p85rz.png', 10, 16, 4),
+(285, 'Provence', 29633.00, 'https://www.bogart-butor.hu/provence-ls2-tukor---andersen-fenyo-p-24960-1206-1206.html', 'https://files.catbox.moe/3r7qk9.png', 10, 16, 4),
+(286, 'Loft', 86545.00, 'https://www.bogart-butor.hu/loft-tukor-150-cm---fekete-p-42670-1206-1206.html', 'https://files.catbox.moe/2ybte2.png', 10, 16, 4),
+(287, 'Alabama', 199900.00, 'https://alaba.hu/kanape-agyfunkcioval-es-agynemutartoval-szovet-piros-alabama', 'https://alaba.hu/kanape-agyfunkcioval-es-agynemutartoval-szovet-piros-alabama', 9, 1, 1),
+(288, 'Bolivia', 278900.00, 'https://alaba.hu/kanape-sotetszurkevilagosszurke-bolivia', 'https://files.catbox.moe/00jw4a.png', 9, 1, 1),
+(289, 'Alida', 89900.00, 'https://alaba.hu/kanape-szethuzhatos-smaragdtolgy-alida', 'https://files.catbox.moe/njm9hu.png', 9, 1, 1),
+(290, 'Brigi', 106900.00, 'https://alaba.hu/brigi-kanape-14', 'https://files.catbox.moe/nmpiam.png', NULL, NULL, NULL),
+(291, 'Julien', 89900.00, 'https://alaba.hu/dohanyzoasztal-uvegfeher-extra-magas-fenyu-hg-julien', 'https://files.catbox.moe/dty3qh.png', 9, 3, 1),
+(292, 'Dohányzóasztal', 35900.00, 'https://alaba.hu/dohanyzoasztal-feher-extra-magas-fenyu-hg-uveg-sven', 'https://files.catbox.moe/88jhxu.png', 9, 3, 1),
+(293, 'Samoa King', 43900.00, 'https://alaba.hu/dohanyzoasztal-samoa-king-kora-kl', 'https://files.catbox.moe/1251ws.png', 9, 3, 1),
+(294, 'Provance', 52900.00, 'https://alaba.hu/dohanyzoasztal-zold-provance-st2', 'https://files.catbox.moe/7q3fgd.png', 9, 3, 1),
+(295, 'Quido', 28900.00, 'https://alaba.hu/tv-asztal-feketeezust-quido', 'https://alaba.hu/rtv-asztal-187-fehertolgy-grandsonmagasfenyu-feher-city', 9, 5, 1),
+(296, 'RTV', 89900.00, 'https://alaba.hu/rtv-asztalszekreny-vilagos-koris-infinity-i-09', 'https://files.catbox.moe/ekslbo.png', 9, 5, 1),
+(297, 'RTV Infinity', 89900.00, 'https://alaba.hu/rtv-asztalszekreny-koris-feher-infinity-i-09', 'https://files.catbox.moe/4veiv7.png', 9, 5, 1),
+(298, 'Grandson', 84900.00, 'https://alaba.hu/rtv-asztal-187-fehertolgy-grandsonmagasfenyu-feher-city', 'https://files.catbox.moe/hc4w35.png', 9, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -791,7 +815,7 @@ ALTER TABLE `planproducts`
 -- AUTO_INCREMENT a táblához `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Egyedi azonosító bútoroknak', AUTO_INCREMENT=275;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Egyedi azonosító bútoroknak', AUTO_INCREMENT=299;
 
 --
 -- AUTO_INCREMENT a táblához `producttype`

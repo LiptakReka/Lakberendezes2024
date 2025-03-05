@@ -177,13 +177,13 @@ const Planner = () => {
   };
   const typeNmaes={
     1:"Kanapék",
-    3:"Dohányzóasztalok",
+    3:"Étkezőasztal",
     5:"Tv állvány",
     11: "Ágy",
     13: "Éjjeliszekrény",
     14: "Szekrény",
     16: "Tükör",
-    21:"Étkezőasztal",
+    21:"Dohányzóasztal",
     22:"Polc",
     23:"Szék"
 

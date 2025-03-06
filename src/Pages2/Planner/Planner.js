@@ -97,7 +97,7 @@ const Planner = () => {
   const handleTypeSelect = (typeId, typeName) => {
     const newTypeId = typeId === selectedType ? null : typeId;
     setSelectedType(newTypeId);
-    setdropdownlabel(newTypeId ? typeNmaes[newTypeId] : "Válassz terméktípust");
+    setdropdownlabel(newTypeId ? typeNames[newTypeId] : "Válassz terméktípust");
     setShowDropdown(false);
     fetchFilteredProducts(selectedRoom, newTypeId);
   };
@@ -175,7 +175,7 @@ const Planner = () => {
     setSelectedType(null);
     setdropdownlabel("Válassz terméktípust");
   };
-  const typeNmaes={
+  const typeNames={
     1:"Kanapék",
     3:"Dohányzóasztal",
     5:"Tv állvány",
@@ -184,7 +184,7 @@ const Planner = () => {
     14: "Szekrény",
     16: "Tükör",
     21:"Étkezőasztal",
-    22:"Polc",
+    22:"Polc és szekrény",
     23:"Szék"
 
   }
@@ -301,7 +301,7 @@ const Planner = () => {
               onClick={() => handleTypeSelect(type.id)} 
               className={`type-button ${selectedType === type.id ? 'active' : ''}`}
             >
-              {typeNmaes[type.id] || type.name}
+              {typeNames[type.id] || type.name}
             </button>
           ))}
         </div>

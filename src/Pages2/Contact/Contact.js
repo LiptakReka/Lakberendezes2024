@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Contact.css";
-import { Mail, Phone, Globe, Search } from 'lucide-react';
+import { Mail, Phone,  Search } from 'lucide-react';
 
 const pagecontact = [
   { name: "RoomLab", phoneNumber: "+36 30-927-0458", email: "roomlabservice@gmail.com", websiteurl: "https://roomlab-48d26.web.app" }

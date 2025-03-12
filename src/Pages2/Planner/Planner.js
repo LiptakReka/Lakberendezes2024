@@ -355,7 +355,6 @@ const Planner = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}>
-          {/* Háttérválasztó gomb és panel */}
           <div className="background-picker">
             <button 
               className="background-picker-button"

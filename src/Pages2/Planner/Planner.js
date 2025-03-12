@@ -30,7 +30,7 @@ const Planner = () => {
     { id: 3, url: "https://t4.ftcdn.net/jpg/02/87/98/61/360_F_287986158_2Tz2w7QKcgmbpecZZzveGUdN9RNPB3c4.jpg", name: "Hálószoba 1" },
     { id: 4, url: "https://img.freepik.com/premium-photo/empty-interior-room-d-illustration_672982-3219.jpg", name: "Hálószoba 2" },
     { id: 5, url: "https://img.freepik.com/free-vector/empty-modern-room-interior_1284-9406.jpg", name: "Étkező 1" },
-    { id: 6, url: "https://img.freepik.com/free-photo/minimal-rooms-walls-with-lighting-effects-3d-rendering_23-2149210327.jpg?t=st=1741775457~exp=1741779057~hmac=f2a3c2fa56c6f4b8ba85bc0eff470b06cbba75a8c10c22b47b3cbf43afb1a90f&w=996", name: "Fürdőszoba 1" },
+    { id: 6, url: "https://img.freepik.com/free-photo/minimal-rooms-walls-with-lighting-effects-3d-rendering_23-2149210321.jpg?t=st=1741781431~exp=1741785031~hmac=a53ab63f717856d27d796727de3ed134a2589cf45bd8721d6db925ed7ef90350&w=1380", name: "Fürdőszoba 1" },
   ];
   
   const handleBackgroundSelect = (bg) => {

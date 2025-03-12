@@ -26,11 +26,11 @@ const Planner = () => {
   
   const backgrounds = [
     { id: 1, url: "https://blog.pincel.app/wp-content/uploads/2024/05/empty-room-filler.jpg", name: "Nappali 1" },
-    { id: 2, url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fbig-empty-room&psig=AOvVaw04nyCzJ26F0XgV7EEj4xdG&ust=1741868040355000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKC9za3ChIwDFQAAAAAdAAAAABAR", name: "Nappali 2" },
+    { id: 2, url: "https://img.freepik.com/free-photo/minimal-empty-room-with-windows-authentic-interior-design_53876-126785.jpg?t=st=1741782320~exp=1741785920~hmac=f241d82e8e2db8026c8ca33f6614e6ab3e756db7f11edf06a0be856fa2a43503&w=900", name: "Nappali 2" },
     { id: 3, url: "https://t4.ftcdn.net/jpg/02/87/98/61/360_F_287986158_2Tz2w7QKcgmbpecZZzveGUdN9RNPB3c4.jpg", name: "Hálószoba 1" },
     { id: 4, url: "https://img.freepik.com/premium-photo/empty-interior-room-d-illustration_672982-3219.jpg", name: "Hálószoba 2" },
     { id: 5, url: "https://img.freepik.com/free-vector/empty-modern-room-interior_1284-9406.jpg", name: "Étkező 1" },
-    { id: 6, url: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fillustrations%2Fempty-bathroom-background&psig=AOvVaw2RgSA1g4VFDROEgTeN1hQq&ust=1741868212114000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLD60fPChIwDFQAAAAAdAAAAABAE", name: "Fürdőszoba 1" },
+    { id: 6, url: "https://img.freepik.com/free-photo/modern-empty-room-authentic-interior-design_53876-128715.jpg?t=st=1741782266~exp=1741785866~hmac=01ba525fe766247f4b2749bc078b46b7c5157800633815ef26cd5c9b0cc703a9&w=900", name: "Fürdőszoba 1" },
   ];
   
   const handleBackgroundSelect = (bg) => {

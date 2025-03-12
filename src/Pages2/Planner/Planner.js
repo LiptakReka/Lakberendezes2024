@@ -26,7 +26,7 @@ const Planner = () => {
   
   const backgrounds = [
     { id: 1, url: "https://blog.pincel.app/wp-content/uploads/2024/05/empty-room-filler.jpg", name: "Nappali 1" },
-    { id: 2, url: "https://img.freepik.com/free-photo/minimal-empty-room-with-windows-authentic-interior-design_53876-126785.jpg?t=st=1741782320~exp=1741785920~hmac=f241d82e8e2db8026c8ca33f6614e6ab3e756db7f11edf06a0be856fa2a43503&w=900", name: "Nappali 2" },
+    { id: 2, url: "https://img.freepik.com/free-psd/blank-wall-psd-japandi-living-room-interior_53876-109284.jpg?t=st=1741782416~exp=1741786016~hmac=908ccceaa768aac602c8e7f4099a3d9143343ee1e0c790cca7de5022ab31e5c6&w=1380", name: "Nappali 2" },
     { id: 3, url: "https://t4.ftcdn.net/jpg/02/87/98/61/360_F_287986158_2Tz2w7QKcgmbpecZZzveGUdN9RNPB3c4.jpg", name: "Hálószoba 1" },
     { id: 4, url: "https://img.freepik.com/premium-photo/empty-interior-room-d-illustration_672982-3219.jpg", name: "Hálószoba 2" },
     { id: 5, url: "https://img.freepik.com/free-vector/empty-modern-room-interior_1284-9406.jpg", name: "Étkező 1" },

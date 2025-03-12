@@ -10,7 +10,6 @@
       Title="Producttype">
 
     <Page.Resources>
-        <converters:TypestoHu x:Key="TypetoHU"/>
         <converters:CategToName x:Key="Categtoname"/>
         <DropShadowEffect x:Key="MaterialShadow" 
                             BlurRadius="12"
@@ -143,7 +142,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Azonosító" Binding="{Binding id}"  />
                     <DataGridTextColumn Header="Szoba" Binding="{Binding categoryid, Converter={StaticResource Categtoname}}" />
-                    <DataGridTextColumn Header="Név" Binding="{Binding name, Converter={StaticResource TypetoHU}}" />
+                    <DataGridTextColumn Header="Név" Binding="{Binding name}" />
                     <DataGridTemplateColumn Header="Műveletek" Width="100">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

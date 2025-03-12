@@ -65,7 +65,7 @@ namespace Lakberendezes.Controllers
                 int row = 2;
                 foreach (var plan in plans)
                 {
-                    worksheet.Cell(row, 1).Value = plan.id;
+                    worksheet.Cell(row, 1).Value = plan.id; 
                     worksheet.Cell(row, 2).Value = plan.userid;
                     worksheet.Cell(row, 3).Value = plan.plandata;
                     worksheet.Cell(row, 4).Value = plan.createdat;

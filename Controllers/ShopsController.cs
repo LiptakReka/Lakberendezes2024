@@ -88,6 +88,8 @@ namespace Lakberendezes.Controllers
                 worksheet.Cell(1, 1).Value = "Azonosító";
                 worksheet.Cell(1, 2).Value = "Név";
                 worksheet.Cell(1, 3).Value = "Weboldal";
+                worksheet.Cell(1, 4).Value = "Telefonszám";
+                worksheet.Cell(1, 5).Value = "Email";
 
                 int row = 2;
                 foreach (var shopp in shopss)
@@ -95,6 +97,8 @@ namespace Lakberendezes.Controllers
                     worksheet.Cell(row, 1).Value = shopp.id;
                     worksheet.Cell(row, 2).Value = shopp.name;
                     worksheet.Cell(row, 3).Value = shopp.websiteurl;
+                    worksheet.Cell(row, 4).Value = shopp.PhoneNumber;
+                    worksheet.Cell(row, 5).Value = shopp.Email;
                     row++;
 
                 }
@@ -122,7 +126,9 @@ namespace Lakberendezes.Controllers
             {
                 name = shopDTO.name,
                 websiteurl = shopDTO.websiteurl,
-                
+                PhoneNumber = shopDTO.PhoneNumber,
+                Email = shopDTO.Email
+
             };
 
             _context.shops.Add(shopss);

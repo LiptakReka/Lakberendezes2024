@@ -322,13 +322,14 @@
   .values-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    max-width: 295px;
     gap: 30px;
   }
   
   .value-card {
     background: white;
     padding: 30px;
-    border-radius: 16px;
+    border-radius: 25px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
     transition: transform 0.3s ease;
@@ -367,14 +368,16 @@
   .future-content {
     font-size: 18px;
     line-height: 1.8;
+    gap: 30px;
+    display: grid;
   }
-  
   .future-items {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 30px;
   }
+
   
   .future-item {
     background: white;

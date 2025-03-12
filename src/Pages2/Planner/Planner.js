@@ -21,7 +21,22 @@ const Planner = () => {
   const [types, setTypes] = useState([]);
   const [selectedType, setSelectedType] = useState(null);
   const [selectedRoom, setSelectedRoom] = useState(1);
-
+  const [showBackgrounds, setShowBackgrounds] = useState(false);
+  const [selectedBackground, setSelectedBackground] = useState(null);
+  
+  const backgrounds = [
+    { id: 1, url: "https://blog.pincel.app/wp-content/uploads/2024/05/empty-room-filler.jpg", name: "Nappali 1" },
+    { id: 2, url: "https://img.freepik.com/free-photo/background-with-simple-white-walls-plant_23-2151020036.jpg?t=st=1741775885~exp=1741779485~hmac=233ee5a9655530006585251eb91992870113a2152282284706c79615f9497e68&w=996", name: "Nappali 2" },
+    { id: 3, url: "https://t4.ftcdn.net/jpg/02/87/98/61/360_F_287986158_2Tz2w7QKcgmbpecZZzveGUdN9RNPB3c4.jpg", name: "Hálószoba 1" },
+    { id: 4, url: "https://img.freepik.com/premium-photo/empty-interior-room-d-illustration_672982-3219.jpg", name: "Hálószoba 2" },
+    { id: 5, url: "https://img.freepik.com/free-vector/empty-modern-room-interior_1284-9406.jpg", name: "Étkező 1" },
+    { id: 6, url: "https://img.freepik.com/free-photo/minimal-rooms-walls-with-lighting-effects-3d-rendering_23-2149210327.jpg?t=st=1741775457~exp=1741779057~hmac=f2a3c2fa56c6f4b8ba85bc0eff470b06cbba75a8c10c22b47b3cbf43afb1a90f&w=996", name: "Fürdőszoba 1" },
+  ];
+  
+  const handleBackgroundSelect = (bg) => {
+    setSelectedBackground(bg);
+    setShowBackgrounds(false);
+  };
 
   const fetchProductTypes = async (roomid) => {
     try {
@@ -94,7 +109,7 @@ const Planner = () => {
     }
   };
 
-  const handleTypeSelect = (typeId, typeName) => {
+  const handleTypeSelect = (typeId) => {
     const newTypeId = typeId === selectedType ? null : typeId;
     setSelectedType(newTypeId);
     setdropdownlabel(newTypeId ? typeNames[newTypeId] : "Válassz terméktípust");
@@ -108,7 +123,7 @@ const Planner = () => {
 
     try {
       const response = await axios.get(`https://localhost:7247/api/Users/get-plan/${user.id}`);
-      console.log("fetchPlans adatai:", response.data); // 🔥 Debugging
+      console.log("fetchPlans adatai:", response.data); 
 
       if (Array.isArray(response.data)) {
         setSavedPlans(response.data);
@@ -175,6 +190,7 @@ const Planner = () => {
     setSelectedType(null);
     setdropdownlabel("Válassz terméktípust");
   };
+
   const typeNames={
     1:"Kanapék",
     3:"Dohányzóasztal",
@@ -185,7 +201,10 @@ const Planner = () => {
     16: "Tükör",
     21:"Étkezőasztal",
     22:"Polc és szekrény",
-    23:"Szék"
+    23:"Szék",
+    34:"Zuhanyzó",
+    35:"Fürdőszobai szekrény",
+    36:"Mosókonyhai eszközök"
 
   }
 
@@ -301,7 +320,7 @@ const Planner = () => {
               onClick={() => handleTypeSelect(type.id)} 
               className={`type-button ${selectedType === type.id ? 'active' : ''}`}
             >
-              {typeNames[type.id] || type.name}
+              { typeNames[type.id] || type.name}
             </button>
           ))}
         </div>
@@ -331,7 +350,47 @@ const Planner = () => {
           )}
         </div>
 
-        <div className="tervezoterulet">
+        <div className="tervezoterulet" style={{
+          backgroundImage: selectedBackground ? `url(${selectedBackground.url})` : 'none',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}>
+          {/* Háttérválasztó gomb és panel */}
+          <div className="background-picker">
+            <button 
+              className="background-picker-button"
+              onClick={() => setShowBackgrounds(!showBackgrounds)}
+            >
+              <span className="visually-hidden">Háttér</span>
+            </button>
+            
+            {showBackgrounds && (
+              <div className="background-options">
+                <h3 className="background-options-title">Válassz hátteret</h3>
+                <div className="background-grid">
+                  {backgrounds.map(bg => (
+                    <div 
+                      key={bg.id}
+                      onClick={() => handleBackgroundSelect(bg)}
+                      className={`background-item ${selectedBackground && selectedBackground.id === bg.id ? 'active' : ''}`}
+                      style={{ backgroundImage: `url(${bg.url})` }}
+                      title={bg.name}
+                    />
+                  ))}
+                </div>
+                <button 
+                  className="background-remove-btn"
+                  onClick={() => {
+                    setSelectedBackground(null);
+                    setShowBackgrounds(false);
+                  }}
+                >
+                  Háttér eltávolítása
+                </button>
+              </div>
+            )}
+          </div>
+
           {placedProducts.map((product) => (
             <div
               className="placed-product"

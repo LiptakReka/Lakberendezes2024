@@ -1,59 +1,56 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Contact.css";
-import { Mail, Phone, Search } from 'lucide-react';
-
+import { Mail, Phone, Globe, Search } from 'lucide-react';
 
 const pagecontact = [
-  {name: "RoomLab", phone: "+36 30-927-0458", email: "roomlabservice@gmail.com"}
+  { name: "RoomLab", phoneNumber: "+36 30-927-0458", email: "roomlabservice@gmail.com", websiteurl: "https://roomlab-48d26.web.app" }
 ];
 
-const businesses = [
-  { name: "Bogart Bútor", phone: "+36 1-808-9860", email: "info@bogart-butor.hu" },
-  { name: "Alaba", phone: "+36 30-366-1576", email: "info@alaba.hu" },
-  { name: "XXXLutz", phone: "+36 23-801-911", email: "shop@xxxlutz.hu" },
-  { name: "BRW Bútorház", phone: "+36 70-401-2044", email: "rob.butorhaz@gmail.com" },
-  { name: "JYSK", phone: "+36 1-701-4222", email: "vevoszolgalat-hu@jysk.com" },
-  { name: "Möbelix", phone: "+36 46-814-113", email: "info@moebelix.hu" },
-  { name: "Zondo", phone: "+36 1-550-7605", email: "info@zondo.hu" },
-  { name: "Soma bútor", phone: "+36 70-797-5817", email: "info@somabutor.hu" },
-  { name: "Bútor7", phone: "nem áll rendelkezésre", email: "info@butor7.hu" },
-  { name: "Bútorline", phone: "+36 20-273-0605", email: "info@butorline.hu" },
-  { name: "RS Bútor", phone: "+36 1-329-0050", email: "rsinfo@rs.hu" },
-  { name: "IKEA", phone: "+36 1-808-9230", email: "nem áll rendelkezésre" },
-  { name: "Magyar Bútorbolt", phone: "nem áll rendelkezésre", email: "megrendeles@magyarbutorbolt.hu" },
-  { name: "Butlers", phone: "+36 30-726-9588", email: "home@butlers.hu" },
-];
-
-const ContactCard = ({ name, phone, email, index }) => {
-  const isPhoneAvailable = phone !== "nem áll rendelkezésre";
-  const isEmailAvailable = email !== "nem áll rendelkezésre";
-  
+const ContactCard = ({ name, phoneNumber, email, index }) => {
   return (
-    <div className="contact-card" style={{"--index": index}}>
+    <div className="contact-card" style={{ "--index": index }}>
       <h3 className="contact-name">{name}</h3>
       <p className="contact-phone">
-        <Phone/>
-        {isPhoneAvailable ? phone : <span className="email-unavailable">Telefonszám nem elérhető</span>}
+        <Phone /> {phoneNumber ? phoneNumber : <span className="unavailable">Telefonszám nem elérhető</span>}
       </p>
-      {isEmailAvailable ? (
+      {email ? (
         <a href={`mailto:${email}`} className="contact-email">
-          <Mail/>
-          { email}
+          <Mail /> {email}
         </a>
       ) : (
-        <span className="email-unavailable">Email cím nem elérhető</span>
+        <span className="unavailable">Email cím nem elérhető</span>
       )}
+      
     </div>
   );
 };
 
 export default function ContactPage() {
   const [searchTerm, setSearchTerm] = useState('');
-  
-  const filteredBusinesses = businesses.filter(business => 
-    business.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const [shops, setShops] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchShops = async () => {
+      try {
+        const response = await fetch('https://localhost:7247/api/Shops');
+        if (!response.ok) {
+          throw new Error('Hiba a keresés során');
+        }
+        const data = await response.json();
+        console.log(data);
+        setShops(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+    fetchShops();
+  }, []);
+
+  const filteredShops = shops.filter(shop => 
+    shop.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
+
   return (
     <div className="contact-page">
       <div className="containerd">
@@ -70,7 +67,7 @@ export default function ContactPage() {
         </div>
 
         <div className="section">
-          <h2 className="section-title">Közreműködők</h2>
+          <h2 className="section-title">Források elérhetőségei</h2>
           <div className="search-container">
             <input 
               type="text" 
@@ -78,14 +75,17 @@ export default function ContactPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="search-input"
-              
             />
-            <Search/>
+            <Search />
           </div>
           <div className="contacts-grid">
-            {filteredBusinesses.map((business, index) => (
-              <ContactCard key={index} {...business} index={index} />
-            ))}
+            {error ? (
+              <p className="error">{error}</p>
+            ) : (
+              filteredShops.map((shop, index) => (
+                <ContactCard key={index} {...shop} index={index} />
+              ))
+            )}
           </div>
         </div>
       </div>

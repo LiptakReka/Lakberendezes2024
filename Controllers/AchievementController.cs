@@ -3,6 +3,7 @@ using Lakberendezes.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Lakberendezes.Controllers
 {
@@ -24,6 +25,26 @@ namespace Lakberendezes.Controllers
             return await _context.achievements.ToListAsync();
         }
 
+
+        [HttpGet("me")]
+        public async Task<ActionResult<IEnumerable<Achievement>>> GetUserAchievement()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId==null)
+            {
+                return Unauthorized("Nincs bejelentkezve felhasználó");
+            }
+
+            var achievement = await _context.achievements
+                .Where(a => a.user_Id == userId)
+                .ToListAsync();
+
+            if (!achievement.Any())
+            {
+                return NotFound("Nincsenek achivementjeid");
+            }
+            return Ok(achievement);
+        }
         //User alapú achievement
         [HttpGet("{UserId}")]
         public async Task<ActionResult<IEnumerable<Achievement>>>GetAchievement(string UserId)
@@ -44,10 +65,6 @@ namespace Lakberendezes.Controllers
         {
             achievement.id = Guid.NewGuid(); 
             achievement.created_at = DateTime.Now; 
-            achievement.id = Guid.NewGuid(); 
-            achievement.created_at = DateTime.UtcNow; 
-            achievement.id = Guid.NewGuid(); 
-            achievement.created_at = DateTime.UtcNow; 
 
             _context.achievements.Add(achievement);
             await _context.SaveChangesAsync();
@@ -59,10 +76,11 @@ namespace Lakberendezes.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAchievement(Guid id)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var achievement = await _context.achievements.FindAsync(id);
             if (achievement == null)
             {
-                return NotFound();
+                return NotFound("Nem található achievement");
             }
 
             _context.achievements.Remove(achievement);

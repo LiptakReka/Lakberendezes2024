@@ -26,20 +26,20 @@ namespace Lakberendezes.Models
             {
                 throw new ArgumentNullException(nameof(user.Email));
             }
-            if (string.IsNullOrEmpty(user.Id))
+            if (string.IsNullOrEmpty(user.Id.ToString()))
             {
                 throw new ArgumentNullException(nameof(user.Id));
             }
 
-            var expiration = DateTimeOffset.UtcNow.AddMinutes(_tokenexpiryMinutes);
+            var expiration = DateTime.UtcNow.AddMinutes(_tokenexpiryMinutes);
 
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Nbf, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64),
-                new Claim(JwtRegisteredClaimNames.Exp, expiration.ToUnixTimeSeconds().ToString(),ClaimValueTypes.Integer64)
+                new Claim(JwtRegisteredClaimNames.Exp, expiration.ToString(),ClaimValueTypes.Integer64)
             };
 
             // Felhasználói szerepkörök hozzáadása
@@ -56,7 +56,7 @@ namespace Lakberendezes.Models
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = expiration.DateTime,
+                Expires = expiration,
                 SigningCredentials = creds,
                 Issuer = _issuer,
                 Audience = _audience

@@ -31,7 +31,7 @@ namespace Lakberendezes.Controllers
                 .ToListAsync();
             if (plans.Count == 0)
             {
-                return NotFound("Nem található ilyen nevű termék");
+                return NotFound("Nem található ilyen nevű terv");
             }
             return Ok(plans);
 

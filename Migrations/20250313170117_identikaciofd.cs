@@ -7,7 +7,7 @@
 //namespace Lakberendezes.Migrations
 //{
 //    /// <inheritdoc />
-//    public partial class ModifyCategoriesTable : Migration
+//    public partial class identikaciofd : Migration
 //    {
 //        /// <inheritdoc />
 //        protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,6 +15,26 @@
 //            migrationBuilder.AlterDatabase()
 //                .Annotation("MySql:CharSet", "utf8mb4");
 
+//            migrationBuilder.CreateTable(
+//                name: "achievements",
+//                columns: table => new
+//                {
+//                    id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+//                    user_Id = table.Column<string>(type: "longtext", nullable: false)
+//                        .Annotation("MySql:CharSet", "utf8mb4"),
+//                    title = table.Column<string>(type: "longtext", nullable: false)
+//                        .Annotation("MySql:CharSet", "utf8mb4"),
+//                    description = table.Column<string>(type: "longtext", nullable: false)
+//                        .Annotation("MySql:CharSet", "utf8mb4"),
+//                    icon = table.Column<string>(type: "longtext", nullable: false)
+//                        .Annotation("MySql:CharSet", "utf8mb4"),
+//                    created_at = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+//                },
+//                constraints: table =>
+//                {
+//                    table.PrimaryKey("PK_achievements", x => x.id);
+//                })
+//                .Annotation("MySql:CharSet", "utf8mb4");
 
 //            migrationBuilder.CreateTable(
 //                name: "kategories",
@@ -29,7 +49,7 @@
 //                {
 //                    table.PrimaryKey("PK_kategories", x => x.id);
 //                })
-//            .Annotation("MySql:CharSet", "utf8mb4");
+//                .Annotation("MySql:CharSet", "utf8mb4");
 
 //            migrationBuilder.CreateTable(
 //                name: "shops",
@@ -40,6 +60,10 @@
 //                    name = table.Column<string>(type: "longtext", nullable: false)
 //                        .Annotation("MySql:CharSet", "utf8mb4"),
 //                    websiteurl = table.Column<string>(type: "longtext", nullable: false)
+//                        .Annotation("MySql:CharSet", "utf8mb4"),
+//                    PhoneNumber = table.Column<string>(type: "longtext", nullable: false)
+//                        .Annotation("MySql:CharSet", "utf8mb4"),
+//                    Email = table.Column<string>(type: "longtext", nullable: false)
 //                        .Annotation("MySql:CharSet", "utf8mb4")
 //                },
 //                constraints: table =>
@@ -52,19 +76,23 @@
 //                name: "users",
 //                columns: table => new
 //                {
-//                    id = table.Column<int>(type: "int", nullable: false)
+//                    Id = table.Column<int>(type: "int", nullable: false)
 //                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-//                    email = table.Column<string>(type: "longtext", nullable: false)
+//                    Email = table.Column<string>(type: "longtext", nullable: false)
 //                        .Annotation("MySql:CharSet", "utf8mb4"),
-//                    PASSWORD_hash = table.Column<string>(type: "longtext", nullable: false)
+//                    UserName = table.Column<string>(type: "longtext", nullable: false)
+//                        .Annotation("MySql:CharSet", "utf8mb4"),
+//                    PasswordHash = table.Column<string>(type: "longtext", nullable: false)
 //                        .Annotation("MySql:CharSet", "utf8mb4"),
 //                    fullname = table.Column<string>(type: "longtext", nullable: false)
 //                        .Annotation("MySql:CharSet", "utf8mb4"),
-//                    datet = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+//                    datet = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+//                    ProfilePictureUrl = table.Column<string>(type: "longtext", nullable: false)
+//                        .Annotation("MySql:CharSet", "utf8mb4")
 //                },
 //                constraints: table =>
 //                {
-//                    table.PrimaryKey("PK_users", x => x.id);
+//                    table.PrimaryKey("PK_users", x => x.Id);
 //                })
 //                .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -108,7 +136,7 @@
 //                        name: "FK_userplan_users_userid",
 //                        column: x => x.userid,
 //                        principalTable: "users",
-//                        principalColumn: "id",
+//                        principalColumn: "Id",
 //                        onDelete: ReferentialAction.Cascade);
 //                })
 //                .Annotation("MySql:CharSet", "utf8mb4");
@@ -130,29 +158,29 @@
 //                    product_type_id = table.Column<int>(type: "int", nullable: false),
 //                    roomid = table.Column<int>(type: "int", nullable: false)
 //                },
-//            constraints: table =>
-//        {
-//            table.PrimaryKey("PK_products", x => x.id);
-//            table.ForeignKey(
-//                name: "FK_products_kategories_roomid",
-//                column: x => x.roomid,
-//                principalTable: "kategories",
-//                principalColumn: "id",
-//                onDelete: ReferentialAction.Cascade);
-//            table.ForeignKey(
-//                name: "FK_products_producttype_product_type_id",
-//                column: x => x.product_type_id,
-//                principalTable: "producttype",
-//                principalColumn: "id",
-//                onDelete: ReferentialAction.Cascade);
-//            table.ForeignKey(
-//                name: "FK_products_shops_shopid",
-//                column: x => x.shopid,
-//                principalTable: "shops",
-//                principalColumn: "id",
-//                onDelete: ReferentialAction.Cascade);
-//        })
-//            .Annotation("MySql:CharSet", "utf8mb4");
+//                constraints: table =>
+//                {
+//                    table.PrimaryKey("PK_products", x => x.id);
+//                    table.ForeignKey(
+//                        name: "FK_products_kategories_roomid",
+//                        column: x => x.roomid,
+//                        principalTable: "kategories",
+//                        principalColumn: "id",
+//                        onDelete: ReferentialAction.Cascade);
+//                    table.ForeignKey(
+//                        name: "FK_products_producttype_product_type_id",
+//                        column: x => x.product_type_id,
+//                        principalTable: "producttype",
+//                        principalColumn: "id",
+//                        onDelete: ReferentialAction.Cascade);
+//                    table.ForeignKey(
+//                        name: "FK_products_shops_shopid",
+//                        column: x => x.shopid,
+//                        principalTable: "shops",
+//                        principalColumn: "id",
+//                        onDelete: ReferentialAction.Cascade);
+//                })
+//                .Annotation("MySql:CharSet", "utf8mb4");
 
 //            migrationBuilder.CreateTable(
 //                name: "planproducts",
@@ -162,22 +190,22 @@
 //                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
 //                    productid = table.Column<int>(type: "int", nullable: false),
 //                    userplanid = table.Column<int>(type: "int", nullable: false),
-//                    Userplansid = table.Column<int>(type: "int", nullable: false),
 //                    position = table.Column<string>(type: "longtext", nullable: false)
-//                        .Annotation("MySql:CharSet", "utf8mb4")
+//                        .Annotation("MySql:CharSet", "utf8mb4"),
+//                    scale = table.Column<float>(type: "float", nullable: false)
 //                },
 //                constraints: table =>
 //                {
 //                    table.PrimaryKey("PK_planproducts", x => x.id);
 //                    table.ForeignKey(
-//                        name: "FK_planproducts_products_userplanid",
-//                        column: x => x.userplanid,
+//                        name: "FK_planproducts_products_productid",
+//                        column: x => x.productid,
 //                        principalTable: "products",
 //                        principalColumn: "id",
 //                        onDelete: ReferentialAction.Cascade);
 //                    table.ForeignKey(
-//                        name: "FK_planproducts_userplan_Userplansid",
-//                        column: x => x.Userplansid,
+//                        name: "FK_planproducts_userplan_userplanid",
+//                        column: x => x.userplanid,
 //                        principalTable: "userplan",
 //                        principalColumn: "id",
 //                        onDelete: ReferentialAction.Cascade);
@@ -185,14 +213,14 @@
 //                .Annotation("MySql:CharSet", "utf8mb4");
 
 //            migrationBuilder.CreateIndex(
+//                name: "IX_planproducts_productid",
+//                table: "planproducts",
+//                column: "productid");
+
+//            migrationBuilder.CreateIndex(
 //                name: "IX_planproducts_userplanid",
 //                table: "planproducts",
 //                column: "userplanid");
-
-//            migrationBuilder.CreateIndex(
-//                name: "IX_planproducts_Userplansid",
-//                table: "planproducts",
-//                column: "Userplansid");
 
 //            migrationBuilder.CreateIndex(
 //                name: "IX_products_product_type_id",
@@ -223,6 +251,9 @@
 //        /// <inheritdoc />
 //        protected override void Down(MigrationBuilder migrationBuilder)
 //        {
+//            migrationBuilder.DropTable(
+//                name: "achievements");
+
 //            migrationBuilder.DropTable(
 //                name: "planproducts");
 

@@ -36,7 +36,7 @@ namespace Lakberendezes.Controllers
             return await _context.products.ToListAsync();
         }
 
-        //[Authorize(Roles ="User")]
+        [Authorize(Roles = "User")]
         [HttpGet("szobák")]
         public async Task<IActionResult> GetProductsByCategory([FromQuery] int? roomId)
         {

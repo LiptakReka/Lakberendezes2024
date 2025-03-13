@@ -1,7 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Lakberendezes.Models;
@@ -10,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using MailKit.Net.Smtp;
 using MimeKit;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Lakberendezes.Data;
 using Newtonsoft.Json;
@@ -24,22 +22,16 @@ namespace Lakberendezes.Controllers
     {
         private readonly AppDbContext _context;
         private readonly JwtService _jwtService;
-        private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
         private readonly IConfiguration _config;
-        public UsersController(AppDbContext context, IConfiguration config, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, SignInManager<User> signInManager, JwtService jwtService)
+        public UsersController(AppDbContext context, IConfiguration config, JwtService jwtService)
         {
             _context = context;
-            _roleManager = roleManager;
-            _userManager = userManager;
-            _signInManager = signInManager;
             _jwtService = jwtService;
             _config = config;
         }
 
         [HttpGet("get-plan/{userId}")]
-        public async Task<IActionResult> GetUserPlan(string userId)
+        public async Task<IActionResult> GetUserPlan(int userId)
         {
             var userPlan = await _context.userplan
                 .Include(p => p.Products)
@@ -70,42 +62,29 @@ namespace Lakberendezes.Controllers
             return Ok(userPlan);
         }
 
-
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await _context.Users
+            var users = await _context.users
                 .Select(u => new GetUserDTO
                 {
-                    Id = u.Id ?? "",
+                    Id = u.Id.ToString(),
                     fullname = u.fullname ?? "",
                     ProfilePictureUrl = u.ProfilePictureUrl ?? "",
-                    NormalizedUserName = u.NormalizedUserName ?? "",
                     datet = u.datet,
                     UserName = u.UserName ?? "",
                     Email = u.Email ?? "",
-                    NormalizedEmail = u.NormalizedEmail ?? "",
-                    PhoneNumber = u.PhoneNumber ?? "",
-                    EmailConfirmed = u.EmailConfirmed,
-                    PhoneNumberConfirmed = u.PhoneNumberConfirmed,
-                    TwoFactorEnabled = u.TwoFactorEnabled,
-                    PasswordHash = u.PasswordHash ?? "",
-                    SecurityStamp = u.SecurityStamp ?? "",
-                    ConcurrencyStamp = u.ConcurrencyStamp ?? "",
-                    LockoutEnabled = u.LockoutEnabled,
-                    LockoutEnd = u.LockoutEnd,
-                    AccessFailedCount = u.AccessFailedCount
+                    PasswordHash = u.PasswordHash ?? ""
                 })
                 .ToListAsync();
 
             return Ok(users);
         }
 
-
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(string id)
+        public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _userManager.FindByIdAsync(id);
+            var user = await _context.users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -116,18 +95,18 @@ namespace Lakberendezes.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromForm] UserRegisterDTO registerDTO)
         {
-            var existingUser = await _userManager.FindByEmailAsync(registerDTO.Email);
+            var existingUser = await _context.users.FirstOrDefaultAsync(u => u.Email == registerDTO.Email);
             if (existingUser != null)
             {
                 return BadRequest("Ez az email már használatban");
             }
 
-            string profilePicturePath = "/profile_pictures/default-profile.png"; 
+            string profilePicturePath = "/profile_pictures/default-profile.png";
 
             if (registerDTO.ProfilePictureUrl != null)
             {
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/profile_pictures");
-                Directory.CreateDirectory(uploadsFolder);  
+                Directory.CreateDirectory(uploadsFolder);
 
                 string uniqueFileName = $"{Guid.NewGuid()}_{registerDTO.ProfilePictureUrl.FileName}";
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
@@ -137,7 +116,7 @@ namespace Lakberendezes.Controllers
                     await registerDTO.ProfilePictureUrl.CopyToAsync(stream);
                 }
 
-                profilePicturePath = $"/profile_pictures/{uniqueFileName}"; 
+                profilePicturePath = $"/profile_pictures/{uniqueFileName}";
             }
 
             var user = new User
@@ -145,43 +124,37 @@ namespace Lakberendezes.Controllers
                 UserName = registerDTO.Username,
                 Email = registerDTO.Email,
                 fullname = registerDTO.FullName,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDTO.Password),
                 datet = DateTime.Now,
                 ProfilePictureUrl = profilePicturePath
             };
 
-            var result = await _userManager.CreateAsync(user, registerDTO.Password);
-            if (!result.Succeeded)
-            {
-                return BadRequest(result.Errors);
-            }
+            _context.users.Add(user);
+            await _context.SaveChangesAsync();
 
-            await _userManager.AddToRoleAsync(user, "User");
+            var userRole = new UserRole
+            {
+                Userid = user.Id,
+                Roleid = (await _context.role.FirstOrDefaultAsync(r => r.name == "User")).id
+            };
+
+            _context.userroles.Add(userRole);
+            await _context.SaveChangesAsync();
+
             return Ok("Regisztráció sikeres!");
         }
-
 
         [HttpPost("login")]
         public async Task<ActionResult> Login(UserLoginDTO loginDTO)
         {
-            var user = await _userManager.FindByEmailAsync(loginDTO.Email);
-            if (user == null)
+            var user = await _context.users.Include(u => u.roles).ThenInclude(ur => ur.Role).FirstOrDefaultAsync(u => u.Email == loginDTO.Email);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(loginDTO.Password, user.PasswordHash))
             {
                 return Unauthorized("Hibás email vagy jelszó.");
             }
 
-
-            var roles = await _userManager.GetRolesAsync(user);
-
-
-            var result = await _signInManager.PasswordSignInAsync(user.UserName, loginDTO.Password, false, lockoutOnFailure: false);
-            if (!result.Succeeded)
-            {
-                return Unauthorized("Érvénytelen email vagy jelszó");
-            }
-
-
+            var roles = user.roles.Select(ur => ur.Role.name).ToList();
             var token = _jwtService.GenerateToken(user, roles);
-
 
             var userData = new
             {
@@ -189,7 +162,7 @@ namespace Lakberendezes.Controllers
                 Email = user.Email,
                 UserName = user.UserName,
                 Roles = roles,
-                profilePictureUrl = user.ProfilePictureUrl ?? "default-profile.png",
+                ProfilePictureUrl = user.ProfilePictureUrl ?? "default-profile.png",
             };
 
             return Ok(new { token, user = userData });
@@ -202,18 +175,19 @@ namespace Lakberendezes.Controllers
             {
                 return BadRequest("Minden mező kitöltése kötelező");
             }
-            var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user == null)
+            var user = await _context.users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(model.CurrentPassword, user.PasswordHash))
             {
-                return NotFound("Felhasználó nem található");
+                return NotFound("Felhasználó nem található vagy a jelenlegi jelszó hibás");
             }
-            var passwordCheck = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
-            if (!passwordCheck.Succeeded)
-            {
-                return BadRequest(passwordCheck.Errors);
-            }
+
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
+            _context.users.Update(user);
+            await _context.SaveChangesAsync();
+
             return Ok(new { message = "Jelszó sikeresen módosítva!" });
         }
+
         [AllowAnonymous]
         [HttpPost("upload-profile-picture")]
         public async Task<IActionResult> UploadProfilePicture(IFormFile file, [FromForm] string email)
@@ -222,7 +196,6 @@ namespace Lakberendezes.Controllers
             {
                 return BadRequest("Nincs kiválasztott fájl.");
             }
-
 
             var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "profile_pictures");
             if (!Directory.Exists(uploadsFolder))
@@ -240,14 +213,15 @@ namespace Lakberendezes.Controllers
 
             var imageUrl = $"/profile_pictures/{uniqueFileName}";
 
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _context.users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
             {
                 return NotFound("Felhasználó nem található.");
             }
 
             user.ProfilePictureUrl = imageUrl;
-            await _userManager.UpdateAsync(user);
+            _context.users.Update(user);
+            await _context.SaveChangesAsync();
 
             return Ok(new { imageUrl });
         }
@@ -255,7 +229,7 @@ namespace Lakberendezes.Controllers
         [HttpPost("save-plan")]
         public async Task<IActionResult> SaveUserPlan([FromBody] UserPlanDTO planDTO)
         {
-            var user = await _userManager.FindByIdAsync(planDTO.UserId);
+            var user = await _context.users.FindAsync(planDTO.UserId);
             if (user == null)
             {
                 return NotFound("Felhasználó nem található.");
@@ -265,7 +239,6 @@ namespace Lakberendezes.Controllers
             {
                 userid = planDTO.UserId,
                 plandata = planDTO.PlanData,
-
                 createdat = DateTime.Now
             };
 
@@ -275,37 +248,33 @@ namespace Lakberendezes.Controllers
             return Ok(new { message = "Terv sikeresen elmentve!", planId = userPlan.id });
         }
 
-
-
-
-
         [HttpPost("forgotpass")]
-        public async Task<IActionResult> Forgotpass(ForgotPasswordDTO model, [FromServices] Lakberendezes.Models.IEmailSender emailSender)
+        public async Task<IActionResult> Forgotpass(ForgotPasswordDTO model, [FromServices] Models.IEmailSender emailSender)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = await _context.users.FirstOrDefaultAsync(u => u.Email == model.Email);
             if (user == null)
             {
                 return BadRequest("Nincs ilyen email cím regisztrálva.");
             }
 
-            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-
-            Console.WriteLine(token);
+            var token = Guid.NewGuid().ToString();
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(token);
+            _context.users.Update(user);
+            await _context.SaveChangesAsync();
 
             var frontendUrl = _config["FrontendUrl"];
             var resetLink = $"{frontendUrl}/reset-password?token={Uri.EscapeDataString(token)}&email={Uri.EscapeDataString(model.Email)}";
 
-
             string emailBody = $@"
-<!DOCTYPE html>
-<html lang='hu'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta name='color-scheme' content='light dark'>
-    <meta name='supported-color-schemes' content='light dark'>
-    <title>Jelszó visszaállítás - RoomLab</title>
-    <style>
+        <!DOCTYPE html>
+        <html lang='hu'>
+        <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta name='color-scheme' content='light dark'>
+        <meta name='supported-color-schemes' content='light dark'>
+        <title>Jelszó visszaállítás - RoomLab</title>
+        <style>
         /* Reset styles */
         * {{
             margin: 0;
@@ -399,15 +368,15 @@ namespace Lakberendezes.Controllers
                 color: #e0e0e0;
             }}
         }}
-    </style>
-</head>
-<body>
-    <div class='email-wrapper'>
+        </style>
+        </head>
+        <body>
+        <div class='email-wrapper'>
         <div class='email-header'>
             <div class='logo'>RoomLab</div>
             <div style='color: #ffffff; font-size: 16px; font-weight: 500;'>Jelszó visszaállítás</div>
         </div>
-        
+
         <div style='padding: 40px 32px;'>
             <h1 style='font-size: 20px; font-weight: 600; color: #2d3748; margin-bottom: 24px;'>
                 Kedves {user.UserName}!
@@ -431,60 +400,39 @@ namespace Lakberendezes.Controllers
                 </p>
             </div>
         </div>
-        
+
         <div style='background: #f8fafc; padding: 32px; text-align: center; border-top: 1px solid #e2e8f0;'>
             <p style='color: #64748b; font-size: 14px; margin-bottom: 16px;'>
                 Üdvözlettel,<br>
                 <strong>RoomLab Csapat</strong> 🎨
             </p>
         </div>
-    </div>
-</body>
-</html>";
+        </div>
+        </body>
+        </html>";
 
             await emailSender.SendEmailAsync(model.Email, "Jelszó visszaállítása", emailBody);
 
             return Ok("Ha az email cím helyes, egy visszaállítási linket küldtünk.");
         }
 
-
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPassword(ResetPasswordDTO model)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = await _context.users.FirstOrDefaultAsync(u => u.Email == model.Email);
             if (user == null)
             {
                 return BadRequest("Felhasználó nem található");
             }
 
-            var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
-            if (!result.Succeeded)
+            if (!BCrypt.Net.BCrypt.Verify(model.Token, user.PasswordHash))
             {
                 return BadRequest("Hibás vagy lejárt token");
             }
 
-            var dbcontext = HttpContext.RequestServices.GetService<AppDbContext>();
-
-
-            var existingToken = await dbcontext.UserTokens
-                .FirstOrDefaultAsync(t => t.UserId == user.Id && t.LoginProvider == "ResetPassword" && t.Name == "PasswordResetToken");
-
-            if (existingToken != null)
-            {
-                dbcontext.UserTokens.Remove(existingToken);
-                await dbcontext.SaveChangesAsync();
-            }
-
-
-            var tokenStore = new IdentityUserToken<string>
-            {
-                UserId = user.Id,
-                LoginProvider = "ResetPassword",
-                Name = "PasswordResetToken",
-                Value = model.Token
-            };
-            dbcontext.UserTokens.Add(tokenStore);
-            await dbcontext.SaveChangesAsync();
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
+            _context.users.Update(user);
+            await _context.SaveChangesAsync();
 
             return Ok("Jelszó visszaállítva!");
         }
@@ -492,7 +440,7 @@ namespace Lakberendezes.Controllers
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
-            var users = _context.Users.ToList();
+            var users = _context.users.ToList();
 
             if (users == null || !users.Any())
             {
@@ -506,19 +454,9 @@ namespace Lakberendezes.Controllers
                 worksheet.Cell(1, 2).Value = "Email";
                 worksheet.Cell(1, 3).Value = "Teljes név";
                 worksheet.Cell(1, 4).Value = "Regisztrált";
-                worksheet.Cell(1, 5).Value = "Hozzáférés megadva";
-                worksheet.Cell(1, 6).Value = "Konkurencia bélyeg ";
-                worksheet.Cell(1, 7).Value = "Kizárás engedélyezve";
-                worksheet.Cell(1, 8).Value = "Kizárás vége";
-                worksheet.Cell(1, 9).Value = "Email normalizálva";
-                worksheet.Cell(1, 10).Value = "Felhasználónév normalizálva";
-                worksheet.Cell(1, 11).Value = "Jelszóhash";
-                worksheet.Cell(1, 12).Value = "Telefonszám";
-                worksheet.Cell(1, 13).Value = "Telefonszám megerősítve";
-                worksheet.Cell(1, 14).Value = "Biztonsági bélyeg";
-                worksheet.Cell(1, 15).Value = "Két faktoros hitelesítés";
-                worksheet.Cell(1, 16).Value = "Felhasználónév";
-                worksheet.Cell(1, 17).Value = "Profilkép URL";
+                worksheet.Cell(1, 5).Value = "Jelszóhash";
+                worksheet.Cell(1, 6).Value = "Felhasználónév";
+                worksheet.Cell(1, 7).Value = "Profilkép URL";
 
                 int row = 2;
                 foreach (var user in users)
@@ -527,19 +465,9 @@ namespace Lakberendezes.Controllers
                     worksheet.Cell(row, 2).Value = user.Email;
                     worksheet.Cell(row, 3).Value = user.fullname;
                     worksheet.Cell(row, 4).Value = user.datet;
-                    worksheet.Cell(row, 5).Value = user.AccessFailedCount;
-                    worksheet.Cell(row, 6).Value = user.ConcurrencyStamp;
-                    worksheet.Cell(row, 7).Value = user.LockoutEnabled;
-                    worksheet.Cell(row, 8).Value = user.LockoutEnd.ToString();
-                    worksheet.Cell(row, 9).Value = user.NormalizedEmail;
-                    worksheet.Cell(row, 10).Value = user.NormalizedUserName;
-                    worksheet.Cell(row, 11).Value = user.PasswordHash;
-                    worksheet.Cell(row, 12).Value = user.PhoneNumber;
-                    worksheet.Cell(row, 13).Value = user.PhoneNumberConfirmed;
-                    worksheet.Cell(row, 14).Value = user.SecurityStamp;
-                    worksheet.Cell(row, 15).Value = user.TwoFactorEnabled;
-                    worksheet.Cell(row, 16).Value = user.UserName;
-                    worksheet.Cell(row, 17).Value = user.ProfilePictureUrl;
+                    worksheet.Cell(row, 5).Value = user.PasswordHash;
+                    worksheet.Cell(row, 6).Value = user.UserName;
+                    worksheet.Cell(row, 7).Value = user.ProfilePictureUrl;
                     row++;
 
                 }
@@ -557,7 +485,7 @@ namespace Lakberendezes.Controllers
         [HttpDelete("{userName}")]
         public async Task<IActionResult> DeleteUserByName(string userName)
         {
-            var user = await _context.Users
+            var user = await _context.users
                 .Where(u => u.UserName != null && u.UserName == userName)
                 .FirstOrDefaultAsync();
 
@@ -566,7 +494,7 @@ namespace Lakberendezes.Controllers
                 return NotFound(new { message = "Felhasználó nem található!" });
             }
 
-            _context.Users.Remove(user);
+            _context.users.Remove(user);
             await _context.SaveChangesAsync();
 
             return Ok(new { message = $"A(z) {userName} felhasználó törölve lett." });
@@ -574,4 +502,3 @@ namespace Lakberendezes.Controllers
 
     }
 }
-

@@ -1,5 +1,6 @@
 ﻿using Lakberendezes.Data;
 using Lakberendezes.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ namespace Lakberendezes.Controllers
             return await _context.achievements.ToListAsync();
         }
 
-
+        [Authorize(Roles ="User")]
         [HttpGet("me")]
         public async Task<ActionResult<IEnumerable<Achievement>>> GetUserAchievement()
         {

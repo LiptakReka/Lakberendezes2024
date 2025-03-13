@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 namespace Lakberendezes.Data
 {
-    public class AppDbContext : IdentityDbContext<User>
+    public class AppDbContext: DbContext
     {
         //információ átadás
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -17,7 +17,10 @@ namespace Lakberendezes.Data
         public DbSet<Achievement> achievements { get; set; }
         public DbSet<ProductType> producttype { get; set; }
         public DbSet<Categories> kategories { get; set; }
+
         public DbSet<User> users {  get; set; }
+        public DbSet<Roles> role { get; set; }
+        public DbSet<UserRole> userroles { get; set; }
         public DbSet<UserPlans> userplan { get; set; }
         public DbSet<PlanProduct> planproducts { get; set; }
 
@@ -66,6 +69,7 @@ namespace Lakberendezes.Data
                 .HasOne(hm => hm.User)
                 .WithMany(él => él.plans)
                 .HasForeignKey(él => él.userid)
+                .HasPrincipalKey(hm => hm.Id)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<PlanProduct>()
@@ -73,8 +77,21 @@ namespace Lakberendezes.Data
                 .WithMany(bn=>bn.Products)
                 .HasForeignKey(bn=>bn.userplanid)
                 .OnDelete(DeleteBehavior.Cascade);
-            
-        
+
+            modelBuilder.Entity<UserRole>()
+                .HasKey(ur => new { ur.Userid, ur.Roleid });
+            modelBuilder.Entity<UserRole>()
+                .HasOne(ur => ur.User)
+                .WithMany(u => u.roles)
+                .HasForeignKey(ur => ur.Userid);
+
+            modelBuilder.Entity<UserRole>()
+                .HasOne(ur => ur.Role)
+                .WithMany(r => r.roles)
+                .HasForeignKey(ur => ur.Roleid);
+
+
+
 
 
         }

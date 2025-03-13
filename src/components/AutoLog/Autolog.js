@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Autolog.css';
-import { parse } from '@fortawesome/fontawesome-svg-core';
 
 const AutologTime = 2 * 60 * 1000; 
 
@@ -20,7 +19,7 @@ export default function Autolog({ logout }) {
     let timeout = setTimeout(() => {
         logout();
         navigate('/login');
-    }, timeLeft);
+    }, [timeLeft]);
 
 
     const interval = setInterval(() => {
@@ -46,7 +45,7 @@ export default function Autolog({ logout }) {
       window.removeEventListener("mousemove", resetTimer);
       window.removeEventListener("keydown", resetTimer);
     };
-  }, [logout, navigate]);
+  }, [logout, navigate,timeLeft]);
   
 
   const minutes = Math.floor(timeLeft / 60000);

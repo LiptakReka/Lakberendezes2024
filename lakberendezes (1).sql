@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Már 12. 12:15
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.2.4
+-- Létrehozás ideje: 2025. Már 13. 21:11
+-- Kiszolgáló verziója: 10.4.32-MariaDB
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -75,7 +75,7 @@ DELIMITER ;
 
 CREATE TABLE `achievements` (
   `id` varchar(255) NOT NULL,
-  `user_Id` varchar(36) NOT NULL,
+  `user_Id` int(36) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `icon` varchar(255) NOT NULL,
@@ -87,145 +87,10 @@ CREATE TABLE `achievements` (
 --
 
 INSERT INTO `achievements` (`id`, `user_Id`, `title`, `description`, `icon`, `created_at`) VALUES
-('082a68e8-caba-45e1-a967-451e983c0c8e', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Első terv!', 'Elmentetted az első terved!', '🏠', '2025-02-20 05:53:01'),
-('0f5ce5c0-6ffd-4169-b1ab-d2661c3efe6d', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Szépségszalon', 'Profilképed megváltozott', '💄', '2025-02-20 05:39:48'),
-('84413a32-0e36-48d6-8164-cccfc2916646', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Első terv!', 'Elmentetted az első terved!', '🏠', '2025-03-01 18:19:44'),
-('9b585a74-0c12-4c27-8513-12f79f93db18', '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'Kosár elküldve!', 'Összegzés elküldve', '🛒', '2025-02-20 05:46:54');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetroleclaims`
---
-
-CREATE TABLE `aspnetroleclaims` (
-  `Id` int(11) NOT NULL,
-  `RoleId` varchar(255) NOT NULL,
-  `ClaimType` longtext DEFAULT NULL,
-  `ClaimValue` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetroles`
---
-
-CREATE TABLE `aspnetroles` (
-  `Id` varchar(255) NOT NULL,
-  `Name` varchar(256) DEFAULT NULL,
-  `NormalizedName` varchar(256) DEFAULT NULL,
-  `ConcurrencyStamp` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- A tábla adatainak kiíratása `aspnetroles`
---
-
-INSERT INTO `aspnetroles` (`Id`, `Name`, `NormalizedName`, `ConcurrencyStamp`) VALUES
-('1a2a8d81-37dc-4d8b-91f0-c3777b6c52b7', 'Admin', 'ADMIN', NULL),
-('da3f5225-f1dd-4f84-bbe0-be88737050a6', 'User', 'USER', NULL);
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetuserclaims`
---
-
-CREATE TABLE `aspnetuserclaims` (
-  `Id` int(11) NOT NULL,
-  `UserId` varchar(255) NOT NULL,
-  `ClaimType` longtext DEFAULT NULL,
-  `ClaimValue` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetuserlogins`
---
-
-CREATE TABLE `aspnetuserlogins` (
-  `LoginProvider` varchar(255) NOT NULL,
-  `ProviderKey` varchar(255) NOT NULL,
-  `ProviderDisplayName` longtext DEFAULT NULL,
-  `UserId` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetuserroles`
---
-
-CREATE TABLE `aspnetuserroles` (
-  `UserId` varchar(255) NOT NULL,
-  `RoleId` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- A tábla adatainak kiíratása `aspnetuserroles`
---
-
-INSERT INTO `aspnetuserroles` (`UserId`, `RoleId`) VALUES
-('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'da3f5225-f1dd-4f84-bbe0-be88737050a6'),
-('bc6f0ee3-c821-4bc9-939f-13af624db253', 'da3f5225-f1dd-4f84-bbe0-be88737050a6');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetusers`
---
-
-CREATE TABLE `aspnetusers` (
-  `Id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Email` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fullname` varchar(255) DEFAULT NULL COMMENT 'teljes neve ',
-  `datet` timestamp NULL DEFAULT current_timestamp() COMMENT 'Mikor regisztrált',
-  `AccessFailedCount` int(11) DEFAULT 0,
-  `ConcurrencyStamp` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `EmailConfirmed` tinyint(1) DEFAULT 0,
-  `LockoutEnabled` tinyint(1) NOT NULL DEFAULT 0,
-  `LockoutEnd` datetime(6) DEFAULT NULL,
-  `NormalizedEmail` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `NormalizedUserName` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `PasswordHash` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `PhoneNumber` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `PhoneNumberConfirmed` tinyint(1) DEFAULT 0,
-  `SecurityStamp` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `TwoFactorEnabled` tinyint(1) DEFAULT 0,
-  `UserName` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `ProfilePictureUrl` varchar(255) DEFAULT 'default-profile.png'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `aspnetusers`
---
-
-INSERT INTO `aspnetusers` (`Id`, `Email`, `fullname`, `datet`, `AccessFailedCount`, `ConcurrencyStamp`, `EmailConfirmed`, `LockoutEnabled`, `LockoutEnd`, `NormalizedEmail`, `NormalizedUserName`, `PasswordHash`, `PhoneNumber`, `PhoneNumberConfirmed`, `SecurityStamp`, `TwoFactorEnabled`, `UserName`, `ProfilePictureUrl`) VALUES
-('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'liptakr@kkszki.hu', 'Liptakreka', '2025-02-13 18:01:14', 0, 'ee65ae51-3195-44aa-ae9b-535747bebcaa', 0, 1, NULL, 'LIPTAKR@KKSZKI.HU', 'ADMIN', 'AQAAAAIAAYagAAAAEF1/pWZecGAGJobGegXVkOehrW7wBFGETuiv/05sQWHiZmK+61U3ZqD+LDPfvAGQJg==', NULL, 0, 'ST3MQFBDTQUERGATIJKQYOZ4MODBU6X6', 0, 'Admin', '/profile_pictures/b4ba0903-6b4e-4561-9e77-5f739785aebe_pexels-eberhardgross-1612353.jpg'),
-('bc6f0ee3-c821-4bc9-939f-13af624db253', 'liptakreka4@gmail.com', 'Liptakr', '2025-02-02 10:57:33', 0, 'f5fd6b16-d6db-44b7-9c70-75cba11c7ec0', 0, 1, NULL, 'LIPTAKREKA4@GMAIL.COM', 'LIPTAKREKA4@GMAIL.COM', 'AQAAAAIAAYagAAAAECUODUkcc2eD8ABInNUtThSROitFTjsr/HD+Wg3qv7mabscFC0GZr4P16Pg09Wdevw==', NULL, 0, '4DOXM6GZ2U7VB5OQ3EEREKCXM7TF45XD', 0, 'liptakreka4@gmail.com', '/profile_pictures/adcf2f2d-e6f1-4b0f-b660-b5ec326e1047_homee.png');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `aspnetusertokens`
---
-
-CREATE TABLE `aspnetusertokens` (
-  `UserId` varchar(255) NOT NULL,
-  `LoginProvider` varchar(255) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Value` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- A tábla adatainak kiíratása `aspnetusertokens`
---
-
-INSERT INTO `aspnetusertokens` (`UserId`, `LoginProvider`, `Name`, `Value`) VALUES
-('1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', 'ResetPassword', 'PasswordResetToken', 'CfDJ8CoTY2mQXxVKp2okMJV9kUUFZLEU5e0P8u5BhWRAVWIH1xL4roUD4aUzvddqZYL97++kV0dW7uo3fO0Yl/ec9vsRk1z6xrXbbYDWYNCEshbZ5LsGhI4zV2EH7lF4eVZ3W6tLAA6BCswV19KLO+dSDNxBVZvfBY3IeomR88egUMDHdrFyyLsRp+EqBPU9LqkrYd8HujcAOCaROJcq6QmVE4uwYDLxbBdRzSB9EzypbJ4Q'),
-('bc6f0ee3-c821-4bc9-939f-13af624db253', 'ResetPassword', 'PasswordResetToken', 'CfDJ8CoTY2mQXxVKp2okMJV9kUUAJYRDuIAEjdfUtIDQsQ53DDdFsB6PYTLOQ8HvGA/2xVqWo55ebc5sjPljh28+sP+5cPyUHfvL7Rr6gYrh9W+oQJmNTfn+dGKI4aTEHraP+qK9ewH8gLEubzv6hsm14ibmfoip3VpqWaxNbNOiECuz0sToZbGRlYjaRQR93eGUk9VifXC5SaEQSk4cVzoasyEUx0ytSRWyhwo1QyN9X4rn');
+('00ffe81b-c5d3-44e7-ab24-6e35f69fe43e', 1, 'Első terv!', 'Elmentetted az első terved!', '🏠', '2025-03-13 19:46:52'),
+('21402bd4-a6bb-4206-bab9-77633121aab3', 1, 'Szépségszalon', 'Profilképed megváltozott', '💄', '2025-03-13 19:44:52'),
+('84413a32-0e36-48d6-8164-cccfc2916646', 1, 'Első terv!', 'Elmentetted az első terved!', '🏠', '2025-03-01 18:19:44'),
+('ec53c219-dd76-45cc-ba6c-0b2acafe64fa', 1, 'Kosár elküldve!', 'Összegzés elküldve', '🛒', '2025-03-13 19:55:30');
 
 -- --------------------------------------------------------
 
@@ -267,70 +132,10 @@ CREATE TABLE `planproducts` (
 --
 
 INSERT INTO `planproducts` (`id`, `productid`, `position`, `scale`, `userplanid`) VALUES
-(93, 52, '-170, 577', 0.6, 57),
-(94, 98, '1051, 431', 0.8, 57),
-(95, 173, '268, 582', 0.8, 57),
-(96, 72, '53, 604', 0.5, 57),
-(97, 209, '719, 573', 0.5, 57),
-(98, 23, '-46, 425', 0.5, 58),
-(99, 26, '450, 395', 0.5, 58),
-(100, 43, '841, 21', 0.5, 58),
-(101, 49, '-306, 115', 0.5, 58),
-(102, 177, '1196, 374', 1.1, 58),
-(103, 186, '184, 392', 0.5, 58),
-(104, 188, '148, 616', 0.9, 58),
-(105, 23, '-46, 425', 0.5, 59),
-(106, 26, '450, 395', 0.5, 59),
-(107, 43, '841, 21', 0.5, 59),
-(108, 49, '-306, 115', 0.5, 59),
-(109, 177, '1196, 374', 1.1, 59),
-(110, 186, '184, 392', 0.5, 59),
-(111, 188, '148, 616', 0.9, 59),
-(112, 157, '-138, 294', 0.9, 60),
-(113, 145, '821, 297', 0.5, 60),
-(114, 144, '157, 516', 0.5, 60),
-(115, 138, '386, 512', 0.9, 60),
-(116, 157, '-154, 112', 0.9, 61),
-(117, 145, '794, 95', 0.5, 61),
-(118, 144, '157, 516', 0.5, 61),
-(119, 138, '255, 264', 0.9, 61),
-(120, 157, '-154, 112', 0.9, 62),
-(121, 145, '794, 95', 0.5, 62),
-(122, 144, '157, 516', 0.5, 62),
-(123, 138, '255, 264', 0.9, 62),
-(124, 52, '100, 100', 0.5, 63),
-(125, 55, '-153, 582', 0.7, 64),
-(126, 172, '225, 586', 0.8, 64),
-(127, 80, '51, 592', 0.5, 64),
-(128, 96, '1044, 485', 0.8, 64),
-(129, 211, '673, 599', 0.5, 64),
-(130, 55, '-153, 582', 0.7, 65),
-(131, 172, '225, 586', 0.8, 65),
-(132, 80, '51, 592', 0.5, 65),
-(133, 96, '1044, 485', 0.8, 65),
-(134, 211, '673, 599', 0.5, 65),
-(135, 55, '-153, 582', 0.7, 66),
-(136, 172, '225, 586', 0.8, 66),
-(137, 80, '51, 592', 0.5, 66),
-(138, 96, '1044, 485', 0.8, 66),
-(139, 211, '673, 599', 0.5, 66),
-(140, 55, '-153, 582', 0.7, 68),
-(141, 55, '-153, 582', 0.7, 67),
-(142, 172, '225, 586', 0.8, 68),
-(143, 172, '225, 586', 0.8, 67),
-(144, 80, '51, 592', 0.5, 68),
-(145, 80, '51, 592', 0.5, 67),
-(146, 96, '1044, 485', 0.8, 68),
-(147, 96, '1044, 485', 0.8, 67),
-(148, 211, '673, 599', 0.5, 68),
-(149, 211, '673, 599', 0.5, 67),
-(150, 387, '-248, 343', 0.5, 67),
-(151, 387, '-248, 343', 0.5, 68),
-(152, 74, '-106, 406', 0.5, 68),
-(153, 74, '-106, 406', 0.5, 67),
-(154, 347, '611, 286', 1.1, 68),
-(155, 347, '611, 286', 1.1, 67),
-(156, 52, '-126, 275', 0.5, 69);
+(161, 53, '-198, 534', 0.6, 71),
+(162, 73, '-68, 569', 0.5, 71),
+(163, 174, '195, 485', 0.7, 71),
+(164, 347, '946, 439', 0.8, 71);
 
 -- --------------------------------------------------------
 
@@ -829,6 +634,25 @@ INSERT INTO `producttype` (`id`, `categoryid`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `name` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'User'),
+(2, 'Admin');
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `shops`
 --
 
@@ -863,7 +687,7 @@ INSERT INTO `shops` (`id`, `name`, `websiteurl`, `PhoneNumber`, `Email`) VALUES
 
 CREATE TABLE `userplan` (
   `id` int(11) NOT NULL,
-  `userid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `userid` int(255) NOT NULL,
   `plandata` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'Termék ára' CHECK (json_valid(`plandata`)),
   `createdat` timestamp NULL DEFAULT current_timestamp() COMMENT 'Bolt linkje  '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -873,15 +697,50 @@ CREATE TABLE `userplan` (
 --
 
 INSERT INTO `userplan` (`id`, `userid`, `plandata`, `createdat`) VALUES
-(59, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":23,\"x\":-46,\"y\":425,\"scale\":0.5},{\"productId\":26,\"x\":450,\"y\":395,\"scale\":0.5},{\"productId\":43,\"x\":841,\"y\":21,\"scale\":0.5},{\"productId\":49,\"x\":-306,\"y\":115,\"scale\":0.5},{\"productId\":177,\"x\":1196,\"y\":374,\"scale\":1.0999999999999999},{\"productId\":186,\"x\":184,\"y\":392,\"scale\":0.5},{\"productId\":188,\"x\":148,\"y\":616,\"scale\":0.8999999999999999}]', '2025-02-19 20:37:04'),
-(60, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-138,\"y\":294,\"scale\":0.8999999999999999},{\"productId\":145,\"x\":821,\"y\":297,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":386,\"y\":512,\"scale\":0.8999999999999999}]', '2025-02-19 20:40:54'),
-(61, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-154,\"y\":112,\"scale\":0.9},{\"productId\":145,\"x\":794,\"y\":95,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":255,\"y\":264,\"scale\":0.9}]', '2025-02-20 06:39:02'),
-(62, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":157,\"x\":-154,\"y\":112,\"scale\":0.9},{\"productId\":145,\"x\":794,\"y\":95,\"scale\":0.5},{\"productId\":144,\"x\":157,\"y\":516,\"scale\":0.5},{\"productId\":138,\"x\":255,\"y\":264,\"scale\":0.9}]', '2025-02-20 06:52:59'),
-(64, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":55,\"x\":-153,\"y\":582,\"scale\":0.7},{\"productId\":172,\"x\":225,\"y\":586,\"scale\":0.7999999999999999},{\"productId\":80,\"x\":51,\"y\":592,\"scale\":0.5},{\"productId\":96,\"x\":1044,\"y\":485,\"scale\":0.7999999999999999},{\"productId\":211,\"x\":673,\"y\":599,\"scale\":0.5}]', '2025-03-01 19:19:42'),
-(66, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":55,\"x\":-153,\"y\":582,\"scale\":0.7},{\"productId\":172,\"x\":225,\"y\":586,\"scale\":0.8},{\"productId\":80,\"x\":51,\"y\":592,\"scale\":0.5},{\"productId\":96,\"x\":1044,\"y\":485,\"scale\":0.8},{\"productId\":211,\"x\":673,\"y\":599,\"scale\":0.5}]', '2025-03-03 15:25:31'),
-(67, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":55,\"x\":-153,\"y\":582,\"scale\":0.7},{\"productId\":172,\"x\":225,\"y\":586,\"scale\":0.8},{\"productId\":80,\"x\":51,\"y\":592,\"scale\":0.5},{\"productId\":96,\"x\":1044,\"y\":485,\"scale\":0.8},{\"productId\":211,\"x\":673,\"y\":599,\"scale\":0.5},{\"productId\":387,\"x\":-248,\"y\":343,\"scale\":0.5},{\"productId\":74,\"x\":-106,\"y\":406,\"scale\":0.5},{\"productId\":347,\"x\":611,\"y\":286,\"scale\":1.0999999999999999}]', '2025-03-12 08:20:14'),
-(68, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":55,\"x\":-153,\"y\":582,\"scale\":0.7},{\"productId\":172,\"x\":225,\"y\":586,\"scale\":0.8},{\"productId\":80,\"x\":51,\"y\":592,\"scale\":0.5},{\"productId\":96,\"x\":1044,\"y\":485,\"scale\":0.8},{\"productId\":211,\"x\":673,\"y\":599,\"scale\":0.5},{\"productId\":387,\"x\":-248,\"y\":343,\"scale\":0.5},{\"productId\":74,\"x\":-106,\"y\":406,\"scale\":0.5},{\"productId\":347,\"x\":611,\"y\":286,\"scale\":1.0999999999999999}]', '2025-03-12 08:20:22'),
-(69, '1cd1b3ea-afc7-4b11-b7ee-a1657c6281c9', '[{\"productId\":52,\"x\":-126,\"y\":275,\"scale\":0.5}]', '2025-03-12 10:18:58');
+(71, 1, '[{\"productId\":53,\"x\":-198,\"y\":534,\"scale\":0.6},{\"productId\":73,\"x\":-68,\"y\":569,\"scale\":0.5},{\"productId\":174,\"x\":195,\"y\":485,\"scale\":0.7},{\"productId\":347,\"x\":946,\"y\":439,\"scale\":0.7999999999999999}]', '2025-03-13 20:09:41');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `userroles`
+--
+
+CREATE TABLE `userroles` (
+  `Userid` int(11) NOT NULL,
+  `Roleid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `userroles`
+--
+
+INSERT INTO `userroles` (`Userid`, `Roleid`) VALUES
+(1, 1),
+(4, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `users`
+--
+
+CREATE TABLE `users` (
+  `Id` int(11) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `UserName` varchar(255) NOT NULL,
+  `PasswordHash` varchar(255) NOT NULL,
+  `fullname` varchar(40) NOT NULL,
+  `datet` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ProfilePictureUrl` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `users`
+--
+
+INSERT INTO `users` (`Id`, `Email`, `UserName`, `PasswordHash`, `fullname`, `datet`, `ProfilePictureUrl`) VALUES
+(1, 'liptakr@kkszki.hu', 'admin', '$2a$11$zRttTfinJA9jvZuyvwsoL.c/gmnUL9Q4b27.tRw5ugAEQ/iROsqFe', 'Admin', '2025-03-13 17:58:46', '/profile_pictures/69f3dc9f-cc8a-4fa7-859a-1b23401616ad_tatra-mountains-landscape-foggy-morning-scenic-poland-europe-3840x2160-8023.jpg'),
+(4, 'roomlabservice@gmail.com', 'admin', '$2a$11$1PvSDqce.OaZMB/XiQ88lOzsd5yUx7MNTMtoB93XixuF9kbxpgBqG', 'admin', '2025-03-13 18:55:27', '/profile_pictures/1d47ee50-4b68-492a-9164-b9ae3e6782aa_237604.jpg');
 
 -- --------------------------------------------------------
 
@@ -902,7 +761,8 @@ INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
 ('20240921131732_Linkhandler', '8.0.10'),
 ('20240921155034_LoginRegisterValidatation', '8.0.10'),
 ('20250127200858_AddAccessFailedCount', '8.0.10'),
-('20250127201800_updateduser', '8.0.10');
+('20250127201800_updateduser', '8.0.10'),
+('20250313172518_uj', '8.0.11');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -916,56 +776,6 @@ ALTER TABLE `achievements`
   ADD KEY `users` (`user_Id`);
 
 --
--- A tábla indexei `aspnetroleclaims`
---
-ALTER TABLE `aspnetroleclaims`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`);
-
---
--- A tábla indexei `aspnetroles`
---
-ALTER TABLE `aspnetroles`
-  ADD PRIMARY KEY (`Id`),
-  ADD UNIQUE KEY `RoleNameIndex` (`NormalizedName`);
-
---
--- A tábla indexei `aspnetuserclaims`
---
-ALTER TABLE `aspnetuserclaims`
-  ADD PRIMARY KEY (`Id`),
-  ADD KEY `IX_AspNetUserClaims_UserId` (`UserId`);
-
---
--- A tábla indexei `aspnetuserlogins`
---
-ALTER TABLE `aspnetuserlogins`
-  ADD PRIMARY KEY (`LoginProvider`,`ProviderKey`),
-  ADD KEY `IX_AspNetUserLogins_UserId` (`UserId`);
-
---
--- A tábla indexei `aspnetuserroles`
---
-ALTER TABLE `aspnetuserroles`
-  ADD PRIMARY KEY (`UserId`,`RoleId`),
-  ADD KEY `IX_AspNetUserRoles_RoleId` (`RoleId`);
-
---
--- A tábla indexei `aspnetusers`
---
-ALTER TABLE `aspnetusers`
-  ADD PRIMARY KEY (`Id`),
-  ADD UNIQUE KEY `email` (`Email`),
-  ADD UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
-  ADD KEY `EmailIndex` (`NormalizedEmail`);
-
---
--- A tábla indexei `aspnetusertokens`
---
-ALTER TABLE `aspnetusertokens`
-  ADD PRIMARY KEY (`UserId`,`LoginProvider`,`Name`);
-
---
 -- A tábla indexei `kategories`
 --
 ALTER TABLE `kategories`
@@ -977,7 +787,9 @@ ALTER TABLE `kategories`
 ALTER TABLE `planproducts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Products` (`userplanid`),
-  ADD KEY `product` (`productid`);
+  ADD KEY `product` (`productid`),
+  ADD KEY `IX_planproducts_productid` (`productid`),
+  ADD KEY `IX_planproducts_userplanid` (`userplanid`);
 
 --
 -- A tábla indexei `products`
@@ -986,14 +798,24 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `bolt` (`shopid`),
   ADD KEY `szoba` (`roomid`),
-  ADD KEY `tip` (`product_type_id`);
+  ADD KEY `tip` (`product_type_id`),
+  ADD KEY `IX_products_product_type_id` (`product_type_id`),
+  ADD KEY `IX_products_roomid` (`roomid`),
+  ADD KEY `IX_products_shopid` (`shopid`);
 
 --
 -- A tábla indexei `producttype`
 --
 ALTER TABLE `producttype`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `categoryid` (`categoryid`);
+  ADD KEY `categoryid` (`categoryid`),
+  ADD KEY `IX_producttype_categoryid` (`categoryid`);
+
+--
+-- A tábla indexei `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- A tábla indexei `shops`
@@ -1006,7 +828,21 @@ ALTER TABLE `shops`
 --
 ALTER TABLE `userplan`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `userid` (`userid`);
+  ADD KEY `userid` (`userid`),
+  ADD KEY `IX_userplan_userid` (`userid`);
+
+--
+-- A tábla indexei `userroles`
+--
+ALTER TABLE `userroles`
+  ADD KEY `user` (`Userid`),
+  ADD KEY `roles` (`Roleid`);
+
+--
+-- A tábla indexei `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- A tábla indexei `__efmigrationshistory`
@@ -1019,18 +855,6 @@ ALTER TABLE `__efmigrationshistory`
 --
 
 --
--- AUTO_INCREMENT a táblához `aspnetroleclaims`
---
-ALTER TABLE `aspnetroleclaims`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT a táblához `aspnetuserclaims`
---
-ALTER TABLE `aspnetuserclaims`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT a táblához `kategories`
 --
 ALTER TABLE `kategories`
@@ -1040,7 +864,7 @@ ALTER TABLE `kategories`
 -- AUTO_INCREMENT a táblához `planproducts`
 --
 ALTER TABLE `planproducts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT a táblához `products`
@@ -1055,6 +879,12 @@ ALTER TABLE `producttype`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
+-- AUTO_INCREMENT a táblához `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT a táblához `shops`
 --
 ALTER TABLE `shops`
@@ -1064,7 +894,13 @@ ALTER TABLE `shops`
 -- AUTO_INCREMENT a táblához `userplan`
 --
 ALTER TABLE `userplan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
+--
+-- AUTO_INCREMENT a táblához `users`
+--
+ALTER TABLE `users`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -1074,44 +910,14 @@ ALTER TABLE `userplan`
 -- Megkötések a táblához `achievements`
 --
 ALTER TABLE `achievements`
-  ADD CONSTRAINT `users` FOREIGN KEY (`user_Id`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Megkötések a táblához `aspnetroleclaims`
---
-ALTER TABLE `aspnetroleclaims`
-  ADD CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE;
-
---
--- Megkötések a táblához `aspnetuserclaims`
---
-ALTER TABLE `aspnetuserclaims`
-  ADD CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
-
---
--- Megkötések a táblához `aspnetuserlogins`
---
-ALTER TABLE `aspnetuserlogins`
-  ADD CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
-
---
--- Megkötések a táblához `aspnetuserroles`
---
-ALTER TABLE `aspnetuserroles`
-  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `aspnetroles` (`Id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
-
---
--- Megkötések a táblához `aspnetusertokens`
---
-ALTER TABLE `aspnetusertokens`
-  ADD CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `uuu` FOREIGN KEY (`user_Id`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `planproducts`
 --
 ALTER TABLE `planproducts`
-  ADD CONSTRAINT `products` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `plan` FOREIGN KEY (`userplanid`) REFERENCES `userplan` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `product` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Megkötések a táblához `products`
@@ -1131,7 +937,14 @@ ALTER TABLE `producttype`
 -- Megkötések a táblához `userplan`
 --
 ALTER TABLE `userplan`
-  ADD CONSTRAINT `FK_userplan_AspNetUsers_userid` FOREIGN KEY (`userid`) REFERENCES `aspnetusers` (`Id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `userplan_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`Id`) ON DELETE CASCADE;
+
+--
+-- Megkötések a táblához `userroles`
+--
+ALTER TABLE `userroles`
+  ADD CONSTRAINT `roles` FOREIGN KEY (`Roleid`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user` FOREIGN KEY (`Userid`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

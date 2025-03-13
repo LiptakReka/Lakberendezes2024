@@ -45,10 +45,16 @@ const ProfilePictureUpload = () => {
         formData.append("email", user?.email);
 
         try {
+            const token = localStorage.getItem("token"); 
             const response = await axios.post(
                 "https://localhost:7247/api/Users/upload-profile-picture",
                 formData,
-                { headers: { "Content-Type": "multipart/form-data" } }
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        "Authorization":token 
+                    }
+                }
             );
 
             if (!response.data.imageUrl) {

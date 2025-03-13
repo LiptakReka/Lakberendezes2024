@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Contact.css";
-import { Mail, Phone,  Search } from 'lucide-react';
+import { Mail, Phone, Search } from 'lucide-react';
 
 const pagecontact = [
   { name: "RoomLab", phoneNumber: "+36 30-927-0458", email: "roomlabservice@gmail.com", websiteurl: "https://roomlab-48d26.web.app" }
@@ -33,7 +33,12 @@ export default function ContactPage() {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const response = await fetch('https://localhost:7247/api/Shops');
+        const token = localStorage.getItem("token"); 
+        const response = await fetch('https://localhost:7247/api/Shops', {
+          headers: {
+            "Authorization":token 
+          }
+        });
         if (!response.ok) {
           throw new Error('Hiba a keresés során');
         }

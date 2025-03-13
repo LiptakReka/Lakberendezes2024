@@ -28,6 +28,7 @@ export default function Cart() {
         setMessage("");
       
         try {
+          const token = localStorage.getItem("token"); 
           const response = await axios.post(
             "https://localhost:7247/api/Email/send-cart",
             {
@@ -40,7 +41,8 @@ export default function Cart() {
             },
             {
               headers: {
-                "Content-Type": "application/json", 
+                "Content-Type": "application/json",
+                "Authorization":token 
               },
             }
           );

@@ -7,9 +7,9 @@ export const getUserAchievements=async()=>{
     try {
         const token =localStorage.getItem("token");
         if(!token) throw new Error("Nincs token");
-        const response = await axios.get(`${ApiUrl}`,{
+        const response = await axios.get(ApiUrl,{
             headers:{
-                Authorization: `Bearer ${localStorage.getItem("token")}`
+                Authorization:token
             }
         });
         return response.data;
@@ -23,6 +23,11 @@ export const getUserAchievements=async()=>{
 export const addAchievement=async(achievement)=>{
     try {
         const user=JSON.parse(localStorage.getItem("user"));
+        const token=localStorage.getItem("token");
+        if(!token){
+            throw new Error("Nincs token");
+            
+        }
         if(!user || !user.id){
             console.error("Nincs felhasználói azonosító");
             toast.error("Nincs felhasználói azonosító");
@@ -35,7 +40,11 @@ export const addAchievement=async(achievement)=>{
             icon : typeof achievement.icon === "string" ? achievement.icon : "nincs megadvaa ikon",
         };
         console.log("Achievementek:", payload);
-        const response = await axios.post(`https://localhost:7247/api/Achievement/new`, payload);
+        const response = await axios.post(`https://localhost:7247/api/Achievement/new`, payload,{
+            headers:{
+                Authorization:token
+            }
+        });
         return response.data;
         
     } catch (error) {

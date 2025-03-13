@@ -16,6 +16,7 @@ import UserSetts from './Pages2/Usersettings/UserSetts';
 import ContactPage from '../src/Pages2/Contact/Contact';
 import Cart from './Pages2/Cart/Cart';
 import { AchievementProvider } from './Pages2/Achievement/UseAchivements';
+import Autolog from './components/AutoLog/Autolog';
 
 const App = () => {
     const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -41,6 +42,7 @@ const App = () => {
             <ToastContainer />
             
             {token && <Navbar1 token={token} onLogout={handleLogout} />}
+            {token && <Autolog logout={handleLogout} />}
             
             <Routes>
                 

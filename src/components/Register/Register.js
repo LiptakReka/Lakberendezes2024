@@ -11,13 +11,20 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [fullname, setFullname] = useState("");
     const [error, setError] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [username, setUsername] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
 
-    // Függvény a regisztráció beküldésének kezelésére
+    // Függvény a regisztráció  kezelésére
     const handleregister = async (e) => {
         e.preventDefault();
+
+        // Jelszó ellenőrzése
+        if (password !== confirmPassword) {
+            setError("A jelszavak nem egyeznek meg!");
+            return;
+        }
 
         const formData = new FormData();
         formData.append('fullname', fullname);
@@ -39,8 +46,14 @@ const Register = () => {
                 setFullname('');
                 setEmail('');
                 setPassword('');
+                setConfirmPassword('');
                 setUsername('');
                 setProfilePicture(null);
+                
+               
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
             } else {
                 const errorData = await response.json();
                 console.error("Szerver hiba:", errorData);
@@ -107,6 +120,19 @@ const Register = () => {
                             required
                         />
                     </div>
+                    <div className="form-group">
+                        <label className="form-label">
+                            <Key className="icon" /> Jelszó újra:
+                        </label>
+                        <input
+                            type="password"
+                            className="form-input"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+
                     <div className="form-group">
                         <label className="form-label">
                             <Image className="icon" /> Profilkép:

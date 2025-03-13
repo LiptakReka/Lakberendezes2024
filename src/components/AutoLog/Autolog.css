@@ -1,0 +1,12 @@
+.autolog-timer {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 14px;
+  z-index: 1000;
+}

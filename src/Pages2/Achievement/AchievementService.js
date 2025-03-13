@@ -1,11 +1,17 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-const ApiUrl="https://localhost:7247/api/Achievement";
+const ApiUrl="https://localhost:7247/api/Achievement/me";
 
-export const getUserAchievements=async(UserId)=>{
+export const getUserAchievements=async()=>{
     try {
-        const response = await axios.get(`${ApiUrl}/${UserId}`);
+        const token =localStorage.getItem("token");
+        if(!token) throw new Error("Nincs token");
+        const response = await axios.get(`${ApiUrl}`,{
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        });
         return response.data;
     } catch (error) {
         console.error("Error:", error);

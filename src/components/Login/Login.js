@@ -19,6 +19,7 @@ const Login = ({ setToken }) => {
         if (user) {
             localStorage.setItem("user", JSON.stringify(user));
         }
+        localStorage.removeItem("achievements")
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     };
 
@@ -37,6 +38,8 @@ const Login = ({ setToken }) => {
             if (response.data.token) {
                 saveUserData(response.data.token, response.data.user || null);
                 setToken(response.data.token);
+                localStorage.setItem("isloggedin", true);
+                localStorage.setItem("timeleft", Date.now() + 2 * 60 * 1000);
                 navigate("/");
             } else {
                 setError("Hibás bejelentkezési adatok.");

@@ -23,14 +23,16 @@ const App = () => {
     
     const handleLogout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("isloggedin");
         setToken(null);
     };
 
     useEffect(() => {
         if (token) {
             localStorage.setItem("token", token);
+            localStorage.setItem("isloggedin", "true");
         } else {
-            localStorage.removeItem("token");
+            localStorage.removeItem("isloggedin");
         }
     }, [token]);
 
@@ -45,11 +47,9 @@ const App = () => {
             {token && <Autolog logout={handleLogout} />}
             
             <Routes>
-                
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
 
-                
                 {!token ? (
                     <>
                         <Route path="/login" element={<Login setToken={setToken} />} />
@@ -61,30 +61,20 @@ const App = () => {
                     </>
                 ) : (
                     <>
-                       
                         <Route path="/" element={<Home />} />
                         <Route path='/cart' element={<Cart/>}/>
                         <Route path="/about" element={<About />} />
                         <Route path="/planner" element={<Planner />} />
                         <Route path="/contact" element={<ContactPage />} />
-                        
                         <Route path="/settings" element={<UserSetts />} />
-
-                        
                         <Route path="*" element={<Navigate to="/" replace />} />
                     </>
                 )}
             </Routes>
             </AchievementProvider>
             </SnackbarProvider>
-            
-            
         </Router>
-        
-        
     );
-    
 };
-
 
 export default App;

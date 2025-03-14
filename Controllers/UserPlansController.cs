@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Lakberendezes.Data;
 using Lakberendezes.Models;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lakberendezes.Controllers
 {
@@ -22,6 +23,8 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
+
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("search/{id}")]
 
         public async Task<ActionResult<IEnumerable<UserPlans>>> GetPlans(int id)
@@ -37,12 +40,15 @@ namespace Lakberendezes.Controllers
 
 
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserPlans>>> Getuserplan()
         {
             return await _context.userplan.ToListAsync();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -82,6 +88,8 @@ namespace Lakberendezes.Controllers
             }
 
         }
+
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<UserPlans>> GetUserPlans(int id)
         {
@@ -95,6 +103,7 @@ namespace Lakberendezes.Controllers
             return userPlans;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUserPlans(int id, UserPlans userPlans)
         {
@@ -124,7 +133,7 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
-  
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<UserPlans>> PostUserPlans( UserPlans userPlans)
         {

@@ -27,8 +27,8 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
-        
-       
+
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         
         public async Task<ActionResult<IEnumerable<Product>>> Getproducts()
@@ -36,7 +36,7 @@ namespace Lakberendezes.Controllers
             return await _context.products.ToListAsync();
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("szobák")]
         public async Task<IActionResult> GetProductsByCategory([FromQuery] int? roomId)
         {
@@ -54,7 +54,7 @@ namespace Lakberendezes.Controllers
             return Ok(products);
         }
 
-
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("typeandroom")]
         public async Task<ActionResult<IEnumerable<Product>>>GetProductsByRoomAndType(int roomid, int typeid)
         {
@@ -71,7 +71,7 @@ namespace Lakberendezes.Controllers
             }
         }
 
-        //[Authorize(Roles ="USER")]
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("search/{name}")]
         
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string name)
@@ -87,6 +87,8 @@ namespace Lakberendezes.Controllers
            
 
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -128,7 +130,7 @@ namespace Lakberendezes.Controllers
         }
 
 
-        //[Authorize(Roles ="ADMIN")]
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -142,9 +144,9 @@ namespace Lakberendezes.Controllers
             return product;
         }
 
-        
-        
-        //[Authorize(Roles ="ADMIN")]
+
+
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
@@ -174,8 +176,8 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
-       
-        //[Authorize(Roles ="Admin")]
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         
         public async Task<ActionResult<Product>> PostProduct([FromBody] ProductDTO productDto)
@@ -205,7 +207,7 @@ namespace Lakberendezes.Controllers
 
 
 
-        //[Authorize (Roles ="ADMIN")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProducts(int id)
         {

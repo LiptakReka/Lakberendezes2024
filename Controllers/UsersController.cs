@@ -30,6 +30,7 @@ namespace Lakberendezes.Controllers
             _config = config;
         }
 
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("get-plan/{userId}")]
         public async Task<IActionResult> GetUserPlan(int userId)
         {
@@ -62,6 +63,7 @@ namespace Lakberendezes.Controllers
             return Ok(userPlan);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -81,6 +83,7 @@ namespace Lakberendezes.Controllers
             return Ok(users);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -168,6 +171,7 @@ namespace Lakberendezes.Controllers
             return Ok(new { token, user = userData });
         }
 
+        [Authorize(Roles = "User,Admin")]
         [HttpPost("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] UserChangePasswordDTO model)
         {
@@ -188,7 +192,7 @@ namespace Lakberendezes.Controllers
             return Ok(new { message = "Jelszó sikeresen módosítva!" });
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "User,Admin")]
         [HttpPost("upload-profile-picture")]
         public async Task<IActionResult> UploadProfilePicture(IFormFile file, [FromForm] string email)
         {
@@ -226,6 +230,7 @@ namespace Lakberendezes.Controllers
             return Ok(new { imageUrl });
         }
 
+        [Authorize(Roles = "User,Admin")]
         [HttpPost("save-plan")]
         public async Task<IActionResult> SaveUserPlan([FromBody] UserPlanDTO planDTO)
         {
@@ -437,6 +442,7 @@ namespace Lakberendezes.Controllers
             return Ok("Jelszó visszaállítva!");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -482,6 +488,7 @@ namespace Lakberendezes.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{userName}")]
         public async Task<IActionResult> DeleteUserByName(string userName)
         {

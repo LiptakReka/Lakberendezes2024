@@ -5,6 +5,7 @@ using Lakberendezes.Models;
 using MailKit.Net.Smtp;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lakberendezes.Controllers
 {
@@ -13,6 +14,7 @@ namespace Lakberendezes.Controllers
     public class EmailController : Controller
     {
         //Kosár tartalom elküldése
+        [Authorize(Roles = "User,Admin")]
         [HttpPost("send-cart")]
         public async Task<IActionResult> SendCartEmail([FromBody] CartEmailRequestDTO request)
         {

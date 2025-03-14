@@ -31,7 +31,7 @@ namespace Lakberendezes.Controllers
             return await _context.producttype.ToListAsync();
         }
 
-       
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductType>> GetProductType(int id)
         {
@@ -45,7 +45,7 @@ namespace Lakberendezes.Controllers
             return productType;
         }
 
-      
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductType(int id, ProductType productType)
         {
@@ -75,7 +75,7 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
-     
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<ProductType>> PostProductType(ProductTypesDTO productType)
         {
@@ -96,6 +96,7 @@ namespace Lakberendezes.Controllers
 
             return CreatedAtAction("Getproducttype", new { id = types.id }, types);
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -131,6 +132,7 @@ namespace Lakberendezes.Controllers
 
         }
 
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("byroom")]
         public async Task<ActionResult<IEnumerable<ProductType>>> GetTypesbyRoom(int roomid)
         {
@@ -153,7 +155,7 @@ namespace Lakberendezes.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductType(int id)
         {

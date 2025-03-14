@@ -3,40 +3,64 @@
   "WorkspaceRootPath": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\lakberendezesadmin\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\pages\\productspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\productspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\converters\\producttypetoname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\converters\\producttypetoname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\pages\\producttype.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\producttype.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\pages\\models\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\models\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\pages\\rooms.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\rooms.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\pages\\models\\tokenstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\models\\tokenstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\addcateg.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\addcateg.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\pages\\loginw.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\loginw.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\pages\\productspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\productspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\converters\\typestohu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\converters\\typestohu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\converters\\shopidtoname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\converters\\shopidtoname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\pages\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\lakberendezesadmin\\pages\\loginw.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\loginw.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|c:\\users\\liptakrm\\downloads\\lakberendezes2024-wpf (1)\\lakberendezes2024-wpf\\lakberendezesadmin\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\lakberendezesadmin\\converters\\producttypetoname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\converters\\producttypetoname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\lakberendezesadmin\\pages\\producttype.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\producttype.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\lakberendezesadmin\\pages\\rooms.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\rooms.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\lakberendezesadmin\\addcateg.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\addcateg.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\lakberendezesadmin\\pages\\productspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\pages\\productspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\lakberendezesadmin\\converters\\typestohu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\converters\\typestohu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\lakberendezesadmin\\converters\\shopidtoname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{970F0B9C-B476-4249-BFD0-8D575A7A4FEA}|LakberendezesAdmin\\LakberendezesAdmin.csproj|solutionrelative:lakberendezesadmin\\converters\\shopidtoname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,8 +70,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Models\\User.cs",
+              "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Models\\User.cs",
+              "RelativeToolTip": "LakberendezesAdmin\\Pages\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T08:57:56.779Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -55,43 +93,93 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ProductTypeToName.cs",
-              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Converters\\ProductTypeToName.cs",
-              "RelativeDocumentMoniker": "LakberendezesAdmin\\Converters\\ProductTypeToName.cs",
-              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Converters\\ProductTypeToName.cs",
-              "RelativeToolTip": "LakberendezesAdmin\\Converters\\ProductTypeToName.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAzAAAAAAAAAA==",
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "LakberendezesAdmin\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\MainWindow.xaml.cs",
+              "RelativeToolTip": "LakberendezesAdmin\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAASwCYAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T07:52:51.338Z",
+              "WhenOpened": "2025-03-14T09:15:32.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\ProductsPage.xaml.cs",
+              "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\ProductsPage.xaml.cs",
+              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\ProductsPage.xaml.cs",
+              "RelativeToolTip": "LakberendezesAdmin\\Pages\\ProductsPage.xaml.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAowHkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T09:01:46.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TokenStorage.cs",
+              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Models\\TokenStorage.cs",
+              "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\Models\\TokenStorage.cs",
+              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Models\\TokenStorage.cs",
+              "RelativeToolTip": "LakberendezesAdmin\\Pages\\Models\\TokenStorage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T08:35:42.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Models\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\Models\\AuthResponse.cs",
+              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Models\\AuthResponse.cs",
+              "RelativeToolTip": "LakberendezesAdmin\\Pages\\Models\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T08:34:50.672Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "LoginW.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\LoginW.xaml.cs",
+              "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\LoginW.xaml.cs",
+              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\LoginW.xaml.cs",
+              "RelativeToolTip": "LakberendezesAdmin\\Pages\\LoginW.xaml.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAowB0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T08:32:50.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "AddCateg.xaml",
               "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\AddCateg.xaml",
               "RelativeDocumentMoniker": "LakberendezesAdmin\\AddCateg.xaml",
               "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\AddCateg.xaml",
               "RelativeToolTip": "LakberendezesAdmin\\AddCateg.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-12T08:00:07.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T08:00:07.168Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "Producttype.xaml",
               "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Producttype.xaml",
               "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\Producttype.xaml",
               "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Producttype.xaml",
               "RelativeToolTip": "LakberendezesAdmin\\Pages\\Producttype.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-12T07:58:28.94Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T07:58:28.94Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "TypestoHu.cs",
               "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Converters\\TypestoHu.cs",
               "RelativeDocumentMoniker": "LakberendezesAdmin\\Converters\\TypestoHu.cs",
@@ -99,24 +187,22 @@
               "RelativeToolTip": "LakberendezesAdmin\\Converters\\TypestoHu.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T07:57:25.226Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T07:57:25.226Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "ProductsPage.xaml",
               "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\ProductsPage.xaml",
               "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\ProductsPage.xaml",
               "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\ProductsPage.xaml",
               "RelativeToolTip": "LakberendezesAdmin\\Pages\\ProductsPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-12T07:51:47.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T07:51:47.334Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\MainWindow.xaml",
               "RelativeDocumentMoniker": "LakberendezesAdmin\\MainWindow.xaml",
@@ -128,19 +214,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "Rooms.xaml",
               "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Rooms.xaml",
               "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\Rooms.xaml",
               "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\Rooms.xaml",
               "RelativeToolTip": "LakberendezesAdmin\\Pages\\Rooms.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-12T08:00:16.409Z",
+              "WhenOpened": "2025-03-12T08:00:16.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginW.xaml",
+              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\LoginW.xaml",
+              "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\LoginW.xaml",
+              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\LoginW.xaml",
+              "RelativeToolTip": "LakberendezesAdmin\\Pages\\LoginW.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-02T16:46:36.943Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
+              "Title": "ProductTypeToName.cs",
+              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Converters\\ProductTypeToName.cs",
+              "RelativeDocumentMoniker": "LakberendezesAdmin\\Converters\\ProductTypeToName.cs",
+              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Converters\\ProductTypeToName.cs",
+              "RelativeToolTip": "LakberendezesAdmin\\Converters\\ProductTypeToName.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T07:52:51.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "ShopIdToName.cs",
               "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Converters\\ShopIdToName.cs",
               "RelativeDocumentMoniker": "LakberendezesAdmin\\Converters\\ShopIdToName.cs",
@@ -148,19 +257,7 @@
               "RelativeToolTip": "LakberendezesAdmin\\Converters\\ShopIdToName.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T09:50:08.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LoginW.xaml",
-              "DocumentMoniker": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\LoginW.xaml",
-              "RelativeDocumentMoniker": "LakberendezesAdmin\\Pages\\LoginW.xaml",
-              "ToolTip": "C:\\Users\\liptakrm\\Downloads\\Lakberendezes2024-WPF (1)\\Lakberendezes2024-WPF\\LakberendezesAdmin\\Pages\\LoginW.xaml",
-              "RelativeToolTip": "LakberendezesAdmin\\Pages\\LoginW.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-02T16:46:36.943Z"
+              "WhenOpened": "2025-03-06T09:50:08.178Z"
             }
           ]
         }

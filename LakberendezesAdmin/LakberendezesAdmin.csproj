@@ -164,11 +164,13 @@
     <Compile Include="Pages\LoginW.xaml.cs">
       <DependentUpon>LoginW.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Models\AuthResponse.cs" />
     <Compile Include="Pages\Models\Plan.cs" />
     <Compile Include="Pages\Models\Product.cs" />
     <Compile Include="Pages\Models\ProductType.cs" />
     <Compile Include="Pages\Models\Room.cs" />
     <Compile Include="Pages\Models\Shop.cs" />
+    <Compile Include="Pages\Models\TokenStorage.cs" />
     <Compile Include="Pages\Models\User.cs" />
     <Compile Include="Pages\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>

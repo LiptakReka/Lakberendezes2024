@@ -22,14 +22,17 @@ using System.Windows.Shapes;
 
 namespace LakberendezesAdmin.Pages
 {
-  
+
     public partial class ProductsPage : Page
     {
         private static readonly HttpClient _httpClient = new HttpClient();
         private List<Product> _allproducts = new List<Product>();
+        private string _token;
         public ProductsPage()
         {
             InitializeComponent();
+            _token = TokenStorage.token;
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             LoadProducts();
         }
         private async void LoadProducts()
@@ -46,7 +49,9 @@ namespace LakberendezesAdmin.Pages
         }
         private async Task<List<Product>> GetProductsAsync()
         {
-            var response = await _httpClient.GetAsync("https://localhost:7247/api/Products");
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7247/api/Products");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
+            var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
 
             var jsonString = await response.Content.ReadAsStringAsync();
@@ -97,25 +102,22 @@ namespace LakberendezesAdmin.Pages
                 var result = MessageBox.Show($"Biztosan törlöd a(z) {PrId} üzletet?", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    HttpResponseMessage response = await _httpClient.DeleteAsync($"https://localhost:7247/api/Products/{PrId}");
-                    if (response.IsSuccessStatusCode)
+                    try
                     {
-                        MessageBox.Show("Termék sikeresen törölve!");
+                        var request = new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:7247/api/Products/{PrId}");
+                        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
+                        var response = await _httpClient.SendAsync(request);
+                        response.EnsureSuccessStatusCode();
 
-                        // Keresés az elem után
-                        var ToRemove = _allproducts.FirstOrDefault(p => p.id == PrId);
-                        if (ToRemove != null)
-                        {
-                            _allproducts.Remove(ToRemove);
-                        }
-
-                        // Refresh a DataGrid nézetben
+                        MessageBox.Show("Sikeres törlés", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+                        _allproducts.RemoveAll(p => p.id == PrId);
                         ProductsGrid.ItemsSource = null;
                         ProductsGrid.ItemsSource = _allproducts;
                     }
-                    else
+                    catch (Exception)
                     {
-                        MessageBox.Show("Hiba történt a törlés során.");
+
+                        throw;
                     }
                 }
             }
@@ -127,25 +129,21 @@ namespace LakberendezesAdmin.Pages
 
             try
             {
-                // Excel fájl letöltése
-                byte[] excelData = await _httpClient.GetByteArrayAsync(apiUrl);
+                var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
+                var response = await _httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
 
-                //fájl mentése
-                string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "termekek.xlsx");
-                using(var fs=new FileStream(filePath,FileMode.Create, FileAccess.Write, FileShare.Read))
-                {
-                    await fs.WriteAsync(excelData,0,excelData.Length);
-                }
+                byte[] excelData = await response.Content.ReadAsByteArrayAsync();
+                string filepath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "termekek.xlsx");
+                File.WriteAllBytes(filepath, excelData);
 
-                
-                MessageBox.Show($"Az Excel fájl sikeresen letöltve!\nElérési út: {filePath}", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                // Fájl megnyitása
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(filePath) { UseShellExecute = true });
+                MessageBox.Show("Sikeres exportálás", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(filepath) { UseShellExecute = true });
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hiba történt a letöltés során: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Hiba történt: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

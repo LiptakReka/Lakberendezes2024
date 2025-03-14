@@ -32,7 +32,11 @@ namespace LakberendezesAdmin.Pages
         {
             InitializeComponent();
             _token = TokenStorage.token;
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
+            if (!string.IsNullOrEmpty(_token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
+            }
+           
             LoadProducts();
         }
         private async void LoadProducts()
@@ -50,7 +54,6 @@ namespace LakberendezesAdmin.Pages
         private async Task<List<Product>> GetProductsAsync()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7247/api/Products");
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
 
@@ -117,7 +120,7 @@ namespace LakberendezesAdmin.Pages
                     catch (Exception)
                     {
 
-                        throw;
+                        MessageBox.Show("Hiba történt a törlés során", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }

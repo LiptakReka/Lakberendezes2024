@@ -23,7 +23,12 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("search/{id}")]
 
         public async Task<ActionResult<IEnumerable<UserPlans>>> GetPlans(int id)
@@ -87,7 +92,12 @@ namespace Lakberendezes.Controllers
             }
 
         }
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("{id}")]
         public async Task<ActionResult<UserPlans>> GetUserPlans(int id)
         {

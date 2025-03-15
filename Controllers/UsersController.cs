@@ -30,7 +30,11 @@ namespace Lakberendezes.Controllers
             _config = config;
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("get-plan/{userId}")]
         public async Task<IActionResult> GetUserPlan(int userId)
         {
@@ -63,7 +67,11 @@ namespace Lakberendezes.Controllers
             return Ok(userPlan);
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -83,7 +91,11 @@ namespace Lakberendezes.Controllers
             return Ok(users);
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -176,7 +188,11 @@ namespace Lakberendezes.Controllers
             return Ok(new { token, user = userData });
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpPost("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] UserChangePasswordDTO model)
         {
@@ -197,7 +213,11 @@ namespace Lakberendezes.Controllers
             return Ok(new { message = "Jelszó sikeresen módosítva!" });
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpPost("upload-profile-picture")]
         public async Task<IActionResult> UploadProfilePicture(IFormFile file, [FromForm] string email)
         {
@@ -235,7 +255,11 @@ namespace Lakberendezes.Controllers
             return Ok(new { imageUrl });
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpPost("save-plan")]
         public async Task<IActionResult> SaveUserPlan([FromBody] UserPlanDTO planDTO)
         {
@@ -446,6 +470,10 @@ namespace Lakberendezes.Controllers
 
             return Ok("Jelszó visszaállítva!");
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()

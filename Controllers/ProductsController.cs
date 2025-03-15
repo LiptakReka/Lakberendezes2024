@@ -36,7 +36,11 @@ namespace Lakberendezes.Controllers
             return await _context.products.ToListAsync();
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("szobák")]
         public async Task<IActionResult> GetProductsByCategory([FromQuery] int? roomId)
         {
@@ -54,7 +58,11 @@ namespace Lakberendezes.Controllers
             return Ok(products);
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("typeandroom")]
         public async Task<ActionResult<IEnumerable<Product>>>GetProductsByRoomAndType(int roomid, int typeid)
         {
@@ -71,7 +79,11 @@ namespace Lakberendezes.Controllers
             }
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("search/{name}")]
         
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string name)

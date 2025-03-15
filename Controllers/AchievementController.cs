@@ -18,7 +18,11 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
+<<<<<<< HEAD
         [Authorize(Roles ="Admin")]
+=======
+        [Authorize(Roles = "Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         //Összes Achievement
         [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<Achievement>>> GetAchievements()
@@ -27,7 +31,11 @@ namespace Lakberendezes.Controllers
             return await _context.achievements.ToListAsync();
         }
 
+<<<<<<< HEAD
         [Authorize(Roles ="User, Admin")]
+=======
+        [Authorize(Roles ="User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("me")]
         public async Task<ActionResult<IEnumerable<Achievement>>> GetUserAchievement()
         {
@@ -48,6 +56,7 @@ namespace Lakberendezes.Controllers
             return Ok(achievement);
         }
         //User alapú achievement
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("{UserId}")]
         public async Task<ActionResult<IEnumerable<Achievement>>>GetAchievement(int UserId)
         {
@@ -63,6 +72,7 @@ namespace Lakberendezes.Controllers
 
         [Authorize(Roles = "Admin,User")]
         //Új achievement kezelése
+        [Authorize(Roles = "User,Admin")]
         [HttpPost("new")]
         public async Task<ActionResult<Achievement>> CreateAchievement(Achievement achievement)
         {
@@ -77,6 +87,7 @@ namespace Lakberendezes.Controllers
 
         [Authorize(Roles = "Admin")]
         //Achievement törlése
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAchievement(Guid id)
         {

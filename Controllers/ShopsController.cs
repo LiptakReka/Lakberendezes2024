@@ -23,14 +23,22 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Shops>>> Getshops()
         {
             return await _context.shops.ToListAsync();
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("{id}")]
         public async Task<ActionResult<Shops>> GetShops(int id)
         {
@@ -44,7 +52,11 @@ namespace Lakberendezes.Controllers
             return shops;
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpPut("{id}")]
         public async Task<IActionResult> PutShops(int id, Shops shops)
         {
@@ -141,7 +153,10 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("GetShops", new { id = shopss.id }, shopss);
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteShops(int id)

@@ -23,7 +23,11 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("get-products/{planId}")]
         public async Task<IActionResult> GetPlanProducts(int planId)
         {
@@ -43,6 +47,10 @@ namespace Lakberendezes.Controllers
             }
             return Ok(planproducTs);
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlanProduct>>> Getplanproducts()
@@ -50,7 +58,12 @@ namespace Lakberendezes.Controllers
             return await _context.planproducts.ToListAsync();
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin")]
+=======
+
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("{id}")]
         public async Task<ActionResult<PlanProduct>> GetPlanProduct(int id)
         {
@@ -106,7 +119,11 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("GetPlanProduct", new { id = planProduct.id }, planProduct);
         }
 
+<<<<<<< HEAD
         [Authorize(Roles = "Admin,User")]
+=======
+        [Authorize(Roles = "User,Admin")]
+>>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpPost("save")]
         public async Task<IActionResult> SavePlanProducts([FromBody] PlanProductDTO plan)
         {

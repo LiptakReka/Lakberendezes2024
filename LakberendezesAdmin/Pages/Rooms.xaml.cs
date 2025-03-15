@@ -22,6 +22,7 @@ namespace LakberendezesAdmin.Pages
 
     public partial class Rooms : Page
     {
+        
         private static readonly HttpClient _httpClient = new HttpClient();
         static List<Room> rooms = new List<Room>();
         public Rooms()
@@ -29,9 +30,22 @@ namespace LakberendezesAdmin.Pages
             InitializeComponent();
             LoadData();
         }
+        private void Authorize()
+        {
+            string token = GetToken();
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(token);
+            }
+        }
 
+        private string GetToken()
+        {
+            return LoginW.Token;
+        }
         private async void LoadData()
         {
+            Authorize();
             try
             {
                 rooms = await GetRoomsAsync();
@@ -45,7 +59,9 @@ namespace LakberendezesAdmin.Pages
 
         private async Task<List<Room>> GetRoomsAsync()
         {
+            Authorize();
             var response = await _httpClient.GetAsync("https://localhost:7247/api/Categories");
+            
             response.EnsureSuccessStatusCode();
 
             var jsonString = await response.Content.ReadAsStringAsync();
@@ -77,6 +93,7 @@ namespace LakberendezesAdmin.Pages
 
         private async void Export_Click(object sender, RoutedEventArgs e)
         {
+            Authorize();
             string apiUrl = "https://localhost:7247/api/Categories/Export";
 
             try
@@ -111,6 +128,7 @@ namespace LakberendezesAdmin.Pages
         }
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
+            Authorize();
             Button button = sender as Button;
             if (button != null)
             {

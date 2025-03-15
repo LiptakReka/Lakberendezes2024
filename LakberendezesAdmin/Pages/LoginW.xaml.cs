@@ -20,6 +20,7 @@ namespace LakberendezesAdmin.Pages
     public partial class LoginW : Window
     {
         private static readonly HttpClient _httpClient = new HttpClient();
+        
         public LoginW()
         {
             InitializeComponent();
@@ -49,5 +50,6 @@ namespace LakberendezesAdmin.Pages
                 MessageBox.Show($"Hiba történt: {ex.Message}", "Hiba", MessageBoxButton.OK,MessageBoxImage.Error );
             }
         }
+
     }
 }

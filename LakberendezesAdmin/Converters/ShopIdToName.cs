@@ -22,6 +22,7 @@ namespace LakberendezesAdmin.Converters
                 {
                     case 1: return "Jysk";
                     case 2: return "Möbelix";
+                    case 4:return "BRW bútorház";
                     case 3: return "RS BÚTOR";
                     case 5: return "Megfizethető bútor";
                     case 6: return "XXXLutz";
@@ -53,6 +54,7 @@ namespace LakberendezesAdmin.Converters
                 case "Jysk": return 1;
                 case "Möbelix": return 2;
                 case "RS BÚTOR": return 3;
+                case "BRW bútorház": return 4;
                 case "Megfizethető bútor": return 5;
                 case "XXXLutz": return 6;
                 case "Butlers": return 7;

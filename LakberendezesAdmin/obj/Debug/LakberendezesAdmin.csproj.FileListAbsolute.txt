@@ -244,3 +244,16 @@ C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesA
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddCateg.baml
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddTypes.g.cs
 C:\Users\pc\Downloads\Lakberendezes2024-WPF\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddTypes.baml
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddCateg.g.cs
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddShops.g.cs
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddTypes.g.cs
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Producttype.g.cs
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Rooms.g.cs
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Shops.g.cs
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddCateg.baml
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddShops.baml
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\AddTypes.baml
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Producttype.baml
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Rooms.baml
+C:\Users\liptakrm\Downloads\Lakberendezes2024-WPF (1)\Lakberendezes2024-WPF\LakberendezesAdmin\obj\Debug\Pages\Shops.baml

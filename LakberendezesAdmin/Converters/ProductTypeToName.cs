@@ -24,15 +24,14 @@ namespace LakberendezesAdmin.Converters
                     case 5: return "Tv állvány";
                     case 11: return "Ágy";
                     case 13: return "Éjjeli szekrény";
-                    case 14: return "Szekrény";
+                    case 14: return "Ruhásszekrény";
                     case 16: return "Tükör";
-                    case 19: return "Törölköző";
-                    case 20: return "Kiegészítők";
                     case 21: return "Étkező asztal";
-                    case 22: return "Polc";
+                    case 22: return "Polc és szekrény";
                     case 23: return "Szék";
                     case 34: return "Zuhanyzó";
-                    case 35: return "Szekrény";
+                    case 35: return "Fürdőszobai szekrény";
+                    case 36: return "Mosókonyhai eszközök";
                     default: return value.ToString();
                 }
             }
@@ -52,13 +51,14 @@ namespace LakberendezesAdmin.Converters
                 case "TV állvány": return 5;
                 case "Ágy": return 11;
                 case "Éjjeli szekrény": return 13;
-                case "Szekrény": return 14;
+                case "Ruhásszekrény": return 14;
                 case "Tükör": return 16;
-                case "Törölköző": return 19;
-                case "Kiegészítők": return 20;
                 case "Étkező asztal": return 21;
-                case "Polc": return 22;
+                case "Polc és szekrény": return 22;
                 case "Szék": return 23;
+                case "Zuhanyzó": return 34;
+                case "Fürdőszobai szekrény": return 35;
+                case "Mosókonyhai eszközök": return 36;
                 default: return value.ToString();
             }
         }

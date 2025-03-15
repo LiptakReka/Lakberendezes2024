@@ -18,6 +18,7 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
+        [Authorize(Roles ="Admin")]
         //Összes Achievement
         [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<Achievement>>> GetAchievements()
@@ -26,7 +27,7 @@ namespace Lakberendezes.Controllers
             return await _context.achievements.ToListAsync();
         }
 
-        [Authorize(Roles ="User")]
+        [Authorize(Roles ="User, Admin")]
         [HttpGet("me")]
         public async Task<ActionResult<IEnumerable<Achievement>>> GetUserAchievement()
         {
@@ -37,7 +38,7 @@ namespace Lakberendezes.Controllers
             }
 
             var achievement = await _context.achievements
-                .Where(a => a.user_Id == userId)
+                .Where(a => a.user_Id.ToString() == userId)
                 .ToListAsync();
 
             if (!achievement.Any())
@@ -48,10 +49,10 @@ namespace Lakberendezes.Controllers
         }
         //User alapú achievement
         [HttpGet("{UserId}")]
-        public async Task<ActionResult<IEnumerable<Achievement>>>GetAchievement(string UserId)
+        public async Task<ActionResult<IEnumerable<Achievement>>>GetAchievement(int UserId)
         {
             var achievement = await _context.achievements
-                .Where(a => a.user_Id == UserId)
+                .Where(a => a.user_Id== UserId)
                 .ToListAsync();
             if (!achievement.Any())
             {
@@ -60,6 +61,7 @@ namespace Lakberendezes.Controllers
             return Ok(achievement);
         }
 
+        [Authorize(Roles = "Admin,User")]
         //Új achievement kezelése
         [HttpPost("new")]
         public async Task<ActionResult<Achievement>> CreateAchievement(Achievement achievement)
@@ -70,9 +72,10 @@ namespace Lakberendezes.Controllers
             _context.achievements.Add(achievement);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetAchievement), new { UserId = achievement.user_Id }, achievement);
+            return CreatedAtAction(nameof(GetAchievement), new { Userid = achievement.user_Id }, achievement);
         }
 
+        [Authorize(Roles = "Admin")]
         //Achievement törlése
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAchievement(Guid id)

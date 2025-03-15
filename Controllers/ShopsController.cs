@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Lakberendezes.Data;
 using Lakberendezes.Models;
 using ClosedXML.Excel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lakberendezes.Controllers
 {
@@ -22,14 +23,14 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
-        // GET: api/Shops
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Shops>>> Getshops()
         {
             return await _context.shops.ToListAsync();
         }
 
-        // GET: api/Shops/5
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Shops>> GetShops(int id)
         {
@@ -43,7 +44,7 @@ namespace Lakberendezes.Controllers
             return shops;
         }
 
-    
+        [Authorize(Roles = "Admin,User")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutShops(int id, Shops shops)
         {
@@ -72,6 +73,8 @@ namespace Lakberendezes.Controllers
 
             return NoContent();
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -113,6 +116,7 @@ namespace Lakberendezes.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
 
         public async Task<ActionResult<Shops>> PostShops([FromBody] ShopDTO shopDTO)
@@ -137,6 +141,8 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("GetShops", new { id = shopss.id }, shopss);
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteShops(int id)
         {

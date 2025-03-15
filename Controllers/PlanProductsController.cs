@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Lakberendezes.Data;
 using Lakberendezes.Models;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Lakberendezes.Controllers
 {
@@ -22,6 +23,7 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("get-products/{planId}")]
         public async Task<IActionResult> GetPlanProducts(int planId)
         {
@@ -41,14 +43,14 @@ namespace Lakberendezes.Controllers
             }
             return Ok(planproducTs);
         }
-        
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlanProduct>>> Getplanproducts()
         {
             return await _context.planproducts.ToListAsync();
         }
 
-      
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<ActionResult<PlanProduct>> GetPlanProduct(int id)
         {
@@ -62,8 +64,8 @@ namespace Lakberendezes.Controllers
             return planProduct;
         }
 
-       
-        
+
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPlanProduct(int id, PlanProduct planProduct)
         {
@@ -93,8 +95,8 @@ namespace Lakberendezes.Controllers
             return NoContent();
         }
 
-        
-     
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<PlanProduct>> PostPlanProduct(PlanProduct planProduct)
         {
@@ -104,6 +106,7 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("GetPlanProduct", new { id = planProduct.id }, planProduct);
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpPost("save")]
         public async Task<IActionResult> SavePlanProducts([FromBody] PlanProductDTO plan)
         {
@@ -142,7 +145,7 @@ namespace Lakberendezes.Controllers
         }
 
 
-        
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlanProduct(int id)
         {

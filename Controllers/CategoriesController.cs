@@ -27,7 +27,7 @@ namespace Lakberendezes.Controllers
         }
 
 
-        //[Authorize (Roles ="USER")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categories>>> Getkategories()
         {
@@ -35,8 +35,8 @@ namespace Lakberendezes.Controllers
         }
 
 
-       
-        //[Authorize(Roles = "ADMIN")]
+
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Categories>> GetCategories(int id)
         {
@@ -53,9 +53,9 @@ namespace Lakberendezes.Controllers
         }
 
 
-        
-        
-        //[Authorize (Roles = "ADMIN")]
+
+
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategories(int id, Categories categories)
         {
@@ -86,9 +86,9 @@ namespace Lakberendezes.Controllers
         }
 
 
-       
-       
-        //[Authorize(Roles ="ADMIN")]
+
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<Categories>> PostCategories([FromBody]CategDTO categories)
         {
@@ -109,6 +109,7 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("Getkategories", new { id = categs.id }, categs);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -145,7 +146,7 @@ namespace Lakberendezes.Controllers
         }
 
 
-        //[Authorize (Roles ="ADMIN")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategories(int id)
         {

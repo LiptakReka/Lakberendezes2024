@@ -30,6 +30,7 @@ namespace Lakberendezes.Controllers
             _config = config;
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("get-plan/{userId}")]
         public async Task<IActionResult> GetUserPlan(int userId)
         {
@@ -62,6 +63,7 @@ namespace Lakberendezes.Controllers
             return Ok(userPlan);
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -81,6 +83,7 @@ namespace Lakberendezes.Controllers
             return Ok(users);
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -92,6 +95,7 @@ namespace Lakberendezes.Controllers
             return user;
         }
 
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromForm] UserRegisterDTO registerDTO)
         {
@@ -99,6 +103,11 @@ namespace Lakberendezes.Controllers
             if (existingUser != null)
             {
                 return BadRequest("Ez az email már használatban");
+            }
+            var existingname= await _context.users.FirstOrDefaultAsync(u => u.UserName == registerDTO.Username);
+            if (existingname != null)
+            {
+                return BadRequest("Ez a felhasználónév már használatban");
             }
 
             string profilePicturePath = "/profile_pictures/default-profile.png";
@@ -137,7 +146,6 @@ namespace Lakberendezes.Controllers
                 Userid = user.Id,
                 Roleid = (await _context.role.FirstOrDefaultAsync(r => r.name == "User")).id
             };
-
             _context.userroles.Add(userRole);
             await _context.SaveChangesAsync();
 
@@ -168,6 +176,7 @@ namespace Lakberendezes.Controllers
             return Ok(new { token, user = userData });
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpPost("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] UserChangePasswordDTO model)
         {
@@ -188,7 +197,7 @@ namespace Lakberendezes.Controllers
             return Ok(new { message = "Jelszó sikeresen módosítva!" });
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin,User")]
         [HttpPost("upload-profile-picture")]
         public async Task<IActionResult> UploadProfilePicture(IFormFile file, [FromForm] string email)
         {
@@ -226,6 +235,7 @@ namespace Lakberendezes.Controllers
             return Ok(new { imageUrl });
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpPost("save-plan")]
         public async Task<IActionResult> SaveUserPlan([FromBody] UserPlanDTO planDTO)
         {
@@ -436,7 +446,7 @@ namespace Lakberendezes.Controllers
 
             return Ok("Jelszó visszaállítva!");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -482,6 +492,7 @@ namespace Lakberendezes.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{userName}")]
         public async Task<IActionResult> DeleteUserByName(string userName)
         {

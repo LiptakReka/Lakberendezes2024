@@ -18,11 +18,7 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
-<<<<<<< HEAD
-        [Authorize(Roles ="Admin")]
-=======
         [Authorize(Roles = "Admin")]
->>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         //Összes Achievement
         [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<Achievement>>> GetAchievements()
@@ -31,11 +27,7 @@ namespace Lakberendezes.Controllers
             return await _context.achievements.ToListAsync();
         }
 
-<<<<<<< HEAD
-        [Authorize(Roles ="User, Admin")]
-=======
         [Authorize(Roles ="User,Admin")]
->>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("me")]
         public async Task<ActionResult<IEnumerable<Achievement>>> GetUserAchievement()
         {

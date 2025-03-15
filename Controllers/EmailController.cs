@@ -14,11 +14,7 @@ namespace Lakberendezes.Controllers
     public class EmailController : Controller
     {
         //Kosár tartalom elküldése
-<<<<<<< HEAD
-        [Authorize(Roles = "Admin,User")]
-=======
         [Authorize(Roles = "User,Admin")]
->>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpPost("send-cart")]
         public async Task<IActionResult> SendCartEmail([FromBody] CartEmailRequestDTO request)
         {

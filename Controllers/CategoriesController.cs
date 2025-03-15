@@ -36,11 +36,7 @@ namespace Lakberendezes.Controllers
 
 
 
-<<<<<<< HEAD
-        [Authorize(Roles = "Admin,User")]
-=======
         [Authorize(Roles = "User,Admin")]
->>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("{id}")]
         public async Task<ActionResult<Categories>> GetCategories(int id)
         {

@@ -9,6 +9,7 @@ using Lakberendezes.Data;
 using Lakberendezes.Models;
 using ClosedXML.Excel;
 using Microsoft.AspNetCore.Authorization;
+using Lakberendezes.Models.DTO;
 
 namespace Lakberendezes.Controllers
 {
@@ -23,12 +24,8 @@ namespace Lakberendezes.Controllers
             _context = context;
         }
 
-<<<<<<< HEAD
-        [Authorize(Roles = "Admin,User")]
-=======
 
         [Authorize(Roles = "User,Admin")]
->>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("search/{id}")]
 
         public async Task<ActionResult<IEnumerable<UserPlans>>> GetPlans(int id)
@@ -49,8 +46,19 @@ namespace Lakberendezes.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserPlans>>> Getuserplan()
         {
-            return await _context.userplan.ToListAsync();
+            var plans = await _context.userplan
+                 .Select(u => new GetPlanDTO
+                 {
+                     id = u.id,
+                     userid = u.userid,
+                     plandata = u.plandata ?? "",
+                     createdat = u.createdat,
+                 })
+                 .ToListAsync();
+
+            return Ok(plans);
         }
+        
 
         [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
@@ -92,12 +100,8 @@ namespace Lakberendezes.Controllers
             }
 
         }
-<<<<<<< HEAD
-        [Authorize(Roles = "Admin,User")]
-=======
 
         [Authorize(Roles = "User,Admin")]
->>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("{id}")]
         public async Task<ActionResult<UserPlans>> GetUserPlans(int id)
         {

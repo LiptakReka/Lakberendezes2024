@@ -31,11 +31,7 @@ namespace Lakberendezes.Controllers
             return await _context.producttype.ToListAsync();
         }
 
-<<<<<<< HEAD
-        [Authorize(Roles = "Admin,User")]
-=======
         [Authorize(Roles = "Admin")]
->>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductType>> GetProductType(int id)
         {
@@ -100,10 +96,6 @@ namespace Lakberendezes.Controllers
 
             return CreatedAtAction("Getproducttype", new { id = types.id }, types);
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
@@ -140,11 +132,7 @@ namespace Lakberendezes.Controllers
 
         }
 
-<<<<<<< HEAD
-        [Authorize(Roles = "Admin,User")]
-=======
         [Authorize(Roles = "User,Admin")]
->>>>>>> 454a1968e789956539bef27c89be9dd7e184a1f7
         [HttpGet("byroom")]
         public async Task<ActionResult<IEnumerable<ProductType>>> GetTypesbyRoom(int roomid)
         {

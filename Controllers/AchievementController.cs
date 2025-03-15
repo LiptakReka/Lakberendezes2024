@@ -68,6 +68,13 @@ namespace Lakberendezes.Controllers
         [HttpPost("new")]
         public async Task<ActionResult<Achievement>> CreateAchievement(Achievement achievement)
         {
+            var exist = await _context.achievements
+                .FirstOrDefaultAsync(a => a.user_Id == achievement.user_Id && a.title == achievement.title);
+
+            if (exist !=null)
+            {
+                return NoContent();
+            }
             achievement.id = Guid.NewGuid(); 
             achievement.created_at = DateTime.Now; 
 

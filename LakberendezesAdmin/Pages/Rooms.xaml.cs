@@ -25,27 +25,18 @@ namespace LakberendezesAdmin.Pages
         
         private static readonly HttpClient _httpClient = new HttpClient();
         static List<Room> rooms = new List<Room>();
+        private string _token;
         public Rooms()
         {
             InitializeComponent();
+            _token = Properties.Settings.Default.JwtToken;
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             LoadData();
         }
-        private void Authorize()
-        {
-            string token = GetToken();
-            if (!string.IsNullOrEmpty(token))
-            {
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(token);
-            }
-        }
 
-        private string GetToken()
-        {
-            return LoginW.Token;
-        }
         private async void LoadData()
         {
-            Authorize();
+           
             try
             {
                 rooms = await GetRoomsAsync();
@@ -59,9 +50,10 @@ namespace LakberendezesAdmin.Pages
 
         private async Task<List<Room>> GetRoomsAsync()
         {
-            Authorize();
-            var response = await _httpClient.GetAsync("https://localhost:7247/api/Categories");
             
+            var request = new HttpRequestMessage(HttpMethod.Get,"https://localhost:7247/api/Categories");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+            var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
 
             var jsonString = await response.Content.ReadAsStringAsync();
@@ -93,13 +85,17 @@ namespace LakberendezesAdmin.Pages
 
         private async void Export_Click(object sender, RoutedEventArgs e)
         {
-            Authorize();
+           
             string apiUrl = "https://localhost:7247/api/Categories/Export";
 
             try
             {
+                var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                var response = await _httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
                 // Excel fájl letöltése
-                byte[] excelData = await _httpClient.GetByteArrayAsync(apiUrl);
+                byte[] excelData = await response.Content.ReadAsByteArrayAsync();
 
                 //fájl mentése
                 string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "szobak.xlsx");
@@ -128,7 +124,7 @@ namespace LakberendezesAdmin.Pages
         }
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
-            Authorize();
+            
             Button button = sender as Button;
             if (button != null)
             {
@@ -138,7 +134,10 @@ namespace LakberendezesAdmin.Pages
                 var result = MessageBox.Show($"Biztosan törlöd a(z) {romId} szobát ?", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    HttpResponseMessage response = await _httpClient.DeleteAsync($"https://localhost:7247/api/Categories/{romId}");
+                    var request = new HttpRequestMessage(HttpMethod.Delete,$"https://localhost:7247/api/Categories/{romId}");
+                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                    var response = await _httpClient.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Helység sikeresen törölve!");

@@ -25,9 +25,12 @@ namespace LakberendezesAdmin.Pages
     {
         private HttpClient client = new HttpClient();
         private List<Shop> _shopList = new List<Shop>();
+        private string _token;
         public Shops()
         {
             InitializeComponent();
+            _token = Properties.Settings.Default.JwtToken;
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             LoadData();
 
         }
@@ -45,7 +48,9 @@ namespace LakberendezesAdmin.Pages
         }
         private async Task<List<Shop>> GetShopsAsync()
         {
-            var response = await client.GetAsync("https://localhost:7247/api/Shops");
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7247/api/Shops");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+            var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
 
             var jsonString = await response.Content.ReadAsStringAsync();
@@ -93,7 +98,10 @@ namespace LakberendezesAdmin.Pages
                 var result = MessageBox.Show($"Biztosan törlöd a(z) {shid} üzletet", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    HttpResponseMessage response = await client.DeleteAsync($"https://localhost:7247/api/Shops/{shid}");
+                    var request = new HttpRequestMessage(HttpMethod.Delete,$"https://localhost:7247/api/Shops/{shid}");
+                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                    var response = await client.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Üzlet sikeresen törölve!");
@@ -105,7 +113,7 @@ namespace LakberendezesAdmin.Pages
                             _shopList.Remove(ToRemove);
                         }
 
-                        // Refresh a DataGrid nézetben
+                        
                         ShopsGrid.ItemsSource = null;
                         ShopsGrid.ItemsSource = _shopList;
                     }
@@ -123,8 +131,12 @@ namespace LakberendezesAdmin.Pages
 
             try
             {
+                var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
                 // Excel fájl letöltése
-                byte[] excelData = await client.GetByteArrayAsync(apiUrl);
+                byte[] excelData = await response.Content.ReadAsByteArrayAsync();
 
                 //fájl mentése
                 string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Uzletek.xlsx");

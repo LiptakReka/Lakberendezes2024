@@ -31,12 +31,8 @@ namespace LakberendezesAdmin.Pages
         public ProductsPage()
         {
             InitializeComponent();
-            _token = TokenStorage.token;
-            if (!string.IsNullOrEmpty(_token))
-            {
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
-            }
-           
+            _token = Properties.Settings.Default.JwtToken;
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             LoadProducts();
         }
         private async void LoadProducts()
@@ -54,6 +50,7 @@ namespace LakberendezesAdmin.Pages
         private async Task<List<Product>> GetProductsAsync()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7247/api/Products");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
 
@@ -90,6 +87,8 @@ namespace LakberendezesAdmin.Pages
             var AddProductWindow = new AddProductWindow();
             if (AddProductWindow.ShowDialog() == true)
             {
+                ProductsGrid.ItemsSource = null;
+                ProductsGrid.ItemsSource = _allproducts;
                 LoadProducts();
             }
         }
@@ -108,7 +107,7 @@ namespace LakberendezesAdmin.Pages
                     try
                     {
                         var request = new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:7247/api/Products/{PrId}");
-                        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
+                        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",_token);
                         var response = await _httpClient.SendAsync(request);
                         response.EnsureSuccessStatusCode();
 
@@ -133,7 +132,7 @@ namespace LakberendezesAdmin.Pages
             try
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
-                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",_token);
                 var response = await _httpClient.SendAsync(request);
                 response.EnsureSuccessStatusCode();
 

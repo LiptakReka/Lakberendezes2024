@@ -44,6 +44,9 @@ namespace LakberendezesAdmin.Pages
                         var tokenResponse = JsonSerializer.Deserialize<AuthResponse>(responseBody);
                         if (tokenResponse != null && !string.IsNullOrEmpty(tokenResponse.token))
                         {
+
+                            Properties.Settings.Default.JwtToken = tokenResponse.token;
+                            Properties.Settings.Default.Save();
                             MessageBox.Show("Sikeres bejelentkezés", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
 
                             DialogResult= true;

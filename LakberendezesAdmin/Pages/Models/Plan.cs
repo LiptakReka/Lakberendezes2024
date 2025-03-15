@@ -9,7 +9,7 @@ namespace LakberendezesAdmin.Pages.Models
     internal class Plan
     {
         public int id { get; set; }
-        public Guid userid { get; set; }
+        public int userid { get; set; }
         public string plandata { get; set; }
         public DateTime createdat {  get; set; }
     }

@@ -125,21 +125,10 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Azonosító" Binding="{Binding Id}"  />
                     <DataGridTextColumn Header="Email-cím" Binding="{Binding Email}" />
+                    <DataGridTextColumn Header="Felhasználónév" Binding="{Binding UserName}" />
+                    <DataGridTextColumn Header="Jelszó" Binding="{Binding PasswordHash}" />
                     <DataGridTextColumn Header="Teljes neve" Binding="{Binding fullname}" />
                     <DataGridTextColumn Header="Regisztráció dátuma" Binding="{Binding datet}" />
-                    <DataGridTextColumn Header="Hozzáférés megtagadva" Binding="{Binding AccessFailedCount}" />
-                    <DataGridTextColumn Header="Konkurencia bélyeg" Binding="{Binding ConcurrencyStamp}" />
-                    <DataGridTextColumn Header="Email megerősítése" Binding="{Binding EmailConfirmed}" />
-                    <DataGridTextColumn Header="Kizárás engedélyezve" Binding="{Binding LocoutEnabled}" />
-                    <DataGridTextColumn Header="Kizárás vége" Binding="{Binding LockoutEnd}" />
-                    <DataGridTextColumn Header="Email normalizálva" Binding="{Binding NormalizedEmail}" />
-                    <DataGridTextColumn Header="Felhasználónév normalizálva" Binding="{Binding NormalizedUserName}" />
-                    <DataGridTextColumn Header="Jelszó" Binding="{Binding PasswordHash}" />
-                    <DataGridTextColumn Header="Telefonszám" Binding="{Binding PhoneNumber}" />
-                    <DataGridTextColumn Header="Telefonszám megerősítve" Binding="{Binding PhoneNumberConfirmed}" />
-                    <DataGridTextColumn Header="Biztonsági kód" Binding="{Binding SecurityStamp}" />
-                    <DataGridTextColumn Header="Két faktoros hitelesítés" Binding="{Binding TwoFactorEnabled}" />
-                    <DataGridTextColumn Header="Felhasználónév" Binding="{Binding UserName}" />
                     <DataGridTextColumn Header="Profilkép" Binding="{Binding ProfilePictureUrl}" />
                     <DataGridTemplateColumn Header="Műveletek" Width="100">
                         <DataGridTemplateColumn.CellTemplate>

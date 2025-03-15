@@ -24,9 +24,12 @@ namespace LakberendezesAdmin.Pages
     {
         private readonly HttpClient httpClient = new HttpClient();
         private List<ProductType> producttypes = new List<ProductType>();
+        private string _token;
         public Producttype()
         {
             InitializeComponent();
+            _token = Properties.Settings.Default.JwtToken;
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             LoadData();
         }
 
@@ -44,7 +47,9 @@ namespace LakberendezesAdmin.Pages
         }
         private async Task<List<ProductType>> GetProducttypesAsync()
         {
-            var response = await httpClient.GetAsync("https://localhost:7247/api/ProductTypes");
+            var request = new HttpRequestMessage(HttpMethod.Get ,"https://localhost:7247/api/ProductTypes");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+            var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
 
             var jsonString = await response.Content.ReadAsStringAsync();
@@ -78,8 +83,12 @@ namespace LakberendezesAdmin.Pages
 
             try
             {
+                var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                var response = await httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
                 // Excel fájl letöltése
-                byte[] excelData = await httpClient.GetByteArrayAsync(apiUrl);
+                byte[] excelData = await response.Content.ReadAsByteArrayAsync();
 
                 //fájl mentése
                 string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "butortipusok.xlsx");
@@ -117,7 +126,11 @@ namespace LakberendezesAdmin.Pages
                 var result = MessageBox.Show($"Biztosan törlöd a(z) {PtId} bútortípust?", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    HttpResponseMessage response = await httpClient.DeleteAsync($"https://localhost:7247/api/ProductTypes/{PtId}");
+
+                    var request= new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:7247/api/ProductTypes/{PtId}");
+                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                    var response = await httpClient.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Bútortípus sikeresen törölve!");

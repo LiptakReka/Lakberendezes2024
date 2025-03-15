@@ -21,14 +21,18 @@ namespace LakberendezesAdmin
 
     public partial class AddProductWindow : Window
     {
-        private readonly HttpClient httpClient;
+        private readonly HttpClient httpClient= new HttpClient();
+        private string _token;
         public AddProductWindow()
         {
             InitializeComponent();
+            _token = Properties.Settings.Default.JwtToken;
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             ShopCombo();
             Producttypecombo();
             ProductroomCommbo();
-            httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:7247/") };
+
+            
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -76,12 +80,19 @@ namespace LakberendezesAdmin
                 string json = JsonSerializer.Serialize(newProduct, options);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = await httpClient.PostAsync("https://localhost:7247/api/Products", content);
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7247/api/Products")
+                {
+                    Content = content
+                };
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                var response = await httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
                 //Státuszkódok kezelése
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Termék sikeresen hozzáadva!", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
+                    
                 }
                 else
                 {
@@ -110,13 +121,14 @@ namespace LakberendezesAdmin
             ProducttypeCombo.Items.Add(new { Id = 5, Name = "TV állvány" });
             ProducttypeCombo.Items.Add(new { Id = 11, Name = " Ágy" });
             ProducttypeCombo.Items.Add(new { Id = 13, Name = "Éjjeli szekrény" });
-            ProducttypeCombo.Items.Add(new { Id = 14, Name = "Szekrény" });
+            ProducttypeCombo.Items.Add(new { Id = 14, Name = "Ruhászekrény" });
             ProducttypeCombo.Items.Add(new { Id = 16, Name = "Tükör" });
-            ProducttypeCombo.Items.Add(new { Id = 19, Name = "Törölköző" });           
-            ProducttypeCombo.Items.Add(new { Id = 20, Name = "Kiegészítők" });
+            ProducttypeCombo.Items.Add(new { Id = 34, Name = "Zuhanyzó" });           
+            ProducttypeCombo.Items.Add(new { Id = 35, Name = "Fürdőszobai szekrény" });
             ProducttypeCombo.Items.Add(new { Id = 21, Name = "Étkező asztal" });
-            ProducttypeCombo.Items.Add(new { Id = 22, Name = "Polc" });
+            ProducttypeCombo.Items.Add(new { Id = 22, Name = "Polc és szekrény" });
             ProducttypeCombo.Items.Add(new { Id = 23, Name = "Szék" });
+            ProducttypeCombo.Items.Add(new { Id = 36, Name = "Mosókonyhai eszközök" });
 
         }
 
@@ -126,13 +138,9 @@ namespace LakberendezesAdmin
             ShopComboBox.Items.Add(new { Id = 1, Name = "Jysk" });
             ShopComboBox.Items.Add(new { Id = 2, Name = "Möbelix" });
             ShopComboBox.Items.Add(new { Id = 3, Name = "RS BÚTOR" });
-            ShopComboBox.Items.Add(new { Id = 5, Name = "Megfizethető bútor" });
-            ShopComboBox.Items.Add(new { Id = 6, Name = "XXXLutz" });
-            ShopComboBox.Items.Add(new { Id = 7, Name = "Butlers" });
-            ShopComboBox.Items.Add(new { Id = 8, Name = "Magyar bútorbolt" });
+            ShopComboBox.Items.Add(new { Id = 4, Name = "BRW bútorház" });
             ShopComboBox.Items.Add(new { Id = 9, Name = "Alaba" });
             ShopComboBox.Items.Add(new { Id = 10, Name = "Bogart bútor" });
-            ShopComboBox.Items.Add(new { Id = 11, Name = "Bútor7" });
             ShopComboBox.Items.Add(new { Id = 12, Name = "Zondo.hu" });
             ShopComboBox.Items.Add(new { Id = 13, Name = "Bútorline" });
             ShopComboBox.Items.Add(new { Id = 14, Name = "Soma bútor" });

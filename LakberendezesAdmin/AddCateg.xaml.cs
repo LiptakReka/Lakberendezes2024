@@ -24,9 +24,12 @@ namespace LakberendezesAdmin
     {
         private readonly HttpClient httpClient = new HttpClient();
         public event EventHandler RoomAdded;
+        private string _token;
         public AddCateg()
         {
             InitializeComponent();
+            _token = Properties.Settings.Default.JwtToken;
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
         }
 
         private async void save_Click(object sender, RoutedEventArgs e)
@@ -49,7 +52,13 @@ namespace LakberendezesAdmin
                 string json = JsonSerializer.Serialize(newShop, options);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = await httpClient.PostAsync("https://localhost:7247/api/Categories", content);
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7247/api/Categories")
+                {
+                    Content = content
+                };
+                var response = await httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
                 //Státuszkódok kezelése
                 if (response.IsSuccessStatusCode)
                 {

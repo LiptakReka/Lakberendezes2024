@@ -24,10 +24,12 @@ namespace LakberendezesAdmin.Pages
     {
         private static readonly HttpClient httpClient = new HttpClient();
         private List<Plan> _planList=new List<Plan>();
-        
+        private string _token;
         public SavedPlans()
         {
             InitializeComponent();
+            _token = Properties.Settings.Default.JwtToken;
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             LoadData();
         }
         private async void LoadData()
@@ -45,7 +47,9 @@ namespace LakberendezesAdmin.Pages
 
         private async Task<List<Plan>> GetProductsAsync()
         {
-            var response = await httpClient.GetAsync("https://localhost:7247/api/UserPlans");
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7247/api/UserPlans");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+            var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
 
             var jsonString = await response.Content.ReadAsStringAsync();
@@ -85,7 +89,10 @@ namespace LakberendezesAdmin.Pages
                 var result = MessageBox.Show($"Biztosan törlöd a(z) {planId} tervet?", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    HttpResponseMessage response = await httpClient.DeleteAsync($"https://localhost:7247/api/UserPlans/{planId}");
+                    var request =new HttpRequestMessage(HttpMethod.Delete,$"https://localhost:7247/api/UserPlans/{planId}");
+                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                    var response = await httpClient.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Termék sikeresen törölve!");
@@ -116,8 +123,12 @@ namespace LakberendezesAdmin.Pages
 
             try
             {
+                var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                var response = await httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
                 // Excel fájl letöltése
-                byte[] excelData = await httpClient.GetByteArrayAsync(apiUrl);
+                byte[] excelData = await response.Content.ReadAsByteArrayAsync();
 
                 //fájl mentése
                 string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Tervek.xlsx");

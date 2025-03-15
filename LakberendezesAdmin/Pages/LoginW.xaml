@@ -87,6 +87,7 @@
             
             <Button Content="Bejelentkezés"
                         Click="Login_Click"
+                        IsDefault="True"
                         Style="{StaticResource LoginButtonStyle}"
                         Margin="0,10,0,-10"/>
 

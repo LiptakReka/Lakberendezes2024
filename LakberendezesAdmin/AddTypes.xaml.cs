@@ -21,9 +21,12 @@ namespace LakberendezesAdmin
     {
         private readonly HttpClient httpClient = new HttpClient();
         public event EventHandler TypeAdded;
+        private string _token;
         public AddTypes()
         {
             InitializeComponent();
+            _token = Properties.Settings.Default.JwtToken;
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             RoomCombo();
         }
 
@@ -61,7 +64,14 @@ namespace LakberendezesAdmin
                 string json = JsonSerializer.Serialize(newProduct, options);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = await httpClient.PostAsync("https://localhost:7247/api/ProductTypes", content);
+
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7247/api/ProductTypes")
+                {
+                    Content = content
+                };
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                var response = await httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
                 //Státuszkódok kezelése
                 if (response.IsSuccessStatusCode)
                 {

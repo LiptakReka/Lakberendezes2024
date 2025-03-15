@@ -18,10 +18,13 @@ namespace LakberendezesAdmin.Pages
     {
         private static readonly HttpClient _httpClient = new HttpClient();
         private List<User> _allUsers = new List<User>(); 
+        private string _token;
 
         public UsersPage()
         {
             InitializeComponent();
+            _token = Properties.Settings.Default.JwtToken;
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_token);
             LoadUsers();
         }
 
@@ -42,7 +45,9 @@ namespace LakberendezesAdmin.Pages
         {
             try
             {
-                var response = await _httpClient.GetAsync("https://localhost:7247/api/Users");
+                var request = new HttpRequestMessage(HttpMethod.Get,"https://localhost:7247/api/Users");
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                var response = await _httpClient.SendAsync(request);
                 response.EnsureSuccessStatusCode();
 
                 var jsonString = await response.Content.ReadAsStringAsync();
@@ -105,8 +110,12 @@ namespace LakberendezesAdmin.Pages
 
             try
             {
+                var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                var response = await _httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
                 // Excel fájl letöltése
-                byte[] excelData = await _httpClient.GetByteArrayAsync(apiUrl);
+                byte[] excelData = await response.Content.ReadAsByteArrayAsync();
 
                 //fájl mentése
                 string filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "felhasznalok.xlsx");
@@ -137,7 +146,10 @@ namespace LakberendezesAdmin.Pages
                 var result = MessageBox.Show($"Biztosan törlöd a(z) {usid} tervet?", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    HttpResponseMessage response = await _httpClient.DeleteAsync($"https://localhost:7247/api/Users/{usid}");
+                    var request = new HttpRequestMessage(HttpMethod.Delete,$"https://localhost:7247/api/Users/{usid}");
+                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                    var response = await _httpClient.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Termék sikeresen törölve!");

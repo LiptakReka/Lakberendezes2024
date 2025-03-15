@@ -13,7 +13,7 @@
 
             <Button Content="Mentés" Width="100" Height="30"
 
-                 Margin="0,10,0,0" Background="#FFDAB9" Foreground="black" Click="save_Click"
+                 Margin="0,10,0,0" Background="#FFDAB9" Foreground="black" Click="save_Click" IsDefault="True"
 
                  />
         </StackPanel>

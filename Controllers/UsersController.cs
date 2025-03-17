@@ -13,7 +13,10 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Lakberendezes.Data;
 using Newtonsoft.Json;
 using ClosedXML.Excel;
+<<<<<<< HEAD
 using Lakberendezes.Models.DTO;
+=======
+>>>>>>> ecaef152fce23b644b821d1043ca817d1d6a53ff
 
 namespace Lakberendezes.Controllers
 {
@@ -448,6 +451,7 @@ namespace Lakberendezes.Controllers
             return Ok("Jelszó visszaállítva!");
         }
 
+<<<<<<< HEAD
         [Authorize(Roles= "Admin")]
         [HttpPost("Add-Role")]
         public async Task<IActionResult> AddROle([FromBody] UserRoleDTOcs userRole)
@@ -510,6 +514,8 @@ namespace Lakberendezes.Controllers
 
 
 
+=======
+>>>>>>> ecaef152fce23b644b821d1043ca817d1d6a53ff
         [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()

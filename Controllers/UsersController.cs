@@ -13,10 +13,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Lakberendezes.Data;
 using Newtonsoft.Json;
 using ClosedXML.Excel;
-<<<<<<< HEAD
 using Lakberendezes.Models.DTO;
-=======
->>>>>>> ecaef152fce23b644b821d1043ca817d1d6a53ff
 
 namespace Lakberendezes.Controllers
 {
@@ -451,8 +448,20 @@ namespace Lakberendezes.Controllers
             return Ok("Jelszó visszaállítva!");
         }
 
-<<<<<<< HEAD
-        [Authorize(Roles= "Admin")]
+        [Authorize(Roles="Admin")]
+        [HttpGet("allrole")]
+        public async Task<ActionResult<IEnumerable<Roles>>>AllRole()
+        {
+            var roles = await _context.userroles.Select(r => new
+            {
+                r.Userid,
+                r.Roleid
+            }).ToListAsync();
+            return Ok(roles);
+        }
+
+
+        [Authorize(Roles = "Admin")]
         [HttpPost("Add-Role")]
         public async Task<IActionResult> AddROle([FromBody] UserRoleDTOcs userRole)
         {
@@ -482,6 +491,7 @@ namespace Lakberendezes.Controllers
             await _context.SaveChangesAsync();
             return Ok("Role hozzáadva");
         }
+
 
         [Authorize(Roles = "Admin")]
         [HttpDelete("{userId}/Remove-Role/{roleId}")]
@@ -513,9 +523,6 @@ namespace Lakberendezes.Controllers
 
 
 
-
-=======
->>>>>>> ecaef152fce23b644b821d1043ca817d1d6a53ff
         [Authorize(Roles = "Admin")]
         [HttpGet("Export")]
         public IActionResult ExportTocsv()

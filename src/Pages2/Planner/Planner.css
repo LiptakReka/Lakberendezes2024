@@ -522,6 +522,36 @@
   background-color: #d32f2f;
 }
 
+.scale-warning-banner {
+  background-color: rgba(249, 249, 210, 0.95);
+  border-left: 4px solid #f39c12;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.warning-icon {
+  font-size: 24px;
+  margin-right: 12px;
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.scale-warning-banner p {
+  margin: 0;
+  font-size: 14px;
+  color: #5a5a5a;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 768px) {
   .products-and-planner {
     flex-direction: column;

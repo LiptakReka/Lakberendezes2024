@@ -41,17 +41,16 @@ const Planner = () => {
   const fetchProductTypes = async (roomid) => {
     try {
       const token = localStorage.getItem("token"); 
-      const response = await fetch( process.env.REACT_APP_API_URL  + `/ProductTypes/byroom?roomid=${roomid}`, {
+      // Fetch helyett axios használata
+      const response = await axios.get(process.env.REACT_APP_API_URL + `/ProductTypes/byroom?roomid=${roomid}`, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization':token
+          'Authorization': `Bearer ${token}`
         }
       });
-      if (!response.ok) {
-        throw new Error("Hálózati hiba a terméktípusoknál");
-      }
-      const data = await response.json();
-      setTypes(data);
+      
+
+      setTypes(response.data);
     } catch (error) {
       console.error("Hálózati probléma: ", error);
       enqueueSnackbar("Hiba történt a típusok lekérésekor.", {
@@ -63,19 +62,15 @@ const Planner = () => {
   const fetchProductsByRoom = useCallback(async (roomid) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(process.env.REACT_APP_API_URL + `/Products/szobák?roomid=${roomid}`, {
+    
+      const response = await axios.get(process.env.REACT_APP_API_URL + `/Products/szobák?roomid=${roomid}`, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization':token
+          'Authorization': `Bearer ${token}`
         }
       });
 
-      if (!response.ok) {
-        throw new Error('Hálózati hiba a szobák lekérésében');
-      }
-
-      const data = await response.json();
-      setProducts(data);
+      setProducts(response.data);
       setSelectedRoom(roomid);
       setSelectedType(null);
       fetchProductTypes(roomid);
@@ -83,7 +78,7 @@ const Planner = () => {
       console.error('Hálózati probléma:', error);
       enqueueSnackbar('Hiba történt a termékek lekérésekor.', { variant: 'error' });
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
     fetchProductsByRoom(1);
@@ -93,24 +88,20 @@ const Planner = () => {
   const fetchFilteredProducts = async (roomid, typeid) => {
     try {
       const token = localStorage.getItem("token"); 
-      let url =process.env.REACT_APP_API_URL + `/Products/szobák?roomid=${roomid}`;
-      if (typeid) {
-        url = process.env.REACT_APP_API_URL + `/Products/typeandroom?roomid=${roomid}&typeid=${typeid}`;
-      }
+      let url = typeid 
+        ? process.env.REACT_APP_API_URL + `/Products/typeandroom?roomid=${roomid}&typeid=${typeid}` 
+        : process.env.REACT_APP_API_URL + `/Products/szobák?roomid=${roomid}`;
 
-      const response = await fetch(url, {
+   
+      const response = await axios.get(url, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization':token
+          'Authorization': `Bearer ${token}`
         }
       });
 
-      if (!response.ok) {
-        throw new Error('Hálózati hiba a termékek lekérésében');
-      }
-
-      const data = await response.json();
-      setProducts(data);
+   
+      setProducts(response.data);
     } catch (error) {
       console.error('Hálózati probléma:', error);
       enqueueSnackbar('Hiba történt a termékek lekérésekor.', { variant: 'error' });
@@ -131,12 +122,11 @@ const Planner = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get( process.env.REACT_APP_API_URL + `/Users/get-plan/${user.id}`, {
+      const response = await axios.get(process.env.REACT_APP_API_URL + `/Users/get-plan/${user.id}`, {
         headers: {
-          'Authorization':token
+          'Authorization': `Bearer ${token}`
         }
       });
-      console.log("fetchPlans adatai:", response.data); 
 
       if (Array.isArray(response.data)) {
         setSavedPlans(response.data);
@@ -171,7 +161,7 @@ const Planner = () => {
             })))  
         }, {
             headers: {
-                'Authorization':token
+                'Authorization': `Bearer ${token}`
             }
         });
 
@@ -181,7 +171,7 @@ const Planner = () => {
 
         const planId = planResponse.data.planId;
 
-        await axios.post(process.env.REACT_APP_API_URL + "/PlanProducts/save", {
+        await axios.post( process.env.REACT_APP_API_URL + "/PlanProducts/save", {
             userPlanId: planId,
             planData: JSON.stringify(placedProducts.map((product) => ({
                 productId: product.id,
@@ -191,7 +181,7 @@ const Planner = () => {
             })))
         }, {
             headers: {
-                'Authorization':token
+                'Authorization': `Bearer ${token}`
             }
         });
 
@@ -275,7 +265,7 @@ const Planner = () => {
         const token = localStorage.getItem("token"); 
         const response = await axios.get(process.env.REACT_APP_API_URL + `/Users/get-plan/${user.id}`, {
             headers: {
-                'Authorization':token
+                'Authorization': `Bearer ${token}`
             }
         });
         console.log("loadPlan adatai:", response.data);
@@ -323,6 +313,12 @@ const Planner = () => {
         <button className="load-btn" onClick={() => loadPlan()}>
           <Folder/> Betöltés
         </button>
+      </div>
+      
+      {/* Figyelmeztető üzenet hozzáadása */}
+      <div className="scale-warning-banner">
+        <div className="warning-icon">ⓘ</div>
+        <p>Figyelem! A megjelenített bútorok méretaránya csak illusztráció, nem tükrözi a valós méretarányokat.</p>
       </div>
       
       <div className="rooms">

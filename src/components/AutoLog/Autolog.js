@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Autolog.css';
 
-const AutologTime = 2 * 60 * 1000; // 2 perc
+const AutologTime = 30 * 60 * 1000; // 2 perc
 
 export default function Autolog({ logout }) {
   const navigate = useNavigate();

@@ -13,6 +13,7 @@ const Login = ({ setToken }) => {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
+   
     // Függvény a felhasználói adatok mentésére
     const saveUserData = (token, user) => {
         localStorage.setItem("token", token);
@@ -20,7 +21,7 @@ const Login = ({ setToken }) => {
             localStorage.setItem("user", JSON.stringify(user));
         }
         localStorage.removeItem("achievements")
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        
     };
 
     // Függvény a bejelentkezés kezelésére

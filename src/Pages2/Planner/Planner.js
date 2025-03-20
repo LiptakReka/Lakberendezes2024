@@ -40,9 +40,11 @@ const Planner = () => {
 
   const fetchProductTypes = async (roomid) => {
     try {
+      const token = localStorage.getItem("token"); 
       const response = await fetch(`https://localhost:7247/api/ProductTypes/byroom?roomid=${roomid}`, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization':token
         }
       });
       if (!response.ok) {
@@ -60,9 +62,11 @@ const Planner = () => {
 
   const fetchProductsByRoom = useCallback(async (roomid) => {
     try {
+      const token = localStorage.getItem("token");
       const response = await fetch(`https://localhost:7247/api/Products/szobák?roomid=${roomid}`, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization':token
         }
       });
 
@@ -80,12 +84,15 @@ const Planner = () => {
       enqueueSnackbar('Hiba történt a termékek lekérésekor.', { variant: 'error' });
     }
   },[]);
-    useEffect(() => {
-      fetchProductsByRoom(1);
-      fetchSavedPlans();
-    }, [fetchProductsByRoom]);
+
+  useEffect(() => {
+    fetchProductsByRoom(1);
+    fetchSavedPlans();
+  }, [fetchProductsByRoom]);
+
   const fetchFilteredProducts = async (roomid, typeid) => {
     try {
+      const token = localStorage.getItem("token"); 
       let url = `https://localhost:7247/api/Products/szobák?roomid=${roomid}`;
       if (typeid) {
         url = `https://localhost:7247/api/Products/typeandroom?roomid=${roomid}&typeid=${typeid}`;
@@ -93,7 +100,8 @@ const Planner = () => {
 
       const response = await fetch(url, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization':token
         }
       });
 
@@ -122,7 +130,12 @@ const Planner = () => {
     if (!user) return;
 
     try {
-      const response = await axios.get(`https://localhost:7247/api/Users/get-plan/${user.id}`);
+      const token = localStorage.getItem("token");
+      const response = await axios.get(`https://localhost:7247/api/Users/get-plan/${user.id}`, {
+        headers: {
+          'Authorization':token
+        }
+      });
       console.log("fetchPlans adatai:", response.data); 
 
       if (Array.isArray(response.data)) {
@@ -147,7 +160,7 @@ const Planner = () => {
     }
 
     try {
-       
+        const token = localStorage.getItem("token"); 
         const planResponse = await axios.post("https://localhost:7247/api/Users/save-plan", {
             userId: user.id, 
             planData: JSON.stringify(placedProducts.map(p => ({
@@ -156,6 +169,10 @@ const Planner = () => {
                 y: p.y,
                 scale: p.scale || 1
             })))  
+        }, {
+            headers: {
+                'Authorization':token
+            }
         });
 
         if (planResponse.status !== 200) {
@@ -164,7 +181,6 @@ const Planner = () => {
 
         const planId = planResponse.data.planId;
 
-       
         await axios.post("https://localhost:7247/api/PlanProducts/save", {
             userPlanId: planId,
             planData: JSON.stringify(placedProducts.map((product) => ({
@@ -173,6 +189,10 @@ const Planner = () => {
                 y: product.y,
                 scale: product.scale || 1
             })))
+        }, {
+            headers: {
+                'Authorization':token
+            }
         });
 
         enqueueSnackbar("Terv és termékek sikeresen mentve!", {variant: "success"});
@@ -252,7 +272,12 @@ const Planner = () => {
   const loadPlan = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     try {
-        const response = await axios.get(`https://localhost:7247/api/Users/get-plan/${user.id}`);
+        const token = localStorage.getItem("token"); 
+        const response = await axios.get(`https://localhost:7247/api/Users/get-plan/${user.id}`, {
+            headers: {
+                'Authorization':token
+            }
+        });
         console.log("loadPlan adatai:", response.data);
 
         if (!response.data || !response.data.products) {
@@ -260,7 +285,6 @@ const Planner = () => {
             return;
         }
 
-       
         const loadedProducts = Array.isArray(response.data.products)
         ? response.data.products.map(p => {
             const [x, y] = (p.position || "0,0").split(",").map(Number);

@@ -315,7 +315,7 @@ const Planner = () => {
         </button>
       </div>
       
-      {/* Figyelmeztető üzenet hozzáadása */}
+    
       <div className="scale-warning-banner">
         <div className="warning-icon">ⓘ</div>
         <p>Figyelem! A megjelenített bútorok méretaránya csak illusztráció, nem tükrözi a valós méretarányokat.</p>

@@ -9,7 +9,7 @@ export const getUserAchievements=async()=>{
         if(!token) throw new Error("Nincs token");
         const response = await axios.get(`${ApiUrl}`,{
             headers:{
-                Authorization: `Bearer ${localStorage.getItem("token")}`
+                Authorization: `Bearer ${token}`
             }
         });
         return response.data;
@@ -35,7 +35,11 @@ export const addAchievement=async(achievement)=>{
             icon : typeof achievement.icon === "string" ? achievement.icon : "nincs megadvaa ikon",
         };
         console.log("Achievementek:", payload);
-        const response = await axios.post(`https://localhost:7247/api/Achievement/new`, payload);
+        const response = await axios.post(`https://localhost:7247/api/Achievement/new`, payload,{
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        });
         return response.data;
         
     } catch (error) {

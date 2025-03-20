@@ -41,7 +41,7 @@ const Planner = () => {
   const fetchProductTypes = async (roomid) => {
     try {
       const token = localStorage.getItem("token"); 
-      const response = await fetch(`https://localhost:7247/api/ProductTypes/byroom?roomid=${roomid}`, {
+      const response = await fetch( process.env.REACT_APP_API_URL  + `/ProductTypes/byroom?roomid=${roomid}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization':token
@@ -63,7 +63,7 @@ const Planner = () => {
   const fetchProductsByRoom = useCallback(async (roomid) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`https://localhost:7247/api/Products/szobák?roomid=${roomid}`, {
+      const response = await fetch(process.env.REACT_APP_API_URL + `/Products/szobák?roomid=${roomid}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization':token
@@ -93,9 +93,9 @@ const Planner = () => {
   const fetchFilteredProducts = async (roomid, typeid) => {
     try {
       const token = localStorage.getItem("token"); 
-      let url = `https://localhost:7247/api/Products/szobák?roomid=${roomid}`;
+      let url =process.env.REACT_APP_API_URL + `/Products/szobák?roomid=${roomid}`;
       if (typeid) {
-        url = `https://localhost:7247/api/Products/typeandroom?roomid=${roomid}&typeid=${typeid}`;
+        url = process.env.REACT_APP_API_URL + `/Products/typeandroom?roomid=${roomid}&typeid=${typeid}`;
       }
 
       const response = await fetch(url, {
@@ -131,7 +131,7 @@ const Planner = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get(`https://localhost:7247/api/Users/get-plan/${user.id}`, {
+      const response = await axios.get( process.env.REACT_APP_API_URL + `/Users/get-plan/${user.id}`, {
         headers: {
           'Authorization':token
         }
@@ -161,7 +161,7 @@ const Planner = () => {
 
     try {
         const token = localStorage.getItem("token"); 
-        const planResponse = await axios.post("https://localhost:7247/api/Users/save-plan", {
+        const planResponse = await axios.post(process.env.REACT_APP_API_URL + "/Users/save-plan", {
             userId: user.id, 
             planData: JSON.stringify(placedProducts.map(p => ({
                 productId: p.id,
@@ -181,7 +181,7 @@ const Planner = () => {
 
         const planId = planResponse.data.planId;
 
-        await axios.post("https://localhost:7247/api/PlanProducts/save", {
+        await axios.post(process.env.REACT_APP_API_URL + "/PlanProducts/save", {
             userPlanId: planId,
             planData: JSON.stringify(placedProducts.map((product) => ({
                 productId: product.id,
@@ -273,7 +273,7 @@ const Planner = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     try {
         const token = localStorage.getItem("token"); 
-        const response = await axios.get(`https://localhost:7247/api/Users/get-plan/${user.id}`, {
+        const response = await axios.get(process.env.REACT_APP_API_URL + `/Users/get-plan/${user.id}`, {
             headers: {
                 'Authorization':token
             }

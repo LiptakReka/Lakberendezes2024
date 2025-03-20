@@ -36,7 +36,7 @@ const Register = () => {
         }
 
         try {
-            const response = await fetch('https://localhost:7247/api/Users/register', {
+            const response = await fetch( process.env.REACT_APP_API_URL + '/Users/register', {
                 method: 'POST',
                 body: formData, 
             });

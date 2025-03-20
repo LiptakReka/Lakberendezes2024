@@ -34,7 +34,7 @@ export default function ContactPage() {
     const fetchShops = async () => {
       try {
         const token = localStorage.getItem("token"); 
-        const response = await fetch('https://localhost:7247/api/Shops', {
+        const response = await fetch(process.env.REACT_APP_API_URL + '/Shops', {
           headers: {
             "Authorization":token 
           }

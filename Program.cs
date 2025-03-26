@@ -1,5 +1,6 @@
 ﻿using Lakberendezes.Data;
 using Lakberendezes.Models;
+using Lakberendezes.Models.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -62,6 +63,7 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 
 // Szükséges meghívások
 builder.Services.AddScoped<JwtService>();
+builder.Services.AddSingleton<CloudinaryService>();
 
 
 

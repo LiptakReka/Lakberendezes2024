@@ -14,6 +14,7 @@ using Lakberendezes.Data;
 using Newtonsoft.Json;
 using ClosedXML.Excel;
 using Lakberendezes.Models.DTO;
+using Lakberendezes.Models.Service;
 
 namespace Lakberendezes.Controllers
 {
@@ -21,12 +22,14 @@ namespace Lakberendezes.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private readonly CloudinaryService _cloudinaryService;
         private readonly AppDbContext _context;
         private readonly JwtService _jwtService;
         private readonly IConfiguration _config;
-        public UsersController(AppDbContext context, IConfiguration config, JwtService jwtService)
+        public UsersController(CloudinaryService cloudinaryService, AppDbContext context, IConfiguration config, JwtService jwtService)
         {
             _context = context;
+            _cloudinaryService = cloudinaryService;
             _jwtService = jwtService;
             _config = config;
         }
@@ -207,33 +210,21 @@ namespace Lakberendezes.Controllers
                 return BadRequest("Nincs kiválasztott fájl.");
             }
 
-            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "profile_pictures");
-            if (!Directory.Exists(uploadsFolder))
+            try
             {
-                Directory.CreateDirectory(uploadsFolder);
+                var imageUrl = await _cloudinaryService.UploadImage(file);
+                var user = await _context.users.FirstOrDefaultAsync(u => u.Email == email);
+                user.ProfilePictureUrl = imageUrl;
+                _context.users.Update(user);
+                await _context.SaveChangesAsync();
+                return Ok(new { imageUrl });
             }
-
-            var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(file.FileName)}";
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            catch (Exception ex)
             {
-                await file.CopyToAsync(stream);
+
+                return BadRequest(ex.Message);
             }
-
-            var imageUrl = $"/profile_pictures/{uniqueFileName}";
-
-            var user = await _context.users.FirstOrDefaultAsync(u => u.Email == email);
-            if (user == null)
-            {
-                return NotFound("Felhasználó nem található.");
-            }
-
-            user.ProfilePictureUrl = imageUrl;
-            _context.users.Update(user);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { imageUrl });
+           
         }
 
         [Authorize(Roles = "User,Admin")]

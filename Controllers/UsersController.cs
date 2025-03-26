@@ -114,7 +114,7 @@ namespace Lakberendezes.Controllers
                 return BadRequest("Ez a felhasználónév már használatban");
             }
 
-            string profilePicturePath = "https://console.cloudinary.com/pm/c-15e0a37867a1299c3394b51628d923/media-explorer/profile_pictures/apoghzaa8cj77vnj3d0y";
+            string profilePicturePath = "https://res.cloudinary.com/dd10jzece/image/upload/v1743009597/profile_pictures/apoghzaa8cj77vnj3d0y.jpg";
 
             if (registerDTO.ProfilePictureUrl != null)
             {

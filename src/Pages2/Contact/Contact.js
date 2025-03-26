@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./Contact.css";
 import { Mail, Phone, Search } from 'lucide-react';
+import axios from 'axios';
 
 const pagecontact = [
   { name: "RoomLab", phoneNumber: "+36 30-927-0458", email: "roomlabservice@gmail.com", websiteurl: "https://roomlab-48d26.web.app" }
@@ -34,21 +35,21 @@ export default function ContactPage() {
     const fetchShops = async () => {
       try {
         const token = localStorage.getItem("token"); 
-        const response = await fetch('https://localhost:7247/api/Shops', {
+        
+        
+        const response = await axios.get(process.env.REACT_APP_API_URL + "/Shops", {
           headers: {
-            "Authorization":token 
+            "Authorization":token
           }
         });
-        if (!response.ok) {
-          throw new Error('Hiba a keresés során');
-        }
-        const data = await response.json();
-        console.log(data);
-        setShops(data);
+        
+      
+        setShops(response.data);
       } catch (error) {
-        setError(error.message);
+        setError(error.response?.data?.message || error.message);
       }
     };
+    
     fetchShops();
   }, []);
 

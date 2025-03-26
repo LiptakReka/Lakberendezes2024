@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./Register.css";
 import { Mail, Key, Users, Image } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
     // A navigate függvény importálása 
@@ -16,7 +17,7 @@ const Register = () => {
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
 
-    // Függvény a regisztráció  kezelésére
+    // Függvény a regisztráció kezelésére
     const handleregister = async (e) => {
         e.preventDefault();
 
@@ -36,32 +37,38 @@ const Register = () => {
         }
 
         try {
-            const response = await fetch('https://localhost:7247/api/Users/register', {
-                method: 'POST',
-                body: formData, 
-            });
+           
+            await axios.post(
+               process.env.REACT_APP_API_URL + "/Users/register",
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }
+            );
 
-            if (response.ok) {
-                setSuccess("Sikeres regisztráció!");
-                setFullname('');
-                setEmail('');
-                setPassword('');
-                setConfirmPassword('');
-                setUsername('');
-                setProfilePicture(null);
-                
-               
-                setTimeout(() => {
-                    navigate('/login');
-                }, 2000);
-            } else {
-                const errorData = await response.json();
-                console.error("Szerver hiba:", errorData);
-                setError(errorData.message || "Hibás adatok vagy ismeretlen hiba.");
-            }
+            setSuccess("Sikeres regisztráció!");
+            setFullname('');
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+            setUsername('');
+            setProfilePicture(null);
+            
+            setTimeout(() => {
+                navigate('/login');
+            }, 2000);
         } catch (error) {
             console.error('Hálózati hiba:', error);
-            setError('Nem sikerült kapcsolatot létesíteni a kiszolgálóval.');
+            
+            if (error.response && error.response.data) {
+                
+                const errorData = error.response.data;
+                setError(errorData.message || "Hibás adatok vagy ismeretlen hiba.");
+            } else {
+                setError('Nem sikerült kapcsolatot létesíteni a kiszolgálóval.');
+            }
         }
     };
 

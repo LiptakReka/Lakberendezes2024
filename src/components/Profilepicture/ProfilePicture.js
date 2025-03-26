@@ -19,7 +19,7 @@ const ProfilePictureUpload = () => {
             setUser(storedUser);
             setPreviewImage(
                 storedUser.profilePictureUrl && storedUser.profilePictureUrl.trim() !== ""
-                    ? `https://localhost:7247${storedUser.profilePictureUrl}`
+                    ? process.env.REACT_APP_Link_URL + `${storedUser.profilePictureUrl}`
                     : "default_profile.png"
             );
         }
@@ -47,7 +47,7 @@ const ProfilePictureUpload = () => {
         try {
             const token = localStorage.getItem("token"); 
             const response = await axios.post(
-                "https://localhost:7247/api/Users/upload-profile-picture",
+               process.env.REACT_APP_API_URL + "/Users/upload-profile-picture",
                 formData,
                 {
                     headers: {
@@ -69,7 +69,7 @@ const ProfilePictureUpload = () => {
             setUser(updatedUser);
 
             // Előnézeti kép frissítése
-            setPreviewImage(`https://localhost:7247${newProfileUrl}`);
+            setPreviewImage(process.env.REACT_APP_Link_URL + `${newProfileUrl}`);
 
             enqueueSnackbar("Profilkép sikeresen feltöltve!", { variant: "success" });
             unlockAchievement("Szépségszalon", "Profilképed megváltozott", "💄");

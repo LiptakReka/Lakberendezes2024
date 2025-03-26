@@ -37,7 +37,7 @@ export default function UserSetts() {
             return;
         }
         try {
-            const response = await axios.post("https://localhost:7247/api/Users/change-password", {
+            const response = await axios.post(process.env.REACT_APP_API_URL + "/Users/change-password", {
                 email: user.email,
                 currentPassword: oldpassword,
                 newPassword: password,

@@ -19,7 +19,7 @@ const Navbar1 = ({ token, username, onLogout }) => {
         if (storedUser && storedUser.profilePictureUrl) {
        
             //A profilkép URL-jének beállítása
-            setProfilePicture(`https://localhost:7247${storedUser.profilePictureUrl}`);
+            setProfilePicture(process.env.REACT_APP_Link_URL + `${storedUser.profilePictureUrl}`);
         }
         
         const storedDark = localStorage.getItem("darkMode") === "enabled";

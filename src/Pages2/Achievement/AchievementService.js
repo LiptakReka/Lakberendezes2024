@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-const ApiUrl="https://localhost:7247/api/Achievement/me";
+const ApiUrl= process.env.REACT_APP_API_URL + "/Achievement/me";
 
 export const getUserAchievements=async()=>{
     try {
@@ -40,7 +40,7 @@ export const addAchievement=async(achievement)=>{
             icon : typeof achievement.icon === "string" ? achievement.icon : "nincs megadvaa ikon",
         };
         console.log("Achievementek:", payload);
-        const response = await axios.post(`https://localhost:7247/api/Achievement/new`, payload,{
+        const response = await axios.post(process.env.REACT_APP_API_URL + `/Achievement/new`, payload,{
             headers:{
                 Authorization:token
             }

@@ -22,7 +22,7 @@ const ForgotPassword = () => {
 
         try {
             await axios.post(
-                "https://localhost:7247/api/Users/forgotpass", // Backend kommunikáció
+                process.env.REACT_APP_API_URL + "/Users/forgotpass", // Backend kommunikáció
                 { email }
             );
 

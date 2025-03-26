@@ -29,7 +29,7 @@ export default function Cart() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "https://localhost:7247/api/Email/send-cart",
+         process.env.REACT_APP_API_URL + "/Email/send-cart",
         {
           email,
           cartItems: cart.map(item => ({

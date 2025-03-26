@@ -8,7 +8,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 var jwtsettings = builder.Configuration.GetSection("Jwt");
@@ -25,7 +24,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidIssuer = issuer,
             ValidateAudience = true,
-            ValidAudience=audience,
+            ValidAudience = audience,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretkey!))
@@ -45,7 +44,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 return Task.CompletedTask;
             }
         };
-});
+    });
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -60,15 +59,11 @@ builder.Services.AddScoped<IEmailSender, EmailSender>();
 // appsettings config
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-
 // Szükséges meghívások
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddSingleton<CloudinaryService>();
 
-
-
-
-//MYSQL 
+// MYSQL 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -108,50 +103,45 @@ builder.Services.AddSwaggerGen(async options =>
     });
 });
 
-    // controllerek
-    builder.Services.AddControllers();
-    builder.Services.AddCors(options =>
+// controllerek
+builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
     {
-        options.AddPolicy("AllowAll", policy =>
-        {
-            policy.AllowAnyOrigin()
-                  .AllowAnyMethod()
-                  .AllowAnyHeader();
-        });
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
     });
+});
 
-    var app = builder.Build();
+var app = builder.Build();
 
-    // CORS engedélyezése
-    app.UseCors("AllowAll");
-    app.Use(async (context, next) =>
-    {
-        var token = context.Request.Headers["Authorization"].ToString();
-        Console.WriteLine($"Received Token: {token}");
-        await next();
-    });
-
-
+// CORS engedélyezése
+app.UseCors("AllowAll");
+app.Use(async (context, next) =>
+{
+    var token = context.Request.Headers["Authorization"].ToString();
+    Console.WriteLine($"Received Token: {token}");
+    await next();
+});
 
 // HTTP config
 if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
     {
-        app.UseSwagger();
-        app.UseSwaggerUI(options =>
-        {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Lakberendezes API v1");
-        });
-    }
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Lakberendezes API v1");
+    });
+}
 
-    app.UseHttpsRedirection();
-    app.UseAuthentication();
-    app.UseAuthorization();
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
-    //végpontok beállítása
-    app.MapControllers();
-    app.UseStaticFiles();
-
-
+//végpontok beállítása
+app.MapControllers();
 
 using (var scope = app.Services.CreateScope())
 {
@@ -172,6 +162,4 @@ async Task EnsureRolesCreated(AppDbContext context)
     await context.SaveChangesAsync();
 }
 
-
 app.Run();
-

@@ -114,22 +114,20 @@ namespace Lakberendezes.Controllers
                 return BadRequest("Ez a felhasználónév már használatban");
             }
 
-            string profilePicturePath = "/profile_pictures/default-profile.png";
+            string profilePicturePath = "https://console.cloudinary.com/pm/c-15e0a37867a1299c3394b51628d923/media-explorer/profile_pictures/apoghzaa8cj77vnj3d0y";
 
             if (registerDTO.ProfilePictureUrl != null)
             {
-                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/profile_pictures");
-                Directory.CreateDirectory(uploadsFolder);
-
-                string uniqueFileName = $"{Guid.NewGuid()}_{registerDTO.ProfilePictureUrl.FileName}";
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                try
                 {
-                    await registerDTO.ProfilePictureUrl.CopyToAsync(stream);
-                }
+                    profilePicturePath = await _cloudinaryService.UploadImage(registerDTO.ProfilePictureUrl);
 
-                profilePicturePath = $"/profile_pictures/{uniqueFileName}";
+                }
+                catch (Exception ex)
+                {
+
+                    return BadRequest(ex.Message);
+                }
             }
 
             var user = new User
@@ -199,6 +197,29 @@ namespace Lakberendezes.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Jelszó sikeresen módosítva!" });
+        }
+
+        [Authorize(Roles = "Admin, User")]
+        [HttpGet("profilepic")]
+        public async Task<IActionResult> GetProfilePicture([FromQuery] string email)
+        {
+            try
+            {
+                var user = await _context.users.FirstOrDefaultAsync(u => u.Email == email);
+                if (user == null)
+                {
+                    return NotFound("Felhasználó nem található");
+                }
+                var profilePictureUrl = string.IsNullOrEmpty(user.ProfilePictureUrl)
+                    ? "/default_profile.png"
+                    : user.ProfilePictureUrl;
+                return Ok(new { profilePictureUrl });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
         }
 
         [Authorize(Roles = "User,Admin")]

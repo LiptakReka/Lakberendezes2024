@@ -32,7 +32,7 @@ const Login = ({ setToken }) => {
 
         try {
             const response = await axios.post(
-                "https://localhost:7247/api/Users/login",
+                process.env.REACT_APP_API_URL + "/Users/login",
                 { email, password }
             );
 

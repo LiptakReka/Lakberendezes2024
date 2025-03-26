@@ -6,22 +6,47 @@ import "./Navbar1.css";
 import useCart from "../../Pages2/Cart/UseCart";
 
 const Navbar1 = ({ token, username, onLogout }) => {
-    //A kosár függvény implementációja
-    const {cartCount} = useCart()
-    //Állapotok létrehozása
+    // A kosár függvény implementációja
+    const { cartCount } = useCart();
+
+    // Állapotok létrehozása
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);        
-    const [profilePicture, setProfilePicture] = useState(null);
+    const [darkMode, setDarkMode] = useState(false);
+    const [profilePicture, setProfilePicture] = useState(
+        "https://res.cloudinary.com/dd10jzece/image/upload/v1743009597/profile_pictures/apoghzaa8cj77vnj3d0y.jpg"
+    );
 
     useEffect(() => {
+        const fetchProfilePicture = async () => {
+            const storedUser = JSON.parse(localStorage.getItem("user"));
+            if (!storedUser) return;
 
-        const storedUser = JSON.parse(localStorage.getItem("user"));
-        if (storedUser && storedUser.profilePictureUrl) {
-       
-            //A profilkép URL-jének beállítása
-            setProfilePicture(process.env.REACT_APP_Link_URL + `${storedUser.profilePictureUrl}`);
-        }
-        
+            try {
+                const token = localStorage.getItem("token");
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/Users/profilepic?email=${storedUser.email}`,
+                    {
+                        headers: {
+                            Authorization: token,
+                        },
+                    }
+                );
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setProfilePicture(data.profilePictureUrl); 
+                } else {
+                    throw new Error("Hiba történt a profilkép lekérése során.");
+                }
+            } catch (error) {
+                console.error("Hiba a profilkép lekérése során:", error);
+                setProfilePicture("https://res.cloudinary.com/dd10jzece/image/upload/v1743009597/profile_pictures/apoghzaa8cj77vnj3d0y.jpg");
+            }
+        };
+
+        fetchProfilePicture();
+
+        // Sötét mód beállításainak betöltése
         const storedDark = localStorage.getItem("darkMode") === "enabled";
         setDarkMode(storedDark);
     }, []);
@@ -38,16 +63,14 @@ const Navbar1 = ({ token, username, onLogout }) => {
     };
 
     return (
-        <nav className={`navbar navbar-expand-lg ${darkMode ? "navbar-dark bg-dark" : "navbar-light bg-light"}`}>   {/*A navbáron a sötét mód megjelenítése*/}
+        <nav className={`navbar navbar-expand-lg ${darkMode ? "navbar-dark bg-dark" : "navbar-light bg-light"}`}>
             <div className="container">
                 <Link className="navbar-brand" to="/">
                     <strong>RoomLab</strong>
                 </Link>
-                <Link to={"/cart"} className="nav-cart">       {/*A kosár megjelenítése*/}
-                <ShoppingCartIcon/> Kosár
-                {cartCount > 0 && (
-            <span className="cart-count">{cartCount}</span>
-            )}
+                <Link to={"/cart"} className="nav-cart">
+                    <ShoppingCartIcon /> Kosár
+                    {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
                 </Link>
 
                 <button className="navbar-toggler" type="button" onClick={toggleDropdown} aria-label="Toggle navigation">
@@ -57,16 +80,24 @@ const Navbar1 = ({ token, username, onLogout }) => {
                 <div className={`collapse navbar-collapse ${isDropdownOpen ? "show" : ""}`} id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/">Kezdőlap</NavLink>
+                            <NavLink className="nav-link" to="/">
+                                Kezdőlap
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/about">Rólunk</NavLink>          {/*A menüpontok megjelenítése*/}
+                            <NavLink className="nav-link" to="/about">
+                                Rólunk
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/planner">Tervező</NavLink>
+                            <NavLink className="nav-link" to="/planner">
+                                Tervező
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/contact">Kapcsolat</NavLink>
+                            <NavLink className="nav-link" to="/contact">
+                                Kapcsolat
+                            </NavLink>
                         </li>
 
                         <li className="nav-item">

@@ -10,22 +10,40 @@ const ProfilePictureUpload = () => {
     const { unlockAchievement } = useAchievements();
     const [user, setUser] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [previewImage, setPreviewImage] = useState("default_profile.png");
+    const [previewImage, setPreviewImage] = useState(
+        "https://res.cloudinary.com/dd10jzece/image/upload/v1743009597/profile_pictures/apoghzaa8cj77vnj3d0y.jpg"
+    );
 
-    //  a felhasználói adatok betöltésére
+
     useEffect(() => {
-        const storedUser = JSON.parse(localStorage.getItem("user"));
-        if (storedUser) {
-            setUser(storedUser);
-            setPreviewImage(
-                storedUser.profilePictureUrl && storedUser.profilePictureUrl.trim() !== ""
-                    ? process.env.REACT_APP_Link_URL + `${storedUser.profilePictureUrl}`
-                    : "default_profile.png"
-            );
-        }
+        const fetchProfilePicture = async () => {
+            const storedUser = JSON.parse(localStorage.getItem("user"));
+            if (!storedUser) return;
+
+            try {
+                const token = localStorage.getItem("token");
+                const response = await axios.get(
+                    `${process.env.REACT_APP_API_URL}/Users/profilepic?email=${storedUser.email}`,
+                    {
+                        headers: {
+                            Authorization: token,
+                        },
+                    }
+                );
+
+                const imageUrl = response.data.profilePictureUrl;
+                setPreviewImage(imageUrl); 
+                setUser(storedUser);
+            } catch (error) {
+                console.error("Hiba a profilkép lekérése során:", error);
+                setPreviewImage("https://res.cloudinary.com/dd10jzece/image/upload/v1743009597/profile_pictures/apoghzaa8cj77vnj3d0y.jpg");
+            }
+        };
+
+        fetchProfilePicture();
     }, []);
 
-    // Függvény a fájl kiválasztására
+    // Fájl kiválasztása
     const handleFileChange = (event) => {
         if (event.target.files.length > 0) {
             setSelectedFile(event.target.files[0]);
@@ -33,7 +51,7 @@ const ProfilePictureUpload = () => {
         }
     };
 
-    // Függvény a fájl feltöltésére
+    // Fájl feltöltése
     const handleUpload = async () => {
         if (!selectedFile) {
             toast.warn("Válassz ki egy képet!", { position: "top-center" });
@@ -45,15 +63,15 @@ const ProfilePictureUpload = () => {
         formData.append("email", user?.email);
 
         try {
-            const token = localStorage.getItem("token"); 
+            const token = localStorage.getItem("token");
             const response = await axios.post(
-               process.env.REACT_APP_API_URL + "/Users/upload-profile-picture",
+                `${process.env.REACT_APP_API_URL}/Users/upload-profile-picture`,
                 formData,
                 {
                     headers: {
                         "Content-Type": "multipart/form-data",
-                        "Authorization":token 
-                    }
+                        Authorization: token,
+                    },
                 }
             );
 
@@ -61,15 +79,15 @@ const ProfilePictureUpload = () => {
                 throw new Error("Nincs kép URL az API válaszában!");
             }
 
-            const newProfileUrl = response.data.imageUrl;
+            const newProfileUrl = response.data.imageUrl; // Cloudinary Secure URL
             const updatedUser = { ...user, profilePictureUrl: newProfileUrl };
 
-            // Felhasználói adatok frissítése 
+            // Felhasználói adatok frissítése
             localStorage.setItem("user", JSON.stringify(updatedUser));
             setUser(updatedUser);
 
             // Előnézeti kép frissítése
-            setPreviewImage(process.env.REACT_APP_Link_URL + `${newProfileUrl}`);
+            setPreviewImage(newProfileUrl);
 
             enqueueSnackbar("Profilkép sikeresen feltöltve!", { variant: "success" });
             unlockAchievement("Szépségszalon", "Profilképed megváltozott", "💄");

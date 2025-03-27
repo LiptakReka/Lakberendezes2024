@@ -99,7 +99,6 @@ const ProfilePictureUpload = () => {
 
     return (
         <div className="profile-upload-container">
-            <h3>Profilkép módosítása</h3>
             <img src={previewImage} alt="Profilkép" className="profile-preview" />
             <input type="file" accept="image/*" onChange={handleFileChange} />
             <button onClick={handleUpload}>Feltöltés</button>

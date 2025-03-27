@@ -3,6 +3,8 @@ import "./Register.css";
 import { Mail, Key, Users, Image } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+// Importáld a meglévő PasswordRequirements komponenst
+import PasswordRequirements from '../../Pages2/Passwordreq/Passwordreq';
 
 const Register = () => {
     // A navigate függvény importálása 
@@ -16,6 +18,33 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
+    const [passwordReqs, setPasswordReqs] = useState({
+        length: false,
+        uppercase: false,
+        lowercase: false,
+        number: false,
+        special: false
+    });
+
+
+    const checkPasswordRequirements = (password) => {
+        const reqsStatus = {
+            length: password.length >= 8,
+            uppercase: /[A-Z]/.test(password),
+            lowercase: /[a-z]/.test(password),
+            number: /[0-9]/.test(password),
+            special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+        };
+        setPasswordReqs(reqsStatus);
+        return Object.values(reqsStatus).every(req => req === true);
+    };
+
+    // Jelszó változás kezelése
+    const handlePasswordChange = (e) => {
+        const newPassword = e.target.value;
+        setPassword(newPassword);
+        checkPasswordRequirements(newPassword);
+    };
 
     // Függvény a regisztráció kezelésére
     const handleregister = async (e) => {
@@ -24,6 +53,12 @@ const Register = () => {
         // Jelszó ellenőrzése
         if (password !== confirmPassword) {
             setError("A jelszavak nem egyeznek meg!");
+            return;
+        }
+
+        // Jelszó követelmények ellenőrzése
+        if (!checkPasswordRequirements(password)) {
+            setError("A jelszó nem felel meg az összes követelménynek!");
             return;
         }
 
@@ -123,10 +158,13 @@ const Register = () => {
                             type="password"
                             className="form-input"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={handlePasswordChange}
                             required
                         />
+                        {/* Itt használd a külön komponenst a beépített helyett */}
+                        <PasswordRequirements password={password} />
                     </div>
+                    
                     <div className="form-group">
                         <label className="form-label">
                             <Key className="icon" /> Jelszó újra:
@@ -139,7 +177,7 @@ const Register = () => {
                             required
                         />
                     </div>
-
+                    
                     <div className="form-group">
                         <label className="form-label">
                             <Image className="icon" /> Profilkép:
@@ -150,9 +188,11 @@ const Register = () => {
                             onChange={(e) => setProfilePicture(e.target.files[0])}
                         />
                     </div>
+                    
                     <button type="submit" className="register-button">
                         Regisztráció
                     </button>
+                    
                     <button 
                         type="button" 
                         className="login-link-button"

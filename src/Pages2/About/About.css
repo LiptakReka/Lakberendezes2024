@@ -1,4 +1,4 @@
-/* Alap stílusok */
+
 .about-page {
     background: linear-gradient(135deg, #F5F5DC 0%, #E6E6C8 100%);
     min-height: 100vh;
@@ -45,7 +45,7 @@
     background: linear-gradient(90deg, #a86e4d, #d4a373);
   }
   
-  /* Címek és szövegek */
+
   .main-title {
     text-align: center;
     font-size: 42px;
@@ -93,7 +93,7 @@
     color: #c0c0c0;
   }
   
-  /* Szekciók */
+
   .section {
     margin-bottom: 50px;
     padding: 30px;
@@ -120,7 +120,7 @@
     border-color: #a86e4d;
   }
   
-  /* Küldetés szekció */
+
   .vision-content {
     display: flex;
     gap: 40px;
@@ -155,7 +155,7 @@
     transform: scale(1.05);
   }
   
-  /* Történet szekció */
+
   .origin-content {
     font-size: 18px;
     line-height: 1.8;
@@ -165,7 +165,7 @@
     margin-bottom: 20px;
   }
   
-  /* Szolgáltatások szekció */
+
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -364,7 +364,7 @@
     color: #ddd;
   }
   
-  /* Jövő szekció */
+
   .future-content {
     font-size: 18px;
     line-height: 1.8;
@@ -411,7 +411,7 @@
     color: #ddd;
   }
   
-  /* CTA szekció */
+
   .cta-section {
     text-align: center;
     padding: 50px 30px;
@@ -475,7 +475,7 @@
     box-shadow: 0 8px 20px rgba(168, 110, 77, 0.4);
   }
   
-  /* Animációk */
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -487,7 +487,7 @@
     }
   }
   
-  /* Reszponzív beállítások */
+
   @media (max-width: 992px) {
     .vision-content {
       flex-direction: column;

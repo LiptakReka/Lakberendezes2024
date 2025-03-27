@@ -581,7 +581,7 @@ namespace Lakberendezes.Controllers
 
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         [HttpDelete("{userName}")]
         public async Task<IActionResult> DeleteUserByName(string userName)
         {

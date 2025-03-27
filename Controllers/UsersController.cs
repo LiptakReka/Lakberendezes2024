@@ -114,6 +114,11 @@ namespace Lakberendezes.Controllers
                 return BadRequest("Ez a felhasználónév már használatban");
             }
 
+            if (!isvalidPassword(registerDTO.Password))
+            {
+                return BadRequest("A jelszónak tartalmaznia kell legalább egy speciális karaktert, egy számot , egy nagybetűt, és egy kis betűt.");
+            }
+
             string profilePicturePath = "https://res.cloudinary.com/dd10jzece/image/upload/v1743009597/profile_pictures/apoghzaa8cj77vnj3d0y.jpg";
 
             if (registerDTO.ProfilePictureUrl != null)
@@ -152,6 +157,23 @@ namespace Lakberendezes.Controllers
             await _context.SaveChangesAsync();
 
             return Ok("Regisztráció sikeres!");
+        }
+        private bool isvalidPassword(string password)
+        {
+            if (password.Length <8)
+            {
+                return false;
+            }
+            bool hasUpper=false, hasLower=false, hasDigit = false, hasSpecial = false;
+            foreach (var c in password)
+            {
+                if (char.IsUpper(c)) hasUpper  = true;
+                else if (char.IsLower(c)) hasLower = true;
+                else if (char.IsDigit(c)) hasDigit = true;
+                else if (char.IsSymbol(c) || char.IsPunctuation(c)) hasSpecial = true;
+
+            }
+            return hasUpper && hasLower && hasDigit && hasSpecial;
         }
 
         [HttpPost("login")]

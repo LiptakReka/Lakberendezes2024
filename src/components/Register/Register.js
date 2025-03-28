@@ -7,8 +7,8 @@ import { StarsIcon } from 'hugeicons-react';
 import Passwordreq from '../../Pages2/Passwordreq/Passwordreq'; 
 
 const Register = () => {
-    // A navigate függvény importálása 
     const navigate = useNavigate();
+
     // Állapotváltozók 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,13 +18,6 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
-    const [ setPasswordReqs] = useState({
-        length: false,
-        uppercase: false,
-        lowercase: false,
-        number: false,
-        special: false
-    });
     const [showPasswordReqs, setShowPasswordReqs] = useState(false);
 
     const checkPasswordRequirements = (password) => {
@@ -33,9 +26,8 @@ const Register = () => {
             uppercase: /[A-Z]/.test(password),
             lowercase: /[a-z]/.test(password),
             number: /[0-9]/.test(password),
-            special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+            special: /[^A-Za-z0-9]/.test(password)
         };
-        setPasswordReqs(reqsStatus); 
         return Object.values(reqsStatus).every(req => req === true);
     };
 
@@ -43,7 +35,6 @@ const Register = () => {
         const newPassword = e.target.value;
         setPassword(newPassword);
         setShowPasswordReqs(true); 
-        checkPasswordRequirements(newPassword); 
     };
 
     const handleregister = async (e) => {
@@ -86,13 +77,13 @@ const Register = () => {
             setConfirmPassword('');
             setUsername('');
             setProfilePicture(null);
-            
+
             setTimeout(() => {
                 navigate('/login');
             }, 2000);
         } catch (error) {
             console.error('Hálózati hiba:', error);
-            
+
             if (error.response && error.response.data) {
                 const errorData = error.response.data;
                 setError(errorData.message || "Hibás adatok vagy ismeretlen hiba.");
@@ -159,9 +150,10 @@ const Register = () => {
                             onBlur={() => setShowPasswordReqs(false)} 
                             required
                         />
+                        {showPasswordReqs && (
+                            <Passwordreq password={password} isVisible={showPasswordReqs} />
+                        )}
                     </div>
-                    
-                    {showPasswordReqs && <Passwordreq password={password} isVisible={showPasswordReqs} />}
                     <div className="form-group">
                         <label className="form-label">
                             <Key className="icon" /> Jelszó újra: <StarsIcon className='reqstar'/>

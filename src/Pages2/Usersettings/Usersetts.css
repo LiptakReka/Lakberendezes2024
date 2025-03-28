@@ -1,3 +1,4 @@
+
 .user-setts-container {
     min-height: 100vh;
     background: white;
@@ -6,15 +7,13 @@
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-    margin-top: 80px;  
+    margin-top: 80px;
 }
-
 
 .dark-mode .user-setts-container {
     background: #777;
     background-size: cover;
 }
-
 
 .settings-container {
     width: 90%;
@@ -26,7 +25,6 @@
     text-align: center;
     transition: all 0.3s ease-in-out;
 }
-
 
 .dark-mode .settings-container {
     background: rgba(34, 34, 34, 0.8);
@@ -74,7 +72,6 @@
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 .user-info-container {
     display: flex;
     flex-direction: column;
@@ -87,10 +84,10 @@
     max-width: 900px;
     margin: 40px auto;
 }
-.dark-mode .cim{
+
+.dark-mode .cim {
     color: white;
 }
-
 
 .profile-achievement-section {
     display: flex;
@@ -99,7 +96,6 @@
     gap: 25px;
     width: 100%;
 }
-
 
 .profile-picture-container {
     flex: 1;
@@ -125,7 +121,6 @@
     transform: scale(1.1);
 }
 
-
 .upload-container {
     margin-top: 10px;
 }
@@ -147,7 +142,6 @@
     background-color: #4a3ba1;
     transform: scale(1.05);
 }
-
 
 .achievements-container {
     flex: 1;
@@ -195,7 +189,6 @@
     font-style: italic;
 }
 
-
 .password-change {
     display: flex;
     flex-direction: column;
@@ -209,7 +202,7 @@
     box-shadow: none;
 }
 
-.dark-mode .password-change{
+.dark-mode .security-section {
     color: white;
 }
 
@@ -303,7 +296,6 @@
     color: #ff3a3a;
 }
 
-/* Dark mode support */
 .dark-mode .delete-confirmation {
     background-color: #2a2a2a;
     border-color: #3a3a3a;
@@ -319,7 +311,6 @@
     color: #fff;
     border-color: #444;
 }
-
 
 .security-container {
     display: flex;
@@ -342,17 +333,194 @@
     background: rgba(40, 40, 40, 0.9);
 }
 
+@media (max-width: 1200px) {
+    .settings-container {
+        padding: 20px;
+    }
+
+    .tabs button {
+        font-size: 14px;
+    }
+
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+    }
+
+    .upload-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 992px) {
+    .user-setts-container {
+        padding: 40px 20px;
+    }
+
+    .settings-container {
+        padding: 15px;
+    }
+
+    .profile-info {
+        text-align: center;
+    }
+
+    .profile-picture-container {
+        width: 100%;
+    }
+
+    .achievements-container {
+        width: 100%;
+    }
+
+    .password-change {
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
-    .profile-achievement-section {
+    .user-setts-container {
+        padding: 30px 10px;
+    }
+
+    .settings-container {
+        padding: 10px;
+    }
+
+    .tabs {
         flex-direction: column;
         align-items: center;
     }
-    
+
+    .tabs button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .profile-picture {
+        width: 80px;
+        height: 80px;
+    }
+
+    .upload-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .password-change input {
+        padding: 8px;
+    }
+
     .security-container {
         flex-direction: column;
     }
-    
+
     .security-section {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .user-setts-container {
+        padding: 20px;
+    }
+
+    .settings-container {
+        padding: 5px;
+    }
+
+    .tabs button {
+        font-size: 12px;
+    }
+
+    .profile-picture {
+        width: 60px;
+        height: 60px;
+    }
+
+    .upload-btn {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .password-change {
+        max-width: 100%;
+    }
+
+    .password-change input {
+        padding: 6px;
+    }
+
+    .warning-text {
+        font-size: 12px;
+    }
+
+    .delete-account-btn,
+    .cancel-delete-btn,
+    .confirm-delete-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 375px) {
+    .user-setts-container {
+        padding: 15px;
+    }
+
+    .settings-container {
+        padding: 5px;
+    }
+
+    .tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tabs button {
+        width: 100%;
+        margin-bottom: 8px;
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+
+    .profile-picture {
+        width: 50px;
+        height: 50px;
+    }
+
+    .upload-btn {
+        padding: 4px 6px;
+        font-size: 10px;
+    }
+
+    .password-change input {
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    .warning-text {
+        font-size: 10px;
+    }
+
+    .delete-account-btn,
+    .cancel-delete-btn,
+    .confirm-delete-btn {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .security-section {
+        padding: 8px;
+    }
+
+    .achievement {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .no-achievements {
+        font-size: 12px;
     }
 }

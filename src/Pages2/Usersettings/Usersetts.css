@@ -209,6 +209,10 @@
     box-shadow: none;
 }
 
+.dark-mode .password-change{
+    color: white;
+}
+
 .password-change input {
     width: 100%;
     padding: 12px;

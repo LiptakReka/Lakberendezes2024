@@ -18,7 +18,7 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
-    const [setPasswordReqs] = useState({
+    const [passwordReqs, setPasswordReqs] = useState({ // Corrected destructuring
         length: false,
         uppercase: false,
         lowercase: false,
@@ -26,7 +26,6 @@ const Register = () => {
         special: false
     });
     const [showPasswordReqs, setShowPasswordReqs] = useState(false);
-
 
     const checkPasswordRequirements = (password) => {
         const reqsStatus = {
@@ -36,11 +35,10 @@ const Register = () => {
             number: /[0-9]/.test(password),
             special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
         };
-        setPasswordReqs(reqsStatus);
+        setPasswordReqs(reqsStatus); 
         return Object.values(reqsStatus).every(req => req === true);
     };
 
-    // Jelszó változás kezelése
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
@@ -48,7 +46,7 @@ const Register = () => {
         checkPasswordRequirements(newPassword);
     };
 
-    // Függvény a regisztráció kezelésére
+  
     const handleregister = async (e) => {
         e.preventDefault();
 
@@ -74,9 +72,8 @@ const Register = () => {
         }
 
         try {
-           
             await axios.post(
-               process.env.REACT_APP_API_URL + "/Users/register",
+                process.env.REACT_APP_API_URL + "/Users/register",
                 formData,
                 {
                     headers: {
@@ -100,7 +97,6 @@ const Register = () => {
             console.error('Hálózati hiba:', error);
             
             if (error.response && error.response.data) {
-                
                 const errorData = error.response.data;
                 setError(errorData.message || "Hibás adatok vagy ismeretlen hiba.");
             } else {
@@ -162,8 +158,8 @@ const Register = () => {
                             className="form-input"
                             value={password}
                             onChange={handlePasswordChange}
-                            onFocus={() => setShowPasswordReqs(true)} // Megjelenítjük a követelményeket fókuszáláskor is
-                            onBlur={() => setShowPasswordReqs(false)} // Opcionális: elrejthetjük, ha elveszíti a fókuszt
+                            onFocus={() => setShowPasswordReqs(true)} 
+                            onBlur={() => setShowPasswordReqs(false)} 
                             required
                         />
                        

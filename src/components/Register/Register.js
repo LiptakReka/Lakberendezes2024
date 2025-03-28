@@ -3,10 +3,8 @@ import "./Register.css";
 import { Mail, Key, Users, Image } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// Importáld a meglévő PasswordRequirements komponenst
-import PasswordRequirements from '../../Pages2/Passwordreq/Passwordreq';
-import { StarsIcon, StarSquareIcon } from 'hugeicons-react';
-import Passwordreq from '../../Pages2/Passwordreq/Passwordreq'; // Ellenőrizd, hogy ez az útvonal helyes-e
+import { StarsIcon } from 'hugeicons-react';
+import Passwordreq from '../../Pages2/Passwordreq/Passwordreq'; 
 
 const Register = () => {
     // A navigate függvény importálása 
@@ -20,7 +18,7 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
-    const [passwordReqs, setPasswordReqs] = useState({
+    const [setPasswordReqs] = useState({
         length: false,
         uppercase: false,
         lowercase: false,
@@ -46,7 +44,6 @@ const Register = () => {
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
-        // Ha a felhasználó elkezd írni a jelszó mezőbe, mutassuk a követelményeket
         setShowPasswordReqs(true);
         checkPasswordRequirements(newPassword);
     };

@@ -8,7 +8,7 @@ export function AchievementProvider({ children }) {
     const [achievements, setAchievements] = useState([]);
     const [userId, setUserId] = useState(null);
 
-    // A felhasználó adatainak beállítása
+
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user && user.id) {
@@ -16,7 +16,7 @@ export function AchievementProvider({ children }) {
         }
     }, []);
 
-    // Achievements lekérése a userId változása esetén
+   
     useEffect(() => {
         if (userId) {
             setAchievements([]);
@@ -26,7 +26,7 @@ export function AchievementProvider({ children }) {
         }
     }, [userId]);
 
-    // useCallback használata, hogy ne hozzunk létre új függvényt minden rendereléskor
+   
     const unlockAchievement = useCallback(async (title, description, icon) => {
         if (!achievements.some(ach => ach.title === title)) {
             const newAchievement = { title, description, icon };

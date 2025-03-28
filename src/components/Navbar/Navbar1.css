@@ -27,7 +27,7 @@
 }
   
 .dark-mode .navbar {
-    background: linear-gradient(to right, rgba(62, 39, 35, 0.95), rgba(32, 22, 14, 0.95));
+    background: linear-gradient(to right, rgba(128, 112, 109, 0.95), rgba(32, 22, 14, 0.95));
 }
   
 .dark-mode .navbar-brand,

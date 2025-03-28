@@ -10,7 +10,7 @@
   }
   
   .dark-mode .about-page {
-    background: linear-gradient(135deg, #2c2117 0%, #1a1410 100%);
+    background:  #626965;
   }
   
   .containerd {
@@ -215,7 +215,7 @@
     color: #ddd;
   }
   
-  /* Egyedi jellemzők szekció */
+  
   .unique-content {
     display: flex;
     flex-direction: column;
@@ -254,7 +254,7 @@
     color: #ddd;
   }
   
-  /* Időszalag */
+
   .timeline {
     position: relative;
     max-width: 800px;
@@ -318,7 +318,7 @@
     color: #ddd;
   }
   
-  /* Értékek szekció */
+
   .values-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

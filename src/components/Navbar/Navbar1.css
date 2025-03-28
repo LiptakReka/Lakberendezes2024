@@ -16,6 +16,10 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+.nav-items {
+    color: #222;
+}
   
 .dark-mode {
     background-color: #000 !important;
@@ -82,16 +86,16 @@
   
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
 }
   
 .navbar-nav .nav-link:not(.active) {
-    color: #bbbbbb;
+    color: #0e0d0d;
 }
   
 .navbar-nav .nav-link:not(.active):hover {
-    color: #d1a9f8;
+    color: #e6af68;
 }
   
 

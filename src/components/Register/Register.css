@@ -196,3 +196,19 @@
     --hover:#B5B2C2;
     --hoverlog:#7B6D8D;
 }
+
+.reqstar{
+    color: rgb(206, 106, 106);
+  }
+
+  .register-subtitle{
+    color: #e6c6c6;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--bg-medium);
+
+  }

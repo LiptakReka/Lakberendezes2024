@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useCart from './UseCart'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ShoppingCart } from 'lucide-react'
 import axios from 'axios'
 import './Cart.css'
@@ -15,6 +15,7 @@ export default function Cart() {
     return user ? user.email : '';
   });
   const [loading, setloading] = useState(false);
+  const navigate =useNavigate();
   const [message, setMessage] = useState('');
 
   const sendEmail = async () => {
@@ -77,6 +78,7 @@ export default function Cart() {
                 </li>
               ))}
             </ul>
+            <button className='toplanner' onClick={()=>navigate( "/planner")}>Nem végeztél? Vásárolj még</button>
             <div className='cart-buttons'>
               <input type='email'
                 value={email}

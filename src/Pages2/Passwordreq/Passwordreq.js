@@ -24,12 +24,12 @@ export default function Passwordreq({password, isVisible}) {
         },
         {
             text:"Legalább egy speciális karakter",
-            met:/[^A-Za-z0-9]]/.test(password)
+            met:/[^A-Za-z0-9]/.test(password) // Javítva: csak egy záró szögletes zárójel
         }
     ];
   return (
     <div className='password-req'>
-        <h3>Jelszó követelmébyek</h3>
+        <h3>Jelszó követelmények</h3>
         <ul>
             {req.map((req, index)=>(
                  <li key={index} className={req.met ? 'requirement-met' : 'requirement-not-met'}>

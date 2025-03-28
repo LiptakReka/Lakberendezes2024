@@ -23,8 +23,8 @@ const Planner = () => {
   const [selectedRoom, setSelectedRoom] = useState(1);
   const [showBackgrounds, setShowBackgrounds] = useState(false);
   const [selectedBackground, setSelectedBackground] = useState(null);
-  
-  const backgrounds = [
+
+const backgrounds = [
     { id: 1, url: "https://blog.pincel.app/wp-content/uploads/2024/05/empty-room-filler.jpg", name: "Nappali 1" },
     { id: 2, url: "https://img.freepik.com/free-psd/blank-wall-psd-japandi-living-room-interior_53876-109284.jpg?t=st=1741782416~exp=1741786016~hmac=908ccceaa768aac602c8e7f4099a3d9143343ee1e0c790cca7de5022ab31e5c6&w=1380", name: "Nappali 2" },
     { id: 3, url: "https://t4.ftcdn.net/jpg/02/87/98/61/360_F_287986158_2Tz2w7QKcgmbpecZZzveGUdN9RNPB3c4.jpg", name: "Hálószoba 1" },
@@ -32,11 +32,13 @@ const Planner = () => {
     { id: 5, url: "https://img.freepik.com/free-vector/empty-modern-room-interior_1284-9406.jpg", name: "Étkező 1" },
     { id: 6, url: "https://img.freepik.com/free-photo/minimal-rooms-walls-with-lighting-effects-3d-rendering_23-2149210321.jpg?t=st=1741781431~exp=1741785031~hmac=a53ab63f717856d27d796727de3ed134a2589cf45bd8721d6db925ed7ef90350&w=1380", name: "Fürdőszoba 1" },
   ];
-  
+
+
   const handleBackgroundSelect = (bg) => {
     setSelectedBackground(bg);
     setShowBackgrounds(false);
   };
+
 
   const fetchProductTypes = async (roomid) => {
     try {
@@ -59,6 +61,33 @@ const Planner = () => {
     }
   };
 
+  const handleTypeSelect = (typeId) => {
+    const newTypeId = typeId === selectedType ? null : typeId;
+    setSelectedType(newTypeId);
+    setdropdownlabel(newTypeId ? typeNames[newTypeId] : "Válassz terméktípust");
+    setShowDropdown(false);
+    fetchFilteredProducts(selectedRoom, newTypeId);
+  };
+
+
+  const typeNames={
+    1:"Kanapék",
+    3:"Dohányzóasztal",
+    5:"Tv állvány",
+    11: "Ágy",
+    13: "Éjjeliszekrény",
+    14: "Szekrény",
+    16: "Tükör",
+    21:"Étkezőasztal",
+    22:"Polc és szekrény",
+    23:"Szék",
+    34:"Zuhanyzó",
+    35:"Fürdőszobai szekrény",
+    36:"Mosókonyhai eszközök"
+
+  }
+
+
   const fetchProductsByRoom = useCallback(async (roomid) => {
     try {
       const token = localStorage.getItem("token");
@@ -80,10 +109,18 @@ const Planner = () => {
     }
   }, []);
 
+  const handleRoomSelect = (roomId) => {
+    fetchProductsByRoom(roomId);
+    setPlacedProducts([]);
+    setSelectedType(null);
+    setdropdownlabel("Válassz terméktípust");
+  };
+
   useEffect(() => {
     fetchProductsByRoom(1);
     fetchSavedPlans();
   }, [fetchProductsByRoom]);
+
 
   const fetchFilteredProducts = async (roomid, typeid) => {
     try {
@@ -108,41 +145,7 @@ const Planner = () => {
     }
   };
 
-  const handleTypeSelect = (typeId) => {
-    const newTypeId = typeId === selectedType ? null : typeId;
-    setSelectedType(newTypeId);
-    setdropdownlabel(newTypeId ? typeNames[newTypeId] : "Válassz terméktípust");
-    setShowDropdown(false);
-    fetchFilteredProducts(selectedRoom, newTypeId);
-  };
-
-  const fetchSavedPlans = async () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) return;
-
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.get(process.env.REACT_APP_API_URL + `/Users/get-plan/${user.id}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      if (Array.isArray(response.data)) {
-        setSavedPlans(response.data);
-      } else if (response.data) {
-        setSavedPlans([response.data]);
-      } else {
-        setSavedPlans([]);
-      }
-    } catch (error) {
-      console.error("Hiba a mentett tervek lekérésekor:", error);
-      setSavedPlans([]);
-      enqueueSnackbar('Hiba történt a mentett tervek lekérésekor.', {variant: 'error'});
-    }
-  };
-
-  const savePlan = async () => {
+const savePlan = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
         enqueueSnackbar("Először jelentkezz be!", { variant: "error" });
@@ -194,29 +197,34 @@ const Planner = () => {
     unlockAchievement("Első terv!", "Elmentetted az első terved!", "🏠");
   };
 
-  const handleRoomSelect = (roomId) => {
-    fetchProductsByRoom(roomId);
-    setPlacedProducts([]);
-    setSelectedType(null);
-    setdropdownlabel("Válassz terméktípust");
+
+
+  const fetchSavedPlans = async () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) return;
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(process.env.REACT_APP_API_URL + `/Users/get-plan/${user.id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (Array.isArray(response.data)) {
+        setSavedPlans(response.data);
+      } else if (response.data) {
+        setSavedPlans([response.data]);
+      } else {
+        setSavedPlans([]);
+      }
+    } catch (error) {
+      console.error("Hiba a mentett tervek lekérésekor:", error);
+      setSavedPlans([]);
+      enqueueSnackbar('Hiba történt a mentett tervek lekérésekor.', {variant: 'error'});
+    }
   };
 
-  const typeNames={
-    1:"Kanapék",
-    3:"Dohányzóasztal",
-    5:"Tv állvány",
-    11: "Ágy",
-    13: "Éjjeliszekrény",
-    14: "Szekrény",
-    16: "Tükör",
-    21:"Étkezőasztal",
-    22:"Polc és szekrény",
-    23:"Szék",
-    34:"Zuhanyzó",
-    35:"Fürdőszobai szekrény",
-    36:"Mosókonyhai eszközök"
-
-  }
 
   const addToPlanner = (product) => {
     setPlacedProducts([
@@ -230,36 +238,8 @@ const Planner = () => {
     ]);
   };
 
-  const handleMouseDown = (event, product) => {
-    setDraggedProduct(product);
-    setDragOffset({
-      x: event.clientX - product.x,
-      y: event.clientY - product.y,
-    });
-  };
 
-  const handleMouseMove = (event) => {
-    if (draggedProduct) {
-      const updatedProducts = placedProducts.map((product) =>
-        product.id === draggedProduct.id
-          ? { ...product, x: event.clientX - dragOffset.x, y: event.clientY - dragOffset.y }
-          : product
-      );
-      setPlacedProducts(updatedProducts);
-    }
-  };
-
-  const handleMouseUp = () => {
-    setDraggedProduct(null);
-  };
-
-  const handleZoom = (productId, scaleChange) => {
-    setPlacedProducts(placedProducts.map(p =>
-      p.id === productId ? { ...p, scale: Math.max(0.5, Math.min((p.scale || 1) + scaleChange, 3)) } : p
-    ));
-  };
-
-  const loadPlan = async () => {
+const loadPlan = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     try {
         const token = localStorage.getItem("token"); 
@@ -299,8 +279,78 @@ const Planner = () => {
     }
   };
 
+
+const handleMouseDown = (event, product) => {
+    if (!Istouch()) {
+    setDraggedProduct(product);
+    setDragOffset({
+      x: event.clientX - product.x,
+      y: event.clientY - product.y,
+    });
+  }
+  };
+
+  const handleMouseMove = (event) => {
+    if (!Istouch() && draggedProduct) {
+      const updatedProducts = placedProducts.map((product) =>
+        product.id === draggedProduct.id
+          ? { ...product, x: event.clientX - dragOffset.x, y: event.clientY - dragOffset.y }
+          : product
+      );
+      setPlacedProducts(updatedProducts);
+    }
+  };
+
+  const handleMouseUp = () => {
+    if (Istouch()) {
+    setDraggedProduct(null);
+    }
+  };
+
+ const Istouch=()=>{
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0 ;
+  }
+
+  
+  const handleTouch=(event, product)=>{
+    if (Istouch()) {
+      event.preventDefault();
+      setDraggedProduct(product);
+      const otuch=event.touches[0];
+      setDragOffset({
+        x: otuch.clientX - product.x,
+        y: otuch.clientY - product.y,
+      });
+    }
+  };
+
+  const handleTouchMove=(event)=>{
+    if (Istouch() && draggedProduct) {
+      event.preventDefault();
+      const otuch=event.touches[0];
+      const updatedProducts = placedProducts.map((product) =>
+        product.id === draggedProduct.id
+          ? { ...product, x: otuch.clientX - dragOffset.x, y: otuch.clientY - dragOffset.y }
+          : product
+      );
+      setPlacedProducts(updatedProducts);
+    }
+  };
+
+  const handleTENd=()=>{
+    if (Istouch()) {
+      setDraggedProduct(null);
+    }
+  }
+
+  const handleZoom = (productId, scaleChange) => {
+    setPlacedProducts(placedProducts.map(p =>
+      p.id === productId ? { ...p, scale: Math.max(0.5, Math.min((p.scale || 1) + scaleChange, 3)) } : p
+    ));
+  };
+
   return (
-    <div className="planner-container" onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
+    <div className="planner-container" onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onTouchMove={handleTouchMove} onTouchEnd={handleTENd}>
       <div className="save-load-container">
         <button className="save-btn" onClick={savePlan}>
           <Bookmark /> Terv mentése
@@ -421,6 +471,7 @@ const Planner = () => {
                 position: 'absolute'
               }}
               onMouseDown={(event) => handleMouseDown(event, product)}
+              onTouchStart={(event) => handleTouch(event, product)}
             >
               <button
                 className="remove-btn"

@@ -271,6 +271,21 @@
     border-radius: 6px;
 }
 
+.toplanner{
+    background-color: #d2b48c;
+    color: #222;
+}
+
+.toplanner:hover{
+    background-color: #a0522d;
+    color: #fff;
+}
+
+
+.dark-mode .toplanner{
+    background-color: #4b4949;
+    color: #fff;
+}
 
 @media (max-width: 768px) {
     .cart-sett-container {

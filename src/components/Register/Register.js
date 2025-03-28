@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // Importáld a meglévő PasswordRequirements komponenst
 import PasswordRequirements from '../../Pages2/Passwordreq/Passwordreq';
+import { StarsIcon, StarSquareIcon } from 'hugeicons-react';
+import Passwordreq from '../../Pages2/Passwordreq/Passwordreq'; // Ellenőrizd, hogy ez az útvonal helyes-e
 
 const Register = () => {
     // A navigate függvény importálása 
@@ -25,6 +27,7 @@ const Register = () => {
         number: false,
         special: false
     });
+    const [showPasswordReqs, setShowPasswordReqs] = useState(false);
 
 
     const checkPasswordRequirements = (password) => {
@@ -43,6 +46,8 @@ const Register = () => {
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
+        // Ha a felhasználó elkezd írni a jelszó mezőbe, mutassuk a követelményeket
+        setShowPasswordReqs(true);
         checkPasswordRequirements(newPassword);
     };
 
@@ -111,12 +116,13 @@ const Register = () => {
         <div className="register-container">
             <div className="register-box">
                 <h2 className="register-title">Regisztráció</h2>
+                <h3 className="register-subtitle">A csillaggal jelölt mezők kitöltése kötelező!</h3>
                 {error && <div className="alert alert-error">{error}</div>}
                 {success && <div className="alert alert-success">{success}</div>}
                 <form onSubmit={handleregister} className="register-form">
                     <div className="form-group">
                         <label className="form-label">
-                            <Users className="icon" /> Teljes név:
+                            <Users className="icon" /> Teljes név: <StarsIcon className='reqstar'/>
                         </label>
                         <input
                             type="text"
@@ -128,7 +134,7 @@ const Register = () => {
                     </div>
                     <div className="form-group">
                         <label className="form-label">
-                            <Users className="icon" /> Felhasználónév:
+                            <Users className="icon" /> Felhasználónév: <StarsIcon className='reqstar'/> 
                         </label>
                         <input
                             type="text"
@@ -140,7 +146,7 @@ const Register = () => {
                     </div>
                     <div className="form-group">
                         <label className="form-label">
-                            <Mail className="icon" /> E-mail:
+                            <Mail className="icon" /> E-mail: <StarsIcon className='reqstar'/>
                         </label>
                         <input
                             type="email"
@@ -152,22 +158,24 @@ const Register = () => {
                     </div>
                     <div className="form-group">
                         <label className="form-label">
-                            <Key className="icon" /> Jelszó:
+                            <Key className="icon" /> Jelszó: <StarsIcon className='reqstar'/>
                         </label>
                         <input
                             type="password"
                             className="form-input"
                             value={password}
                             onChange={handlePasswordChange}
+                            onFocus={() => setShowPasswordReqs(true)} // Megjelenítjük a követelményeket fókuszáláskor is
+                            onBlur={() => setShowPasswordReqs(false)} // Opcionális: elrejthetjük, ha elveszíti a fókuszt
                             required
                         />
-                        {/* Itt használd a külön komponenst a beépített helyett */}
-                        <PasswordRequirements password={password} />
+                       
+                        <Passwordreq password={password} isVisible={showPasswordReqs} />
                     </div>
                     
                     <div className="form-group">
                         <label className="form-label">
-                            <Key className="icon" /> Jelszó újra:
+                            <Key className="icon" /> Jelszó újra: <StarsIcon className='reqstar'/>
                         </label>
                         <input
                             type="password"
@@ -180,12 +188,13 @@ const Register = () => {
                     
                     <div className="form-group">
                         <label className="form-label">
-                            <Image className="icon" /> Profilkép:
+                            <Image className="icon" /> Profilkép:  <StarsIcon className='reqstar'/>
                         </label>
                         <input
                             type="file"
                             className="form-input"
                             onChange={(e) => setProfilePicture(e.target.files[0])}
+                            required
                         />
                     </div>
                     

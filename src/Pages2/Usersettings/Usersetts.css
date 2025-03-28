@@ -10,11 +10,6 @@
     transition: all 0.3s ease-in-out;
 }
 
-.dark-mode .user-setts-container {
-    background: #777;
-    background-size: cover;
-}
-
 .settings-container {
     width: 90%;
     max-width: 900px;
@@ -22,19 +17,13 @@
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
-    text-align: left; /* Changed from center to left for better alignment */
+    text-align: left; 
     transition: all 0.3s ease-in-out;
-}
-
-.dark-mode .settings-container {
-    background: rgba(34, 34, 34, 0.8);
-    color: black;
-    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.1);
 }
 
 .tabs {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 12px;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -57,7 +46,7 @@
 }
 
 .tabs button.active {
-    background: linear-gradient(135deg, #6a57d4, #5438d7);
+    background: linear-gradient(135deg, #d29b4c, #a87729); 
     color: white;
     transform: scale(1.05);
 }
@@ -85,10 +74,6 @@
     margin: 40px auto;
 }
 
-.dark-mode .cim {
-    color: white;
-}
-
 .profile-achievement-section {
     display: flex;
     justify-content: space-between;
@@ -113,7 +98,7 @@
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 12px;
-    border: 3px solid #6a57d4;
+    border: 3px solid #d29b4c; /* Warm accent color */
     transition: transform 0.3s ease-in-out;
 }
 
@@ -121,12 +106,8 @@
     transform: scale(1.1);
 }
 
-.upload-container {
-    margin-top: 10px;
-}
-
 .upload-btn {
-    background-color: #6a57d4;
+    background-color: #d29b4c;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -139,7 +120,7 @@
 }
 
 .upload-btn:hover {
-    background-color: #4a3ba1;
+    background-color: #a87729;
     transform: scale(1.05);
 }
 
@@ -202,10 +183,6 @@
     box-shadow: none;
 }
 
-.dark-mode .security-section {
-    color: white;
-}
-
 .password-change input {
     width: 100%;
     padding: 12px;
@@ -216,31 +193,19 @@
 }
 
 .password-change input:focus {
-    border-color: #6a57d4;
-    box-shadow: 0px 0px 5px rgba(106, 87, 212, 0.5);
+    border-color: #d29b4c;
+    box-shadow: 0px 0px 5px rgba(210, 155, 76, 0.5);
 }
 
-.password-change button {
-    width: 100%;
-    padding: 10px 15px;
-    background: #6a57d4;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-.password-change button:hover {
-    background: #4a3ba1;
-}
-
-.delete-account-section {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
+.security-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
 }
 
 .warning-text {
@@ -313,44 +278,7 @@
     color: #ff3a3a;
 }
 
-.dark-mode .delete-confirmation {
-    background-color: #2a2a2a;
-    border-color: #3a3a3a;
-}
 
-.dark-mode .cancel-delete-btn {
-    background-color: #3a3a3a;
-    color: #f0f0f0;
-}
-
-.dark-mode .delete-confirmation input {
-    background-color: #222;
-    color: #fff;
-    border-color: #444;
-}
-
-.security-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.security-section {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
-    min-width: 300px;
-}
-
-.dark-mode .security-section {
-    background: rgba(40, 40, 40, 0.9);
-}
-
-/* Additional Media Queries for Responsiveness */
 
 @media (max-width: 1200px) {
     .settings-container {
@@ -396,15 +324,6 @@
     .password-change {
         max-width: 100%;
     }
-
-    .password-change input {
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .password-change button {
-        font-size: 14px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -438,11 +357,6 @@
 
     .password-change input {
         padding: 8px;
-        font-size: 12px;
-    }
-
-    .password-change button {
-        font-size: 12px;
     }
 
     .security-container {
@@ -483,11 +397,6 @@
 
     .password-change input {
         padding: 6px;
-        font-size: 10px;
-    }
-
-    .password-change button {
-        font-size: 10px;
     }
 
     .warning-text {

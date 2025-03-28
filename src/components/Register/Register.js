@@ -159,34 +159,8 @@ const Register = () => {
                             onBlur={() => setShowPasswordReqs(false)} 
                             required
                         />
-                        {showPasswordReqs && (
-                            <div className="password-requirements">
-                                <p>Jelszó követelmények:</p>
-                                <ul>
-                                    <li style={{ color: passwordReqs.length ? 'green' : 'red' }}>
-                                        <span>{passwordReqs.length ? '✅' : '❌'} </span>
-                                        Legalább 8 karakter
-                                    </li>
-                                    <li style={{ color: passwordReqs.uppercase ? 'green' : 'red' }}>
-                                        <span>{passwordReqs.uppercase ? '✅' : '❌'} </span>
-                                        Legalább egy nagybetű
-                                    </li>
-                                    <li style={{ color: passwordReqs.lowercase ? 'green' : 'red' }}>
-                                        <span>{passwordReqs.lowercase ? '✅' : '❌'} </span>
-                                        Legalább egy kisbetű
-                                    </li>
-                                    <li style={{ color: passwordReqs.number ? 'green' : 'red' }}>
-                                        <span>{passwordReqs.number ? '✅' : '❌'} </span>
-                                        Legalább egy számjegy
-                                    </li>
-                                    <li style={{ color: passwordReqs.special ? 'green' : 'red' }}>
-                                        <span>{passwordReqs.special ? '✅' : '❌'} </span>
-                                        Legalább egy speciális karakter (!@#$%^&*(),.?":{}|<>)
-                                    </li>
-                                </ul>
-                            </div>
-                        )}
                     </div>
+                    {showPasswordReqs && <Passwordreq password={password} isVisible={showPasswordReqs} />}
                     <div className="form-group">
                         <label className="form-label">
                             <Key className="icon" /> Jelszó újra: <StarsIcon className='reqstar'/>

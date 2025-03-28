@@ -39,7 +39,6 @@ const Register = () => {
         return Object.values(reqsStatus).every(req => req === true);
     };
 
-    // Jelszó változás kezelése
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
@@ -47,17 +46,14 @@ const Register = () => {
         checkPasswordRequirements(newPassword); 
     };
 
-
     const handleregister = async (e) => {
         e.preventDefault();
-
 
         if (password !== confirmPassword) {
             setError("A jelszavak nem egyeznek meg!");
             return;
         }
 
-       
         if (!checkPasswordRequirements(password)) {
             setError("A jelszó nem felel meg az összes követelménynek!");
             return;
@@ -163,8 +159,6 @@ const Register = () => {
                             onBlur={() => setShowPasswordReqs(false)} 
                             required
                         />
-                        
-              
                         {showPasswordReqs && (
                             <div className="password-requirements">
                                 <p>Jelszó követelmények:</p>
@@ -193,7 +187,6 @@ const Register = () => {
                             </div>
                         )}
                     </div>
-                    
                     <div className="form-group">
                         <label className="form-label">
                             <Key className="icon" /> Jelszó újra: <StarsIcon className='reqstar'/>
@@ -206,7 +199,6 @@ const Register = () => {
                             required
                         />
                     </div>
-                    
                     <div className="form-group">
                         <label className="form-label">
                             <Image className="icon" /> Profilkép:  <StarsIcon className='reqstar'/>
@@ -218,11 +210,9 @@ const Register = () => {
                             required
                         />
                     </div>
-                    
                     <button type="submit" className="register-button">
                         Regisztráció
                     </button>
-                    
                     <button 
                         type="button" 
                         className="login-link-button"

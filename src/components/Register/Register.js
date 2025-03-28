@@ -7,9 +7,9 @@ import { StarsIcon } from 'hugeicons-react';
 import Passwordreq from '../../Pages2/Passwordreq/Passwordreq'; 
 
 const Register = () => {
-    // A navigate függvény importálása 
+   
     const navigate = useNavigate();
-    // Állapotváltozók 
+   
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [fullname, setFullname] = useState("");
@@ -18,7 +18,7 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
-    const [passwordReqs, setPasswordReqs] = useState({ // Corrected destructuring
+    const [passwordReqs, setPasswordReqs] = useState({ 
         length: false,
         uppercase: false,
         lowercase: false,
@@ -39,24 +39,25 @@ const Register = () => {
         return Object.values(reqsStatus).every(req => req === true);
     };
 
+ 
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
-        setShowPasswordReqs(true);
-        checkPasswordRequirements(newPassword);
+        setShowPasswordReqs(true); 
+        checkPasswordRequirements(newPassword); 
     };
 
-  
+    
     const handleregister = async (e) => {
         e.preventDefault();
 
-        // Jelszó ellenőrzése
+      
         if (password !== confirmPassword) {
             setError("A jelszavak nem egyeznek meg!");
             return;
         }
 
-        // Jelszó követelmények ellenőrzése
+
         if (!checkPasswordRequirements(password)) {
             setError("A jelszó nem felel meg az összes követelménynek!");
             return;
@@ -162,8 +163,35 @@ const Register = () => {
                             onBlur={() => setShowPasswordReqs(false)} 
                             required
                         />
-                       
-                        <Passwordreq password={password} isVisible={showPasswordReqs} />
+                        
+                        {/* Display password requirements */}
+                        {showPasswordReqs && (
+                            <div className="password-requirements">
+                                <p>Jelszó követelmények:</p>
+                                <ul>
+                                    <li style={{ color: passwordReqs.length ? 'green' : 'red' }}>
+                                        <span>{passwordReqs.length ? '✅' : '❌'} </span>
+                                        Legalább 8 karakter
+                                    </li>
+                                    <li style={{ color: passwordReqs.uppercase ? 'green' : 'red' }}>
+                                        <span>{passwordReqs.uppercase ? '✅' : '❌'} </span>
+                                        Legalább egy nagybetű
+                                    </li>
+                                    <li style={{ color: passwordReqs.lowercase ? 'green' : 'red' }}>
+                                        <span>{passwordReqs.lowercase ? '✅' : '❌'} </span>
+                                        Legalább egy kisbetű
+                                    </li>
+                                    <li style={{ color: passwordReqs.number ? 'green' : 'red' }}>
+                                        <span>{passwordReqs.number ? '✅' : '❌'} </span>
+                                        Legalább egy számjegy
+                                    </li>
+                                    <li style={{ color: passwordReqs.special ? 'green' : 'red' }}>
+                                        <span>{passwordReqs.special ? '✅' : '❌'} </span>
+                                        Legalább egy speciális karakter (!@#$%^&*(),.?":{}|<>)
+                                    </li>
+                                </ul>
+                            </div>
+                        )}
                     </div>
                     
                     <div className="form-group">

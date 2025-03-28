@@ -7,9 +7,9 @@ import { StarsIcon } from 'hugeicons-react';
 import Passwordreq from '../../Pages2/Passwordreq/Passwordreq'; 
 
 const Register = () => {
-   
+    // A navigate függvény importálása 
     const navigate = useNavigate();
-   
+    // Állapotváltozók 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [fullname, setFullname] = useState("");
@@ -18,7 +18,7 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
-    const [passwordReqs, setPasswordReqs] = useState({ 
+    const [passwordReqs, setPasswordReqs] = useState({
         length: false,
         uppercase: false,
         lowercase: false,
@@ -39,7 +39,7 @@ const Register = () => {
         return Object.values(reqsStatus).every(req => req === true);
     };
 
- 
+    // Jelszó változás kezelése
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
@@ -47,17 +47,17 @@ const Register = () => {
         checkPasswordRequirements(newPassword); 
     };
 
-    
+
     const handleregister = async (e) => {
         e.preventDefault();
 
-      
+
         if (password !== confirmPassword) {
             setError("A jelszavak nem egyeznek meg!");
             return;
         }
 
-
+       
         if (!checkPasswordRequirements(password)) {
             setError("A jelszó nem felel meg az összes követelménynek!");
             return;
@@ -164,7 +164,7 @@ const Register = () => {
                             required
                         />
                         
-                        {/* Display password requirements */}
+              
                         {showPasswordReqs && (
                             <div className="password-requirements">
                                 <p>Jelszó követelmények:</p>

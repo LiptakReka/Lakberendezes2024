@@ -18,7 +18,7 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
-    const [passwordReqs, setPasswordReqs] = useState({
+    const [ setPasswordReqs] = useState({
         length: false,
         uppercase: false,
         lowercase: false,
@@ -160,6 +160,7 @@ const Register = () => {
                             required
                         />
                     </div>
+                    
                     {showPasswordReqs && <Passwordreq password={password} isVisible={showPasswordReqs} />}
                     <div className="form-group">
                         <label className="form-label">

@@ -47,7 +47,7 @@ const ProfilePictureUpload = () => {
     const handleFileChange = (event) => {
         if (event.target.files.length > 0) {
             setSelectedFile(event.target.files[0]);
-            setPreviewImage(URL.createObjectURL(event.target.files[0])); // Előnézet frissítése
+            setPreviewImage(URL.createObjectURL(event.target.files[0])); // Előnézet
         }
     };
 
@@ -79,7 +79,7 @@ const ProfilePictureUpload = () => {
                 throw new Error("Nincs kép URL az API válaszában!");
             }
 
-            const newProfileUrl = response.data.imageUrl; // Cloudinary Secure URL
+            const newProfileUrl = response.data.imageUrl; // Képtárolás URL
             const updatedUser = { ...user, profilePictureUrl: newProfileUrl };
 
             // Felhasználói adatok frissítése

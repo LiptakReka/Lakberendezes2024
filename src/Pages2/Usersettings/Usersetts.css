@@ -11,7 +11,7 @@
     --card-border-color: #c0a376;
 }
 
-
+/*#region sötét mód*/
 .dark-mode {
     --primary-bg-color: #2c2c2c;
     --secondary-bg-color: #3e3e3e;
@@ -23,7 +23,24 @@
     --card-bg-color: #3e3e3e;
     --card-border-color: #5c5c5c;
 }
+.dark-mode .settings-container {
+    background-color: var(--primary-bg-color);
+}
+.dark-mode .profile-upload-container {
+    background-color: #575353;
+    
+}
+.dark-mode .profile-picture-container img {
+    border: 2px solid var(--accent-color);
 
+}
+.dark-mode input{
+    background-color: #575353;
+    color: var(--text-color);
+}
+/*#endregion sötét mód*/
+
+/*#region container*/
 .user-setts-container {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -39,21 +56,18 @@
     margin: 0 auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
+/*#endregion container*/
 
-.dark-mode .settings-container {
-    background-color: var(--primary-bg-color);
-}
+/*#region cím*/
 .cim {
     font-size: 1.5rem;
     color: var(--accent-color);
     padding: 20px;
     border-bottom: 1px solid var(--light-accent);
 }
+/*#endregion cím*/
 
-.dark-mode .profile-upload-container {
-    background-color: #575353;
-    
-}
+/*#region felületek*/
 .tabs {
     display: flex;
     padding: 0 20px;
@@ -84,7 +98,9 @@
     gap: 20px;
     padding: 0 20px 20px;
 }
+/*#endregion felületek*/
 
+/*#region profilkép,felhasználó infók, achievementek*/
 .user-details,
 .profile-picture-container,
 .achievements-container {
@@ -118,10 +134,6 @@
     max-width: 150px;
     border-radius: 50%;
 }
-.dark-mode .profile-picture-container img {
-    border: 2px solid var(--accent-color);
-
-}
 
 
 .achievements-list {
@@ -138,7 +150,10 @@
     padding: 10px;
     border-radius: 6px;
 }
+/*#endregion profilkép,felhasználó infók, achievementek*/
 
+
+/*#region biztonsági beállítások*/
 .security-container {
     display: flex;
     gap: 20px;
@@ -152,6 +167,7 @@
     padding: 20px;
 }
 
+
 input {
     width: 100%;
     padding: 10px;
@@ -160,10 +176,7 @@ input {
     background-color: var(--background-color);
     margin-bottom: 10px;
 }
-.dark-mode input{
-    background-color: #575353;
-    color: var(--text-color);
-}
+
 .settings-btn,
 .delete-account-btn,
 .confirm-delete-btn {
@@ -184,8 +197,9 @@ input {
     color: var(--text-color);
     gap: 20px;
 }
+/*#endregion biztonsági beállítások*/
 
-
+/*#region reszponzív*/
 @media (max-width: 768px) {
     .tab-content,
     .profile-achievement-section {
@@ -202,3 +216,4 @@ input {
         flex-direction: column;
     }
 }
+/*#endregion reszponzív*/

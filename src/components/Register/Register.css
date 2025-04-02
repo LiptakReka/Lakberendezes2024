@@ -1,4 +1,4 @@
-
+/*#region  container*/
 .register-container {
     min-height: 100vh;
     display: flex;
@@ -7,8 +7,9 @@
     padding: 2rem;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
+/*#endregion container*/
 
-
+/*#region Regisztráció felület*/
 .register-box {
     width: 100%;
     max-width: 450px;
@@ -22,8 +23,9 @@
 .register-box:hover {
     transform: translateY(-5px);
 }
+/*#endregion Regisztráció felület*/
 
-
+/*#region Cím*/
 .register-title {
     font-size: 24px;
     color: #2c3e50;
@@ -31,8 +33,9 @@
     margin-bottom: 2rem;
     font-weight: 600;
 }
+/*#endregion Cím*/
 
-
+/*#region Űrlap*/
 .register-form {
     display: flex;
     flex-direction: column;
@@ -66,7 +69,10 @@
     box-shadow: 0 0 0 3px rgba(106, 87, 212, 0.1);
     outline: none;
 }
+/*#endregion Űrlap*/
 
+
+/*#region Gombok*/
 .register-button {
     background: #6a57d4;
     color: white;
@@ -101,8 +107,9 @@
     background: #6a57d4;
     color: white;
 }
+/*#endregion Gombok*/
 
-
+/*#region Hibaüzenetek/Sikeres regisztráció*/
 .alert {
     padding: 1rem;
     border-radius: 8px;
@@ -121,15 +128,17 @@
     color: #991b1b;
     border: 1px solid #fecaca;
 }
+/*#endregion Hibaüzenetek/Sikeres regisztráció*/
 
-
+/*#region ikon*/
 .icon {
     width: 20px;
     height: 20px;
     color: #6a57d4;
 }
+/*#endregion ikon*/
 
-
+/*#region reszponzív*/
 @media (max-width: 768px) {
     .register-container {
         padding: 1rem;
@@ -147,8 +156,10 @@
         padding: 10px;
     }
 }
+/*#endregion reszponzív*/
 
 
+/*#region sötétmód*/
 @media (prefers-color-scheme: dark) {
     .register-container {
         background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
@@ -182,6 +193,9 @@
         color: #1a202c;
     }
 }
+/*#endregion sötétmód*/
+
+/*#region  színekváltozó*/
 
 :root{
     --bg-dark: #1A1423;
@@ -196,11 +210,15 @@
     --hover:#B5B2C2;
     --hoverlog:#7B6D8D;
 }
+/*#endregion  színekváltozó*/
 
+/*#region  csillagok*/
 .reqstar{
     color: rgb(206, 106, 106);
   }
+/*#endregion  csillagok*/
 
+/*#region  figyelmeztető szöveg*/
   .register-subtitle{
     color: #e6c6c6;
     font-size: 16px;
@@ -212,3 +230,4 @@
     background-color: var(--bg-medium);
 
   }
+/*#endregion  figyelmeztető szöveg*/

@@ -52,7 +52,7 @@ export default function Autolog({ logout }) {
         });
       }, 1000);
       
-      //adatOK mentése
+      //adatoK mentése
       localStorage.setItem("timeleft", Date.now() + AutologTime);
       setTimeLeft(AutologTime);
     };

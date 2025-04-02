@@ -22,7 +22,7 @@ export function AchievementProvider({ children }) {
             setAchievements([]);
             getUserAchievements(userId)
                 .then(data => setAchievements(data || []))
-                .catch(error => console.error("Hiba történt az achievementek lekérdezésekor:", error));
+                .catch(error => console.error("Hiba történt az mérföldkövek lekérdezésekor:", error));
         }
     }, [userId]);
 
@@ -42,10 +42,10 @@ export function AchievementProvider({ children }) {
                 
                 if (savedAchievement) {
                     setAchievements(prev => [...prev, savedAchievement]);
-                    toast.success(`🏆 Achievement feloldva: ${title}`);
+                    toast.success(`🏆 Mérföldkő feloldva: ${title}`);
                 }
             } catch (error) {
-                console.error("Hiba történt az achievement mentésekor:", error);
+                console.error("Hiba történt a mérföldkő mentésekor:", error);
             }
         }
     }, [achievements]);
@@ -65,7 +65,7 @@ export function AchievementProvider({ children }) {
 export function useAchievements() {
     const context = useContext(AchievementContext);
     if (context === undefined) {
-        throw new Error('useAchievements must be used within an AchievementProvider');
+        throw new Error('nincs jól hasznlálva a hook');
     }
     return context;
 }

@@ -1,3 +1,5 @@
+
+/*#region  Container */
 .profile-container {
     max-width: 600px;
   margin: 40px auto;
@@ -6,7 +8,9 @@
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+/*#endregion  Container */
 
+/*#region  Cím */
 .profile-title {
     font-size: 26px;
   font-weight: bold;
@@ -15,7 +19,9 @@
   border-bottom: 2px solid #eee;
   padding-bottom: 10px;
 }
+/*#endregion  Cím */
 
+/*#region  Ha nincs adat */
 .no-achievements {
     text-align: center;
     font-size: 18px;
@@ -23,13 +29,17 @@
     margin-top: 20px;
     font-style: italic;
   }
+/*#endregion  Ha nincs adat */
 
+/*#region  Achievementek listái */
 .achivements-list {
     list-style: none;
     padding: 0;
     margin: 15px;
 }
+/*#endregion  Achievementek listái */
 
+/*#region  Achievementek */
 .achievement {
     display: flex;
     align-items: center;
@@ -49,13 +59,17 @@
 .achievement:last-child {
     margin-bottom: 0;
 }
+/*#endregion  Achievementek */
 
+/*#region  Achievement ikon */
 .achievement-icon {
     font-size: 28px;
     color: #ff9800;
     margin-right: 12px;
   }
+/*#endregion  Achievement ikon */
 
+/*#region  Szöveg */
 .achievement h4 {
     margin: 0 0 0.5rem 0;
     color: #333;
@@ -68,3 +82,4 @@
     font-size: 0.9rem;
     line-height: 1.4;
 }
+/*#endregion  Szöveg */

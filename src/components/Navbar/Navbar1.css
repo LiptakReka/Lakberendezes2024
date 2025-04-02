@@ -1,4 +1,4 @@
-
+/*#region Navbar container*/
 .navbar {
     background: linear-gradient(to right, rgba(210, 180, 140, 0.95), rgba(139, 69, 19, 0.95));
     box-shadow: 
@@ -16,11 +16,15 @@
     align-items: center;
     flex-wrap: wrap;
 }
+/*#endregion Navbar container*/
 
+/*#region Navbar elemek*/
 .nav-items {
     color: #222;
 }
-  
+/*#endregion Navbar elemek*/
+
+/*#region sötétmód*/
 .dark-mode {
     background-color: #000 !important;
     color: #fff !important;
@@ -44,7 +48,13 @@
 .dark-mode .btn-outline-primary:hover {
     color: #c084f5 !important;
 }
+.dark-mode .dropdown-menu .dropdown-item{
+    color: #222;
+}
+/*#endregion sötétmód*/
   
+
+/*#region Roomlab cím*/
 .navbar-brand {
     font-size: 1.7rem;
     font-weight: bold;
@@ -56,9 +66,10 @@
 .navbar-brand:hover {
     color: #c084f5;
 }
-.dark-mode .dropdown-menu .dropdown-item{
-    color: #222;
-}
+/*#endregion Roomlab cím*/
+
+
+/*#region Navbar linkek*/
 .navbar-nav .nav-link {
     color: #fff;
     font-size: 1.1rem;
@@ -97,8 +108,9 @@
 .navbar-nav .nav-link:not(.active):hover {
     color: #e6af68;
 }
-  
+/*#endregion Navbar linkek*/
 
+/*#region Navbar gombok*/
 .navbar-toggler {
     border: none;
     background: transparent;
@@ -108,8 +120,10 @@
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
-  
+  /*#endregion Navbar gombok*/
 
+
+/*#region Dropdown menü*/
 .dropdown-menu {
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(210, 180, 140, 0.3);
@@ -136,8 +150,10 @@
     color: #a0522d;
     transform: translateX(5px);
 }
-  
+  /*#endregion Dropdown menü*/
 
+
+  /*#region Gombok*/
 .btn-outline-secondary {
     border: none;
     background: transparent;
@@ -160,7 +176,10 @@
 .btn-outline-primary:hover {
     color: #c084f5;
 }
+/*#endregion Gombok*/
   
+
+/*#region Profil kép*/
 .profile-img {
     width: 35px;
     height: 35px;
@@ -180,7 +199,10 @@
     border: none;
     background: transparent;
 }
+/*#endregion Profil kép*/
   
+
+/*#region Kosár*/
 .nav-cart {
     display: flex;
     align-items: center;
@@ -218,8 +240,10 @@
     animation: scaleIn 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-  
-@keyframes scaleIn {
+  /*#endregion Kosár*/
+
+/*#region Animációk*/
+  @keyframes scaleIn {
     from {
         transform: scale(0);
     }
@@ -227,3 +251,4 @@
         transform: scale(1);
     }
 }
+/*#endregion Animációk*/

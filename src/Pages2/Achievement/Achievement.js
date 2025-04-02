@@ -8,10 +8,10 @@ export default function Achievement(){
 
     return(
         <div className="profile-container">
-            <h2 className="profile-title"><Trophy/> Megszerzett achievementek</h2>
+            <h2 className="profile-title"><Trophy/> Megszerzett mérföldkövek</h2>
 
             {achievements.length === 0 ? (
-                <p className="no-achievements">Még nincs megszerzett achievement</p>
+                <p className="no-achievements">Még nincs megszerzett mérföldkő</p>
             ):(
                 <ul className="achivements-list">
                     {achievements.map((ach,index)=>(

@@ -31,6 +31,7 @@ const Register = () => {
         return Object.values(reqsStatus).every(req => req === true);
     };
 
+    // Jelszó változásának kezelése
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);

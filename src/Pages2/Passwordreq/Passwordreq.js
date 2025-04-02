@@ -24,7 +24,7 @@ export default function Passwordreq({password, isVisible}) {
         },
         {
             text:"Legalább egy speciális karakter",
-            met:/[^A-Za-z0-9]/.test(password) // Javítva: csak egy záró szögletes zárójel
+            met:/[^A-Za-z0-9]/.test(password) 
         }
     ];
   return (

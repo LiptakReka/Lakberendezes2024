@@ -1,3 +1,5 @@
+
+/*#region Profil feltöltés*/
 .profile-upload-container {
     display: flex;
     flex-direction: column;
@@ -8,7 +10,9 @@
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+/*#endregion Profil feltöltés*/
 
+/*#region Profil kép preview*/
 .profile-preview {
     width: 120px;
     height: 120px;
@@ -17,12 +21,18 @@
     border: 2px solid #ccc;
 }
 
+/*#endregion Profil kép preview*/
+
+/*#region File feltöltés*/
 input[type="file"] {
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
 }
+/*#endregion File feltöltés*/
 
+
+/*#region Feltöltés gomb*/
 button {
     background-color: #4CAF50;
     color: white;
@@ -36,3 +46,4 @@ button {
 button:hover {
     background-color: #45a049;
 }
+/*#endregion Feltöltés gomb*/

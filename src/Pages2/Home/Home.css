@@ -1,4 +1,4 @@
-
+/*#region  Hero */
   .hero {
     position: relative;
     height: 80vh;
@@ -10,9 +10,7 @@
     color: white;
     overflow: hidden;
   }
-  .dark-mode .hero {
-    background: url("../../components/img/homee.png") no-repeat center center/cover;
-  }
+
   
   .hero-overlay {
     position: absolute;
@@ -54,30 +52,29 @@
     transition: all 0.3s ease-in-out;
     display: inline-block;
   }
+  /*#endregion Hero */
   
+  /*#region Gombok */
   .start-btn {
     background: #aab47e;
     color: black;
   }
-  .dark-mode .start-btn{
-    background-color: #4b4828;
-    color: white;
-  }
+
   
   .learn-btn {
     background: white;
     color: black;
   }
-  .dark-mode .learn-btn{
-    background-color: #6d6339;
-    color: white;
-  }
+
+
   
   .hero-btn:hover {
     transform: scale(1.1);
   }
-  
+  /*#endregion Gombok */
 
+
+  /*#region szolgáltatások */
   .features {
     padding: 50px 20px;
     display: flex;
@@ -99,13 +96,7 @@
     width: 100%;
     transition: all 0.3s ease-in-out;
   }
-  .dark-mode .feature-card{
-    background: #51345c;
-    color: white;
-  }
-  .dark-mode .features{
-    background: #271830;
-  }
+
   .feature-card:hover {
     transform: scale(1.05);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
@@ -124,22 +115,21 @@
   .feature-text h3 {
     margin-bottom: 10px;
   }
-  
+  /*#endregion szolgáltatások */
 
+  /*#region lábléc */
   .footers {
     text-align: center;
     padding: 2px;
     background: #bdb6b6;
-    color: rgb(0, 0, 0);
+    color: rgb(82, 78, 78);
     width: 110%;
     margin-top: 0px;
   }
+  /*#endregion lábléc */
 
-  .dark-mode .footers{
-    background-color: #503a58;
-    color: thistle;
-  }
 
+/*#region animációk */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -184,57 +174,40 @@
   .animate-slideIn {
     animation: slideIn 1s ease-out;
   }
-  
-  .testimonials {
-    background-color: #f9f9f9;
-    padding: 60px 20px;
-    text-align: center;
-  }
-  
-  .testimonials h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    color: #333;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  
-  .testimonial-card {
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 600px;
-    padding: 30px;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #333;
-  }
-  
-  .testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .testimonial-card p {
-    font-size: 1.2em;
-    line-height: 1.5;
-    margin-bottom: 15px;
-    color: #555;
-    font-style: italic;
-  }
-  
-  .testimonial-card h4 {
-    font-size: 1.1em;
-    font-weight: bold;
-    text-align: right;
-    color: #777;
-  }
+  /*#endregion animációk */
 
+  /*#region container */
   .home-container{
     background-color: #afafaf;
   }
-  .dark-mode .home-container{
-    background-color: #503a58;
+  /*#endregion container */
+
+  /*#region sötétmód */
+  .dark-mode .feature-card{
+    background: #927b9b;
+    color: rgb(53, 51, 51);
   }
+  .dark-mode .features{
+    background: #5d5a5f;
+  }
+  .dark-mode .start-btn{
+    background-color: #4b4828;
+    color: white;
+  }
+  .dark-mode .hero {
+    background: url("../../components/img/homee.png") no-repeat center center/cover;
+  }
+  .dark-mode .learn-btn{
+    background-color: #6d6339;
+    color: white;
+  }
+
+  .dark-mode .footers{
+    background-color: #3d3c3d;
+    color: rgb(122, 116, 122);
+  }
+
+  .dark-mode .home-container{
+    background-color: #8e7e94;
+  }
+  /*#endregion sötétmód */

@@ -194,9 +194,6 @@ export default function AboutPage() {
         </section>
       </div>
       
-      <footer className='footer'>
-        <p>Copyright &copy; 2025 RoomLab Minden jog fenntartva.</p>
-      </footer>
     </div>
   );
 }

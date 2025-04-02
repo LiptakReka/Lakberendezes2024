@@ -4,7 +4,7 @@ import { Mail, Phone, Search } from 'lucide-react';
 import axios from 'axios';
 
 const pagecontact = [
-  { name: "RoomLab", phoneNumber: "+36 30-927-0458", email: "roomlabservice@gmail.com", websiteurl: "https://roomlab-48d26.web.app" }
+  { name: "RoomLab", phoneNumber: "+36 30-111-222", email: "roomlabservice@gmail.com", websiteurl: "https://roomlab-48d26.web.app" }
 ];
 
 const ContactCard = ({ name, phoneNumber, email, index }) => {

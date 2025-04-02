@@ -1,4 +1,5 @@
-
+/*#region container*/
+ 
 .cart-sett-container {
     min-height: 100vh;
     background: linear-gradient(45deg, #d2b48c 0%, #8b4513 100%);
@@ -9,9 +10,7 @@
     position: relative;
     overflow: hidden;
 }
-.dark-mode .cart-sett-container {
-    background: linear-gradient(45deg, #333 0%, #d2b48c 100%);
-}
+
 .cart-sett-container::before {
     content: '';
     position: absolute;
@@ -21,16 +20,6 @@
     background-size: 20px 20px;
     animation: gradientMove 15s linear infinite;
     transform: rotate(45deg);
-}
-.email{
-    color: #8b4513;
-    max-width: 240px;
-}
-
-
-
-.dark-mode .email{
-    color: #222;
 }
 .cart-container {
     max-width: 800px;
@@ -48,6 +37,16 @@
     position: relative;
     z-index: 1;
 }
+/*#endregion container*/
+
+/*#region email*/
+.email{
+    color: #8b4513;
+    max-width: 240px;
+}
+/*#endregion email*/
+
+/*#region sötét mód*/
 .dark-mode .cart-container {
     background: rgba(156, 149, 149, 0.95);
     box-shadow: 
@@ -56,24 +55,35 @@
         inset 0 0 32px rgba(139, 69, 19, 0.1);
     border: 1px solid rgba(94, 88, 88, 0.2);
 }
-@keyframes gradientMove {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+.dark-mode .email{
+    color: #222;
+}
+.dark-mode .cart-sett-container {
+    background: linear-gradient(45deg, #333 0%, #d2b48c 100%);
 }
 
-@keyframes moveBackground {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 40px 40px;
-    }
+.dark-mode .cart-title {
+    color: #222;
+
 }
 
+.dark-mode .buy-button a {
+    background-color: #4b4949;
+    color: #fff;
+}
+
+.dark-mode  .cart-buttons {
+    background-color: #7a7878;
+    color: #1a1919;
+}
+
+.dark-mode .toplanner{
+    background-color: #4b4949;
+    color: #fff;
+}
+/*#endregion sötét mód*/
+
+/*#region Cím*/
 .cart-title {
     display: flex;
     align-items: center;
@@ -85,15 +95,13 @@
     border-bottom: 2px solid #222;
     font-weight: 600;
 }
-.dark-mode .cart-title {
-    color: #222;
-
-}
 
 .cart-title svg {
     margin-right: 10px;
 }
+/*#endregion Cím*/
 
+/*#region Ha üres a kosár*/
 .empty-cart-message {
     text-align: center;
     color: black;
@@ -110,7 +118,9 @@
 .empty-cart-message a:hover {
     text-decoration: underline;
 }
+/*#endregion Ha üres a kosár*/
 
+/*#region Kosár elemek*/
 .cart-items {
     display: flex;
     flex-direction: column;
@@ -151,7 +161,9 @@
     font-weight: 500;
     margin-top: 0.25rem;
 }
+/*#endregion Kosár elemek*/
 
+/*#region Vásárlás gomb*/
 .buy-button {
     display: flex;
     gap: 0.8rem;
@@ -166,14 +178,13 @@
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-.dark-mode .buy-button a {
-    background-color: #4b4949;
-    color: #fff;
-}
+
 .buy-button a:hover {
     background-color: #928f8f;
 }
+/*#endregion Vásárlás gomb*/
 
+/*#region Boltok*/
 .shops {
     background: #8b4513;
     color: white;
@@ -189,7 +200,9 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(139, 69, 19, 0.2);
 }
+/*#endregion Boltok*/
 
+/*#region Kosár ürítése*/
 .clear-button {
     background: #dc3545;
     color: white;
@@ -206,7 +219,9 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
 }
+/*#endregion Kosár ürítése*/
 
+/*#region Kosár gombok*/
 .cart-buttons {
     margin-top: 2rem;
     display: flex;
@@ -218,10 +233,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.dark-mode  .cart-buttons {
-    background-color: #7a7878;
-    color: #1a1919;
-}
+
 .cart-buttons input {
     width: 100%;
     padding: 1rem;
@@ -277,7 +289,9 @@
     background: #a0aec0;
     cursor: not-allowed;
 }
+/*#endregion Kosár gombok*/
 
+/*#region Sikeres küldés*/
 .text-green-600 {
     color: #2e7d32;
     text-align: center;
@@ -287,7 +301,9 @@
     background: rgba(46, 125, 50, 0.1);
     border-radius: 6px;
 }
+/*#endregion Sikeres küldés*/
 
+/*#region Ha még válogatna*/
 .toplanner{
     background-color: #d2b48c;
     color: #222;
@@ -297,13 +313,9 @@
     background-color: #a0522d;
     color: #fff;
 }
+/*#endregion Ha még válogatna*/
 
-
-.dark-mode .toplanner{
-    background-color: #4b4949;
-    color: #fff;
-}
-
+/*#region Mobil nézet*/
 @media (max-width: 768px) {
     .cart-sett-container {
         padding: 1rem;
@@ -355,3 +367,25 @@
         font-size: 0.9rem;
     }
 }
+/*#endregion Mobil nézet*/
+
+/*#region Animációk*/
+@keyframes gradientMove {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 40px;
+  
+    }
+}
+/*#endregion Animációk*/

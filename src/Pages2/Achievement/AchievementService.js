@@ -39,7 +39,7 @@ export const addAchievement=async(achievement)=>{
             description:typeof achievement.description==="string" ?achievement.description : "Nincs megadott leírás",
             icon : typeof achievement.icon === "string" ? achievement.icon : "nincs megadvaa ikon",
         };
-        console.log("Achievementek:", payload);
+      
         const response = await axios.post(process.env.REACT_APP_API_URL + `/Achievement/new`, payload,{
             headers:{
                 Authorization:token
@@ -49,7 +49,7 @@ export const addAchievement=async(achievement)=>{
         
     } catch (error) {
         
-        console.error("Hiba történt az achievement hozzáadáasakor:", error);
-        toast.error("Hiba történt az achievement hozzáadásakor");
+        console.error("Hiba történt a mérföldkövek hozzáadáasakor:", error);
+        toast.error("Hiba történt a mérföldkő hozzáadásakor");
     }
 }

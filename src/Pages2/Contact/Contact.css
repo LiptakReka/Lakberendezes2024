@@ -1,4 +1,4 @@
-
+/*#region felület*/
 .contact-page {
   background: linear-gradient(135deg, #F5F5DC 0%, #E6E6C8 100%);
   min-height: 100vh;
@@ -8,8 +8,9 @@
   padding: 50px 20px;
   font-family: 'Montserrat', 'Arial', sans-serif;
 }
+/*#endregion felület*/
 
-
+/*#region container*/
 .containerd {
   background: rgba(255, 255, 255, 0.9);
   padding: 60px;
@@ -32,8 +33,9 @@
   height: 8px;
   background: #15B097;
 }
+/*#endregion container*/
 
-
+/*#region főcím*/
 .main-title {
   text-align: center;
   font-size: 42px;
@@ -57,7 +59,9 @@
   background: #15B097;
   border-radius: 2px;
 }
+/*#endregion főcím*/
 
+/*#region alcím*/
 .subtext {
   text-align: center;
   font-size: 20px;
@@ -68,10 +72,9 @@
   margin-right: auto;
   line-height: 1.6;
 }
-.dark-mode .subtext {
-  color: #ccc;
-}
+/*#endregion alcím*/
 
+/*#region szekciók*/
 .section {
   margin-bottom: 50px;
   padding: 20px;
@@ -95,8 +98,9 @@
   left: 0;
   color: #222;
 }
+/*#endregion szekciók*/
 
-
+/*#region kapcsolatok adatai*/
 .contacts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -179,13 +183,16 @@
   color: #15B097;
   transform: scale(1.05);
 }
+/*#endregion kapcsolatok adatai*/
 
+/*#region ha az email nem elérhető*/
 .email-unavailable {
   font-style: italic;
   color: #999;
 }
+/*#endregion ha az email nem elérhető*/
 
-
+/*#region kereső*/
 .search-container {
   margin-bottom: 30px;
   display: flex;
@@ -208,7 +215,9 @@
   border-color: #15B097;
   box-shadow: 0 4px 15px rgba(30, 60, 114, 0.15);
 }
+/*#endregion kereső*/
 
+/*#region animációk*/
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -224,8 +233,9 @@
   animation: fadeInUp 0.5s ease forwards;
   animation-delay: calc(0.1s * var(--index));
 }
+/*#endregion animációk*/
 
-
+/*#region reszponzív*/
 @media (max-width: 768px) {
   .containerd {
     padding: 40px 25px;
@@ -243,11 +253,16 @@
     max-width: 100%;
   }
 }
+/*#endregion reszponzív*/
 
+/*#region sötét mód*/
 .dark-mode .contact-page {
   background: #595959;
 }
 
+.dark-mode .subtext {
+  color: #ccc;
+}
 .dark-mode .containerd {
   background: #808F85;
   color: #e0e0e0;
@@ -327,3 +342,4 @@
 .dark-mode .search-input::placeholder {
   color: #aaa;
 }
+/*#endregion sötét mód*/

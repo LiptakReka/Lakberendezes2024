@@ -1,8 +1,5 @@
-.animate-card{
-  background-color: var(--bg-medium);
-}
+/*#region container*/
 .login-container{
-  background-image: url(../img/cool-background.png);
   max-width: 7000px;
   min-height: 100vh;
   display: flex;
@@ -11,19 +8,10 @@
   padding: 2rem;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
+/*#endregion container*/
 
-  .animate-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-    
-  }
 
-  .card-body{
-    background: var(--bg-dark);
-    color: var(--text-light);
-  }
-  
-
+/*#region Gombok*/
   .login-btn,
   .register-btn {
     transition: all 0.3s ease-in-out;
@@ -50,8 +38,10 @@
     color: var(--bg-dark);
     transform: scale(1.05);
   }
-  
+  /*#endregion Gombok*/
  
+
+/*#region Űrlap*/
   .form-control {
     border-radius: 8px;
     font-size: 1rem;
@@ -64,6 +54,9 @@
     border-color: var(--secondary-color);
     box-shadow: 0px 0px 8px var(--secondary-color);
   }
+  /*#endregion Űrlap*/
+  
+  /*#region Színváltozók*/
   :root{
     --bg-dark: #1A1423;
     --bg-medium: #3D314A;
@@ -78,7 +71,9 @@
     --hoverlog:#7B6D8D;
   }
 
+/*#endregion Színváltozók*/
 
+/*#region  bejelentkezéskártya*/
 .login-card {
     width: 100%;
     max-width: 400px;
@@ -92,8 +87,10 @@
 .login-card:hover {
     transform: translateY(-5px);
 }
+/*#endregion  bejelentkezéskártya*/
 
 
+/*#region Cím*/
 .login-title {
     font-size: 24px;
     color: #2c3e50;
@@ -101,8 +98,10 @@
     margin-bottom: 2rem;
     font-weight: 600;
 }
+/*#endregion Cím*/
 
 
+/*#region Űrlap*/
 .login-form {
     display: flex;
     flex-direction: column;
@@ -136,8 +135,10 @@
     box-shadow: 0 0 0 3px rgba(106, 87, 212, 0.1);
     outline: none;
 }
+/*#endregion Űrlap*/
 
 
+/*#region Gombok*/
 .login-button {
     background: #6a57d4;
     color: white;
@@ -190,8 +191,10 @@
 .forgot-password-button:hover {
     color: #5438d7;
 }
+/*#endregion Gombok*/
 
 
+/*#region Hibaüzenet*/
 .alert {
     padding: 1rem;
     border-radius: 8px;
@@ -204,15 +207,19 @@
     color: #991b1b;
     border: 1px solid #fecaca;
 }
+/*#endregion Hibaüzenet*/
 
 
+/*#region ikon*/
 .icon {
     width: 20px;
     height: 20px;
     color: #6a57d4;
 }
+/*#endregion ikon*/
 
 
+/*#region reszponzivitás*/
 @media (max-width: 768px) {
     .login-container {
         padding: 1rem;
@@ -226,9 +233,9 @@
         font-size: 20px;
     }
 }
+/*#endregion reszponzivitás*/
 
-
- /*Sötétmód*/
+/*#region sötétmód*/
 @media (prefers-color-scheme: dark) {
     .login-container {
         background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
@@ -261,3 +268,4 @@
         color: #e2e8f0;
     }
 }
+/*#endregion sötétmód*/

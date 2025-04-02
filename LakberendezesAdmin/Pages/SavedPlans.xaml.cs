@@ -47,7 +47,7 @@ namespace LakberendezesAdmin.Pages
 
         private async Task<List<Plan>> GetProductsAsync()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7247/api/UserPlans");
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://roomlabapi.up.railway.app/api/UserPlans");
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
             var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
@@ -89,7 +89,7 @@ namespace LakberendezesAdmin.Pages
                 var result = MessageBox.Show($"Biztosan törlöd a(z) {planId} tervet?", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    var request =new HttpRequestMessage(HttpMethod.Delete,$"https://localhost:7247/api/UserPlans/{planId}");
+                    var request =new HttpRequestMessage(HttpMethod.Delete,$"https://roomlabapi.up.railway.app/api/UserPlans/{planId}");
                     request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
                     var response = await httpClient.SendAsync(request);
                     response.EnsureSuccessStatusCode();
@@ -119,7 +119,7 @@ namespace LakberendezesAdmin.Pages
 
         private async void Export_Click_2(object sender, RoutedEventArgs e)
         {
-            string apiUrl = "https://localhost:7247/api/UserPlans/Export";
+            string apiUrl = "https://roomlabapi.up.railway.app/api/UserPlans/Export";
 
             try
             {

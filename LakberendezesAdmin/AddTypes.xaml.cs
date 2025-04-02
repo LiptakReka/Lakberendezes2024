@@ -65,7 +65,7 @@ namespace LakberendezesAdmin
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
 
-                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7247/api/ProductTypes")
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://roomlabapi.up.railway.app/api/ProductTypes")
                 {
                     Content = content
                 };

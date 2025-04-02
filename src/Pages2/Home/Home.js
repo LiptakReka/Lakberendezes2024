@@ -45,7 +45,7 @@ export default function Home() {
       
  
       
-      <footer className='footer'>
+      <footer className='footers'>
         <p>Copyright &copy; 2025 RoomLab Minden jog fenntartva.</p>
       </footer>
     </div>

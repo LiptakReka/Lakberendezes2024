@@ -10,6 +10,9 @@
     color: white;
     overflow: hidden;
   }
+  .dark-mode .hero {
+    background: url("../../components/img/homee.png") no-repeat center center/cover;
+  }
   
   .hero-overlay {
     position: absolute;
@@ -83,7 +86,7 @@
     align-items: center;
     gap: 40px;
   }
-  
+
   .feature-card {
     display: flex;
     align-items: center;
@@ -97,11 +100,11 @@
     transition: all 0.3s ease-in-out;
   }
   .dark-mode .feature-card{
-    background: #333;
+    background: #51345c;
     color: white;
   }
   .dark-mode .features{
-    background: linear-gradient(45deg, #2c2828 0%, #8b4513 100%);
+    background: #271830;
   }
   .feature-card:hover {
     transform: scale(1.05);
@@ -122,13 +125,19 @@
     margin-bottom: 10px;
   }
   
-  /* Footer */
-  .footer {
+
+  .footers {
     text-align: center;
-    padding: 20px;
-    background: #333;
-    color: white;
-    margin-top: 50px;
+    padding: 2px;
+    background: #bdb6b6;
+    color: rgb(0, 0, 0);
+    width: 110%;
+    margin-top: 0px;
+  }
+
+  .dark-mode .footers{
+    background-color: #503a58;
+    color: thistle;
   }
 
   @keyframes fadeIn {
@@ -227,5 +236,5 @@
     background-color: #afafaf;
   }
   .dark-mode .home-container{
-    background-color: #2c2828;
+    background-color: #503a58;
   }

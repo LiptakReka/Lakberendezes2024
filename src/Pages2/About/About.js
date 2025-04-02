@@ -193,6 +193,10 @@ export default function AboutPage() {
           <button className="cta-button" onClick={()=>navigate("/planner")}>Kezdd el most</button>
         </section>
       </div>
+      
+      <footer className='footer'>
+        <p>Copyright &copy; 2025 RoomLab Minden jog fenntartva.</p>
+      </footer>
     </div>
   );
 }

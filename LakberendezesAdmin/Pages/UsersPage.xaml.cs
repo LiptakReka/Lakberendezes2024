@@ -45,7 +45,7 @@ namespace LakberendezesAdmin.Pages
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Get,"https://localhost:7247/api/Users");
+                var request = new HttpRequestMessage(HttpMethod.Get,"https://roomlabapi.up.railway.app/api/Users");
                 request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
                 var response = await _httpClient.SendAsync(request);
                 response.EnsureSuccessStatusCode();
@@ -106,7 +106,7 @@ namespace LakberendezesAdmin.Pages
 
         private async void Export_Click(object sender, RoutedEventArgs e)
         {
-            string apiUrl = "https://localhost:7247/api/Users/Export";
+            string apiUrl = "https://roomlabapi.up.railway.app/api/Users/Export";
 
             try
             {
@@ -146,7 +146,7 @@ namespace LakberendezesAdmin.Pages
                 var result = MessageBox.Show($"Biztosan törlöd a(z) {usid} tervet?", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    var request = new HttpRequestMessage(HttpMethod.Delete,$"https://localhost:7247/api/Users/{usid}");
+                    var request = new HttpRequestMessage(HttpMethod.Delete,$"https://roomlabapi.up.railway.app/api/Users/{usid}");
                     request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
                     var response = await _httpClient.SendAsync(request);
                     response.EnsureSuccessStatusCode();

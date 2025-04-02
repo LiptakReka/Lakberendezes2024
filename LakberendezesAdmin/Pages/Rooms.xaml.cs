@@ -51,7 +51,7 @@ namespace LakberendezesAdmin.Pages
         private async Task<List<Room>> GetRoomsAsync()
         {
             
-            var request = new HttpRequestMessage(HttpMethod.Get,"https://localhost:7247/api/Categories");
+            var request = new HttpRequestMessage(HttpMethod.Get,"https://roomlabapi.up.railway.app/api/Categories");
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
@@ -86,7 +86,7 @@ namespace LakberendezesAdmin.Pages
         private async void Export_Click(object sender, RoutedEventArgs e)
         {
            
-            string apiUrl = "https://localhost:7247/api/Categories/Export";
+            string apiUrl = "https://roomlabapi.up.railway.app/api/Categories/Export";
 
             try
             {
@@ -134,7 +134,7 @@ namespace LakberendezesAdmin.Pages
                 var result = MessageBox.Show($"Biztosan törlöd a(z) {romId} szobát ?", "Megerősítés", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    var request = new HttpRequestMessage(HttpMethod.Delete,$"https://localhost:7247/api/Categories/{romId}");
+                    var request = new HttpRequestMessage(HttpMethod.Delete,$"https://roomlabapi.up.railway.app/api/Categories/{romId}");
                     request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
                     var response = await _httpClient.SendAsync(request);
                     response.EnsureSuccessStatusCode();

@@ -71,7 +71,7 @@ namespace LakberendezesAdmin
                 string json = JsonSerializer.Serialize(newShop, options);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7247/api/Shops")
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://roomlabapi.up.railway.app/api/Shops")
                 {
                     Content = content
                 };

@@ -43,7 +43,7 @@ const backgrounds = [
   const fetchProductTypes = async (roomid) => {
     try {
       const token = localStorage.getItem("token"); 
-      // Fetch helyett axios használata
+    
       const response = await axios.get(process.env.REACT_APP_API_URL + `/ProductTypes/byroom?roomid=${roomid}`, {
         headers: {
           'Content-Type': 'application/json',
@@ -302,9 +302,7 @@ const handleMouseDown = (event, product) => {
   };
 
   const handleMouseUp = () => {
-    if (Istouch()) {
-    setDraggedProduct(null);
-    }
+    setDraggedProduct(null); 
   };
 
  const Istouch=()=>{

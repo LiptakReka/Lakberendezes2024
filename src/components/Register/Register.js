@@ -3,14 +3,12 @@ import "./Register.css";
 import { Mail, Key, Users, Image } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// Importáld a meglévő PasswordRequirements komponenst
-import PasswordRequirements from '../../Pages2/Passwordreq/Passwordreq';
-import { StarsIcon, StarSquareIcon } from 'hugeicons-react';
-import Passwordreq from '../../Pages2/Passwordreq/Passwordreq'; // Ellenőrizd, hogy ez az útvonal helyes-e
+import { StarsIcon } from 'hugeicons-react';
+import Passwordreq from '../../Pages2/Passwordreq/Passwordreq'; 
 
 const Register = () => {
-    // A navigate függvény importálása 
     const navigate = useNavigate();
+
     // Állapotváltozók 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,15 +18,7 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [profilePicture, setProfilePicture] = useState(null);
     const [success, setSuccess] = useState("");
-    const [passwordReqs, setPasswordReqs] = useState({
-        length: false,
-        uppercase: false,
-        lowercase: false,
-        number: false,
-        special: false
-    });
     const [showPasswordReqs, setShowPasswordReqs] = useState(false);
-
 
     const checkPasswordRequirements = (password) => {
         const reqsStatus = {
@@ -36,32 +26,25 @@ const Register = () => {
             uppercase: /[A-Z]/.test(password),
             lowercase: /[a-z]/.test(password),
             number: /[0-9]/.test(password),
-            special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+            special: /[^A-Za-z0-9]/.test(password)
         };
-        setPasswordReqs(reqsStatus);
         return Object.values(reqsStatus).every(req => req === true);
     };
 
-    // Jelszó változás kezelése
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
-        // Ha a felhasználó elkezd írni a jelszó mezőbe, mutassuk a követelményeket
-        setShowPasswordReqs(true);
-        checkPasswordRequirements(newPassword);
+        setShowPasswordReqs(true); 
     };
 
-    // Függvény a regisztráció kezelésére
     const handleregister = async (e) => {
         e.preventDefault();
 
-        // Jelszó ellenőrzése
         if (password !== confirmPassword) {
             setError("A jelszavak nem egyeznek meg!");
             return;
         }
 
-        // Jelszó követelmények ellenőrzése
         if (!checkPasswordRequirements(password)) {
             setError("A jelszó nem felel meg az összes követelménynek!");
             return;
@@ -77,9 +60,8 @@ const Register = () => {
         }
 
         try {
-           
             await axios.post(
-               process.env.REACT_APP_API_URL + "/Users/register",
+                process.env.REACT_APP_API_URL + "/Users/register",
                 formData,
                 {
                     headers: {
@@ -95,15 +77,14 @@ const Register = () => {
             setConfirmPassword('');
             setUsername('');
             setProfilePicture(null);
-            
+
             setTimeout(() => {
                 navigate('/login');
             }, 2000);
         } catch (error) {
             console.error('Hálózati hiba:', error);
-            
+
             if (error.response && error.response.data) {
-                
                 const errorData = error.response.data;
                 setError(errorData.message || "Hibás adatok vagy ismeretlen hiba.");
             } else {
@@ -165,14 +146,14 @@ const Register = () => {
                             className="form-input"
                             value={password}
                             onChange={handlePasswordChange}
-                            onFocus={() => setShowPasswordReqs(true)} // Megjelenítjük a követelményeket fókuszáláskor is
-                            onBlur={() => setShowPasswordReqs(false)} // Opcionális: elrejthetjük, ha elveszíti a fókuszt
+                            onFocus={() => setShowPasswordReqs(true)} 
+                            onBlur={() => setShowPasswordReqs(false)} 
                             required
                         />
-                       
-                        <Passwordreq password={password} isVisible={showPasswordReqs} />
+                        {showPasswordReqs && (
+                            <Passwordreq password={password} isVisible={showPasswordReqs} />
+                        )}
                     </div>
-                    
                     <div className="form-group">
                         <label className="form-label">
                             <Key className="icon" /> Jelszó újra: <StarsIcon className='reqstar'/>
@@ -185,7 +166,6 @@ const Register = () => {
                             required
                         />
                     </div>
-                    
                     <div className="form-group">
                         <label className="form-label">
                             <Image className="icon" /> Profilkép:  <StarsIcon className='reqstar'/>
@@ -197,11 +177,9 @@ const Register = () => {
                             required
                         />
                     </div>
-                    
                     <button type="submit" className="register-button">
                         Regisztráció
                     </button>
-                    
                     <button 
                         type="button" 
                         className="login-link-button"

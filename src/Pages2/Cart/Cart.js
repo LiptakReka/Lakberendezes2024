@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import useCart from './UseCart'
 import { Link, useNavigate } from 'react-router-dom'
-import { ShoppingCart } from 'lucide-react'
+import {  ShoppingCart } from 'lucide-react'
 import axios from 'axios'
 import './Cart.css'
 import { useAchievements } from '../Achievement/UseAchivements'
@@ -80,13 +80,16 @@ export default function Cart() {
             </ul>
             <button className='toplanner' onClick={()=>navigate( "/planner")}>Nem végeztél? Vásárolj még</button>
             <div className='cart-buttons'>
-              <input type='email'
+             
+              <h3 className='email-text'>Kosár küldése e-mailben</h3>
+              <p className='email-text'>A kosár tartalmát elküldjük az email címedre.</p>
+            <input type='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder='Email cím'
-                className='p-2 border rounded-md w-full mb-2' />
+                className='email'/>
               <button onClick={sendEmail} className='buy-button' disabled={loading}>
-                {loading ? <div className="loader-container"> Folyamatban... </div> : "Kosár küldése e-mailben"}
+                {loading ? <div className="loader-container"> Folyamatban... </div> : "Kosár elküldése"}
               </button>
               <button className='clear-button' onClick={clearCart}>Kosár ürítése</button>
             </div>

@@ -22,7 +22,16 @@
     animation: gradientMove 15s linear infinite;
     transform: rotate(45deg);
 }
+.email{
+    color: #8b4513;
+    max-width: 240px;
+}
 
+
+
+.dark-mode .email{
+    color: #222;
+}
 .cart-container {
     max-width: 800px;
     width: 100%;
@@ -202,9 +211,17 @@
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    background-color: #f5f0e8;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.dark-mode  .cart-buttons {
+    background-color: #7a7878;
+    color: #1a1919;
+}
 .cart-buttons input {
     width: 100%;
     padding: 1rem;

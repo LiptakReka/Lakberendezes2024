@@ -255,7 +255,7 @@
 }
 
 .dark-mode .containerd::before {
-  background: #CFD11A;
+  background: #c3c4af;
 }
 
 .dark-mode .main-title {
@@ -263,7 +263,7 @@
 }
 
 .dark-mode .main-title::after {
-  background: #CFD11A;
+  background: #c3c4af;
 }
 
 .dark-mode .subtext {
@@ -276,16 +276,16 @@
 
 .dark-mode .section-title {
   color: #fff;
-  border-color: #CFD11A;
+  border-color: #c3c4af;
 }
 
 .dark-mode .section-title::before {
-  color: #CFD11A;
+  color: #c3c4af;
 }
 
 .dark-mode .contact-card {
   background: rgba(60, 50, 45, 0.9);
-  border-top: 5px solid #CFD11A;
+  border-top: 5px solid #c3c4af;
 }
 
 .dark-mode .contact-card:hover {
@@ -301,7 +301,7 @@
 }
 
 .dark-mode .contact-email {
-  color: #91C499;
+  color: #b7b8b7;
 }
 
 .dark-mode .contact-email:hover {

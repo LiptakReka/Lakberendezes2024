@@ -34,7 +34,7 @@ namespace LakberendezesAdmin.Pages
 
             try
             {
-                var response = await _httpClient.PostAsync("https://localhost:7247/api/Users/login", content);
+                var response = await _httpClient.PostAsync("https://roomlabapi.up.railway.app/api/Users/login", content);
                 var responseBody = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)

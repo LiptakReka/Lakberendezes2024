@@ -47,7 +47,7 @@ namespace LakberendezesAdmin.Pages
         }
         private async Task<List<ProductType>> GetProducttypesAsync()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get ,"https://localhost:7247/api/ProductTypes");
+            var request = new HttpRequestMessage(HttpMethod.Get ,"https://roomlabapi.up.railway.app/api/ProductTypes");
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
             var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
@@ -79,7 +79,7 @@ namespace LakberendezesAdmin.Pages
 
         private async void Export_Click(object sender, RoutedEventArgs e)
         {
-            string apiUrl = "https://localhost:7247/api/ProductTypes/Export";
+            string apiUrl = "https://roomlabapi.up.railway.app/api/ProductTypes/Export";
 
             try
             {
@@ -127,7 +127,7 @@ namespace LakberendezesAdmin.Pages
                 if (result == MessageBoxResult.Yes)
                 {
 
-                    var request= new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:7247/api/ProductTypes/{PtId}");
+                    var request= new HttpRequestMessage(HttpMethod.Delete, $"https://roomlabapi.up.railway.app/api/ProductTypes/{PtId}");
                     request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
                     var response = await httpClient.SendAsync(request);
                     response.EnsureSuccessStatusCode();

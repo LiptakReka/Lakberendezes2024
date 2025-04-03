@@ -2,8 +2,8 @@
 {
     public class CartEmailRequestDTO
     {
-        public string Email { get; set; }
-        public  List<CartItem> CartItems { get; set; }
+        public required string Email { get; set; }
+        public  List<CartItem>? CartItems { get; set; }
     }
 
    

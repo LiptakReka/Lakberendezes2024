@@ -13,7 +13,7 @@ namespace Lakberendezes.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20250313172518_uj")]
-    partial class uj
+    partial class Uj
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

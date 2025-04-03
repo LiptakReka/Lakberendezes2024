@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lakberendezes.Migrations
 {
     /// <inheritdoc />
-    public partial class uj : Migration
+    public partial class Uj : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -3,6 +3,6 @@
     public class ProductTypesDTO
     {
         public int categoryid { get; set; }
-        public string name { get; set; }
+        public required string name { get; set; }
     }
 }

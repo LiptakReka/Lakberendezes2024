@@ -2,8 +2,8 @@
 {
     public class CartItem
     {
-        public string Name { get; set; }
+        public required string Name { get; set; }
         public decimal Price { get; set; }
-        public string ShopLink { get; set; }
+        public required string ShopLink { get; set; }
     }
 }

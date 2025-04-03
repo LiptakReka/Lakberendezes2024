@@ -56,6 +56,7 @@ namespace Lakberendezes.Controllers
                         pp.position,
                         pp.scale
                     }).ToList()
+
                 })
                 .FirstOrDefaultAsync();
 
@@ -99,7 +100,6 @@ namespace Lakberendezes.Controllers
             return user;
         }
 
-
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromForm] UserRegisterDTO registerDTO)
         {
@@ -108,7 +108,7 @@ namespace Lakberendezes.Controllers
             {
                 return BadRequest("Ez az email már használatban");
             }
-            var existingname= await _context.users.FirstOrDefaultAsync(u => u.UserName == registerDTO.Username);
+            var existingname = await _context.users.FirstOrDefaultAsync(u => u.UserName == registerDTO.Username);
             if (existingname != null)
             {
                 return BadRequest("Ez a felhasználónév már használatban");
@@ -126,11 +126,9 @@ namespace Lakberendezes.Controllers
                 try
                 {
                     profilePicturePath = await _cloudinaryService.UploadImage(registerDTO.ProfilePictureUrl);
-
                 }
                 catch (Exception ex)
                 {
-
                     return BadRequest(ex.Message);
                 }
             }
@@ -148,33 +146,40 @@ namespace Lakberendezes.Controllers
             _context.users.Add(user);
             await _context.SaveChangesAsync();
 
+            var role = await _context.role.FirstOrDefaultAsync(r => r.name == "User");
+            if (role == null)
+            {
+                return BadRequest("A 'User' szerepkör nem található.");
+            }
+
             var userRole = new UserRole
             {
                 Userid = user.Id,
-                Roleid = (await _context.role.FirstOrDefaultAsync(r => r.name == "User")).id
+                Roleid = role.id
             };
             _context.userroles.Add(userRole);
             await _context.SaveChangesAsync();
 
             return Ok("Regisztráció sikeres!");
         }
+
         private bool isvalidPassword(string password)
         {
-            if (password.Length <8)
+            if (password.Length < 8)
             {
                 return false;
             }
-            bool hasUpper=false, hasLower=false, hasDigit = false, hasSpecial = false;
+            bool hasUpper = false, hasLower = false, hasDigit = false, hasSpecial = false;
             foreach (var c in password)
             {
-                if (char.IsUpper(c)) hasUpper  = true;
+                if (char.IsUpper(c)) hasUpper = true;
                 else if (char.IsLower(c)) hasLower = true;
                 else if (char.IsDigit(c)) hasDigit = true;
                 else if (char.IsSymbol(c) || char.IsPunctuation(c)) hasSpecial = true;
-
             }
             return hasUpper && hasLower && hasDigit && hasSpecial;
         }
+
 
         [HttpPost("login")]
         public async Task<ActionResult> Login(UserLoginDTO loginDTO)
@@ -257,6 +262,10 @@ namespace Lakberendezes.Controllers
             {
                 var imageUrl = await _cloudinaryService.UploadImage(file);
                 var user = await _context.users.FirstOrDefaultAsync(u => u.Email == email);
+                if (user==null)
+                {
+                    return NotFound("A felhasználó nem található");
+                }
                 user.ProfilePictureUrl = imageUrl;
                 _context.users.Update(user);
                 await _context.SaveChangesAsync();

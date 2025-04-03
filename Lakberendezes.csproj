@@ -16,8 +16,6 @@
     <PackageReference Include="ClosedXML" Version="0.105.0-rc" />
 
 
-    <PackageReference Include="ClosedXML" Version="0.105.0-rc" />
-
 
     <PackageReference Include="CloudinaryDotNet" Version="1.27.5" />
 

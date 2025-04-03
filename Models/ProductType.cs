@@ -5,7 +5,7 @@
         public  int id { get; set; }
 
         public required int categoryid { get; set; }
-        public  Categories Categories { get; set; }
+        public  Categories? Categories { get; set; }
         public required string name { get; set; }
 
 
@@ -13,6 +13,6 @@
 
         
         
-        public  ICollection<Product> products_ibfk_2 { get; set;}
+        public  ICollection<Product>? products_ibfk_2 { get; set;}
     }
 }

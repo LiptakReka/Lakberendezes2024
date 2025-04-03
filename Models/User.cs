@@ -10,7 +10,7 @@ namespace Lakberendezes.Models
 
         public required string fullname {  get; set; }
         public required DateTime datet {  get; set; }
-        public string ProfilePictureUrl { get; set; }
+        public required string ProfilePictureUrl { get; set; }
         
 
         public  ICollection<UserPlans> plans { get; set; }= new List<UserPlans>();

@@ -16,7 +16,7 @@
 
       
 
-        public ICollection<Product> products_ibfk_1 { get; set; }
+        public ICollection<Product>? products_ibfk_1 { get; set; }
         
 
     }

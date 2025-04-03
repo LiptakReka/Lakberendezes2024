@@ -6,6 +6,6 @@ namespace Lakberendezes.Models
     {
         public int id { get; set; }
         public required string name { get; set; }
-        public ICollection<UserRole> roles { get; set; }
+        public ICollection<UserRole>? roles { get; set; }
     }
 }

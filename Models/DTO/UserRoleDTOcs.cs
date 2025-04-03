@@ -3,6 +3,6 @@
     public class UserRoleDTOcs
     {
         public int UserId {  get; set; }
-        public string Rolename { get; set; }
+        public required string Rolename { get; set; }
     }
 }

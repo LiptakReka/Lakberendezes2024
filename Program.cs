@@ -70,7 +70,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
 // Swagger
-builder.Services.AddSwaggerGen(async options =>
+builder.Services.AddSwaggerGen( options => 
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {

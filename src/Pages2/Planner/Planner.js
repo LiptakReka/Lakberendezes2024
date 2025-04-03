@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import "./Planner.css"; 
 import { X, Plus, Minus, Folder, Calendar, Bookmark } from "lucide-react";
 import { toast } from "react-toastify";
@@ -23,14 +23,15 @@ const Planner = () => {
   const [selectedRoom, setSelectedRoom] = useState(1);
   const [showBackgrounds, setShowBackgrounds] = useState(false);
   const [selectedBackground, setSelectedBackground] = useState(null);
+  const plannerRef = useRef(null);
 
 const backgrounds = [
     { id: 1, url: "https://blog.pincel.app/wp-content/uploads/2024/05/empty-room-filler.jpg", name: "Nappali 1" },
-    { id: 2, url: "https://img.freepik.com/free-psd/blank-wall-psd-japandi-living-room-interior_53876-109284.jpg?t=st=1741782416~exp=1741786016~hmac=908ccceaa768aac602c8e7f4099a3d9143343ee1e0c790cca7de5022ab31e5c6&w=1380", name: "Nappali 2" },
+    { id: 2, url: "https://i.pinimg.com/originals/34/99/d1/3499d12f28a741f0063ee8f2bbd711d9.jpg", name: "Nappali 2" },
     { id: 3, url: "https://t4.ftcdn.net/jpg/02/87/98/61/360_F_287986158_2Tz2w7QKcgmbpecZZzveGUdN9RNPB3c4.jpg", name: "Hálószoba 1" },
     { id: 4, url: "https://img.freepik.com/premium-photo/empty-interior-room-d-illustration_672982-3219.jpg", name: "Hálószoba 2" },
     { id: 5, url: "https://img.freepik.com/free-vector/empty-modern-room-interior_1284-9406.jpg", name: "Étkező 1" },
-    { id: 6, url: "https://img.freepik.com/free-photo/minimal-rooms-walls-with-lighting-effects-3d-rendering_23-2149210321.jpg?t=st=1741781431~exp=1741785031~hmac=a53ab63f717856d27d796727de3ed134a2589cf45bd8721d6db925ed7ef90350&w=1380", name: "Fürdőszoba 1" },
+    { id: 6, url: "https://img.freepik.com/premium-photo/concretefloored-vacant-room_872147-23841.jpg", name: "Fürdőszoba 1" },
   ];
 
 
@@ -305,50 +306,94 @@ const handleMouseDown = (event, product) => {
     setDraggedProduct(null); 
   };
 
- const Istouch=()=>{
-    return "ontouchstart" in window || navigator.maxTouchPoints > 0 ;
-  }
+ const Istouch = useCallback(() => {
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  }, []);
 
   
-  const handleTouch=(event, product)=>{
+  const handleTouch = useCallback((event, product) => {
+    event.preventDefault(); // Megakadályozzuk az alapértelmezett viselkedést
+    event.stopPropagation(); // Megakadályozzuk a buborékolást
+    
     if (Istouch()) {
-      event.preventDefault();
       setDraggedProduct(product);
-      const otuch=event.touches[0];
+      const touch = event.touches[0];
       setDragOffset({
-        x: otuch.clientX - product.x,
-        y: otuch.clientY - product.y,
+        x: touch.clientX - product.x,
+        y: touch.clientY - product.y,
       });
     }
-  };
+  }, [Istouch]);
 
-  const handleTouchMove=(event)=>{
+  const handleTouchMove = useCallback((event) => {
+ 
     if (Istouch() && draggedProduct) {
-      event.preventDefault();
-      const otuch=event.touches[0];
+
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+      
+      const touch = event.touches[0];
       const updatedProducts = placedProducts.map((product) =>
         product.id === draggedProduct.id
-          ? { ...product, x: otuch.clientX - dragOffset.x, y: otuch.clientY - dragOffset.y }
+          ? { ...product, x: touch.clientX - dragOffset.x, y: touch.clientY - dragOffset.y }
           : product
       );
       setPlacedProducts(updatedProducts);
     }
-  };
+  }, [draggedProduct, dragOffset, placedProducts, Istouch]);
 
-  const handleTENd=()=>{
-    if (Istouch()) {
+  const handleTouchEnd = useCallback((event) => {
+    if (Istouch() && draggedProduct) {
+      if (event.cancelable) {
+        event.preventDefault();
+      }
       setDraggedProduct(null);
     }
-  }
+  }, [Istouch, draggedProduct]);
 
-  const handleZoom = (productId, scaleChange) => {
-    setPlacedProducts(placedProducts.map(p =>
-      p.id === productId ? { ...p, scale: Math.max(0.5, Math.min((p.scale || 1) + scaleChange, 3)) } : p
-    ));
-  };
+  useEffect(() => {
+    const plannerElement = plannerRef.current;
+    
+    if (plannerElement) {
+ 
+      plannerElement.removeEventListener('touchmove', handleTouchMove);
+      plannerElement.removeEventListener('touchend', handleTouchEnd);
+      
+   
+      plannerElement.addEventListener('touchmove', handleTouchMove, { passive: false });
+      plannerElement.addEventListener('touchend', handleTouchEnd, { passive: false });
+      
+  
+      return () => {
+        plannerElement.removeEventListener('touchmove', handleTouchMove);
+        plannerElement.removeEventListener('touchend', handleTouchEnd);
+      };
+    }
+  }, [handleTouchMove, handleTouchEnd]);
+
+  const handleZoom = useCallback((productId, scaleChange) => {
+    setPlacedProducts(placedProducts.map(p => {
+      if (p.id === productId) {
+        const currentScale = p.scale || 1;
+        const adaptiveChange = currentScale < 0.2 ? scaleChange * 0.1 : scaleChange;
+        return {
+          ...p,
+          scale: Math.max(0.01, Math.min(currentScale + adaptiveChange, 3))
+        };
+      }
+      return p;
+    }));
+  }, [placedProducts]);
 
   return (
-    <div className="planner-container" onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onTouchMove={handleTouchMove} onTouchEnd={handleTENd}>
+    <div 
+      className="planner-container" 
+      ref={plannerRef}
+      onMouseMove={handleMouseMove} 
+      onMouseUp={handleMouseUp} 
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="save-load-container">
         <button className="save-btn" onClick={savePlan}>
           <Bookmark /> Terv mentése
@@ -466,10 +511,18 @@ const handleMouseDown = (event, product) => {
                 left: `${product.x}px`,
                 top: `${product.y}px`,
                 transform: `scale(${product.scale || 0.5})`,
-                position: 'absolute'
+                position: 'absolute',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+                touchAction: 'none', // Fontos a dragginghez
+                cursor: 'move',
               }}
-              onMouseDown={(event) => handleMouseDown(event, product)}
+              onMouseDown={(event) => {
+                event.preventDefault();
+                handleMouseDown(event, product);
+              }}
               onTouchStart={(event) => handleTouch(event, product)}
+              onDoubleClick={(e) => e.preventDefault()}
             >
               <button
                 className="remove-btn"

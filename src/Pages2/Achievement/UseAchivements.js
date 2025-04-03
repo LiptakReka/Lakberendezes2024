@@ -7,33 +7,55 @@ const AchievementContext = createContext();
 export function AchievementProvider({ children }) {
     const [achievements, setAchievements] = useState([]);
     const [userId, setUserId] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-
+    // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
-        if (user && user.id) {
+        const token = localStorage.getItem("token");
+        
+        if (user && user.id && token) {
             setUserId(user.id);
+            setIsAuthenticated(true);
+        } else {
+            setIsAuthenticated(false);
+            setUserId(null);
+            setAchievements([]);
         }
     }, []);
 
-   
+    
     useEffect(() => {
-        if (userId) {
+        if (userId && isAuthenticated) {
             setAchievements([]);
             getUserAchievements(userId)
                 .then(data => setAchievements(data || []))
-                .catch(error => console.error("Hiba történt az mérföldkövek lekérdezésekor:", error));
-        }
-    }, [userId]);
+                .catch(error => {
+                    console.error("Hiba történt az mérföldkövek lekérdezésekor:", error);
 
-   
+                    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+                       
+                        toast.error("A hitelesítés megszűnt. Kérlek jelentkezz be újra.");
+                        localStorage.removeItem("token");
+                        localStorage.removeItem("user");
+                        setIsAuthenticated(false);
+                        setUserId(null);
+                    }
+                });
+        }
+    }, [userId, isAuthenticated]);
+
     const unlockAchievement = useCallback(async (title, description, icon) => {
+        if (!isAuthenticated) return;
+        
         if (!achievements.some(ach => ach.title === title)) {
             const newAchievement = { title, description, icon };
     
             try {
                 const user = JSON.parse(localStorage.getItem("user"));
-                if (!user || !user.id) return;
+                const token = localStorage.getItem("token");
+                
+                if (!user || !user.id || !token) return;
                 
                 const savedAchievement = await addAchievement({
                     ...newAchievement,
@@ -48,7 +70,7 @@ export function AchievementProvider({ children }) {
                 console.error("Hiba történt a mérföldkő mentésekor:", error);
             }
         }
-    }, [achievements]);
+    }, [achievements, isAuthenticated]);
 
     const contextValue = {
         achievements,

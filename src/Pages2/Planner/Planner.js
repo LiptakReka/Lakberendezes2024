@@ -411,7 +411,7 @@ const handleMouseDown = (event, product) => {
     
       <div className="scale-warning-banner">
         <div className="warning-icon">ⓘ</div>
-        <p>Figyelem! A megjelenített bútorok méretaránya csak illusztráció, nem tükrözi a valós méretarányokat.</p>
+        <p>Figyelem! A megjelenített bútorok méretaránya csak illusztráció, nem tükrözi a valós méretarányokat és a felhasználói élmény érdekében ajánlott számítógépen tervezni a felületen.</p>
       </div>
       
       <div className="rooms">

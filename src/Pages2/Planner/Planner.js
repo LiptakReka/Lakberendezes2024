@@ -9,6 +9,7 @@ import UseCart from "../Cart/UseCart";
 import {useAchievements} from "../Achievement/UseAchivements";
 
 const Planner = () => {
+  //Állapotváltozók
   const [showDropdown, setShowDropdown]=useState(false);
   const [dropdownlabel , setdropdownlabel]= useState("Válassz terméktípust");
   const {unlockAchievement} = useAchievements();
@@ -25,6 +26,7 @@ const Planner = () => {
   const [selectedBackground, setSelectedBackground] = useState(null);
   const plannerRef = useRef(null);
 
+  // A háttérképek adatai
 const backgrounds = [
     { id: 1, url: "https://blog.pincel.app/wp-content/uploads/2024/05/empty-room-filler.jpg", name: "Nappali 1" },
     { id: 2, url: "https://i.pinimg.com/originals/34/99/d1/3499d12f28a741f0063ee8f2bbd711d9.jpg", name: "Nappali 2" },
@@ -40,7 +42,7 @@ const backgrounds = [
     setShowBackgrounds(false);
   };
 
-
+//Bútortípusok lekérése
   const fetchProductTypes = async (roomid) => {
     try {
       const token = localStorage.getItem("token"); 
@@ -62,6 +64,7 @@ const backgrounds = [
     }
   };
 
+  //Bútortípusok kiválasztása
   const handleTypeSelect = (typeId) => {
     const newTypeId = typeId === selectedType ? null : typeId;
     setSelectedType(newTypeId);
@@ -71,6 +74,7 @@ const backgrounds = [
   };
 
 
+  //Angol nyelvű bútortípusok magyar nyelven
   const typeNames={
     1:"Kanapék",
     3:"Dohányzóasztal",
@@ -88,7 +92,7 @@ const backgrounds = [
 
   }
 
-
+//Termékek szobák szerint
   const fetchProductsByRoom = useCallback(async (roomid) => {
     try {
       const token = localStorage.getItem("token");
@@ -123,6 +127,7 @@ const backgrounds = [
   }, [fetchProductsByRoom]);
 
 
+  //Kiválasztott szoba termékeinek lekérése
   const fetchFilteredProducts = async (roomid, typeid) => {
     try {
       const token = localStorage.getItem("token"); 
@@ -146,6 +151,7 @@ const backgrounds = [
     }
   };
 
+  //Terv mentése
 const savePlan = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
@@ -199,7 +205,7 @@ const savePlan = async () => {
   };
 
 
-
+//Terv betöltése
   const fetchSavedPlans = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) return;
@@ -222,11 +228,11 @@ const savePlan = async () => {
     } catch (error) {
       console.error("Hiba a mentett tervek lekérésekor:", error);
       setSavedPlans([]);
-      enqueueSnackbar('Hiba történt a mentett tervek lekérésekor.', {variant: 'error'});
+      
     }
   };
 
-
+//Tervezőhöz adás
   const addToPlanner = (product) => {
     setPlacedProducts([
       ...placedProducts,
@@ -239,7 +245,7 @@ const savePlan = async () => {
     ]);
   };
 
-
+//Betöltéskor a termékek pozíciójának beállítása
 const loadPlan = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     try {
@@ -280,7 +286,7 @@ const loadPlan = async () => {
     }
   };
 
-
+//Egérmozgás kezelése
 const handleMouseDown = (event, product) => {
     if (!Istouch()) {
     setDraggedProduct(product);
@@ -352,6 +358,7 @@ const handleMouseDown = (event, product) => {
     }
   }, [Istouch, draggedProduct]);
 
+  //Telefonos események kezelése
   useEffect(() => {
     const plannerElement = plannerRef.current;
     

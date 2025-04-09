@@ -7,6 +7,7 @@ const pagecontact = [
   { name: "RoomLab", phoneNumber: "+36 30-111-222", email: "roomlabservice@gmail.com", websiteurl: "https://roomlab-48d26.web.app" }
 ];
 
+//Kapcsolatfelvételi adatok
 const ContactCard = ({ name, phoneNumber, email, index }) => {
   return (
     <div className="contact-card" style={{ "--index": index }}>
@@ -31,6 +32,7 @@ export default function ContactPage() {
   const [shops, setShops] = useState([]);
   const [error, setError] = useState(null);
 
+  //adatok lekérése a backendből
   useEffect(() => {
     const fetchShops = async () => {
       try {
@@ -53,6 +55,7 @@ export default function ContactPage() {
     fetchShops();
   }, []);
 
+  //keresés szűrése
   const filteredShops = shops.filter(shop => 
     shop.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

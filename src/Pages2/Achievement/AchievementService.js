@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast";
 
 const ApiUrl= process.env.REACT_APP_API_URL + "/Achievement/me";
 
+//A mérfödkövek lekérése
 export const getUserAchievements=async()=>{
     try {
         const token =localStorage.getItem("token");
@@ -19,7 +20,7 @@ export const getUserAchievements=async()=>{
     }
 };
 
-
+//A mérföldkövek hozzáadása
 export const addAchievement=async(achievement)=>{
     try {
         const user=JSON.parse(localStorage.getItem("user"));

@@ -28,7 +28,7 @@ jest.mock('react-router-dom', () => ({
 }), { virtual: true });
 
 describe("Login Component", () => {
-    test("should render the Bejelentkezés button", () => {
+    test("Megjelenik e a Bejelentkezés gomb", () => {
         render(
             <Login setToken={() => {}} />
         );
@@ -36,7 +36,7 @@ describe("Login Component", () => {
         expect(loginButton).toBeVisible();
     });
 
-    test("should render the Regisztráció button", () => {
+    test("Megjelenik e Regisztráció gomb", () => {
         render(
             <Login setToken={() => {}} />
         );
@@ -44,7 +44,7 @@ describe("Login Component", () => {
         expect(registerButton).toBeVisible();
     });
 
-    test("should render the Elfelejtett jelszó? button", () => {
+    test("Mgejelenik e az elfelejtett jelszó gomb", () => {
         render(
             <Login setToken={() => {}} />
         );
@@ -54,7 +54,7 @@ describe("Login Component", () => {
         expect(forgotPasswordButton).toBeVisible();
     });
 
-    test("should display error message when error state is set", () => {
+    test("Error kód megjelenítése ", () => {
         render(
             <Login setToken={() => {}} />
         );

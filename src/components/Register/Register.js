@@ -38,6 +38,7 @@ const Register = () => {
         setShowPasswordReqs(true); 
     };
 
+    // Regisztráció kezelése
     const handleregister = async (e) => {
         e.preventDefault();
 
@@ -72,26 +73,60 @@ const Register = () => {
             );
 
             setSuccess("Sikeres regisztráció!");
-            setFullname('');
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
-            setUsername('');
-            setProfilePicture(null);
-
+            resetForm();
+            
             setTimeout(() => {
                 navigate('/login');
             }, 2000);
         } catch (error) {
             console.error('Hálózati hiba:', error);
-
-            if (error.response && error.response.data) {
-                const errorData = error.response.data;
-                setError(errorData.message || "Hibás adatok vagy ismeretlen hiba.");
-            } else {
-                setError('Nem sikerült kapcsolatot létesíteni a kiszolgálóval.');
-            }
+            setError(extractErrorMessage(error));
         }
+    };
+
+    // Űrlap alaphelyzetbe állítása
+    const resetForm = () => {
+        setFullname('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        setUsername('');
+        setProfilePicture(null);
+    };
+
+    // Hibaüzenet kinyerése a response-ból
+    const extractErrorMessage = (error) => {
+        
+        if (!error.response) {
+            return 'A szerverrel nem sikerült kapcsolatot létesíteni. Kérjük, próbálja újra később.';
+        }
+        
+        const { data, status } = error.response;
+
+        // Ha a válasz szöveges
+        if (typeof data === 'string') {
+            return data;
+        }
+        
+        // Ha a válasz objektum
+        if (data) {
+            
+            if (data.message) return data.message;
+            if (data.error) return data.error;
+            
+           
+            if (data.errors) {
+                if (Array.isArray(data.errors)) {
+                    return data.errors.join(', ');
+                }
+                return Object.values(data.errors).flat().join(', ');
+            }
+            
+            
+            return JSON.stringify(data);
+        }
+        
+        return `Hiba történt: ${status} ${error.response.statusText || ''}`;
     };
 
     return (

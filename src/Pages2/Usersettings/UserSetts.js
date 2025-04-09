@@ -6,7 +6,8 @@ import ProfilePictureUpload from '../../components/Profilepicture/ProfilePicture
 import { useAchievements } from '../Achievement/UseAchivements';
 
 export default function UserSetts() {
-  
+
+  //Állapotváltozók
     const { achievements } = useAchievements();
     const [user, setuser] = useState(null);
     const [password, setPassword] = useState("");
@@ -19,6 +20,7 @@ export default function UserSetts() {
     const [showdeleteconfirm, setshowdeleteconfirm] = useState(false);
 
 
+    //Törlés kezelése
     const handledelete = async () => {
       if(deleteconfirm !== user.userName){
         setdeleteMessage("A felhasználónév nem egyezik");
@@ -48,12 +50,14 @@ export default function UserSetts() {
       }
     };
 
+    //Törlés megerősítése
     const deleteconfirms = () => {
       setshowdeleteconfirm(!showdeleteconfirm);
       setdeleteconfirm("");
       setdeleteMessage("");
     }
 
+    //Felhasználói adatok betöltése
     useEffect(() => {
         const fetchAchievements = async () => {
             if (!user) return;
@@ -85,10 +89,12 @@ export default function UserSetts() {
     }, []);
 
 
+    //Szekciók közötti váltás
     const handletab = (tab) => {
         setActiveTab(tab);
     };
     
+    //Jelszó módosítása
     const handlePasswordChange = async () => {
         if (!oldpassword || !password) {
             setMessage("Minden mezőt ki kell tölteni!");

@@ -82,11 +82,11 @@ const ProfilePictureUpload = () => {
             const newProfileUrl = response.data.imageUrl; // Képtárolás URL
             const updatedUser = { ...user, profilePictureUrl: newProfileUrl };
 
-            // Felhasználói adatok frissítése
+            // Felhasználói adatok 
             localStorage.setItem("user", JSON.stringify(updatedUser));
             setUser(updatedUser);
 
-            // Előnézeti kép frissítése
+            // Előnézeti kép
             setPreviewImage(newProfileUrl);
 
             enqueueSnackbar("Profilkép sikeresen feltöltve!", { variant: "success" });

@@ -4,7 +4,7 @@ import './Passwordreq.css'
 
 export default function Passwordreq({password, isVisible}) {
     if(!isVisible) return null;
-
+//Követelmények ellenőrzése
     const req=[
         {
             text:"Minimum 8 karakter",

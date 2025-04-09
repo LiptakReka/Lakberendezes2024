@@ -24,7 +24,7 @@ export function AchievementProvider({ children }) {
         }
     }, []);
 
-    
+    //hitelesítés alapján mérföldkövek lekérdezése
     useEffect(() => {
         if (userId && isAuthenticated) {
             setAchievements([]);
@@ -45,6 +45,7 @@ export function AchievementProvider({ children }) {
         }
     }, [userId, isAuthenticated]);
 
+    //Új mérföldkő feloldása
     const unlockAchievement = useCallback(async (title, description, icon) => {
         if (!isAuthenticated) return;
         

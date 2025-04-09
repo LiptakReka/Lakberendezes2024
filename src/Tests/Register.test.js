@@ -70,14 +70,14 @@ describe('Register Component', () => {
     jest.clearAllMocks();
   });
 
-  test('renders the Register component correctly', () => {
+  test('Megjelenik e Regisztráció felület', () => {
     renderComponent();
 
     expect(screen.getByRole('heading', { name: /Regisztráció/i })).toBeInTheDocument();
     expect(screen.getByText(/A csillaggal jelölt mezők kitöltése kötelező!/i)).toBeInTheDocument();
   });
 
-  test('form has the correct fields', () => {
+  test('Megvannak e a kötelező mezők', () => {
     renderComponent();
     
     expect(screen.getByLabelText(/Teljes név:/i)).toBeInTheDocument();

@@ -89,12 +89,12 @@ jest.mock("../Pages2/Planner/Planner", () => function MockPlanner() {
 import Planner from "../Pages2/Planner/Planner";
 
 describe("Planner Component", () => {
-    it("renders without crashing", () => {
+    it("Betöltődik e", () => {
         render(<Planner />);
         expect(screen.getByText(/Terv mentése/i)).toBeInTheDocument();
     });
 
-    it("displays room buttons", () => {
+    it("Szobák gomb megjelenítése", () => {
         render(<Planner />);
         const livingRoomButton = screen.getByText(/Nappali/i);
         const diningRoomButton = screen.getByText(/Étkező/i);
@@ -104,7 +104,7 @@ describe("Planner Component", () => {
         expect(livingRoomButton).toHaveClass("active");
     });
 
-    it("displays products section", () => {
+    it("Megjelennek e a termékek", () => {
         render(<Planner />);
         expect(screen.getByText(/Terméknév/i)).toBeInTheDocument();
         expect(screen.getByText(/100000 Ft/i)).toBeInTheDocument();
@@ -112,19 +112,19 @@ describe("Planner Component", () => {
         expect(screen.getByText(/Kosárba/i)).toBeInTheDocument();
     });
 
-    it("has a dropdown button", () => {
+    it("Van e lenyíló menü", () => {
         render(<Planner />);
         const dropdownButton = screen.getByText(/Válassz terméktípust/i);
         expect(dropdownButton).toBeInTheDocument();
     });
 
-    it("has save and load buttons", () => {
+    it("Van e mentés és betöltés gomb", () => {
         render(<Planner />);
         expect(screen.getByText(/Terv mentése/i)).toBeInTheDocument();
         expect(screen.getByText(/Betöltés/i)).toBeInTheDocument();
     });
 
-    it("has a design area", () => {
+    it("Van e tervezőfelület", () => {
         render(<Planner />);
         const designArea = document.querySelector(".tervezoterulet");
         expect(designArea).toBeInTheDocument();

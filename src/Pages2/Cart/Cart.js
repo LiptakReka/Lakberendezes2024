@@ -8,6 +8,7 @@ import { useAchievements } from '../Achievement/UseAchivements'
 import { enqueueSnackbar } from 'notistack'
 
 export default function Cart() {
+  //Állapotváltozók
   const { unlockAchievement } = useAchievements();
   const { cart, removeFromCart, clearCart } = useCart();
   const [email, setEmail] = useState(() => {
@@ -18,6 +19,7 @@ export default function Cart() {
   const navigate =useNavigate();
   const [message, setMessage] = useState('');
 
+  //Email küldésének kezelése
   const sendEmail = async () => {
     if (!email) {
       enqueueSnackbar("Az email cím megadása kötelező", { variant: 'error' });

@@ -25,3 +25,10 @@ Felhasználás:
 Projekt leírások, telepítési és használati útmutatók.
 Fejlesztési és tesztelési dokumentáció.
 Verziókövetés, változások és fejlesztési terv.
+
+
+Külső elérhetőség ahol megtalálható a weboldal:
+https://roomlab-48d26.web.app
+
+A prezentáció megtalálható az alábbi linken: 
+https://prezi.com/view/fD59DTC5ZOPe4iVYUw6p/

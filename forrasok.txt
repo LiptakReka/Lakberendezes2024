@@ -1,0 +1,9 @@
+Források:
+Firebase: https://firebase.google.com/ - 2025.03.20.
+MySQL: https://www.oracle.com/mysql/what-is-mysql/ - 2025.03.20.
+phpMyAdmin: https://www.phpmyadmin.net/ - 2025.03.20.
+GitHub: https://www.simplilearn.com/tutorials/git-tutorial/what-is-github - 2025.03.20.
+C#: https://csharptutorial.hu/docs/hellovilag-hellocsharp/ - 2025.03.20.
+
+
+VS Code vs VS 22 kép: https://codeop.tech/visual-studio-vs-visual-studio-code-whats-the-difference/ - 2025.04.03

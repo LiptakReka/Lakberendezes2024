@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using LakberendezesAdmin.Pages.Models;
+using System;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Text.Json;
-using System.Windows.Shapes;
-using LakberendezesAdmin.Pages.Models;
 
 namespace LakberendezesAdmin.Pages
 {
@@ -49,7 +39,7 @@ namespace LakberendezesAdmin.Pages
                             Properties.Settings.Default.Save();
                             MessageBox.Show("Sikeres bejelentkezés", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                            DialogResult= true;
+                            DialogResult = true;
                         }
                         else
                         {

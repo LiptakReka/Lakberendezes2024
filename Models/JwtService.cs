@@ -14,6 +14,7 @@ namespace Lakberendezes.Models
 
         public JwtService(IConfiguration config)
         {
+            //appsettings.json fájlban található beállítások betöltése
             _secretKey = config["Jwt:Key"] ?? throw new ArgumentException("Secret key is missing");
             _issuer = config["Jwt:Issuer"] ?? throw new ArgumentException("Issuer is missing");
             _audience = config["Jwt:Audience"] ?? throw new ArgumentException("Audience is missing");
@@ -35,6 +36,7 @@ namespace Lakberendezes.Models
 
             var claims = new List<Claim>
             {
+                //Token adatok
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),

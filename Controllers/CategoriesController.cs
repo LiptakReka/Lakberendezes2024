@@ -28,6 +28,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Összes szobakategória lekérése
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categories>>> Getkategories()
         {
@@ -37,6 +38,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "User,Admin")]
+        //Szobakategória lekérése id alapján
         [HttpGet("{id}")]
         public async Task<ActionResult<Categories>> GetCategories(int id)
         {
@@ -56,6 +58,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Szobakategória frissítése
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategories(int id, Categories categories)
         {
@@ -89,6 +92,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Új szobakategória létrehozása
         [HttpPost]
         public async Task<ActionResult<Categories>> PostCategories([FromBody]CategDTO categories)
         {
@@ -110,6 +114,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Szobakategória exportálása excel fájlba wpf-hez
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -147,6 +152,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Szobakategória törlése
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategories(int id)
         {

@@ -9,10 +9,7 @@
         public required string name { get; set; }
 
 
-        //kapcsolatok
-
-        
-        
+        //kapcsolat
         public  ICollection<Product>? products_ibfk_2 { get; set;}
     }
 }

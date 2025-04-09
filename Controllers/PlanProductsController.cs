@@ -24,6 +24,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Terv termékeinek lekérése terv id alapján
         [HttpGet("get-products/{planId}")]
         public async Task<IActionResult> GetPlanProducts(int planId)
         {
@@ -45,6 +46,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Összes tervhez tartozó termék lekérése
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PlanProduct>>> Getplanproducts()
         {
@@ -53,6 +55,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "User,Admin")]
+        //Tervhez tartozó  termékek lekérése id alapján
         [HttpGet("{id}")]
         public async Task<ActionResult<PlanProduct>> GetPlanProduct(int id)
         {
@@ -68,6 +71,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Tervhez tartozó termékek frissítése
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPlanProduct(int id, PlanProduct planProduct)
         {
@@ -99,6 +103,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Új tervhez tartozó termék hozzáadása
         [HttpPost]
         public async Task<ActionResult<PlanProduct>> PostPlanProduct(PlanProduct planProduct)
         {
@@ -109,6 +114,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Terv termékeinek mentése
         [HttpPost("save")]
         public async Task<IActionResult> SavePlanProducts([FromBody] PlanProductDTO plan)
         {
@@ -120,7 +126,7 @@ namespace Lakberendezes.Controllers
 
             
            
-            var planproducts = JsonConvert.DeserializeObject<List<PlanProductItemDTO>>(plan.PlanData);
+            var planproducts = JsonConvert.DeserializeObject<List<PlanProductItemDTO>>(plan.PlanData); //json konvertálása
 
             if (planproducts == null || !planproducts.Any())
             {
@@ -148,6 +154,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Tervhez tartozó termék törlése id alapján
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePlanProduct(int id)
         {

@@ -26,6 +26,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "User,Admin")]
+        //Terv keresése id alapján
         [HttpGet("search/{id}")]
 
         public async Task<ActionResult<IEnumerable<UserPlans>>> GetPlans(int id)
@@ -43,6 +44,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Összes terv lekérése
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserPlans>>> Getuserplan()
         {
@@ -61,6 +63,7 @@ namespace Lakberendezes.Controllers
         
 
         [Authorize(Roles = "Admin")]
+        //Terv exportálása excel fájlba wpf-hez
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -102,6 +105,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Terv keresése  id alapján
         [HttpGet("{id}")]
         public async Task<ActionResult<UserPlans>> GetUserPlans(int id)
         {
@@ -116,6 +120,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Terv módosítása id alapján
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUserPlans(int id, UserPlans userPlans)
         {
@@ -146,6 +151,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Új terv hozzáadása
         [HttpPost]
         public async Task<ActionResult<UserPlans>> PostUserPlans( UserPlans userPlans)
         {
@@ -156,6 +162,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Terv törlése id alapján
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserPlans(int id)
         {

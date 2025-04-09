@@ -227,7 +227,7 @@ namespace Lakberendezes.Controllers
 
                 using (var smtpClient = new SmtpClient())
                 {
-                    await smtpClient.ConnectAsync("smtp.gmail.com", 587, false);
+                    await smtpClient.ConnectAsync("smtp.gmail.com", 587, false); //Gmail smtp beállításai
                     await smtpClient.AuthenticateAsync("roomlabservice@gmail.com", "aofb aesx wmaa jhdc");
                     await smtpClient.SendAsync(emailMessage);
                     await smtpClient.DisconnectAsync(true);

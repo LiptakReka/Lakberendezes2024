@@ -24,6 +24,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Összes üzlet lekérése
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Shops>>> Getshops()
         {
@@ -45,6 +46,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Üzlet módosítása
         [HttpPut("{id}")]
         public async Task<IActionResult> PutShops(int id, Shops shops)
         {
@@ -75,6 +77,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Üzletek exportálása excel fájlba wpf-hez
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -117,6 +120,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Új üzlet hozzáadása
         [HttpPost]
 
         public async Task<ActionResult<Shops>> PostShops([FromBody] ShopDTO shopDTO)
@@ -150,6 +154,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Üzlet törlése id alapján
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteShops(int id)
         {

@@ -12,7 +12,7 @@ namespace Lakberendezes.Models
         public required DateTime datet {  get; set; }
         public required string ProfilePictureUrl { get; set; }
         
-
+        //Kapcsolat
         public  ICollection<UserPlans> plans { get; set; }= new List<UserPlans>();
         public ICollection<UserRole> roles { get; set; } = new List<UserRole>();
     }

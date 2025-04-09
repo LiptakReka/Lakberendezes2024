@@ -27,10 +27,11 @@ namespace Lakberendezes.Data
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
+            //adatbázis kapcsolatok
         {
             base.OnModelCreating(modelBuilder);
 
-            // Kapcsolat a User és UserPlans között
+            
             modelBuilder.Entity<Product>()
                 .HasOne(u => u.Shops)
                 .WithMany(up => up.products_ibfk_1)
@@ -38,7 +39,7 @@ namespace Lakberendezes.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
 
-            // Kapcsolat a Categories és ProductTypes között
+            
             modelBuilder.Entity<Product>()
                 .HasOne(c => c.ProductType)
                 .WithMany(pt => pt.products_ibfk_2)
@@ -46,7 +47,7 @@ namespace Lakberendezes.Data
                 .OnDelete(DeleteBehavior.Cascade);
 
 
-            // Kapcsolat a ProductType és Products között
+            
             modelBuilder.Entity<Product>()
                 .HasOne(pt => pt.Categories)
                 .WithMany(p => p.products_ibfk_3)

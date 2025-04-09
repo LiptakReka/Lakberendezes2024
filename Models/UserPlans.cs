@@ -5,7 +5,7 @@ namespace Lakberendezes.Models
 {
     public class UserPlans
     {
-        [Key]
+        [Key] //Automatikusan generálódik
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         public int userid { get; set; }
@@ -13,6 +13,7 @@ namespace Lakberendezes.Models
         public  required string plandata { get; set; }
         public DateTime createdat { get; set; }
 
+        //kapcsolat
         public  ICollection<PlanProduct>? Products { get; set; }
         
         

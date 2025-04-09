@@ -25,6 +25,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Összes bútortípus lekérése
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductType>>> Getproducttype()
         {
@@ -32,6 +33,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Bútortípus lekérése id alapján
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductType>> GetProductType(int id)
         {
@@ -46,6 +48,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Bútortípus módosítása
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductType(int id, ProductType productType)
         {
@@ -76,6 +79,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Új bútortípus hozzáadása
         [HttpPost]
         public async Task<ActionResult<ProductType>> PostProductType(ProductTypesDTO productType)
         {
@@ -97,6 +101,7 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction("Getproducttype", new { id = types.id }, types);
         }
         [Authorize(Roles = "Admin")]
+        //Bútortípusok exportálása Excel fájlba wpf-hez
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -133,6 +138,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Szobához tartozó bútortípusok lekérése
         [HttpGet("byroom")]
         public async Task<ActionResult<IEnumerable<ProductType>>> GetTypesbyRoom(int roomid)
         {
@@ -156,6 +162,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Szobához tartozó bútortípus törlése id alapján
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductType(int id)
         {

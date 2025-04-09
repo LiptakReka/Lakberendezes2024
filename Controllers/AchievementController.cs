@@ -62,7 +62,7 @@ namespace Lakberendezes.Controllers
             return Ok(achievement);
         }
 
-        [Authorize(Roles = "Admin,User")]
+      
         //Új achievement kezelése
         [Authorize(Roles = "User,Admin")]
         [HttpPost("new")]
@@ -84,7 +84,7 @@ namespace Lakberendezes.Controllers
             return CreatedAtAction(nameof(GetAchievement), new { Userid = achievement.user_Id }, achievement);
         }
 
-        [Authorize(Roles = "Admin")]
+    
         //Achievement törlése
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]

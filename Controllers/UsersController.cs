@@ -35,6 +35,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Terv lekérése felhasználó alapján
         [HttpGet("get-plan/{userId}")]
         public async Task<IActionResult> GetUserPlan(int userId)
         {
@@ -69,6 +70,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Összes felhasználó lekérése
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -89,6 +91,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Felhasználó keresése id alapján
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -101,6 +104,7 @@ namespace Lakberendezes.Controllers
         }
 
         [HttpPost("register")]
+        //Új felhasználó regisztrálása
         public async Task<IActionResult> Register([FromForm] UserRegisterDTO registerDTO)
         {
             var existingUser = await _context.users.FirstOrDefaultAsync(u => u.Email == registerDTO.Email);
@@ -118,7 +122,7 @@ namespace Lakberendezes.Controllers
             {
                 return BadRequest("A jelszónak tartalmaznia kell legalább egy speciális karaktert, egy számot , egy nagybetűt, és egy kis betűt.");
             }
-
+            //profilkép feltöltése felhőbe
             string profilePicturePath = "https://res.cloudinary.com/dd10jzece/image/upload/v1743009597/profile_pictures/apoghzaa8cj77vnj3d0y.jpg";
 
             if (registerDTO.ProfilePictureUrl != null)
@@ -138,7 +142,7 @@ namespace Lakberendezes.Controllers
                 UserName = registerDTO.Username,
                 Email = registerDTO.Email,
                 fullname = registerDTO.FullName,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDTO.Password),
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDTO.Password),//jelszó hashelése
                 datet = DateTime.Now,
                 ProfilePictureUrl = profilePicturePath
             };
@@ -163,7 +167,7 @@ namespace Lakberendezes.Controllers
             return Ok("Regisztráció sikeres!");
         }
 
-        private bool isvalidPassword(string password)
+        private bool isvalidPassword(string password) //A jelszó követelmények ellenőrzése
         {
             if (password.Length < 8)
             {
@@ -182,6 +186,7 @@ namespace Lakberendezes.Controllers
 
 
         [HttpPost("login")]
+        //Felhasználó bejelentkezése
         public async Task<ActionResult> Login(UserLoginDTO loginDTO)
         {
             var user = await _context.users.Include(u => u.roles).ThenInclude(ur => ur.Role).FirstOrDefaultAsync(u => u.Email == loginDTO.Email);
@@ -206,6 +211,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Jelszó módosítása
         [HttpPost("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] UserChangePasswordDTO model)
         {
@@ -227,6 +233,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin, User")]
+        //Profilkép lekérése
         [HttpGet("profilepic")]
         public async Task<IActionResult> GetProfilePicture([FromQuery] string email)
         {
@@ -250,6 +257,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Profilkép feltöltése
         [HttpPost("upload-profile-picture")]
         public async Task<IActionResult> UploadProfilePicture(IFormFile file, [FromForm] string email)
         {
@@ -280,6 +288,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Terv mentése felhasználóhoz
         [HttpPost("save-plan")]
         public async Task<IActionResult> SaveUserPlan([FromBody] UserPlanDTO planDTO)
         {
@@ -303,6 +312,7 @@ namespace Lakberendezes.Controllers
         }
 
         [HttpPost("forgotpass")]
+        //Jelszó visszaállítási kérelem
         public async Task<IActionResult> Forgotpass(ForgotPasswordDTO model, [FromServices] Models.IEmailSender emailSender)
         {
             var user = await _context.users.FirstOrDefaultAsync(u => u.Email == model.Email);
@@ -471,6 +481,7 @@ namespace Lakberendezes.Controllers
         }
 
         [HttpPost("reset-password")]
+        //Jelszó visszaállítása
         public async Task<IActionResult> ResetPassword(ResetPasswordDTO model)
         {
             var user = await _context.users.FirstOrDefaultAsync(u => u.Email == model.Email);
@@ -492,6 +503,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles="Admin")]
+        //Összes role lekérése
         [HttpGet("allrole")]
         public async Task<ActionResult<IEnumerable<Roles>>>AllRole()
         {
@@ -505,6 +517,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Role hozzáadása felhasználóhoz
         [HttpPost("Add-Role")]
         public async Task<IActionResult> AddROle([FromBody] UserRoleDTOcs userRole)
         {
@@ -537,6 +550,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Role törlése felhasználótól
         [HttpDelete("{userId}/Remove-Role/{roleId}")]
         public async Task<IActionResult> RemoveRole(int userId, int roleId)
         {
@@ -567,6 +581,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Felhasználók exportálása Excel fájlba wpf-hez
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -613,6 +628,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin,User")]
+        //Felhasználó törlése név alapján
         [HttpDelete("{userName}")]
         public async Task<IActionResult> DeleteUserByName(string userName)
         {

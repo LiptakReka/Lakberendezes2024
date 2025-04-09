@@ -29,6 +29,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Összes termék lekérése
         [HttpGet]
         
         public async Task<ActionResult<IEnumerable<Product>>> Getproducts()
@@ -37,6 +38,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Összes termék lekérése szobákategória alapján
         [HttpGet("szobák")]
         public async Task<IActionResult> GetProductsByCategory([FromQuery] int? roomId)
         {
@@ -55,6 +57,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Termék lekérése terméktípus és szobakategória alapján
         [HttpGet("typeandroom")]
         public async Task<ActionResult<IEnumerable<Product>>>GetProductsByRoomAndType(int roomid, int typeid)
         {
@@ -72,6 +75,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        //Termékek keresése név alapján
         [HttpGet("search/{name}")]
         
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string name)
@@ -89,6 +93,7 @@ namespace Lakberendezes.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        //Termékek exportálása excel fájlba wpf-hez
         [HttpGet("Export")]
         public IActionResult ExportTocsv()
         {
@@ -131,6 +136,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Termékek lekérése id alapján
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -147,6 +153,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Termékek frissítése id alapján
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
@@ -178,6 +185,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Új termék hozzáadása
         [HttpPost]
         
         public async Task<ActionResult<Product>> PostProduct([FromBody] ProductDTO productDto)
@@ -208,6 +216,7 @@ namespace Lakberendezes.Controllers
 
 
         [Authorize(Roles = "Admin")]
+        //Termék törlése id alapján
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProducts(int id)
         {

@@ -7,7 +7,7 @@ namespace Lakberendezes.Models
     public class EmailSender : IEmailSender
     {
         private readonly string _smtpServer = "smtp.gmail.com"; 
-        private readonly int _smtpPort = 587;
+        private readonly int _smtpPort = 587;   //google smtp beállításai
         private readonly string _smtpUser = "roomlabservice@gmail.com"; 
         private readonly string _smtpPass = "aofb aesx wmaa jhdc"; 
         public async Task SendEmailAsync(string email, string subject, string message)

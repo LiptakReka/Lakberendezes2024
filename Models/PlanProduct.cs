@@ -9,8 +9,8 @@ namespace Lakberendezes.Models
 
         public required int userplanid { get; set; }
         public  UserPlans? Userplans { get; set; }
-        public required string position { get; set; }
-        public float scale {  get; set; }
+        public required string position { get; set; } 
+        public float scale {  get; set; } //Mérete
 
         
       

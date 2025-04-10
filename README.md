@@ -11,7 +11,7 @@ Szerveroldali logika és funkcionalitások.
 Frontend: A felhasználói felület és interakciók fejlesztése.
 Felhasználás:
 Weboldal dizájnjának és funkcióinak implementálása.
-HTML, CSS, Bootstrap, JavaScript kódok és komponensek React keretrendszerben.
+HTML, CSS, Bootstrap, JavaScript kódok és komponensek React keretrendszerben. (+Craco)
 UI elemek fejlesztése, gombok, űrlapok, navigáció.
 
 Designok: Grafikai tervek és vizuális anyagok találhatók itt.
@@ -20,7 +20,7 @@ Weboldal és alkalmazás dizájnok, képernyőtervek.
 Stílus- és színpaletták.
 Vizuális elemek és eszközök (ikonok, képek, logók).
 
-Dokumentumok: Dokumentáció, ppt, amelyek segítik a projekt megértését és kezelését.
+Dokumentumok: Dokumentáció, Tesztdokumentáció, amik segítik a projekt megértését és kezelését.
 Felhasználás:
 Projekt leírások, telepítési és használati útmutatók.
 Fejlesztési és tesztelési dokumentáció.

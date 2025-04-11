@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `lakberendezes` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `lakberendezes`;
 -- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
 -- Host: turntable.proxy.rlwy.net    Database: lakberendezes
@@ -67,7 +65,7 @@ CREATE TABLE `achievements` (
 
 LOCK TABLES `achievements` WRITE;
 /*!40000 ALTER TABLE `achievements` DISABLE KEYS */;
-INSERT INTO `achievements` VALUES ('00ffe81b-c5d3-44e7-ab24-6e35f69fe43e',1,'Első terv!','Elmentetted az első terved!','?','2025-03-13 19:46:52'),('1db4afb7-1802-4463-bf16-37a69cbfb95d',25,'Kosár elküldve!','Összegzés elküldve','?','2025-03-31 06:58:57'),('21402bd4-a6bb-4206-bab9-77633121aab3',1,'Szépségszalon','Profilképed megváltozott','?','2025-03-13 19:44:52'),('2f0adaed-62e9-480c-9271-2751fbb66727',25,'Első terv!','Elmentetted az első terved!','?','2025-03-31 06:56:10'),('40f7397a-52fa-4b5f-8512-7b63e72f229c',4,'Kosár elküldve!','Összegzés elküldve','?','2025-04-02 07:56:50'),('9f258a2d-7e47-481f-8c5b-46d3d43de830',24,'Első terv!','Elmentetted az első terved!','?','2025-03-31 06:55:08'),('bf39b5a5-3dbe-4f38-b8c7-87fceaaea803',4,'Szépségszalon','Profilképed megváltozott','?','2025-04-02 07:56:33'),('d7e0da4e-7c89-4c5d-a5f6-3a72a83408b7',13,'Első terv!','Elmentetted az első terved!','?','2025-03-27 17:34:48'),('dddf0535-0fe6-44c8-8669-59d2b74289a5',4,'Első terv!','Elmentetted az első terved!','?','2025-03-26 16:11:03'),('ec53c219-dd76-45cc-ba6c-0b2acafe64fa',1,'Kosár elküldve!','Összegzés elküldve','?','2025-03-13 19:55:30');
+INSERT INTO `achievements` VALUES ('00ffe81b-c5d3-44e7-ab24-6e35f69fe43e',1,'Első terv!','Elmentetted az első terved!','?','2025-03-13 19:46:52'),('0a5a5fbe-522b-4f75-a84b-2755cbc4fef8',28,'Kosár elküldve!','Összegzés elküldve','?','2025-04-09 04:14:14'),('1db4afb7-1802-4463-bf16-37a69cbfb95d',25,'Kosár elküldve!','Összegzés elküldve','?','2025-03-31 06:58:57'),('21402bd4-a6bb-4206-bab9-77633121aab3',1,'Szépségszalon','Profilképed megváltozott','?','2025-03-13 19:44:52'),('229de2e5-1b0e-48ae-8334-8b93b954876e',28,'Első terv!','Elmentetted az első terved!','?','2025-04-02 17:53:55'),('2f0adaed-62e9-480c-9271-2751fbb66727',25,'Első terv!','Elmentetted az első terved!','?','2025-03-31 06:56:10'),('40f7397a-52fa-4b5f-8512-7b63e72f229c',4,'Kosár elküldve!','Összegzés elküldve','?','2025-04-02 07:56:50'),('7f6af8b8-06af-4ebd-b883-edf072406bc2',28,'Szépségszalon','Profilképed megváltozott','?','2025-04-09 05:18:08'),('9f258a2d-7e47-481f-8c5b-46d3d43de830',24,'Első terv!','Elmentetted az első terved!','?','2025-03-31 06:55:08'),('bf39b5a5-3dbe-4f38-b8c7-87fceaaea803',4,'Szépségszalon','Profilképed megváltozott','?','2025-04-02 07:56:33'),('d7e0da4e-7c89-4c5d-a5f6-3a72a83408b7',13,'Első terv!','Elmentetted az első terved!','?','2025-03-27 17:34:48'),('dddf0535-0fe6-44c8-8669-59d2b74289a5',4,'Első terv!','Elmentetted az első terved!','?','2025-03-26 16:11:03'),('ec53c219-dd76-45cc-ba6c-0b2acafe64fa',1,'Kosár elküldve!','Összegzés elküldve','?','2025-03-13 19:55:30');
 /*!40000 ALTER TABLE `achievements` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +80,7 @@ CREATE TABLE `kategories` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb3_hungarian_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +89,7 @@ CREATE TABLE `kategories` (
 
 LOCK TABLES `kategories` WRITE;
 /*!40000 ALTER TABLE `kategories` DISABLE KEYS */;
-INSERT INTO `kategories` VALUES (1,'Nappali'),(3,'Hálószoba'),(4,'Fürdőszoba'),(5,'Étkező');
+INSERT INTO `kategories` VALUES (1,'Nappali'),(3,'Hálószoba'),(4,'Fürdőszoba'),(5,'Étkező'),(20,'Konyha');
 /*!40000 ALTER TABLE `kategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +113,7 @@ CREATE TABLE `planproducts` (
   KEY `IX_planproducts_userplanid` (`userplanid`),
   CONSTRAINT `plan` FOREIGN KEY (`userplanid`) REFERENCES `userplan` (`id`) ON DELETE CASCADE,
   CONSTRAINT `product` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=192 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=222 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +122,7 @@ CREATE TABLE `planproducts` (
 
 LOCK TABLES `planproducts` WRITE;
 /*!40000 ALTER TABLE `planproducts` DISABLE KEYS */;
-INSERT INTO `planproducts` VALUES (161,53,'-198, 534',0.6,71),(162,73,'-68, 569',0.5,71),(163,174,'195, 485',0.7,71),(164,347,'946, 439',0.8,71),(165,52,'54, 308',0.5,72),(166,52,'664, 535',0.5,73),(167,57,'-141, 499',0.5,73),(168,55,'-137, 320',0.5,74),(169,72,'2, 360',0.5,74),(170,96,'644, 257',0.5,74),(171,99,'-36, 108',0.5,75),(172,176,'463, 200',0.8,75),(173,344,'586, 273',0.7,75),(174,99,'-36, 108',0.5,76),(175,176,'463, 200',0.8,76),(176,344,'586, 273',0.7,76),(177,99,'-36, 108',0.5,77),(178,176,'463, 200',0.8,77),(179,344,'586, 273',0.7,77),(180,99,'-36, 108',0.5,78),(181,176,'463, 200',0.8,78),(182,344,'586, 273',0.7,78),(183,53,'-189.37, 13.135651',0.5,79),(184,55,'-20, 168',0.5,80),(185,58,'95, 257',0.5,80),(186,74,'-83, 237',0.5,80),(187,132,'114, 199',0.5,81),(188,143,'-53, 36',0.5,81),(189,52,'143, -61',0.5,82),(190,53,'-119, 246',0.5,82),(191,54,'-167, -18',0.5,82);
+INSERT INTO `planproducts` VALUES (161,53,'-198, 534',0.6,71),(162,73,'-68, 569',0.5,71),(163,174,'195, 485',0.7,71),(164,347,'946, 439',0.8,71),(165,52,'54, 308',0.5,72),(166,52,'664, 535',0.5,73),(167,57,'-141, 499',0.5,73),(168,55,'-137, 320',0.5,74),(169,72,'2, 360',0.5,74),(170,96,'644, 257',0.5,74),(171,99,'-36, 108',0.5,75),(172,176,'463, 200',0.8,75),(173,344,'586, 273',0.7,75),(174,99,'-36, 108',0.5,76),(175,176,'463, 200',0.8,76),(176,344,'586, 273',0.7,76),(177,99,'-36, 108',0.5,77),(178,176,'463, 200',0.8,77),(179,344,'586, 273',0.7,77),(180,99,'-36, 108',0.5,78),(181,176,'463, 200',0.8,78),(182,344,'586, 273',0.7,78),(183,53,'-189.37, 13.135651',0.5,79),(184,55,'-20, 168',0.5,80),(185,58,'95, 257',0.5,80),(186,74,'-83, 237',0.5,80),(187,132,'114, 199',0.5,81),(188,143,'-53, 36',0.5,81),(189,52,'143, -61',0.5,82),(190,53,'-119, 246',0.5,82),(191,54,'-167, -18',0.5,82),(194,142,'237, 148',0.5,84),(195,135,'-83, 405',0.9,84),(196,160,'608, 251',1.4,84),(197,142,'237, 148',0.5,85),(198,135,'-83, 405',0.9,85),(199,160,'608, 251',1.4,85),(200,52,'-174, 284',0.6,86),(201,73,'-68, 353',0.4,86),(202,172,'171, 319',0.8,86),(203,142,'237, 148',0.5,87),(204,135,'-83, 405',0.9,87),(205,160,'608, 251',1.4,87),(206,142,'237, 148',0.5,88),(207,135,'-83, 405',0.9,88),(208,160,'608, 251',1.4,88),(209,142,'237, 148',0.5,89),(210,135,'8, -18',0.9,89),(211,160,'608, 251',1.4,89),(212,142,'237, 148',0.5,90),(213,135,'8, -18',0.9,90),(214,160,'608, 251',1.4,90),(215,52,'509, 22',0.5,90),(216,52,'238, 167',0.8,91),(217,52,'160, 191',0.6,92),(218,53,'-40, 431',0.7,93),(219,73,'232, 546',0.7,93),(220,96,'767, 285',0.8,93);
 /*!40000 ALTER TABLE `planproducts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +261,7 @@ CREATE TABLE `userplan` (
   KEY `IX_userplan_userid` (`userid`),
   CONSTRAINT `userplan_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`Id`) ON DELETE CASCADE,
   CONSTRAINT `userplan_chk_1` CHECK (json_valid(`plandata`))
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +270,7 @@ CREATE TABLE `userplan` (
 
 LOCK TABLES `userplan` WRITE;
 /*!40000 ALTER TABLE `userplan` DISABLE KEYS */;
-INSERT INTO `userplan` VALUES (71,1,'[{\"productId\":53,\"x\":-198,\"y\":534,\"scale\":0.6},{\"productId\":73,\"x\":-68,\"y\":569,\"scale\":0.5},{\"productId\":174,\"x\":195,\"y\":485,\"scale\":0.7},{\"productId\":347,\"x\":946,\"y\":439,\"scale\":0.7999999999999999}]','2025-03-13 20:09:41'),(72,4,'[{\"productId\":52,\"x\":54,\"y\":308,\"scale\":0.5}]','2025-03-26 16:10:56'),(73,4,'[{\"productId\":52,\"x\":664,\"y\":535,\"scale\":0.5},{\"productId\":57,\"x\":-141,\"y\":499,\"scale\":0.5}]','2025-03-26 16:12:06'),(74,1,'[{\"productId\":55,\"x\":-137,\"y\":320,\"scale\":0.5},{\"productId\":72,\"x\":2,\"y\":360,\"scale\":0.5},{\"productId\":96,\"x\":644,\"y\":257,\"scale\":0.5}]','2025-03-27 09:13:21'),(75,13,'[{\"productId\":99,\"x\":-36,\"y\":108,\"scale\":0.5},{\"productId\":176,\"x\":463,\"y\":200,\"scale\":0.7999999999999999},{\"productId\":344,\"x\":586,\"y\":273,\"scale\":0.7}]','2025-03-27 17:34:41'),(76,13,'[{\"productId\":99,\"x\":-36,\"y\":108,\"scale\":0.5},{\"productId\":176,\"x\":463,\"y\":200,\"scale\":0.7999999999999999},{\"productId\":344,\"x\":586,\"y\":273,\"scale\":0.7}]','2025-03-27 17:34:42'),(77,13,'[{\"productId\":99,\"x\":-36,\"y\":108,\"scale\":0.5},{\"productId\":176,\"x\":463,\"y\":200,\"scale\":0.7999999999999999},{\"productId\":344,\"x\":586,\"y\":273,\"scale\":0.7}]','2025-03-27 17:34:43'),(78,13,'[{\"productId\":99,\"x\":-36,\"y\":108,\"scale\":0.5},{\"productId\":176,\"x\":463,\"y\":200,\"scale\":0.7999999999999999},{\"productId\":344,\"x\":586,\"y\":273,\"scale\":0.7}]','2025-03-27 17:34:45'),(79,1,'[{\"productId\":53,\"x\":-189.3699951171875,\"y\":13.135650634765625,\"scale\":0.5}]','2025-03-28 16:00:45'),(80,24,'[{\"productId\":55,\"x\":-20,\"y\":168,\"scale\":0.5},{\"productId\":58,\"x\":95,\"y\":257,\"scale\":0.5},{\"productId\":74,\"x\":-83,\"y\":237,\"scale\":0.5}]','2025-03-31 06:55:03'),(81,25,'[{\"productId\":132,\"x\":114,\"y\":199,\"scale\":0.5},{\"productId\":143,\"x\":-53,\"y\":36,\"scale\":0.5}]','2025-03-31 06:56:05'),(82,1,'[{\"productId\":52,\"x\":143,\"y\":-61,\"scale\":0.5},{\"productId\":53,\"x\":-119,\"y\":246,\"scale\":0.5},{\"productId\":54,\"x\":-167,\"y\":-18,\"scale\":0.5}]','2025-03-31 07:09:49');
+INSERT INTO `userplan` VALUES (71,1,'[{\"productId\":53,\"x\":-198,\"y\":534,\"scale\":0.6},{\"productId\":73,\"x\":-68,\"y\":569,\"scale\":0.5},{\"productId\":174,\"x\":195,\"y\":485,\"scale\":0.7},{\"productId\":347,\"x\":946,\"y\":439,\"scale\":0.7999999999999999}]','2025-03-13 20:09:41'),(72,4,'[{\"productId\":52,\"x\":54,\"y\":308,\"scale\":0.5}]','2025-03-26 16:10:56'),(73,4,'[{\"productId\":52,\"x\":664,\"y\":535,\"scale\":0.5},{\"productId\":57,\"x\":-141,\"y\":499,\"scale\":0.5}]','2025-03-26 16:12:06'),(74,1,'[{\"productId\":55,\"x\":-137,\"y\":320,\"scale\":0.5},{\"productId\":72,\"x\":2,\"y\":360,\"scale\":0.5},{\"productId\":96,\"x\":644,\"y\":257,\"scale\":0.5}]','2025-03-27 09:13:21'),(75,13,'[{\"productId\":99,\"x\":-36,\"y\":108,\"scale\":0.5},{\"productId\":176,\"x\":463,\"y\":200,\"scale\":0.7999999999999999},{\"productId\":344,\"x\":586,\"y\":273,\"scale\":0.7}]','2025-03-27 17:34:41'),(76,13,'[{\"productId\":99,\"x\":-36,\"y\":108,\"scale\":0.5},{\"productId\":176,\"x\":463,\"y\":200,\"scale\":0.7999999999999999},{\"productId\":344,\"x\":586,\"y\":273,\"scale\":0.7}]','2025-03-27 17:34:42'),(77,13,'[{\"productId\":99,\"x\":-36,\"y\":108,\"scale\":0.5},{\"productId\":176,\"x\":463,\"y\":200,\"scale\":0.7999999999999999},{\"productId\":344,\"x\":586,\"y\":273,\"scale\":0.7}]','2025-03-27 17:34:43'),(78,13,'[{\"productId\":99,\"x\":-36,\"y\":108,\"scale\":0.5},{\"productId\":176,\"x\":463,\"y\":200,\"scale\":0.7999999999999999},{\"productId\":344,\"x\":586,\"y\":273,\"scale\":0.7}]','2025-03-27 17:34:45'),(79,1,'[{\"productId\":53,\"x\":-189.3699951171875,\"y\":13.135650634765625,\"scale\":0.5}]','2025-03-28 16:00:45'),(80,24,'[{\"productId\":55,\"x\":-20,\"y\":168,\"scale\":0.5},{\"productId\":58,\"x\":95,\"y\":257,\"scale\":0.5},{\"productId\":74,\"x\":-83,\"y\":237,\"scale\":0.5}]','2025-03-31 06:55:03'),(81,25,'[{\"productId\":132,\"x\":114,\"y\":199,\"scale\":0.5},{\"productId\":143,\"x\":-53,\"y\":36,\"scale\":0.5}]','2025-03-31 06:56:05'),(82,1,'[{\"productId\":52,\"x\":143,\"y\":-61,\"scale\":0.5},{\"productId\":53,\"x\":-119,\"y\":246,\"scale\":0.5},{\"productId\":54,\"x\":-167,\"y\":-18,\"scale\":0.5}]','2025-03-31 07:09:49'),(84,28,'[{\"productId\":142,\"x\":237,\"y\":148,\"scale\":0.5},{\"productId\":135,\"x\":-83,\"y\":405,\"scale\":0.8999999999999999},{\"productId\":160,\"x\":608,\"y\":251,\"scale\":1.4000000000000001}]','2025-04-02 17:53:50'),(85,28,'[{\"productId\":142,\"x\":237,\"y\":148,\"scale\":0.5},{\"productId\":135,\"x\":-83,\"y\":405,\"scale\":0.8999999999999999},{\"productId\":160,\"x\":608,\"y\":251,\"scale\":1.4000000000000001}]','2025-04-02 17:53:53'),(86,1,'[{\"productId\":52,\"x\":-174,\"y\":284,\"scale\":0.6},{\"productId\":73,\"x\":-68,\"y\":353,\"scale\":0.4},{\"productId\":172,\"x\":171,\"y\":319,\"scale\":0.7999999999999999}]','2025-04-03 09:08:37'),(87,28,'[{\"productId\":142,\"x\":237,\"y\":148,\"scale\":0.5},{\"productId\":135,\"x\":-83,\"y\":405,\"scale\":0.9},{\"productId\":160,\"x\":608,\"y\":251,\"scale\":1.4}]','2025-04-09 02:38:52'),(88,28,'[{\"productId\":142,\"x\":237,\"y\":148,\"scale\":0.5},{\"productId\":135,\"x\":-83,\"y\":405,\"scale\":0.9},{\"productId\":160,\"x\":608,\"y\":251,\"scale\":1.4}]','2025-04-09 02:38:55'),(89,28,'[{\"productId\":142,\"x\":237,\"y\":148,\"scale\":0.5},{\"productId\":135,\"x\":8,\"y\":-18,\"scale\":0.9},{\"productId\":160,\"x\":608,\"y\":251,\"scale\":1.4}]','2025-04-09 02:39:05'),(90,28,'[{\"productId\":142,\"x\":237,\"y\":148,\"scale\":0.5},{\"productId\":135,\"x\":8,\"y\":-18,\"scale\":0.9},{\"productId\":160,\"x\":608,\"y\":251,\"scale\":1.4},{\"productId\":52,\"x\":509,\"y\":22,\"scale\":0.5}]','2025-04-09 02:39:37'),(91,28,'[{\"productId\":52,\"x\":238,\"y\":167,\"scale\":0.7999999999999999}]','2025-04-09 02:40:27'),(92,28,'[{\"productId\":52,\"x\":160,\"y\":191,\"scale\":0.6}]','2025-04-09 02:45:19'),(93,28,'[{\"productId\":53,\"x\":-40,\"y\":431,\"scale\":0.7},{\"productId\":73,\"x\":232,\"y\":546,\"scale\":0.7},{\"productId\":96,\"x\":767,\"y\":285,\"scale\":0.7999999999999999}]','2025-04-09 03:08:05');
 /*!40000 ALTER TABLE `userplan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,7 +297,7 @@ CREATE TABLE `userroles` (
 
 LOCK TABLES `userroles` WRITE;
 /*!40000 ALTER TABLE `userroles` DISABLE KEYS */;
-INSERT INTO `userroles` VALUES (1,1),(4,2),(13,1),(18,1),(20,1),(24,1),(25,1),(26,1);
+INSERT INTO `userroles` VALUES (1,1),(4,2),(13,1),(18,1),(20,1),(24,1),(25,1),(26,1),(28,2),(32,2);
 /*!40000 ALTER TABLE `userroles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,7 +317,7 @@ CREATE TABLE `users` (
   `datet` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ProfilePictureUrl` varchar(1000) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -328,7 +326,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'liptakr@kkszki.hu','admin','$2a$11$K4TwwWdkBJS3JZETceordebErbAU25Dhb5v5mhVBt2TDRpljdD8S.','Admin','2025-03-13 17:58:46','https://res.cloudinary.com/dd10jzece/image/upload/v1743012365/profile_pictures/bzclb2auto7zfcickmjb.jpg'),(4,'roomlabservice@gmail.com','admin','$2a$11$1PvSDqce.OaZMB/XiQ88lOzsd5yUx7MNTMtoB93XixuF9kbxpgBqG','admin','2025-03-13 18:55:27','https://res.cloudinary.com/dd10jzece/image/upload/v1743580590/profile_pictures/jvaqzjcniz1vshdciu6f.jpg'),(13,'p.viki0380@gmail.com','Perjesiviki','$2a$11$OW3NG.z7kyQgPZ2ddvgmLO.7cY1OrOmJWarpLvzFyNwGEaO6pxo3G','Perjési Viki','2025-03-27 17:01:05','https://res.cloudinary.com/dd10jzece/image/upload/v1743094863/profile_pictures/dm3mr2b88j0jxxgrcpav.jpg'),(18,'isti200404@gmail.com','Isti ','$2a$11$XBDTqPN/zXeWmJ6Y38kxJebyy87KpWiYEem/ztKR1f2C9J6wGIlJq','Baczakó István ','2025-03-29 06:05:41','https://res.cloudinary.com/dd10jzece/image/upload/v1743228338/profile_pictures/vybnrbfc1oosyf6bn4uc.jpg'),(20,'frodo.k.zsakos@gmail.com','Kpvaca','$2a$11$rro9PnpS4QJw3H3HCoXen.wDUauSyPQOhvQAcdRl5AWDvnzcn5xTa','Bk dk','2025-03-29 21:19:07','https://res.cloudinary.com/dd10jzece/image/upload/v1743283146/profile_pictures/cspvdbck0ipjbxxqrkvc.jpg'),(24,'hiloczkit@kkszki.hu','Tahil','$2a$11$YlYhXjfVPelIRRNCuGAvRONjdClnOZdKLdbNQSPIdiaqibFZwntoy','Hilóczki Tamás','2025-03-31 06:50:01','https://res.cloudinary.com/dd10jzece/image/upload/v1743403800/profile_pictures/n4ihzvgdftbhusowqska.png'),(25,'monostorir@kkszki.hu','Beto','$2a$11$GRfoTf0PT2oUYSTjJ1o/GOzX2RIn05nWZFUjxTGD0HBzjxge9lv1e','Monostori Róbert','2025-03-31 06:52:26','https://res.cloudinary.com/dd10jzece/image/upload/v1743403945/profile_pictures/eljcrh0cjqipjo0bfgak.jpg'),(26,'ondab710@gmail.com','ondab','$2a$11$Myxj8iND6wssRQqsjUObfug5IHcmIA9aTK1bWPvTg//82P.oMmUs6','Onda Balázs','2025-04-01 09:00:03','https://res.cloudinary.com/dd10jzece/image/upload/v1743498001/profile_pictures/dcvtcvjw8wjiae5nxz7l.png');
+INSERT INTO `users` VALUES (1,'liptakr@kkszki.hu','admin','$2a$11$K4TwwWdkBJS3JZETceordebErbAU25Dhb5v5mhVBt2TDRpljdD8S.','Admin','2025-03-13 17:58:46','https://res.cloudinary.com/dd10jzece/image/upload/v1743012365/profile_pictures/bzclb2auto7zfcickmjb.jpg'),(4,'roomlabservice@gmail.com','admin','$2a$11$ZripuvXn6wqLZtLy6VGtXew9XZPtYD4066Lxkkgh.BnVC49boGBz2','admin','2025-03-13 18:55:27','https://res.cloudinary.com/dd10jzece/image/upload/v1743580590/profile_pictures/jvaqzjcniz1vshdciu6f.jpg'),(13,'p.viki0380@gmail.com','Perjesiviki','$2a$11$OW3NG.z7kyQgPZ2ddvgmLO.7cY1OrOmJWarpLvzFyNwGEaO6pxo3G','Perjési Viki','2025-03-27 17:01:05','https://res.cloudinary.com/dd10jzece/image/upload/v1743094863/profile_pictures/dm3mr2b88j0jxxgrcpav.jpg'),(18,'isti200404@gmail.com','Isti ','$2a$11$XBDTqPN/zXeWmJ6Y38kxJebyy87KpWiYEem/ztKR1f2C9J6wGIlJq','Baczakó István ','2025-03-29 06:05:41','https://res.cloudinary.com/dd10jzece/image/upload/v1743228338/profile_pictures/vybnrbfc1oosyf6bn4uc.jpg'),(20,'frodo.k.zsakos@gmail.com','Kpvaca','$2a$11$rro9PnpS4QJw3H3HCoXen.wDUauSyPQOhvQAcdRl5AWDvnzcn5xTa','Bk dk','2025-03-29 21:19:07','https://res.cloudinary.com/dd10jzece/image/upload/v1743283146/profile_pictures/cspvdbck0ipjbxxqrkvc.jpg'),(24,'hiloczkit@kkszki.hu','Tahil','$2a$11$YlYhXjfVPelIRRNCuGAvRONjdClnOZdKLdbNQSPIdiaqibFZwntoy','Hilóczki Tamás','2025-03-31 06:50:01','https://res.cloudinary.com/dd10jzece/image/upload/v1743403800/profile_pictures/n4ihzvgdftbhusowqska.png'),(25,'monostorir@kkszki.hu','Beto','$2a$11$GRfoTf0PT2oUYSTjJ1o/GOzX2RIn05nWZFUjxTGD0HBzjxge9lv1e','Monostori Róbert','2025-03-31 06:52:26','https://res.cloudinary.com/dd10jzece/image/upload/v1743403945/profile_pictures/eljcrh0cjqipjo0bfgak.jpg'),(26,'ondab710@gmail.com','ondab','$2a$11$Myxj8iND6wssRQqsjUObfug5IHcmIA9aTK1bWPvTg//82P.oMmUs6','Onda Balázs','2025-04-01 09:00:03','https://res.cloudinary.com/dd10jzece/image/upload/v1743498001/profile_pictures/dcvtcvjw8wjiae5nxz7l.png'),(28,'m.vivien044@gmail.com','Viivien','$2a$11$gOwxzptx9S1ciVUk4iyrCu.nIeMqO9qMsVdMEKoqKiPUqf9.wTKGS','Mészáros Vivien','2025-04-02 11:13:10','https://res.cloudinary.com/dd10jzece/image/upload/v1744175970/profile_pictures/dwcahlnjay5fapdafn2r.jpg'),(32,'nemethb@kkszki.hu','Nemethb','$2a$11$G7ekq5jwi6ixslQm3NQene4LCNYOjRehzzRriJTKSL4THKI4b06hG','Németh Bence','2025-04-09 11:20:21','https://res.cloudinary.com/dd10jzece/image/upload/v1744197619/profile_pictures/lq9seirktudretlt6o66.png');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -341,4 +339,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-02 10:03:37
+-- Dump completed on 2025-04-11  8:20:20
